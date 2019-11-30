@@ -1,7 +1,7 @@
 /*
       Date:  2019-08-02 21:36    
                                  */
-package com.snow.study.Netty.a.basic;
+package study.Netty.a.basic;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

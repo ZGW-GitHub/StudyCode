@@ -1,7 +1,7 @@
 /*
       Date:  2019-08-02 21:35    
                                  */
-package com.snow.study.Netty.a.basic;
+package study.Netty.a.basic;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;

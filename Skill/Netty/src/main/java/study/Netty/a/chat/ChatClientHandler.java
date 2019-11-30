@@ -1,7 +1,7 @@
 /*
       Date:  2019-08-08 12:37    
                                  */
-package com.snow.study.Netty.a.chat;
+package study.Netty.a.chat;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
