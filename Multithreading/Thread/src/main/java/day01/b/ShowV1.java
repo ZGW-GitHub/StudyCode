@@ -1,4 +1,4 @@
-package O2;
+package day01.b;
 
 public class ShowV1 extends Thread {
 
