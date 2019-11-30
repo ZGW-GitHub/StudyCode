@@ -1,6 +1,6 @@
 package learn1_Thread.b_Methods;
 
-public class D_join {
+public class D_Join {
 
     public static void main(String[] args) {
 
