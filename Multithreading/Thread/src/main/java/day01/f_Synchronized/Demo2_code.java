@@ -1,4 +1,4 @@
-package O6_Synchronized;
+package day01.f_Synchronized;
 
 /**
  * 多线程执行 Demo1_code

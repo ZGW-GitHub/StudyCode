@@ -1,15 +1,14 @@
-package O4_ThreadCloseGraceful;
+package day01.c_CloseThread;
 
-/**
- * 通过一个操作 中断标识位 来终止线程
- */
-public class ThreadCloseGraceful2 {
+// 通过 中断标识位 来终止线程
+public class B_CloseThread {
 
     private static class Worker extends Thread{
 
         @Override
         public void run() {
             while (true){
+                // BUG : 如果线程在这里 阻塞 了，此时不能通过 Boolean 或 中断 标识位来结束线程了，怎么办？看后续的代码
                 if (Thread.interrupted()){
                     break;
                 }

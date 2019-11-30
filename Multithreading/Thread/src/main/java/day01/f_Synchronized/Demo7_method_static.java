@@ -1,4 +1,4 @@
-package O6_Synchronized;
+package day01.f_Synchronized;
 
 /**
  * 此时方法的执行顺序为（ m1 m2 可能调换位置 ）：

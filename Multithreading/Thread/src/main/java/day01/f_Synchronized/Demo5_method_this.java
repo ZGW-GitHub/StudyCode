@@ -1,4 +1,4 @@
-package O6_Synchronized;
+package day01.f_Synchronized;
 
 public class Demo5_method_this {
 

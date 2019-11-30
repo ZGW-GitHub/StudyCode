@@ -1,9 +1,9 @@
-package O4_ThreadCloseGraceful;
+package day01.c_CloseThread;
 
 /**
  * 通过一个 Boolean 标识位来终止线程
  */
-public class ThreadCloseGraceful {
+public class A_CloseThread {
 
     private static class Worker extends Thread{
 
@@ -11,6 +11,7 @@ public class ThreadCloseGraceful {
 
         @Override
         public void run() {
+            // BUG : 如果线程在这里 阻塞 了，此时不能通过 Boolean 或 中断 标识位来结束线程了，怎么办？看后续的代码
             while (flag){
                 // 干活。。。
             }
@@ -22,18 +23,16 @@ public class ThreadCloseGraceful {
 
     };
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Worker worker = new Worker();
+
         worker.start();
 
-        try {
-            Thread.sleep(3_000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(3000);
 
         worker.shutdown();
+
     }
 
 }

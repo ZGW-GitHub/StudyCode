@@ -1,4 +1,4 @@
-package O6_Synchronized;
+package day01.f_Synchronized;
 
 // 对于普通方法，锁是当前实例对象
 public class Demo6_method_thisOver {
@@ -9,19 +9,9 @@ public class Demo6_method_thisOver {
 
         LockDemo lockDemo = new LockDemo();
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                lockDemo.m1();
-            }
-        }, "T1").start();
+        new Thread(() -> lockDemo.m1(), "T1").start();
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                lockDemo.m2();
-            }
-        }, "T2").start();
+        new Thread(() -> lockDemo.m2(), "T2").start();
 
     }
 

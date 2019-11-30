@@ -1,4 +1,4 @@
-package O6_Synchronized;
+package day01.f_Synchronized;
 
 public class Demo4_method_this implements Runnable {
 
@@ -29,14 +29,16 @@ public class Demo4_method_this implements Runnable {
     @Override
     public void run() {
         while (true){
-            if (flag())
+            if (flag()) {
                 break;
+            }
         }
     }
 
     private synchronized boolean flag(){
-        if (index > MAX)
+        if (index > MAX) {
             return true;
+        }
         try {
             Thread.sleep(5);
         } catch (InterruptedException e) {
