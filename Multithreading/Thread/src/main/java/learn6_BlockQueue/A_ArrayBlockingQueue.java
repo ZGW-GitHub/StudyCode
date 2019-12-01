@@ -1,9 +1,5 @@
 package learn6_BlockQueue;
 
-/* ******************************
- *   Time:  2019-07-26 15:38    *
- ****************************** */
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;

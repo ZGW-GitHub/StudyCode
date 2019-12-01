@@ -10,8 +10,6 @@ import java.util.concurrent.LinkedTransferQueue;
  *      无界的
  *
  *      有担保地交付元素
- *
- *
  */
 public class G_LinkedTransferQueue {
 
