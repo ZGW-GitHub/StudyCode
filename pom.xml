@@ -4,11 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>MessageMiddleware</module>
-        <module>Multithreading</module>
-        <module>Cornerstone</module>
-        <module>Skill</module>
-        <module>Java</module>
+        <module>A - Java</module>
+        <module>B - Cornerstone</module>
+        <module>C - Multithreading</module>
+        <module>D - MessageMiddleware</module>
+        <module>E - Skill</module>
+        <module>F - Frame</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
