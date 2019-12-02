@@ -12,11 +12,16 @@
     <artifactId>RabbitMQ</artifactId>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>com.rabbitmq</groupId>-->
+<!--            <artifactId>amqp-client</artifactId>-->
+<!--            <version>5.4.0</version>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>com.rabbitmq</groupId>
-            <artifactId>amqp-client</artifactId>
-            <version>5.4.0</version>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>

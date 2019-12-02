@@ -1,7 +1,7 @@
-package com.snow.rabbitmq.demo04;
+package study.demo04;
 
 import com.rabbitmq.client.Channel;
-import com.snow.rabbitmq.RabbitMQ;
+import study.RabbitMQ;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

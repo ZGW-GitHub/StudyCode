@@ -1,10 +1,10 @@
-package com.snow.rabbitmq.demo01;
+package study.demo01;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
-import com.snow.rabbitmq.RabbitMQ;
+import study.RabbitMQ;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
