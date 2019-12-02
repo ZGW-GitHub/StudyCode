@@ -1,7 +1,7 @@
 /*
       Date:  2019-11-21 20:34
                                  */
-package com.snow.study.Netty.Book_shizhan.p119;
+package study.Netty.Book_shizhan.p119;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

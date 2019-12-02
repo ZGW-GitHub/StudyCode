@@ -1,7 +1,7 @@
 /*
       Date:  2019-11-21 21:00
                                  */
-package com.snow.study.Netty.Book_shizhan.p120;
+package study.Netty.Book_shizhan.p120;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

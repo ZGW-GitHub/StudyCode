@@ -1,7 +1,7 @@
 /*
       Date:  2019-11-15 16:54
                                  */
-package com.snow.study.Netty.Book_shizhan.p17;
+package study.Netty.Book_shizhan.p17;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

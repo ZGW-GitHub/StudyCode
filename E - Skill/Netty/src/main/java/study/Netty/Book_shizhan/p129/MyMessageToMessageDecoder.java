@@ -1,7 +1,7 @@
 /*
       Date:  2019-11-23 9:21
                                  */
-package com.snow.study.Netty.Book_shizhan.p129;
+package study.Netty.Book_shizhan.p129;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
