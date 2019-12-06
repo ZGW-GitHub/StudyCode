@@ -1,9 +1,8 @@
-package com.snow.sjms.c_Decorator;
+package c_Decorator;
 
 /**
  * 超父类
  */
-
 public abstract class Beverage {
 
     String description = "表示咖啡";

@@ -1,8 +1,8 @@
-package com.snow.sjms.a_StrategyPattern.test;
+package a_StrategyPattern.test;
 
-import com.snow.sjms.a_StrategyPattern.duck.Duck;
-import com.snow.sjms.a_StrategyPattern.duck.ReallyDuck;
-import com.snow.sjms.a_StrategyPattern.fly.YaFly;
+import a_StrategyPattern.duck.Duck;
+import a_StrategyPattern.duck.ReallyDuck;
+import a_StrategyPattern.fly.YaFly;
 
 public class MyTest2 {
     public static void main(String[] args) {

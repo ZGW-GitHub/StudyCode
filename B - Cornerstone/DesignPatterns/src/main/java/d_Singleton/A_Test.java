@@ -1,7 +1,7 @@
 /*
       Date:  2019-08-08 22:00    
                                  */
-package com.snow.sjms.d_Singleton;
+package d_Singleton;
 
 public class A_Test {
 

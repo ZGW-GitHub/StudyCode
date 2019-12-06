@@ -1,5 +1,6 @@
-package com.snow.sjms.b_Observer.display;
+package b_Observer.display;
 
+import b_Observer.sub.WeatherData;
 import com.snow.sjms.b_Observer.ob.Observer;
 import com.snow.sjms.b_Observer.play.DisplayElement;
 import com.snow.sjms.b_Observer.sub.Subject;
@@ -13,7 +14,7 @@ public class DisplayDemo1 implements Observer, DisplayElement {
     private float humidity;
     private Subject weatherData;
 
-    public DisplayDemo1(Subject weatherData) {
+    public DisplayDemo1(WeatherData weatherData) {
         this.weatherData = weatherData;
         weatherData.registerObserver(this);
     }

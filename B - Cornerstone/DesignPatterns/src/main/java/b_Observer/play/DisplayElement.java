@@ -1,4 +1,4 @@
-package com.snow.sjms.b_Observer.play;
+package b_Observer.play;
 
 /**
  * 展示类

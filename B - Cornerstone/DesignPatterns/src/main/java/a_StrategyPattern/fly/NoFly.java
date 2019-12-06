@@ -1,4 +1,4 @@
-package com.snow.sjms.a_StrategyPattern.fly;
+package a_StrategyPattern.fly;
 
 public class NoFly implements FlyParent {
 

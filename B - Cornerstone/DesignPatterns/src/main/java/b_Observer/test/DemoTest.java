@@ -1,7 +1,7 @@
-package com.snow.sjms.b_Observer.test;
+package b_Observer.test;
 
-import com.snow.sjms.b_Observer.display.DisplayDemo1;
-import com.snow.sjms.b_Observer.sub.WeatherData;
+import b_Observer.display.DisplayDemo1;
+import b_Observer.sub.WeatherData;
 
 public class DemoTest {
 

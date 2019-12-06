@@ -1,7 +1,7 @@
 /*
       Date:  2019-11-09 12:35
                                  */
-package com.snow.sjms.e_Proxy.dynamicProxy;
+package e_Proxy.dynamicProxy;
 
 import java.util.Random;
 

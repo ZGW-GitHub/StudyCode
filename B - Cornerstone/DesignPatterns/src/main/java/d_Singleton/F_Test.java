@@ -1,14 +1,14 @@
 /*
       Date:  2019-08-08 22:00    
                                  */
-package com.snow.sjms.d_Singleton;
+package d_Singleton;
 
 public class F_Test {
 
     public static void main(String[] args) {
 
-//        testOneThread();
-        testThreads(); // 会发现有几个地址信息不同，说明获取了不同的 A_Singleton 实例对象
+        testOneThread();
+//        testThreads();
 
     }
 

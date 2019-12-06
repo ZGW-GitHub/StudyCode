@@ -1,8 +1,7 @@
-package duck;
+package a_StrategyPattern.duck;
 
-import com.snow.sjms.a_StrategyPattern.fly.FlyParent;
-import com.snow.sjms.a_StrategyPattern.speak.SpeakParent;
-
+import a_StrategyPattern.fly.FlyParent;
+import a_StrategyPattern.speak.SpeakParent;
 
 // 角色
 public abstract class Duck {

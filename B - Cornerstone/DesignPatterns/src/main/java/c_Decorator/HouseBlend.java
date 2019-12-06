@@ -1,4 +1,4 @@
-package com.snow.sjms.c_Decorator;
+package c_Decorator;
 
 /**
  * 综合咖啡

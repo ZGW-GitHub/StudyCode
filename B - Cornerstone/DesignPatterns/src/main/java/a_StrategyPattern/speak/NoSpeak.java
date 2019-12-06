@@ -1,4 +1,4 @@
-package com.snow.sjms.a_StrategyPattern.speak;
+package a_StrategyPattern.speak;
 
 public class NoSpeak implements SpeakParent {
     @Override

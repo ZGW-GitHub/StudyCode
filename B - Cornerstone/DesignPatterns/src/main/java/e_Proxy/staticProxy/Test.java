@@ -1,7 +1,7 @@
 /*
       Date:  2019-11-09 12:18
                                  */
-package com.snow.sjms.e_Proxy.staticProxy;
+package e_Proxy.staticProxy;
 
 public class Test {
 

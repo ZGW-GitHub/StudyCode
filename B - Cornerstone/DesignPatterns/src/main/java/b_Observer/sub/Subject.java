@@ -1,6 +1,6 @@
-package com.snow.sjms.b_Observer.sub;
+package b_Observer.sub;
 
-import com.snow.sjms.b_Observer.ob.Observer;
+import b_Observer.ob.Observer;
 
 /**
  * 主题接口

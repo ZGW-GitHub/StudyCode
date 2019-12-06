@@ -1,4 +1,4 @@
-package com.snow.sjms.b_Observer.ob;
+package b_Observer.ob;
 
 /**
  * 观察者接口

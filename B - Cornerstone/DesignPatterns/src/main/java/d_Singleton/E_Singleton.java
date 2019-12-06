@@ -1,7 +1,7 @@
 /*
       Date:  2019-08-08 21:57    
                                  */
-package com.snow.sjms.d_Singleton;
+package d_Singleton;
 
 // 饿汉式
 // 适用于多线程
