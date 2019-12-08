@@ -14,7 +14,7 @@ public class CountDownLatch_test1 {
     // 线程池（参数：线程个数）
     private static ExecutorService executor = Executors.newFixedThreadPool(2);
     // 线程池（参数：线程可以通过 await 之前必须调用 countDown 的次数）
-    private static final CountDownLatch latch = new CountDownLatch(10);
+    private static final CountDownLatch LATCH = new CountDownLatch(10);
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -24,11 +24,11 @@ public class CountDownLatch_test1 {
 
         // 并行处理数据
         for (int i = 0; i < data.length; i++) {
-            executor.execute(new SimpleRunnable(data, i, latch));
+            executor.execute(new SimpleRunnable(data, i, LATCH));
         }
 
         // block住，等待计数器为0（等待第一阶段的所有线程和任务完成），或执行该语句（该语句指：latch.await()）的线程被中断
-        latch.await();
+        LATCH.await();
 
         System.out.println("第二阶段。。。");
 

@@ -32,7 +32,7 @@ public class Lock笔记 {
      *
      * Condition（条件）
      *      锁工具（ 可配合ReentrantLock（重入锁）等Lock使用 ）
-     *      可以在加锁后（lock）与释放锁前（unlock），通过等待（await）与通知（signal）来使Threads按照计划执行任务
+     *      可以在加锁后（lock）与释放锁前（unlock），通过等待（await）与通知（signal）来使 Threads 按照计划执行任务
      *
      *--------------------------------------------------------------------------------------------------
      *
