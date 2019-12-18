@@ -10,6 +10,32 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>Dubbo</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>provider</module>
+        <module>consumer</module>
+        <module>api</module>
+    </modules>
+
+
+    <properties>
+        <dubbo.version>2.7.3</dubbo.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-registry-zookeeper</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
 </project>
