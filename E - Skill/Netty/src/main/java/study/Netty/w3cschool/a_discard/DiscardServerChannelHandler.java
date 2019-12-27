@@ -1,7 +1,7 @@
 /*
       Date:  2019-11-13 14:17
                                  */
-package com.snow.study.Netty.w3cschool.a_discard;
+package study.Netty.w3cschool.a_discard;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

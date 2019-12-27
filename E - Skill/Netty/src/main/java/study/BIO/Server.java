@@ -1,4 +1,4 @@
-package com.snow.study.BIO;
+package study.BIO;
 
 /* ******************************
  *   Time:  2019-07-28 21:18    *

@@ -1,7 +1,7 @@
 /*
       Date:  2019-11-13 16:22
                                  */
-package com.snow.study.Netty.w3cschool.a_discard;
+package study.Netty.w3cschool.a_discard;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
