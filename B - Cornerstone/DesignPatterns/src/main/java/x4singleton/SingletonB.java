@@ -15,7 +15,7 @@ public class SingletonB {
     private static SingletonB singleton = null;
 
     /**
-     * 添加了 synchronized 关键字
+     * 添加了 synchronized 关键字,进行同步
      * @return
      */
     public static synchronized SingletonB getInstance() {

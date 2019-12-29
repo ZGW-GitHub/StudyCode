@@ -15,7 +15,9 @@ public class SingletonE {
     private static final SingletonE SINGLETON = new SingletonE();
 
     public static SingletonE getInstance() {
+
         return SINGLETON;
+
     }
 
 }
