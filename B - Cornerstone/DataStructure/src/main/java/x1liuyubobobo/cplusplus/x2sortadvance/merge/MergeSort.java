@@ -5,6 +5,9 @@ package x1liuyubobobo.cplusplus.x2sortadvance.merge;
 
 import x1liuyubobobo.cplusplus.MySortHelper;
 
+/**
+ * @author 愆凡
+ */
 public class MergeSort {
 
     public static void mergeSort(int[] arr) {
