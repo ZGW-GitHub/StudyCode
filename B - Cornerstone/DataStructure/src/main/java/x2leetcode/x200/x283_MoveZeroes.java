@@ -1,11 +1,11 @@
-/*
-      Date:  2019-09-09 17:48
-                                 */
-package leetcode._200;
+package x2leetcode.x200;
 
 import java.util.Arrays;
 
-public class _283_MoveZeroes {
+/**
+ * @author 愆凡
+ */
+public class x283_MoveZeroes {
 
     public static void main(String[] args) {
 
@@ -28,8 +28,9 @@ public class _283_MoveZeroes {
      */
     private static void moveZeroes(int[] nums) {
 
-        if (nums.length <= 0)
+        if (nums.length <= 0) {
             return;
+        }
 
         int[] copy = Arrays.copyOf(nums, nums.length);
 
@@ -56,8 +57,9 @@ public class _283_MoveZeroes {
      */
     private static void moveZeroes2(int[] nums) {
 
-        if (nums.length <= 0)
+        if (nums.length <= 0) {
             return;
+        }
 
         int k = 0;
 
@@ -86,8 +88,9 @@ public class _283_MoveZeroes {
      */
     private static void moveZeroes3(int[] nums) {
 
-        if (nums.length <= 0)
+        if (nums.length <= 0) {
             return;
+        }
 
         int k = 0;
 

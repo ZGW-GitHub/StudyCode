@@ -1,9 +1,9 @@
 /*
       Date:  2019-09-05 17:43
                                  */
-package a_LiuYubobobo_Cplusplus.b_sort_basis.a_SelectionSort;
+package x1liuyubobobo.cplusplus.x2sortbasis.selection;
 
-import a_LiuYubobobo_Cplusplus.a.MySortHelper;
+import x1liuyubobobo.cplusplus.x1.MySortHelper;
 
 public class SelectionSort {
 
