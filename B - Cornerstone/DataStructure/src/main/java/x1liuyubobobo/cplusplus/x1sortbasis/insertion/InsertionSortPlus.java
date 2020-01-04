@@ -1,9 +1,13 @@
 /*
       Date:  2019-09-05 20:23
                                  */
-package cplusplus._01_sort_basis.b_InsertionSort;
+package x1liuyubobobo.cplusplus.x1sortbasis.insertion;
 
-public class InsertionSort_Plus {
+/**
+ * @author 愆凡
+ * 插入排序
+ */
+public class InsertionSortPlus {
 
     public static void sort(int[] arr) {
 

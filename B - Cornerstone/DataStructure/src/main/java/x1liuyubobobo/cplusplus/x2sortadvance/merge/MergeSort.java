@@ -1,9 +1,9 @@
 /*
       Date:  2019-09-06 9:17
                                  */
-package cplusplus._02_sort_advance.a_MergeSort;
+package x1liuyubobobo.cplusplus.x2sortadvance.merge;
 
-import cplusplus._00.MySortHelper;
+import x1liuyubobobo.cplusplus.MySortHelper;
 
 public class MergeSort {
 

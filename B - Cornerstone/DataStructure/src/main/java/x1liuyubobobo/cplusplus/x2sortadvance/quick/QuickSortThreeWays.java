@@ -1,13 +1,16 @@
 /*
       Date:  2019-09-06 17:01
                                  */
-package cplusplus._02_sort_advance.b_QuickSort;
+package x1liuyubobobo.cplusplus.x2sortadvance.quick;
 
-import cplusplus._00.MySortHelper;
-import cplusplus._01_sort_basis.b_InsertionSort.InsertionSort_Plus;
+import x1liuyubobobo.cplusplus.MySortHelper;
+import x1liuyubobobo.cplusplus.x1sortbasis.insertion.InsertionSortPlus;
 
-@SuppressWarnings("Duplicates")
-public class QuickSort_ThreeWays {
+/**
+ * @author 愆凡
+ * 三路快排
+ */
+public class QuickSortThreeWays {
 
     public static void quickSort3Ways(int[] arr) {
 
@@ -30,7 +33,7 @@ public class QuickSort_ThreeWays {
     private static void _quickSort3Ways(int[] arr, int l, int r) {
 
         if (r - l < 10) {
-            InsertionSort_Plus.sortExtent(arr, l, r);
+            InsertionSortPlus.sortExtent(arr, l, r);
             return;
         }
 

@@ -1,10 +1,14 @@
 /*
       Date:  2019-09-05 22:02
                                  */
-package cplusplus._01_sort_basis.c_BubbleSort;
+package x1liuyubobobo.cplusplus.x1sortbasis.bubble;
 
-import cplusplus._00.MySortHelper;
+import x1liuyubobobo.cplusplus.MySortHelper;
 
+/**
+ * @author 愆凡
+ * 冒泡排序
+ */
 public class BubbleSort {
 
     public static void sort(int[] arr) {

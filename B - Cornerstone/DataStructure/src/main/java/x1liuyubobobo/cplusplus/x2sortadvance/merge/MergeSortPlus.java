@@ -1,16 +1,16 @@
 /*
       Date:  2019-09-06 9:17
                                  */
-package cplusplus._02_sort_advance.a_MergeSort;
+package x1liuyubobobo.cplusplus.x2sortadvance.merge;
 
-import cplusplus._00.MySortHelper;
-import cplusplus._01_sort_basis.b_InsertionSort.InsertionSort_Plus;
+import x1liuyubobobo.cplusplus.MySortHelper;
+import x1liuyubobobo.cplusplus.x1sortbasis.insertion.InsertionSortPlus;
 
-public class MergeSort_Plus {
+public class MergeSortPlus {
 
     public static void mergeSort(int[] arr) {
 
-        System.out.println("归并排序 Plus (User InsertionSort_Plus)：");
+        System.out.println("归并排序 Plus (User insertionSortPlus)：");
         double time;
         long millis = System.currentTimeMillis();
 
@@ -28,7 +28,7 @@ public class MergeSort_Plus {
 //            return;
          // 优化2: 对于小规模数组, 使用插入排序
         if (r - l <= 10) {
-            InsertionSort_Plus.sortExtent(arr, l, r);
+            InsertionSortPlus.sortExtent(arr, l, r);
             return;
         }
 

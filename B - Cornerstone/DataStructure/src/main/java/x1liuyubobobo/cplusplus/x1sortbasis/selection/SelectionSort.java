@@ -1,10 +1,14 @@
 /*
       Date:  2019-09-05 17:43
                                  */
-package x1liuyubobobo.cplusplus.x2sortbasis.selection;
+package x1liuyubobobo.cplusplus.x1sortbasis.selection;
 
-import x1liuyubobobo.cplusplus.x1.MySortHelper;
+import x1liuyubobobo.cplusplus.MySortHelper;
 
+/**
+ * @author 愆凡
+ * 选择排序
+ */
 public class SelectionSort {
 
     public static void sort(int[] arr) {

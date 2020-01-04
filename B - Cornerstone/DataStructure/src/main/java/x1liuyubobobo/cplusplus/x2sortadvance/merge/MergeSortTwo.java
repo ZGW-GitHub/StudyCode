@@ -1,12 +1,12 @@
 /*
       Date:  2019-09-06 12:36
                                  */
-package cplusplus._02_sort_advance.a_MergeSort;
+package x1liuyubobobo.cplusplus.x2sortadvance.merge;
 
 /**
  * 自底向上的归并排序
  */
-public class MergeSort_2 {
+public class MergeSortTwo {
 
     public static void mergeSort(int[] arr) {
 
@@ -17,10 +17,12 @@ public class MergeSort_2 {
 
 
 
-        for (int sz = 1; sz < arr.length; sz += sz)
-            for (int i = 0; i + sz < arr.length; i += (2 * sz))
+        for (int sz = 1; sz < arr.length; sz += sz) {
+            for (int i = 0; i + sz < arr.length; i += (2 * sz)) {
                 // 对 arr[i, i+sz-1] 和 arr[i+sz, i+sz+sz-1] 进行归并
                 _merge(arr, i, i + sz - 1, Math.min(i + 2 * sz - 1, arr.length - 1));
+            }
+        }
 
 
 
@@ -30,8 +32,9 @@ public class MergeSort_2 {
 
     }
 
-    // 将 arr[l···flag] 与 arr[flag+1 ··· r] 两部分进行合并
-    @SuppressWarnings("Duplicates")
+    /**
+     * 将 arr[l···flag] 与 arr[flag+1 ··· r] 两部分进行合并
+     */
     public static void _merge(int[] arr, int l, int flag, int r) {
 
         int[] copy = new int[r - l + 1];

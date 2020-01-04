@@ -1,11 +1,15 @@
 /*
       Date:  2019-09-05 22:02
                                  */
-package cplusplus._01_sort_basis.c_BubbleSort;
+package x1liuyubobobo.cplusplus.x1sortbasis.bubble;
 
-import cplusplus._00.MySortHelper;
+import x1liuyubobobo.cplusplus.MySortHelper;
 
-public class BubbleSort_Plus {
+/**
+ * @author 愆凡
+ * 冒泡排序
+ */
+public class BubbleSortPlus {
 
     public static void bubbleSort(int[] arr) {
 
@@ -23,9 +27,10 @@ public class BubbleSort_Plus {
             for ( ; j < n - i - 1; j++) {
 
                 if (copy > arr[j + 1]) {
-//                    MySortHelper.swap(arr, j, j+1);
+                    // MySortHelper.swap(arr, j, j+1);
                     arr[j] = arr[j + 1];
-                } else if (copy < arr[j + 1]){ // 这里考虑了当两数相等时，不进行操作，以此减少数据的总操作次数，避免浪费
+                // 这里考虑了当两数相等时，不进行操作，以此减少数据的总操作次数，避免浪费
+                } else if (copy < arr[j + 1]){
                     arr[j] = copy;
                     copy = arr[j + 1];
                 }
