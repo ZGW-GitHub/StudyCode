@@ -30,4 +30,8 @@ public class InsertionSortPlus {
 
     }
 
+    public static void sortExtent(int[] arr, int l, int r) {
+
+    }
+
 }

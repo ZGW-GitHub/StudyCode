@@ -3,6 +3,9 @@
                                  */
 package x1liuyubobobo.cplusplus;
 
+/**
+ * @author 愆凡
+ */
 public class MySortHelper {
 
     private MySortHelper() {
@@ -60,36 +63,43 @@ public class MySortHelper {
     }
 
 
-    // 打印数组的所有元素
-    public static void printArray(int arr[]) {
+    /**
+     * 打印数组的所有元素
+     */
+    public static void printArray(int[] arr) {
 
         int num = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < 100) {
+        for (int value : arr) {
+            if (value < 100) {
                 num += 1;
             }
-            System.out.print(arr[i]);
+            System.out.print(value);
             System.out.print(' ');
         }
 
-        System.out.println("小于 100 的数有 ：\n" + num + "个。\n");
+        System.out.println("\n小于 100 的数有 ：" + num + "个。\n");
 
     }
 
-    // 判断数组是否有序
-    public static Boolean isSort(int[] arr) {
+    /**
+     * 判断数组是否有序
+     */
+    public static void isSort(int[] arr) {
 
+        System.out.print("是否有序 : ");
         for (int i = 0; i < arr.length - 1; i++) {
             if (arr[i] > arr[i + 1]) {
-                return false;
+                System.out.println(false);
             }
         }
-        return true;
+        System.out.println(true);
 
     }
 
-    // 交换位置
+    /**
+     * 交换位置
+     */
     public static void swap(int[] arr, int i, int j) {
         int t = arr[i];
         arr[i] = arr[j];

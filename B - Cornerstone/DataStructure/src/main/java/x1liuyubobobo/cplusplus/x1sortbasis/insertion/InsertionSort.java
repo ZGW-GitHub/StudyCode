@@ -1,12 +1,11 @@
-/*
-      Date:  2019-09-05 20:23
-                                 */
 package x1liuyubobobo.cplusplus.x1sortbasis.insertion;
 
 import x1liuyubobobo.cplusplus.MySortHelper;
 
 /**
  * @author 愆凡
+ * @date 2020/1/5 周日 14:57
+ *
  * 插入排序
  */
 public class InsertionSort {

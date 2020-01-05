@@ -54,7 +54,7 @@ public class MergeSortPlus {
 
         mergeSort(array);
 
-        System.out.println(MySortHelper.isSort(array));
+        MySortHelper.isSort(array);
 
     }
 
