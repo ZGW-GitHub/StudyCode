@@ -30,23 +30,4 @@ public class InsertionSortPlus {
 
     }
 
-    public static void sortExtent(int[] arr, int l, int r) {
-
-        for (int i = l + 1; i <= r; i++) {
-            int copy = arr[i];
-            for (int j = i - 1; j >= l; j--) {
-                if (copy < arr[j]) {
-                    arr[j + 1] = arr[j];
-                    if (j == l) {
-                        arr[l] = copy;
-                    }
-                } else {
-                    arr[j + 1] = copy;
-                    break;
-                }
-            }
-        }
-
-    }
-
 }

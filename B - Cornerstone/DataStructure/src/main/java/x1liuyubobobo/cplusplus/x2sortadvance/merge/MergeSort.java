@@ -7,6 +7,7 @@ import x1liuyubobobo.cplusplus.MySortHelper;
 
 /**
  * @author 愆凡
+ * 归并排序
  */
 public class MergeSort {
 
@@ -23,7 +24,9 @@ public class MergeSort {
 
     }
 
-    // 递归使用归并排序，对 arr[l···r] 的范围进行排序
+    /**
+     * 递归使用归并排序，对 arr[l···r] 的范围进行排序
+     */
     private static void _mergeSort(int[] arr, int l, int r) {
 
         if (l >= r) {
@@ -38,8 +41,9 @@ public class MergeSort {
 
     }
 
-    // 将 arr[l···flag] 与 arr[flag+1 ··· r] 两部分进行合并
-    @SuppressWarnings("Duplicates")
+    /**
+     * 将 arr[l···flag] 与 arr[flag+1 ··· r] 两部分进行合并
+     */
     public static void _merge(int[] arr, int l, int flag, int r) {
 
         int[] copy = new int[r - l + 1];
@@ -66,18 +70,6 @@ public class MergeSort {
             }
 
         }
-
-    }
-
-    public static void main(String[] args) {
-
-        int n = 10000;
-
-        int[] array = MySortHelper.generateRandomArray(n, 0, n);
-
-        mergeSort(array);
-
-        System.out.println(MySortHelper.isSort(array));
 
     }
 
