@@ -1,11 +1,10 @@
-/*
-      Date:  2019-09-05 20:23
-                                 */
 package x1liuyubobobo.cplusplus.x1sortbasis.insertion;
 
 /**
  * @author 愆凡
- * 插入排序
+ * @date 2020/1/5 周日 15:10
+ *
+ * 插入排序,优化
  */
 public class InsertionSortPlus {
 

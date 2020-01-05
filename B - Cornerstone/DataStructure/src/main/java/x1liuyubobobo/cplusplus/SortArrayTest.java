@@ -1,7 +1,6 @@
 package x1liuyubobobo.cplusplus;
 
-import x1liuyubobobo.cplusplus.x1sortbasis.insertion.InsertionSort;
-import x1liuyubobobo.cplusplus.x1sortbasis.selection.SelectionSort;
+import x1liuyubobobo.cplusplus.x1sortbasis.insertion.InsertionSortPlus;
 
 /**
  * @author 愆凡
@@ -20,7 +19,8 @@ public class SortArrayTest {
         // 1. 选择排序
 //        SelectionSort.sort(array);
         // 2. 插入排序
-        InsertionSort.sort(array);
+//        InsertionSort.sort(array);
+        InsertionSortPlus.sort(array);
 
 
         // 打印排序后的数组
