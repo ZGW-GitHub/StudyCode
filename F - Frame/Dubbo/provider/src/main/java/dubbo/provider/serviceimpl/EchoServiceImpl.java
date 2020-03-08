@@ -10,7 +10,11 @@ import org.apache.dubbo.rpc.RpcContext;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-// 暴漏服务
+/**
+ * @author NotUpToYou
+ *
+ * 暴漏服务
+ */
 @Service
 public class EchoServiceImpl implements EchoService {
 

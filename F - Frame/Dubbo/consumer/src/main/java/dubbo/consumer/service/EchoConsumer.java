@@ -7,10 +7,15 @@ import dubbo.api.service.EchoService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author NotUpToYou
+ */
 @Component
 public class EchoConsumer {
 
-    // 调用服务
+    /**
+     * 调用服务
+     */
     @Reference
     private EchoService echoService;
 

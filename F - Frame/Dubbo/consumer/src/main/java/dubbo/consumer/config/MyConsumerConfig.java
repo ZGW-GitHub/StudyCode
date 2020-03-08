@@ -9,6 +9,9 @@ import org.apache.dubbo.config.RegistryConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author NotUpToYou
+ */
 @Configuration
 public class MyConsumerConfig {
 
@@ -26,13 +29,13 @@ public class MyConsumerConfig {
 
     /**
      * 注册中心配置
-     * @return
+     * @return RegistryConfig
      */
     @Bean
     public RegistryConfig registryConfig() {
         RegistryConfig registryConfig = new RegistryConfig();
         registryConfig.setProtocol("zookeeper");
-        registryConfig.setAddress("192.168.56.1:2181");
+        registryConfig.setAddress("wsl:2181");
         return registryConfig;
     }
 

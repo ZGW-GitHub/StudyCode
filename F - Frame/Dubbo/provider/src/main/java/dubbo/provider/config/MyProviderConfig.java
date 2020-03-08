@@ -10,6 +10,9 @@ import org.apache.dubbo.config.RegistryConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author NotUpToYou
+ */
 @Configuration
 public class MyProviderConfig {
 
@@ -20,7 +23,7 @@ public class MyProviderConfig {
 
     /**
      * 应用配置
-     * @return
+     * @return ApplicationConfig
      */
     @Bean
     public ApplicationConfig applicationConfig() {
@@ -31,20 +34,20 @@ public class MyProviderConfig {
 
     /**
      * 注册中心配置
-     * @return
+     * @return RegistryConfig
      */
     @Bean
     public RegistryConfig registryConfig() {
         RegistryConfig registryConfig = new RegistryConfig();
         // 使用Zookeeper作为注册中心，并设定IP地址和端口号
         registryConfig.setProtocol("zookeeper");
-        registryConfig.setAddress("192.168.56.1:2181");
+        registryConfig.setAddress("wsl:2181");
         return registryConfig;
     }
 
     /**
      * 协议配置
-     * @return
+     * @return ProtocolConfig
      */
     public ProtocolConfig protocolConfig() {
         ProtocolConfig protocolConfig = new ProtocolConfig();
