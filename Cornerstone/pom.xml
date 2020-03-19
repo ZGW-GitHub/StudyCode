@@ -12,9 +12,14 @@
     <artifactId>Cornerstone</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <!-- 设计模式 -->
         <module>DesignPatterns</module>
+        <!-- 数据结构 -->
         <module>DataStructure</module>
+        <!-- 算法 -->
         <module>Algorithms</module>
+        <!-- 多线程 -->
+        <module>Multithreading</module>
     </modules>
 
 

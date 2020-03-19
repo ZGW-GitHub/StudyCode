@@ -4,11 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
+        <!-- Java 技术 -->
         <module>Java</module>
+        <!-- 基石 -->
         <module>Cornerstone</module>
-        <module>Multithreading</module>
-        <module>Distributed</module>
+        <!-- 技术 -->
         <module>Skill</module>
+        <!-- 框架 -->
         <module>Frame</module>
     </modules>
     <parent>
