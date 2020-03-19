@@ -1,12 +1,15 @@
-package learn2_Atomic;
+package b.atomic;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class AtomicBoolean {
+/**
+ * @author NotUpToYou
+ */
+public class AtomicBooleanTest {
 
     public static void main(String[] args) {
 
-        java.util.concurrent.atomic.AtomicBoolean boo = new java.util.concurrent.atomic.AtomicBoolean(true);
+        AtomicBoolean boo = new AtomicBoolean(true);
 
         boo.lazySet(false);
 

@@ -1,14 +1,14 @@
-package learn2_Atomic;
+package b.atomic;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class AtomicInteger {
+public class AtomicIntegerTest {
 
     private volatile static int value = 0;
-    private static java.util.concurrent.atomic.AtomicInteger value2 = new java.util.concurrent.atomic.AtomicInteger();
+    private static AtomicInteger value2 = new AtomicInteger();
 
     private static Set<Integer> set = Collections.synchronizedSet(new HashSet<>());
     private static Set<Integer> set2 = Collections.synchronizedSet(new HashSet<>());

@@ -1,4 +1,4 @@
-package learn2_Atomic;
+package b.atomic;
 
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 

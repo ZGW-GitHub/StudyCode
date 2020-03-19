@@ -1,15 +1,15 @@
-package learn2_Atomic;
+package b.atomic;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-public class AtomicReference {
+public class AtomicReferenceTest {
 
     public static void main(String[] args) {
 
         Stu s1 = new Stu("Aa",1);
         Stu s2 = new Stu("Aa",2);
 
-        java.util.concurrent.atomic.AtomicReference<Stu> re = new java.util.concurrent.atomic.AtomicReference<Stu>(s1);
+        AtomicReference<Stu> re = new AtomicReference<Stu>(s1);
 
         re.compareAndSet(s1, s2);
 
