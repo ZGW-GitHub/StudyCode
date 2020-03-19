@@ -1,6 +1,3 @@
-/*
-      Date:  2019-12-17 19:15
-                                 */
 package dubbo.consumer.config;
 
 import org.apache.dubbo.config.ApplicationConfig;
