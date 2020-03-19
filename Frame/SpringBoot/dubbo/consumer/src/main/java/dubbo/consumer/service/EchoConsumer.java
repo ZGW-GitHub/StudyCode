@@ -3,7 +3,7 @@
                                  */
 package dubbo.consumer.service;
 
-import dubbo.api.service.EchoService;
+import dubbo.api.EchoService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
 
