@@ -15,7 +15,7 @@ public class Wait {
                 e.printStackTrace();
             }
         });
-        /*Thread t2 = new Thread(() -> {
+        Thread t2 = new Thread(() -> {
             try {
                 t.join();
                 Thread.sleep(5_000);
@@ -23,10 +23,10 @@ public class Wait {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        });*/
+        });
 
         t.start();
-//        t2.start();
+        t2.start();
         Thread.sleep(1_000);
 
         System.out.println(t.getState());

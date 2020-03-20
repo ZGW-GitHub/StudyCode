@@ -1,7 +1,7 @@
 package a.thread.c.close;
 
 /**
- * 通过 中断标识位 来终止线程
+ * 通过 中断标识位 来终止线程，有 BUG
  *
  * @author NotUpToYou
  */

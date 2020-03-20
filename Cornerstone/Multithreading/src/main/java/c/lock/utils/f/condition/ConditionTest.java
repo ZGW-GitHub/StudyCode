@@ -8,9 +8,9 @@ import java.util.concurrent.locks.ReentrantLock;
 //      有 《 类似 wait 和 notify 》 的 API
 public class ConditionTest {
 
-    private static final ReentrantLock lock = new ReentrantLock();
+    private static final ReentrantLock REENTRANT_LOCK = new ReentrantLock();
 
-    private static final Condition condition = lock.newCondition();
+    private static final Condition CONDITION = REENTRANT_LOCK.newCondition();
 
     private static boolean have = false;
 
@@ -35,19 +35,19 @@ public class ConditionTest {
     private static void product() {
 
         try {
-            lock.lock();
+			REENTRANT_LOCK.lock();
             while (have) {
-                condition.await();
+				CONDITION.await();
             }
             TimeUnit.SECONDS.sleep(1);
             test++;
             System.out.println(Thread.currentThread().getName() + " -> 我生产了：" + test);
             have = true;
-            condition.signal();
+			CONDITION.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            lock.unlock();
+			REENTRANT_LOCK.unlock();
         }
 
     }
@@ -55,18 +55,18 @@ public class ConditionTest {
     private static void consume() {
 
         try {
-            lock.lock();
+			REENTRANT_LOCK.lock();
             while (!have) {
-                condition.await();
+				CONDITION.await();
             }
             TimeUnit.SECONDS.sleep(1);
             System.out.println(Thread.currentThread().getName() + " -> 我消费了：" + test);
             have = false;
-            condition.signal();
+			CONDITION.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            lock.unlock();
+			REENTRANT_LOCK.unlock();
         }
 
     }

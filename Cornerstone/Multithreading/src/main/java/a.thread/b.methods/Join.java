@@ -21,8 +21,11 @@ public class Join {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            main.interrupt(); // 打断成功
-//            t.interrupt(); // 打断失败
+			// 打断成功
+            main.interrupt();
+
+			// 打断失败，因为 join 了的是 main 线程
+//            t.interrupt();
         });
 
         t.start();

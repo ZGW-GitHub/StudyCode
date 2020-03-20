@@ -1,7 +1,8 @@
 package a.thread.a.create;
 
 /**
- * 创建线程：方式一
+ * 通过创建类继承 Thread 类来创建线程
+ *
  * @author 愆凡
  */
 public class ThreadDemoA {

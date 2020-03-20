@@ -5,8 +5,10 @@ package a.thread.c.close;
  */
 public class ForceCloseThreadService {
 
-    // 执行线程
-    private Thread executeThread;
+	/**
+	 * 执行线程
+	 */
+	private Thread executeThread;
 
     private boolean finished = false;
 
@@ -32,10 +34,10 @@ public class ForceCloseThreadService {
 
     public void shutdown(long mills) {
 
-        long currentTime = System.currentTimeMillis(); // 起始计时
+        long startTime = System.currentTimeMillis();
 
         while (!finished) {
-            if ((System.currentTimeMillis() - currentTime) >= mills) {
+            if ((System.currentTimeMillis() - startTime) >= mills) {
                 System.out.println("任务超时，需要结束它！");
                 executeThread.interrupt(); // 对“执行线程”执行中断操作
                 break;

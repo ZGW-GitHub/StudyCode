@@ -11,58 +11,49 @@ import java.util.concurrent.Executors;
  */
 public class CountDownLatchTestA {
 
+	// 需要等待的线程
+	private static final Integer NUM = 5;
     // 线程池（参数：线程个数）
     private static ExecutorService executor = Executors.newFixedThreadPool(2);
     // 线程池（参数：线程可以通过 await 之前必须调用 countDown 的次数）
-    private static final CountDownLatch LATCH = new CountDownLatch(10);
+    private static final CountDownLatch LATCH = new CountDownLatch(NUM);
 
     public static void main(String[] args) throws InterruptedException {
 
-        int[] data = query();
-
-        System.out.println("第一阶段。。。");
+        System.out.println("main 工作中...");
 
         // 并行处理数据
-        for (int i = 0; i < data.length; i++) {
-            executor.execute(new SimpleRunnable(data, i, LATCH));
+        for (int i = 1; i <= NUM; i++) {
+            executor.execute(new SimpleRunnable(LATCH, i));
         }
 
+		System.out.println("main 调用了 await");
         // block住，等待计数器为0（等待第一阶段的所有线程和任务完成），或执行该语句（该语句指：latch.await()）的线程被中断
         LATCH.await();
 
-        System.out.println("第二阶段。。。");
+        System.out.println("其它线程完成已完成，main 继续执行...");
 
         // 异步操作，停止接收任务，线程池中的任务继续有序执行
         executor.shutdown();
 
     }
 
-    private static int[] query() {
-        return new int[]{1,2,3,4,5,6,7,8,9,10};
-    }
-
     static class SimpleRunnable implements Runnable {
 
-        private final int[] data;
-        private final int index;
         private final CountDownLatch latch;
+        private final Integer i;
 
-        SimpleRunnable(int[] data, int i, CountDownLatch latch) {
-            this.data = data;
-            this.index = i;
+        SimpleRunnable(CountDownLatch latch, Integer i) {
             this.latch = latch;
+            this.i = i;
         }
 
         @Override
         public void run() {
-            if (index % 2 == 0) {
-                data[index] *= 2;
-            } else {
-                data[index] *= 3;
-            }
-            System.out.println(Thread.currentThread().getName() + " -> " + data[index]);
-            // 计数减一
+            System.out.println(Thread.currentThread().getName() + " -> " + i + " 工作中...");
+			// 计数减一
             latch.countDown();
+			System.out.println(Thread.currentThread().getName() + " -> " + i + " 我已经 countDown 了！");
         }
 
     }

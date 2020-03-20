@@ -21,7 +21,7 @@ public class SemaphoreTest {
                 lockDemo.unlock();
                 System.out.println(Thread.currentThread().getName() + " : the lock is free !");
             }
-        }, "==Aa==").start();
+        }, "==A==").start();
 
         new Thread(()->{
             try {

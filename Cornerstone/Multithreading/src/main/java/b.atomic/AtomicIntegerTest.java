@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * @author space
+ */
 public class AtomicIntegerTest {
 
     private volatile static int value = 0;

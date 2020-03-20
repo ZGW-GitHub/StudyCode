@@ -5,9 +5,9 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 /**
- * @author NotUpToYou
+ * 通过创建类实现 Callable 接口，来创建线程
  *
- * 创建线程：方式三
+ * @author NotUpToYou
  */
 public class ThreadDemoC {
 

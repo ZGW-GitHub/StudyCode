@@ -1,10 +1,10 @@
 package a.thread.a.create;
 
 /**
+ * 通过创建类实现 Runnable 接口，来创建线程
+ *
  * @author NotUpToYou
  * @date 2019-11-30 15:35
- *
- * 创建线程：方式二
  */
 public class ThreadDemoB {
 

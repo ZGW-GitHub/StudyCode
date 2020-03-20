@@ -6,9 +6,11 @@ import java.util.concurrent.TimeUnit;
 
 public class CyclicBarrierTest {
 
-    private static final CyclicBarrier barrier = new CyclicBarrier(3, () -> System.out.println("回调函数！"));
+    private static final CyclicBarrier barrier = new CyclicBarrier(3, () -> System.out.println(Thread.currentThread().getName() + " 回调函数！"));
 
     public static void main(String[] args) throws InterruptedException, BrokenBarrierException {
+
+		System.out.println("main start !");
 
         new Thread(()->{
             try {
