@@ -1,9 +1,7 @@
 /*
       Date:  2019-09-05 22:02
                                  */
-package x1liuyubobobo.cplusplus.x1sortbasis.bubble;
-
-import x1liuyubobobo.cplusplus.MySortHelper;
+package a.liuyubobobo.cplusplus.a.sort.bubble;
 
 /**
  * @author 愆凡

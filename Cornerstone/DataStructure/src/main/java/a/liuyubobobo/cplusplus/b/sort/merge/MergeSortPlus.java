@@ -1,10 +1,10 @@
 /*
       Date:  2019-09-06 9:17
                                  */
-package x1liuyubobobo.cplusplus.x2sortadvance.merge;
+package a.liuyubobobo.cplusplus.b.sort.merge;
 
-import x1liuyubobobo.cplusplus.MySortHelper;
-import x1liuyubobobo.cplusplus.x1sortbasis.insertion.InsertionSortPlus;
+import a.liuyubobobo.cplusplus.MySortHelper;
+import a.liuyubobobo.cplusplus.a.sort.insertion.InsertionSortPlus;
 
 /**
  * @author 愆凡

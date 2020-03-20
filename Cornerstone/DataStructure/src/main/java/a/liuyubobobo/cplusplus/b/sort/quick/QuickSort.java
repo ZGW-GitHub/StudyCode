@@ -1,25 +1,19 @@
 /*
       Date:  2019-09-06 13:04
                                  */
-package x1liuyubobobo.cplusplus.x2sortadvance.quick;
+package a.liuyubobobo.cplusplus.b.sort.quick;
 
-import x1liuyubobobo.cplusplus.MySortHelper;
-import x1liuyubobobo.cplusplus.x1sortbasis.insertion.InsertionSortPlus;
+import a.liuyubobobo.cplusplus.MySortHelper;
 
 /**
  * @author 愆凡
- *
- * 快排优化：
- * 1、使用 插入排序 优化
- * 2、随机选择要比较的元素 k 使得 k 左侧都比 k 小，k 右侧都比 k 大
- *
- * 优化了对 近乎有序 的数据的排序
+ * 快排
  */
-public class QuickSortPlus {
+public class QuickSort {
 
     public static void quickSort(int[] arr) {
 
-        System.out.println("快速排序 (优化：插入排序,随机比较) ：");
+        System.out.println("快速排序：");
         double time;
         long millis = System.currentTimeMillis();
 
@@ -35,14 +29,8 @@ public class QuickSortPlus {
     // 对 arr[l,r] 进行快速排序
     private static void _quickSort(int[] arr, int l, int r) {
 
-//        if (l >= r)
-//            return;
-        if (r - l <= 10) {
-            // 使用 插入排序 优化
-            InsertionSortPlus.sortExtent(arr, l, r);
+        if (l >= r)
             return;
-        }
-
 
         int p = _partition(arr, l, r);
 
@@ -55,20 +43,15 @@ public class QuickSortPlus {
     // 返回p，使得 arr[l, p-1] < arr[p] ；arr[p+1, r] > arr[p]
     private static int _partition(int[] arr, int l, int r) {
 
-        // 随机选择 value
-        MySortHelper.swap(arr, l, (int)(Math.random()*(r-l+1))+l);
-
         int value = arr[l];
         int j = l;
 
         // arr[l+1, j] < value      arr[j+1, i) > v
-        for (int index = l + 1; index <= r; index++) {
-
+        for (int index = l+1; index <= r; index++) {
             if (arr[index] < value) {
-                MySortHelper.swap(arr, j + 1, index);
+                MySortHelper.swap(arr, j+1, index);
                 j++;
             }
-
         }
 
         MySortHelper.swap(arr, l, j);

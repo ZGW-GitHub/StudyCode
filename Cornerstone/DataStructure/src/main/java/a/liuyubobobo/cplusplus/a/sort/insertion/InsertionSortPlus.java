@@ -1,4 +1,4 @@
-package x1liuyubobobo.cplusplus.x1sortbasis.insertion;
+package a.liuyubobobo.cplusplus.a.sort.insertion;
 
 /**
  * @author 愆凡

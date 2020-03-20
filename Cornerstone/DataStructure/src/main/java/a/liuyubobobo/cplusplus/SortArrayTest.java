@@ -1,6 +1,6 @@
-package x1liuyubobobo.cplusplus;
+package a.liuyubobobo.cplusplus;
 
-import x1liuyubobobo.cplusplus.x1sortbasis.insertion.InsertionSortPlus;
+import a.liuyubobobo.cplusplus.a.sort.insertion.InsertionSortPlus;
 
 /**
  * @author 愆凡

@@ -1,9 +1,7 @@
 /*
       Date:  2019-09-06 9:17
                                  */
-package x1liuyubobobo.cplusplus.x2sortadvance.merge;
-
-import x1liuyubobobo.cplusplus.MySortHelper;
+package a.liuyubobobo.cplusplus.b.sort.merge;
 
 /**
  * @author 愆凡

@@ -1,4 +1,4 @@
-package x2leetcode.x200;
+package b.leetcode.x200;
 
 import java.util.Arrays;
 
