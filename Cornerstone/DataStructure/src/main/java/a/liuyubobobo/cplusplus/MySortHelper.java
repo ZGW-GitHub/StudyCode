@@ -1,6 +1,3 @@
-/*
-      Date:  2019-09-05 19:28
-                                 */
 package a.liuyubobobo.cplusplus;
 
 /**
