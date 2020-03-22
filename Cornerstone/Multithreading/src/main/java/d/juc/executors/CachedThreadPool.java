@@ -8,14 +8,16 @@ import java.util.stream.IntStream;
 
 /**
  * ThreadPoolExecutor(  0,
- *                      Integer.MAX_VALUE,
- *                      60L,
- *                      TimeUnit.SECONDS,
- *                      new SynchronousQueue<Runnable>());
+ * Integer.MAX_VALUE,
+ * 60L,
+ * TimeUnit.SECONDS,
+ * new SynchronousQueue<Runnable>());
+ * <p>
+ * SynchronousQueue<Runnable> : 大小为1，进来一个前一个就出去，一直进一直出。
+ * <p>
+ * 当活动线程为0，且keepAliveTime时间到达，则该线程会被销毁，直到线程数为0，程序自动关闭。
  *
- *     SynchronousQueue<Runnable> : 大小为1，进来一个前一个就出去，一直进一直出。
- *
- *     当活动线程为0，且keepAliveTime时间到达，则该线程会被销毁，直到线程数为0，程序自动关闭。
+ * @author NotUpToYou
  */
 public class CachedThreadPool {
 
@@ -23,9 +25,9 @@ public class CachedThreadPool {
 
         ExecutorService executorService = getCachedThreadPool();
 
-        System.out.println(((ThreadPoolExecutor)executorService).getActiveCount()); // 0
+        System.out.println(((ThreadPoolExecutor) executorService).getActiveCount()); // 0
 
-        IntStream.range(0, 100).boxed().forEach(integer -> executorService.execute(()->{
+        IntStream.range(0, 100).boxed().forEach(integer -> executorService.execute(() -> {
             try {
                 TimeUnit.SECONDS.sleep(6);
                 System.out.println(Thread.currentThread().getName() + " is ok !");
@@ -35,15 +37,15 @@ public class CachedThreadPool {
         }));
         TimeUnit.SECONDS.sleep(1);
 
-        System.out.println(((ThreadPoolExecutor)executorService).getActiveCount()); // 100
+        System.out.println(((ThreadPoolExecutor) executorService).getActiveCount()); // 100
 
     }
 
     /**
      * return new ThreadPoolExecutor(0,
-     *                               Integer.MAX_VALUE,
-     *                               60L, TimeUnit.SECONDS,
-     *                               new SynchronousQueue<Runnable>());
+     * Integer.MAX_VALUE,
+     * 60L, TimeUnit.SECONDS,
+     * new SynchronousQueue<Runnable>());
      */
     private static ExecutorService getCachedThreadPool() {
 

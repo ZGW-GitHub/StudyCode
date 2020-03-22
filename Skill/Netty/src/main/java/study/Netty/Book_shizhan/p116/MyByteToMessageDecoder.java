@@ -11,10 +11,14 @@ import java.util.List;
 
 /**
  * 单元测试入站消息
+ *
+ * @author NotUpToYou
  */
 public class MyByteToMessageDecoder extends ByteToMessageDecoder {
 
-    // 指定帧的长度
+    /**
+     * 指定帧的长度
+     */
     private final int length;
 
     public MyByteToMessageDecoder(int length) {

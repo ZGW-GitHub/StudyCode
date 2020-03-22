@@ -2,6 +2,9 @@ package b.atomic;
 
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
+/**
+ * @author NotUpToYou
+ */
 public class AtomicReferenceFieldUpdaterTest {
 
     public static void main(String[] args) {

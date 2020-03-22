@@ -9,6 +9,9 @@ import io.netty.channel.embedded.EmbeddedChannel;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * @author NotUpToYou
+ */
 public class InTest {
 
     @Test
