@@ -1,4 +1,4 @@
-package d.juc.executor.scheduled.threadpoll.executor;
+package d.threadpool.executor.scheduled.threadpoll.executor;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledFuture;

@@ -1,4 +1,4 @@
-package d.juc.executors;
+package d.threadpool.executors;
 
 import java.util.List;
 import java.util.concurrent.*;
