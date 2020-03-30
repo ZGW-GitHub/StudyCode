@@ -3,19 +3,19 @@
                                  */
 package producter;
 
-import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
-import org.springframework.util.ObjectUtils;
 
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
- * 异步发送消息
+ * 同步发送消息
+ * @author NotUpToYou
  */
-public class B_Producter {
+public class Producter {
     public static void main(String[] args) {
 
         // 创建Properties对象用于配置生产者
@@ -32,19 +32,14 @@ public class B_Producter {
         ProducerRecord<String, String> producerRecord = new ProducerRecord<String, String>("CustomerCountry", "Precision Products", "France");
 
         // 调用生产者对象发送消息
-        Future<RecordMetadata> future = producer.send(producerRecord, new MyDemoCallback());
+        Future<RecordMetadata> future = producer.send(producerRecord);
 
-    }
-
-    private static class MyDemoCallback implements Callback {
-        @Override
-        public void onCompletion(RecordMetadata recordMetadata, Exception e) {
-            if (ObjectUtils.isEmpty(e)) {
-                System.out.println("发送成功！");
-            } else {
-                e.printStackTrace();
-            }
+        // 获取发送结果
+        try {
+            RecordMetadata metadata = future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
         }
-    }
 
+    }
 }
