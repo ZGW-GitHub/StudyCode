@@ -1,4 +1,4 @@
-package d.threadpool.a.basic;
+package d.threadpool.basic;
 
 import java.util.concurrent.*;
 

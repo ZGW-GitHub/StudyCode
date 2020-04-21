@@ -1,6 +1,4 @@
-package d.threadpool.a.basic;
-
-import sun.nio.ch.ThreadPool;
+package d.threadpool.basic;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;

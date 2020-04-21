@@ -6,7 +6,7 @@
     <modules>
         <!-- Java 技术 -->
         <module>Java</module>
-        <!-- 基石 -->
+        <!-- 基础 -->
         <module>Cornerstone</module>
         <!-- 技术 -->
         <module>Skill</module>
@@ -56,5 +56,20 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>aliyun</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
 </project>
