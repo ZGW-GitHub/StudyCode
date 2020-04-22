@@ -1,4 +1,4 @@
-package d.threadpool.basic;
+package d.threadpool.basic.future;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
