@@ -2,6 +2,9 @@ package cc.atomic;
 
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * @author 愆凡
+ */
 public class AtomicReferenceTest {
 
     public static void main(String[] args) {

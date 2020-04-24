@@ -5,6 +5,7 @@ package cc.atomic.trylock;
  */
 public class Test {
 
+	@SuppressWarnings("all")
     public static void main(String[] args) {
 
         for (int i = 0; i < 5; i++) {

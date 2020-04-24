@@ -11,34 +11,38 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AtomicIntegerTest {
 
     private volatile static int value = 0;
-    private static AtomicInteger value2 = new AtomicInteger();
+    private static final AtomicInteger VALUE2 = new AtomicInteger();
 
-    private static Set<Integer> set = Collections.synchronizedSet(new HashSet<>());
-    private static Set<Integer> set2 = Collections.synchronizedSet(new HashSet<>());
+    private static final Set<Integer> SET = Collections.synchronizedSet(new HashSet<>());
+    private static final Set<Integer> SET2 = Collections.synchronizedSet(new HashSet<>());
 
     public static void main(String[] args) throws InterruptedException {
 
-
+		@SuppressWarnings("all")
         Thread t1 = new Thread(()->{
             for (int i = 0; i < 1_000; i++) {
-                set.add(value);
-                set2.add(value2.getAndIncrement());
+                SET.add(value);
+                SET2.add(VALUE2.getAndIncrement());
                 value = value + 1;
                 System.out.println(Thread.currentThread().getName() + " --> " + value);
             }
         });
+
+		@SuppressWarnings("all")
         Thread t2 = new Thread(()->{
             for (int i = 0; i < 1_000; i++) {
-                set.add(value);
-                set2.add(value2.getAndIncrement());
+                SET.add(value);
+                SET2.add(VALUE2.getAndIncrement());
                 value = value + 1;
                 System.out.println(Thread.currentThread().getName() + " --> " + value);
             }
         });
+
+		@SuppressWarnings("all")
         Thread t3 = new Thread(()->{
             for (int i = 0; i < 1_000; i++) {
-                set.add(value);
-                set2.add(value2.getAndIncrement());
+                SET.add(value);
+                SET2.add(VALUE2.getAndIncrement());
                 value = value + 1;
                 System.out.println(Thread.currentThread().getName() + " --> " + value);
             }
@@ -52,8 +56,8 @@ public class AtomicIntegerTest {
         t3.join();
 
 
-        System.out.println(set.size());
-        System.out.println(set2.size());
+        System.out.println(SET.size());
+        System.out.println(SET2.size());
 
     }
 
