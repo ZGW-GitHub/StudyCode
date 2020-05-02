@@ -7,17 +7,17 @@ package aa.thread.aa.create;
  */
 public class ThreadDemoA {
 
-    public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 
-        new MyThread().start();
+		new MyThread().start();
 
-    }
+	}
 
-    private static class MyThread extends Thread {
-        @Override
-        public void run() {
-            // 线程需要执行的业务逻辑
-        }
-    }
+	private static class MyThread extends Thread {
+		@Override
+		public void run() {
+			// 线程需要执行的业务逻辑
+		}
+	}
 
 }
