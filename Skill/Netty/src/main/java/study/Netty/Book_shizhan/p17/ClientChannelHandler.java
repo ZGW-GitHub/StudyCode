@@ -10,7 +10,11 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
 
-// 标记该类的实例可以被多个Channel共享
+/**
+ * @author NotUpToYou
+ *
+ * Sharable ：标记该类的实例可以被多个Channel共享
+ */
 @Sharable
 public class ClientChannelHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
@@ -20,7 +24,7 @@ public class ClientChannelHandler extends SimpleChannelInboundHandler<ByteBuf> {
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
+    protected void messageReceived(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
         System.out.println("Back from Server : " + ((ByteBuf) msg).toString(CharsetUtil.UTF_8));
     }
 

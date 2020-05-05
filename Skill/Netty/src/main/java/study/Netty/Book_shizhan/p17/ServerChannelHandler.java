@@ -11,7 +11,11 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.CharsetUtil;
 
-// 标记该类的实例可以被多个Channel共享
+/**
+ * @author NotUpToYou
+ *
+ * Sharable ：标记该类的实例可以被多个Channel共享
+ */
 @Sharable
 public class ServerChannelHandler extends ChannelInboundHandlerAdapter {
 
