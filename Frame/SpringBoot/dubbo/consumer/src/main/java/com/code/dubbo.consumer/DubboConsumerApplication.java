@@ -1,9 +1,9 @@
 /*
       Date:  2019-12-17 18:43
                                  */
-package dubbo.consumer;
+package com.code.dubbo.consumer;
 
-import dubbo.consumer.service.EchoConsumer;
+import com.code.dubbo.consumer.service.EchoConsumer;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,7 +19,7 @@ import java.io.IOException;
  * 消费者
  */
 @SpringBootApplication
-@EnableDubbo(scanBasePackages = {"dubbo.consumer.service"})
+@EnableDubbo(scanBasePackages = {"com.code.dubbo.consumer.service"})
 public class DubboConsumerApplication {
     public static void main(String[] args) throws IOException {
 

@@ -1,7 +1,7 @@
 /*
-      Date:  2019-08-02 15:29    
+      Date:  2019-08-02 15:29
                                  */
-package com.snow.study.NIO.qq;
+package study.NIO.qq;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -12,6 +12,9 @@ import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.Set;
 
+/**
+ * @author NotUpToYou
+ */
 public class Server {
 
     private static ServerSocketChannel serverSocketChannel;

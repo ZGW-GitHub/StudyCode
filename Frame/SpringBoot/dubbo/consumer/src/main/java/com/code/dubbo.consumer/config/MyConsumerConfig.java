@@ -1,4 +1,4 @@
-package dubbo.consumer.config;
+package com.code.dubbo.consumer.config;
 
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ConsumerConfig;
@@ -15,7 +15,7 @@ public class MyConsumerConfig {
     @Bean
     ApplicationConfig applicationConfig() {
         ApplicationConfig applicationConfig = new ApplicationConfig();
-        applicationConfig.setName("echo-consumer");
+        applicationConfig.setName("echo-dubbo.consumer");
         return applicationConfig;
     }
 

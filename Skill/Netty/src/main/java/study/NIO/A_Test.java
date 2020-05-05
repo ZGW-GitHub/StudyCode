@@ -1,8 +1,4 @@
-package com.snow.study.NIO;
-
-/* ******************************
- *   Time:  2019-07-28 21:43    *
- ****************************** */
+package study.NIO;
 
 import org.junit.Test;
 
@@ -10,6 +6,9 @@ import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
+/**
+ * @author NotUpToYou
+ */
 public class A_Test {
 
     // 向文件中输入内容

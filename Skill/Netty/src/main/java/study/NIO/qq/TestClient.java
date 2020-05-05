@@ -1,13 +1,17 @@
 /*
-      Date:  2019-08-02 16:23    
+      Date:  2019-08-02 16:23
                                  */
-package com.snow.study.NIO.qq;
+package study.NIO.qq;
 
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * @author NotUpToYou
+ */
 public class TestClient {
 
+    @SuppressWarnings("all")
     public static void main(String[] args) throws IOException, InterruptedException {
 
         Client client = new Client("小明");

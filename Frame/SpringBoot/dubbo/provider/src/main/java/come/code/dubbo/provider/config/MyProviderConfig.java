@@ -1,7 +1,7 @@
 /*
       Date:  2019-12-17 18:47
                                  */
-package dubbo.provider.config;
+package come.code.dubbo.provider.config;
 
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ProtocolConfig;

@@ -1,9 +1,9 @@
 /*
       Date:  2019-12-17 18:33
                                  */
-package dubbo.provider.serviceimpl;
+package come.code.dubbo.provider.serviceimpl;
 
-import dubbo.api.EchoService;
+import com.code.dubbo.api.EchoService;
 import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.RpcContext;
 
@@ -16,7 +16,7 @@ import java.util.Date;
  * 暴漏服务
  */
 @Service
-public class EchoProvider implements EchoService {
+public class EchoProviderImpl implements EchoService {
 
     @Override
     public String echo(String msg) {

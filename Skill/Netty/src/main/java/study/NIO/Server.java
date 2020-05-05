@@ -1,7 +1,4 @@
-/*
-      Date:  2019-08-02 15:14    
-                                 */
-package com.snow.study.NIO;
+package study.NIO;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

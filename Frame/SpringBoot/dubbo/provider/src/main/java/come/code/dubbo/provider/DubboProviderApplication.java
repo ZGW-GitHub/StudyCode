@@ -1,7 +1,7 @@
 /*
       Date:  2019-12-17 18:38
                                  */
-package dubbo.provider;
+package come.code.dubbo.provider;
 
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +15,7 @@ import java.io.IOException;
  * EnableDubbo 指定服务所在的包，从而进行扫描
  */
 @SpringBootApplication
-@EnableDubbo(scanBasePackages = {"dubbo.provider.serviceimpl"})
+@EnableDubbo(scanBasePackages = {"come.code.dubbo.provider.serviceimpl"})
 public class DubboProviderApplication {
     public static void main(String[] args) throws IOException {
 

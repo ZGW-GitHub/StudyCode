@@ -1,8 +1,4 @@
-package com.snow.study.NIO;
-
-/* ******************************
- *   Time:  2019-07-28 21:28    *
- ****************************** */
+package study.NIO;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -10,6 +6,9 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * @author NotUpToYou
+ */
 public class Client {
 
     public static void main(String[] args) throws IOException {

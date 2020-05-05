@@ -1,9 +1,9 @@
 /*
       Date:  2019-12-17 17:49
                                  */
-package dubbo.consumer.service;
+package com.code.dubbo.consumer.service;
 
-import dubbo.api.EchoService;
+import com.code.dubbo.api.EchoService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
 

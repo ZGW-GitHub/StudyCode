@@ -1,7 +1,7 @@
 /*
-      Date:  2019-08-02 16:06    
+      Date:  2019-08-02 16:06
                                  */
-package com.snow.study.NIO.qq;
+package study.NIO.qq;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -9,6 +9,9 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * @author NotUpToYou
+ */
 public class Client {
 
     private static final int PORT = 9999;
@@ -42,7 +45,7 @@ public class Client {
     // 发消息
     public void setMsg(String msg) throws IOException {
 
-        if (msg.equalsIgnoreCase("exit")) {
+        if ("exit".equalsIgnoreCase(msg)) {
             channel.close();
             return;
         }
