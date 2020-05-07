@@ -6,6 +6,8 @@ package cc.keyword._synchronized;
  */
 public class DemoA {
 
+	private static final Object LOCK = new Object();
+
 	public static void main(String[] args) {
 
 		new Thread(DemoA::work, "Thread-A").start();
@@ -13,14 +15,16 @@ public class DemoA {
 
 	}
 
-	private static synchronized void work() {
-		System.out.println(Thread.currentThread().getName() + " 抢到了锁！");
-		try {
-			Thread.sleep(3_000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+	private static void work() {
+		synchronized (LOCK) {
+			System.out.println(Thread.currentThread().getName() + " 抢到了锁！");
+			try {
+				Thread.sleep(3_000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println(Thread.currentThread().getName() + " 释放了锁！");
 		}
-		System.out.println(Thread.currentThread().getName() + " 释放了锁！");
 	}
 
 }

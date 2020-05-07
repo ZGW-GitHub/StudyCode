@@ -20,8 +20,8 @@ public class ReentrantLockDemoA {
 
 	private static void work() {
 		LOCK.lock();
-		System.out.println(Thread.currentThread().getName() + " 抢到了锁！");
 		try {
+			System.out.println(Thread.currentThread().getName() + " 抢到了锁！");
 			Thread.sleep(3_000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();

@@ -6,14 +6,18 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.IntStream;
 
-// 只是用公平锁实现 生产者消费者 不行线程执行可能会混乱
-public class ConditionTest3 {
+/**
+ * 只是用公平锁实现 生产者消费者 不行线程执行可能会混乱
+ *
+ * @author 愆凡
+ */
+public class DemoC {
 
-    private static final ReentrantLock lock = new ReentrantLock(true);
+    private static final ReentrantLock LOCK = new ReentrantLock(true);
 
-    private static final Condition PRODUCT_CONDITION = lock.newCondition();
+    private static final Condition PRODUCT_CONDITION = LOCK.newCondition();
 
-    private static final Condition CONSUMER_CONDITION = lock.newCondition();
+    private static final Condition CONSUMER_CONDITION = LOCK.newCondition();
 
     private static final LinkedList<Long> LIST_DATA = new LinkedList<>();
 
@@ -21,7 +25,7 @@ public class ConditionTest3 {
 
     public static void main(String[] args) {
 
-        IntStream.range(1, 5).forEach(ConditionTest3::createThread);
+        IntStream.range(1, 5).forEach(DemoC::createThread);
 
     }
 
@@ -29,7 +33,7 @@ public class ConditionTest3 {
         String i = String.valueOf(num);
         new Thread(() -> {
             while (true) {
-                ConditionTest3.consume();
+                DemoC.consume();
                 try {
                     TimeUnit.SECONDS.sleep(3);
                 } catch (InterruptedException e) {
@@ -40,7 +44,7 @@ public class ConditionTest3 {
 
         new Thread(() -> {
             while (true) {
-                ConditionTest3.product();
+                DemoC.product();
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
@@ -54,8 +58,8 @@ public class ConditionTest3 {
     // 生产者
     private static void product() {
 
-        try {
-            lock.lock();
+		LOCK.lock();
+		try {
             while (LIST_DATA.size() > MAX_LENGTH) {
                 PRODUCT_CONDITION.await();
             }
@@ -66,7 +70,7 @@ public class ConditionTest3 {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            lock.unlock();
+            LOCK.unlock();
         }
 
     }
@@ -74,8 +78,8 @@ public class ConditionTest3 {
     // 消费者
     private static void consume() {
 
-        try {
-            lock.lock();
+		LOCK.lock();
+		try {
             while (LIST_DATA.isEmpty()) {
                 CONSUMER_CONDITION.await();
             }
@@ -85,7 +89,7 @@ public class ConditionTest3 {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            lock.unlock();
+            LOCK.unlock();
         }
 
     }

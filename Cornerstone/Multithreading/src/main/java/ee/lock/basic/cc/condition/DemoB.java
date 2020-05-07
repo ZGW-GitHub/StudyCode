@@ -5,45 +5,39 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * 只是用公平锁实现 生产者消费者 不行线程执行可能会混乱
+ *
  * @author 愆凡
- * @date 2020/5/7 2:06 下午
  */
-public class DemoA {
+public class DemoB {
 
-	private static final ReentrantLock REENTRANT_LOCK = new ReentrantLock();
+	private static final ReentrantLock REENTRANT_LOCK = new ReentrantLock(true);
 
 	private static final Condition CONDITION = REENTRANT_LOCK.newCondition();
-
-	private static volatile boolean have = false;
 
 	private static int test = 0;
 
 	public static void main(String[] args) {
-
-		new Thread(()->{
+		new Thread(() -> {
 			while (true) {
-				DemoA.consumer();
+				DemoB.consume();
 			}
 		}).start();
 
-		new Thread(()->{
+		new Thread(() -> {
 			while (true) {
-				DemoA.provider();
+				DemoB.product();
 			}
 		}).start();
-
 	}
 
-	private static void provider() {
+	// 生产者
+	private static void product() {
 		REENTRANT_LOCK.lock();
 		try {
-			while (have) {
-				CONDITION.await();
-			}
-			TimeUnit.SECONDS.sleep(2);
+			TimeUnit.SECONDS.sleep(1);
 			test++;
 			System.out.println(Thread.currentThread().getName() + " -> 我生产了：" + test);
-			have = true;
 			CONDITION.signal();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -52,15 +46,12 @@ public class DemoA {
 		}
 	}
 
-	private static void consumer() {
+	// 消费者
+	private static void consume() {
 		REENTRANT_LOCK.lock();
 		try {
-			while (!have) {
-				CONDITION.await();
-			}
-			TimeUnit.SECONDS.sleep(2);
+			TimeUnit.SECONDS.sleep(1);
 			System.out.println(Thread.currentThread().getName() + " -> 我消费了：" + test);
-			have = false;
 			CONDITION.signal();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -68,5 +59,6 @@ public class DemoA {
 			REENTRANT_LOCK.unlock();
 		}
 	}
+
 
 }

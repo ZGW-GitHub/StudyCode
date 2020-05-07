@@ -9,8 +9,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class ReentrantReadLockDemoA {
 
-	private static final ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
-	private static final Lock READ_LOCK = reentrantReadWriteLock.readLock();
+	private static final ReentrantReadWriteLock REENTRANT_READ_WRITE_LOCK = new ReentrantReadWriteLock();
+	private static final Lock READ_LOCK = REENTRANT_READ_WRITE_LOCK.readLock();
 
 	public static void main(String[] args) {
 
@@ -21,8 +21,8 @@ public class ReentrantReadLockDemoA {
 
 	private static void work() {
 		READ_LOCK.lock();
-		System.out.println(Thread.currentThread().getName() + " 抢到了锁！");
 		try {
+			System.out.println(Thread.currentThread().getName() + " 抢到了锁！");
 			Thread.sleep(3_000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
