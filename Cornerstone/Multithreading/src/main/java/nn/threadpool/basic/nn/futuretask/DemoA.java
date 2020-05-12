@@ -6,7 +6,7 @@ import java.util.concurrent.*;
  * @author zgw
  * @date 2020-03-24 14:04
  **/
-public class CallableWithFutureTask {
+public class DemoA {
 	public static void main(String[] args) throws ExecutionException, InterruptedException {
 
 		System.out.println("main 启动");

@@ -9,7 +9,7 @@ import java.util.concurrent.Future;
  * @author zgw
  * @date 2020-03-24 13:41
  **/
-public class CallableWithFuture {
+public class DemoA {
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 
 		System.out.println("main 启动");
@@ -20,10 +20,11 @@ public class CallableWithFuture {
 			Thread.sleep(2_000);
 			return "任务完成";
 		});
-		executorService.shutdown();
 
-		System.out.println("阻塞地获取执行结果");
+		System.out.println("阻塞地获取执行结果：");
 		System.out.println(future.get());
+
+		executorService.shutdown();
 
 	}
 }
