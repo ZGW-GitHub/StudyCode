@@ -9,7 +9,6 @@ import java.util.Random;
 public class RunTest {
 
 	private static final Random RANDOM = new Random();
-	private static final long TIME = System.currentTimeMillis();
 
 	public static int getMoreData() {
 		System.out.println("begin to start compute");

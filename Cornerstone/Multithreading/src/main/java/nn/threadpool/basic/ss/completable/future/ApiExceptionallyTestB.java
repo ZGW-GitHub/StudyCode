@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutionException;
  * @author zgw
  * @date 2020/4/21 3:06 下午
  */
-public class Method_exceptionally_2 {
+public class ApiExceptionallyTestB {
 	public static void main(String[] args) throws ExecutionException, InterruptedException {
 
 		CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(RunTest::throwException);

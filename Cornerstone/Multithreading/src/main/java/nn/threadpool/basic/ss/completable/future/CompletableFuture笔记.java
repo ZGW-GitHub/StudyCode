@@ -1,4 +1,4 @@
-package nn.threadpool.old.future.vs.completablefuture;
+package nn.threadpool.basic.ss.completable.future;
 
 /* ******************************
  *   Time:  2019-07-26 9:20     *

@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutionException;
  * 结论：
  * 使用 whenCompleteAsync ：future1 、future2 异步执行
  */
-public class Method_whenCompleteAsync {
+public class ApiWhenCompleteAsyncTestA {
 	public static void main(String[] args) throws ExecutionException, InterruptedException {
 
 		CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(RunTest::getMoreData);
