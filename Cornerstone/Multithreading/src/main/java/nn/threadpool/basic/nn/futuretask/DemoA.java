@@ -11,7 +11,7 @@ public class DemoA {
 
 		System.out.println("main 启动");
 
-		ExecutorService executorService = Executors.newCachedThreadPool();
+		ExecutorService executor = Executors.newCachedThreadPool();
 
 		FutureTask<String> futureTask = new FutureTask<>(() -> {
 			Thread.sleep(2_000);
@@ -21,8 +21,8 @@ public class DemoA {
 		// 第二种方式
 		// new Thread(futureTask).start();
 
-		Future<?> submitFuture = executorService.submit(futureTask);
-		executorService.shutdown();
+		Future<?> submitFuture = executor.submit(futureTask);
+		executor.shutdown();
 
 		System.out.println("阻塞获取执行结果");
 		// 返回 null

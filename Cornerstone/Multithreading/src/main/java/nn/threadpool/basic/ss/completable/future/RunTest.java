@@ -1,4 +1,4 @@
-package nn.threadpool.basic.uu.completable.future;
+package nn.threadpool.basic.ss.completable.future;
 
 import java.util.Random;
 

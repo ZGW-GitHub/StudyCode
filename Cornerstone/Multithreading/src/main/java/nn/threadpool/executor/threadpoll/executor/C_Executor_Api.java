@@ -1,4 +1,4 @@
-package nn.threadpool.executor.thread.poll.executor;
+package nn.threadpool.executor.threadpoll.executor;
 
 /* ******************************
  *   Time:  2019-07-24 18:04    *

@@ -1,4 +1,4 @@
-package nn.threadpool.executors.threadpoolexecutor;
+package nn.threadpool.executors.threadpool.executor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
