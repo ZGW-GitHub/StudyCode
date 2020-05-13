@@ -6,15 +6,13 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 /**
- * SingleThreadPool 与 自己创建一个 Thread 的区别：
- *      Thread 当任务完成后，它就死了。而，SingleThreadPool 会一直存活。
- *      Thread 不能提交 Runnable 到一个队列中去等待，而 SingleThreadPool 能。
+ * @author zgw
  */
-public class SingleThreadPool {
+public class SingleThreadPoolDemoA {
 
     public static void main(String[] args) throws InterruptedException {
 
-        ExecutorService executorService = getSingleThreadExecutor();
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
 
         // 不能输出了，因为获取 SingleThreadExecutor 时被包装了，不能强转为 ThreadPoolExecutor
 //        System.out.println(((ThreadPoolExecutor)executorService).getActiveCount()); // 0
@@ -31,21 +29,6 @@ public class SingleThreadPool {
 
         // 不能输出了，因为获取 SingleThreadExecutor 时被包装了，不能强转为 ThreadPoolExecutor
 //        System.out.println(((ThreadPoolExecutor)executorService).getActiveCount()); // 1
-
-    }
-
-    /**
-     * return new FinalizableDelegatedExecutorService(  new ThreadPoolExecutor(
-     *                                                      1, 1,
-     *                                                      0L,
-     *                                                      TimeUnit.MILLISECONDS,
-     *                                                      new LinkedBlockingQueue<Runnable>()));
-     *  获取 SingleThreadExecutor 时 ThreadPoolExecutor 被 FinalizableDelegatedExecutorService 封装了，
-     *  所以，SingleThreadExecutor 不能强转为 ThreadPoolExecutor
-     */
-    private static ExecutorService getSingleThreadExecutor() {
-
-        return Executors.newSingleThreadExecutor();
 
     }
 
