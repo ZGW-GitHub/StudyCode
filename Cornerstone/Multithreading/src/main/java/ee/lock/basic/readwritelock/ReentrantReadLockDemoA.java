@@ -1,4 +1,4 @@
-package ee.lock.basic.lock;
+package ee.lock.basic.readwritelock;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
