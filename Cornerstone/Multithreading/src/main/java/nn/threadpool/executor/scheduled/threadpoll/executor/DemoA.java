@@ -22,6 +22,7 @@ public class DemoA {
 
 	}
 
+	// 一次性延迟任务
 	private static void testScheduleWithRunnable() throws ExecutionException, InterruptedException {
 
 		ScheduledFuture<?> future = SCHEDULED_THREAD_POOL_EXECUTOR.schedule(() -> System.out.println("执行了！"), 2, TimeUnit.SECONDS);
@@ -34,6 +35,7 @@ public class DemoA {
 
 	}
 
+	// 一次性延迟任务
 	private static void testScheduleWithCallable() throws ExecutionException, InterruptedException {
 
 		ScheduledFuture<?> future = SCHEDULED_THREAD_POOL_EXECUTOR.schedule(() -> {
