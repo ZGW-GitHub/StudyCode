@@ -8,7 +8,11 @@ import java.util.concurrent.locks.StampedLock;
  */
 public class StampedLockDemoA {
 
-	private static final StampedLock LOCK = new StampedLock();
+	private static final StampedLock STAMPEDLOCK = new StampedLock();
+
+	private static final long WRITELOCK = STAMPEDLOCK.writeLock();
+	private static final long READLOCK = STAMPEDLOCK.readLock();
+	private static final long OPTIMISTICREADLOCK = STAMPEDLOCK.tryOptimisticRead();
 
 	public static void main(String[] args) {
 
