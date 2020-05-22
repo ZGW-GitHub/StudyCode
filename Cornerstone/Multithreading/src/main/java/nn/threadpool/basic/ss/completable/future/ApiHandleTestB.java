@@ -18,7 +18,6 @@ public class ApiHandleTestB {
 			return "result : " + result;
 		});
 
-		System.out.println("future1 result：" + future1.get());
 		System.out.println("future2 result：" + future2.get());
 
 	}

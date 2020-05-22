@@ -24,12 +24,12 @@ public class ApiWhenCompleteTestA {
 		CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(RunTest::getMoreData);
 
 		CompletableFuture<Integer> future2 = future1.whenComplete((result, excetion) -> {
-			System.out.println("执行到 whenComplete 了，result:" + result);
-			System.out.println("执行到 whenComplete 了，exception:" + (excetion == null ? "无异常" : excetion.getClass()));
+			System.out.println("执行到 whenComplete 了，result : " + result);
+			System.out.println("执行到 whenComplete 了，exception : " + (excetion == null ? "无异常" : excetion.getClass()));
 		});
 
-		System.out.println("执行到最后一段代码了，future1 result：" + future1.get());
-		System.out.println("执行到最后一段代码了，future2 result：" + future2.get());
+		System.out.println("future1 result：" + future1.get());
+		System.out.println("future2 result：" + future2.get());
 
 	}
 }

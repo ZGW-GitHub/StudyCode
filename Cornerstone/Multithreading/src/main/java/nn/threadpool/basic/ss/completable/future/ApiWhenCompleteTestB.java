@@ -18,18 +18,18 @@ import java.util.concurrent.ExecutionException;
  * 结论：
  * 使用 whenCompleteAsync ：future1 、future2 异步执行
  */
-public class ApiWhenCompleteAsyncTestA {
+public class ApiWhenCompleteTestB {
 	public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-		CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(RunTest::getMoreData);
+		CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(RunTest::throwException);
 
 		CompletableFuture<Integer> future2 = future1.whenCompleteAsync((result, excetion) -> {
-			System.out.println("执行到 whenComplete 了，result:" + result);
-			System.out.println("执行到 whenComplete 了，exception:" + (excetion == null ? "无异常" : excetion.getClass()));
+			System.out.println("执行到 whenComplete 了，result : " + result);
+			System.out.println("执行到 whenComplete 了，exception : " + (excetion == null ? "无异常" : excetion.getClass()));
 		});
 
-		System.out.println("执行到最后一段代码了，future1 result：" + future1.get());
-		System.out.println("执行到最后一段代码了，future2 result：" + future2.get());
+		System.out.println("future1 result：" + future1.get());
+		System.out.println("future2 result：" + future2.get());
 
 	}
 }
