@@ -1,24 +1,20 @@
 package nn.threadpool.basic.ss.completable.future;
 
-import java.util.Random;
-
 /**
  * @author 愆凡
  * @date 2020/4/20 11:56 上午
  */
 public class RunTest {
 
-	private static final Random RANDOM = new Random();
-
 	public static int getMoreData() {
-		System.out.println("begin to start compute");
+		System.out.println("begin");
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
-		System.out.println("end to compute, passed:" + System.currentTimeMillis());
-		return RANDOM.nextInt(1000);
+		System.out.println("end\n");
+		return 100;
 	}
 
 	public static int throwException() {
@@ -28,7 +24,7 @@ public class RunTest {
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
-		System.out.println("抛了");
+		System.out.println("抛了\n");
 		throw new RuntimeException("主动抛出异常");
 	}
 
