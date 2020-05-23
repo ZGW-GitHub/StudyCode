@@ -22,7 +22,7 @@ public class ApiExceptionallyTestC {
 			return 0;
 		});
 
-		System.out.println("future result：" + future1.get());
+		System.out.println("future1 result：" + future1.get());
 		System.out.println("future2 result：" + future2.get());
 		// 原始的计算逻辑不变，exceptionally 返回的新的 CompletableFuture 对象的结果和原始计算逻辑返回的结果一致。
 		System.out.println("future3 result：" + future3.get());

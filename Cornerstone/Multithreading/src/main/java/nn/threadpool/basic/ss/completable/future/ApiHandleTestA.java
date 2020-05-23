@@ -12,10 +12,10 @@ public class ApiHandleTestA {
 
 		CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(RunTest::getMoreData);
 
-		CompletableFuture<String> future2 = future1.handle((result, excetion) -> {
+		CompletableFuture<Integer> future2 = future1.handle((result, excetion) -> {
 			System.out.println("执行到 handle 了，result : " + result);
 			System.out.println("执行到 handle 了，exception : " + (excetion == null ? "无异常" : excetion.getClass()));
-			return "result : " + result;
+			return result + 100;
 		});
 
 		System.out.println("future1 result：" + future1.get());
