@@ -12,8 +12,6 @@
     <artifactId>Cornerstone</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <!-- 算法 -->
-        <module>Algorithms</module>
         <!-- 数据结构 -->
         <module>DataStructure</module>
         <!-- 设计模式 -->
