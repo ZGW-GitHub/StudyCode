@@ -8,12 +8,6 @@ public class Demo {
 
 	public static void main(String[] args) {
 
-		String s1 = "Test";
-		String s2 = "Test";
-
-		System.out.println(s1.intern());
-		System.out.println(s2.intern());
-
 	}
 
 }
