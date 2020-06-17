@@ -28,6 +28,8 @@ package leetcode.editor.cn;
 // 
 // Related Topics 数组 二分查找
 
+import java.util.Arrays;
+
 /**
  * [35]搜索插入位置
  *
@@ -61,7 +63,22 @@ public class SearchInsertPosition {
 		 * 二分查找法
 		 */
 		public int one(int[] nums, int target) {
-			return 0;
+			int left = 0;
+			int right = nums.length;
+
+			while (left < right) {
+				int min = (left + right) / 2;
+
+				if (nums[min] == target) {
+					return min;
+				} else if (nums[min] < target) {
+					left = min + 1;
+				} else {
+					right = min;
+				}
+			}
+
+			return left;
 		}
 	}
 	//leetcode submit region end(Prohibit modification and deletion)
