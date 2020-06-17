@@ -19,6 +19,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * [1]两数之和
+ *
  * @author 愆凡
  */
 @SuppressWarnings("all")
