@@ -23,7 +23,6 @@ import java.util.Map;
  *
  * @author 愆凡
  */
-@SuppressWarnings("all")
 public class TwoSum {
 
 	public static void main(String[] args) {
