@@ -43,6 +43,8 @@ package leetcode.editor.cn;
 // 
 // Related Topics 数组 双指针
 
+import java.util.Arrays;
+
 /**
  * [26]删除排序数组中的重复项
  *
@@ -53,7 +55,9 @@ public class RemoveDuplicatesFromSortedArray {
 	public static void main(String[] args) {
 		Solution solution = new RemoveDuplicatesFromSortedArray().new Solution();
 
-		System.out.println(solution.removeDuplicates(new int[]{1, 1, 2, 2, 3, 4, 4, 5, 5, 5, 6}));
+		int[] nums = new int[]{1, 1, 2, 2, 3, 4, 4, 5, 5, 5, 6};
+		System.out.println(solution.removeDuplicates(nums));
+		System.out.println(Arrays.toString(nums));
 	}
 
 	//leetcode submit region begin(Prohibit modification and deletion)
