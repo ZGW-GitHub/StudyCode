@@ -32,7 +32,7 @@ public class MyConsumerConfig {
     public RegistryConfig registryConfig() {
         RegistryConfig registryConfig = new RegistryConfig();
         registryConfig.setProtocol("zookeeper");
-        registryConfig.setAddress("wsl:2181");
+        registryConfig.setAddress("127.0.0.1:2181");
         return registryConfig;
     }
 

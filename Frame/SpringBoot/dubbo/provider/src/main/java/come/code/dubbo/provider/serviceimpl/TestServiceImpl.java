@@ -3,7 +3,7 @@
                                  */
 package come.code.dubbo.provider.serviceimpl;
 
-import com.code.dubbo.api.EchoService;
+import com.code.dubbo.api.TestService;
 import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.RpcContext;
 
@@ -13,13 +13,13 @@ import java.util.Date;
 /**
  * @author NotUpToYou
  *
- * 暴漏服务
+ * 暴露服务
  */
 @Service
-public class EchoProviderImpl implements EchoService {
+public class TestServiceImpl implements TestService {
 
     @Override
-    public String echo(String msg) {
+    public String test(String msg) {
 
         String time = new SimpleDateFormat("HH:mm:ss").format(new Date());
         System.out.println("[" + time + "] Get : " + msg + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());

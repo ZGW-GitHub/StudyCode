@@ -41,7 +41,7 @@ public class MyProviderConfig {
         RegistryConfig registryConfig = new RegistryConfig();
         // 使用Zookeeper作为注册中心，并设定IP地址和端口号
         registryConfig.setProtocol("zookeeper");
-        registryConfig.setAddress("wsl:2181");
+        registryConfig.setAddress("127.0.0.1:2181");
         return registryConfig;
     }
 

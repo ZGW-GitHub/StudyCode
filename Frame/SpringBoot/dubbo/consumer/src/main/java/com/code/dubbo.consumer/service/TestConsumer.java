@@ -1,6 +1,6 @@
 package com.code.dubbo.consumer.service;
 
-import com.code.dubbo.api.EchoService;
+import com.code.dubbo.api.TestService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
 
@@ -8,16 +8,16 @@ import org.springframework.stereotype.Component;
  * @author NotUpToYou
  */
 @Component
-public class EchoConsumer {
+public class TestConsumer {
 
     /**
      * 调用服务
      */
     @Reference
-    private EchoService echoService;
+    private TestService testService;
 
-    public String echo(String msg) {
-        return echoService.echo(msg);
+    public String test(String msg) {
+        return testService.test(msg);
     }
 
 }
