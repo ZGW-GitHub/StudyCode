@@ -11,17 +11,21 @@
 
     <artifactId>Netty</artifactId>
 
+	<properties>
+		<protobuf.version>3.6.1</protobuf.version>
+	</properties>
+
 
     <dependencies>
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>3.6.1</version>
+            <version>${protobuf.version}</version>
         </dependency>
+
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>[4.1.42,)</version>
         </dependency>
     </dependencies>
 

@@ -27,7 +27,7 @@
 		<SpringCloud.version>Finchley.SR1</SpringCloud.version>
 		<SpringCloudAlibaba.version>2.1.0.RELEASE</SpringCloudAlibaba.version>
 		<junit.version>4.12</junit.version>
-		<dubbo.version>2.7.4.1</dubbo.version>
+		<dubbo.version>2.7.3</dubbo.version>
 		<lombok.version>1.18.2</lombok.version>
 	</properties>
 
@@ -60,14 +60,6 @@
 				<scope>import</scope>
 			</dependency>
 
-			<!-- Apache Dubbo -->
-			<dependency>
-				<groupId>org.apache.dubbo</groupId>
-				<artifactId>dubbo</artifactId>
-				<version>${dubbo.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
