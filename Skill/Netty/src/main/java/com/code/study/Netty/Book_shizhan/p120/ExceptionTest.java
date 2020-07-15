@@ -1,6 +1,3 @@
-/*
-      Date:  2019-11-21 21:00
-                                 */
 package com.code.study.Netty.Book_shizhan.p120;
 
 import io.netty.buffer.ByteBuf;

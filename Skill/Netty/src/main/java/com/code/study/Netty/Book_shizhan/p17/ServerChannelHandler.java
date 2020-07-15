@@ -1,7 +1,4 @@
-/*
-      Date:  2019-11-15 16:55
-                                 */
-package study.Netty.Book_shizhan.p17;
+package com.code.study.Netty.Book_shizhan.p17;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -29,9 +26,7 @@ public class ServerChannelHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         // 将未决消息冲刷到远程节点，并且关闭Channel
-        ctx
-                .writeAndFlush(Unpooled.EMPTY_BUFFER)
-                .addListener(ChannelFutureListener.CLOSE);
+        ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
     }
 
     @Override

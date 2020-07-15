@@ -1,7 +1,4 @@
-/*
-      Date:  2019-12-02 17:39
-                                 */
-package study.Netty.Book_shizhan.p166;
+package com.code.study.Netty.Book_shizhan.p166;
 
 import io.netty.channel.*;
 import io.netty.handler.codec.http.*;

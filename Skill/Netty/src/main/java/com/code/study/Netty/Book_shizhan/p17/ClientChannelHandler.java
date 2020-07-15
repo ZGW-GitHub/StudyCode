@@ -1,7 +1,4 @@
-/*
-      Date:  2019-11-15 17:27
-                                 */
-package study.Netty.Book_shizhan.p17;
+package com.code.study.Netty.Book_shizhan.p17;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -23,10 +20,10 @@ public class ClientChannelHandler extends SimpleChannelInboundHandler<ByteBuf> {
         ctx.writeAndFlush(Unpooled.copiedBuffer("Hello Server", CharsetUtil.UTF_8));
     }
 
-    @Override
-    protected void messageReceived(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
-        System.out.println("Back from Server : " + ((ByteBuf) msg).toString(CharsetUtil.UTF_8));
-    }
+	@Override
+	protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
+		System.out.println("Back from Server : " + msg.toString(CharsetUtil.UTF_8));
+	}
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
