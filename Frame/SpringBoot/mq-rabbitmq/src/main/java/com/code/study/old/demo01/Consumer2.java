@@ -4,7 +4,7 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
-import study.old.MyRabbitMQ;
+import com.code.study.old.MyRabbitMQ;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

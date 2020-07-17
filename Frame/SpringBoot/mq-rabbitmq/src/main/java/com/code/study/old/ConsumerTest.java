@@ -1,10 +1,10 @@
 package com.code.study.old;
 
+import com.code.study.old.config.RabbitmqConfig;
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
-import study.old.config.RabbitmqConfig;
 
 @Component
 public class ConsumerTest {

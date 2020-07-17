@@ -1,6 +1,3 @@
-/*
-      Date:  2019-12-19 19:38
-                                 */
 package com.code.study;
 
 import com.rabbitmq.client.Channel;

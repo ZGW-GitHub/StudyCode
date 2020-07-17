@@ -1,7 +1,7 @@
 package com.code.study.old.demo01;
 
 import com.rabbitmq.client.Channel;
-import study.old.MyRabbitMQ;
+import com.code.study.old.MyRabbitMQ;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
