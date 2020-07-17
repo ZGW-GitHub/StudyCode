@@ -23,7 +23,10 @@
 
 	<properties>
 		<java.version>8</java.version>
+		<maven.compiler.source>8</maven.compiler.source>
+		<maven.compiler.target>8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<SpringBoot.version>2.2.2.RELEASE</SpringBoot.version>
 		<SpringCloud.version>Finchley.SR1</SpringCloud.version>
@@ -90,11 +93,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
-				<configuration>
-					<source>8</source>
-					<target>8</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
 			</plugin>
 
 			<plugin>
@@ -108,7 +106,7 @@
 		<repository>
 			<id>aliyun</id>
 			<name>aliyun maven</name>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<url>https://maven.aliyun.com/repository/public</url>
 			<layout>default</layout>
 			<releases>
 				<enabled>true</enabled>
