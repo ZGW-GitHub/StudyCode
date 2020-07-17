@@ -22,10 +22,13 @@
 	</modules>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
 		<SpringBoot.version>2.2.2.RELEASE</SpringBoot.version>
 		<SpringCloud.version>Finchley.SR1</SpringCloud.version>
 		<SpringCloudAlibaba.version>2.1.0.RELEASE</SpringCloudAlibaba.version>
+
 		<hutool.version>5.3.9</hutool.version>
 	</properties>
 
