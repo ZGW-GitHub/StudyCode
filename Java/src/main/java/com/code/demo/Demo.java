@@ -21,17 +21,12 @@ public class Demo {
 		users.add(new User(16, "test"));
 
 		List<User> collect = users.stream().sorted(Comparator.comparing(User::getAge)).collect(Collectors.toList());
-
-		collect.forEach(user -> {
-			System.out.println(user.getAge());
-		});
+		collect.forEach(user -> System.out.println(user.getAge()));
 
 		System.out.println("---");
 
 		collect = collect.subList(4, collect.size());
-		collect.forEach(user -> {
-			System.out.println(user.getAge());
-		});
+		collect.forEach(user -> System.out.println(user.getAge()));
 		System.out.println(collect.size());
 
 	}
