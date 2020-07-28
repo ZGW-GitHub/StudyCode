@@ -13,36 +13,36 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 public class DiscardServer {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        NioEventLoopGroup boosGroup = new NioEventLoopGroup();
-        NioEventLoopGroup workerGroup = new NioEventLoopGroup();
+		NioEventLoopGroup boosGroup = new NioEventLoopGroup();
+		NioEventLoopGroup workerGroup = new NioEventLoopGroup();
 
-        try {
+		try {
 
-            ChannelFuture channelFuture = new ServerBootstrap()
-                    .group(boosGroup, workerGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        protected void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new DiscardServerChannelHandler());
-                        }
-                    })
-                    .option(ChannelOption.SO_BACKLOG, 128)
-                    .childOption(ChannelOption.SO_KEEPALIVE, true)
-                    .bind(28082).sync();
+			ChannelFuture channelFuture = new ServerBootstrap()
+					.group(boosGroup, workerGroup)
+					.channel(NioServerSocketChannel.class)
+					.childHandler(new ChannelInitializer<SocketChannel>() {
+						@Override
+						protected void initChannel(SocketChannel ch) {
+							ch.pipeline().addLast(new DiscardServerChannelHandler());
+						}
+					})
+					.option(ChannelOption.SO_BACKLOG, 128)
+					.childOption(ChannelOption.SO_KEEPALIVE, true)
+					.bind(28082).sync();
 
-            channelFuture.channel().closeFuture().sync();
+			channelFuture.channel().closeFuture().sync();
 
-        } catch (InterruptedException e) {
+		} catch (InterruptedException e) {
 
-            e.printStackTrace();
-            boosGroup.shutdownGracefully();
-            workerGroup.shutdownGracefully();
+			e.printStackTrace();
+			boosGroup.shutdownGracefully();
+			workerGroup.shutdownGracefully();
 
-        }
+		}
 
-    }
+	}
 
 }

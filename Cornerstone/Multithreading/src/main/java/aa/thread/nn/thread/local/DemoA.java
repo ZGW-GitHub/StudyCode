@@ -7,8 +7,14 @@ package aa.thread.nn.thread.local;
 public class DemoA {
 	public static void main(String[] args) {
 
-		new Thread(() -> System.out.println(Thread.currentThread().getContextClassLoader())).start();
-		new Thread(() -> System.out.println(Thread.currentThread().getContextClassLoader())).start();
+		new Thread(() -> {
+			ThreadLocal<String> threadLocalOne = new ThreadLocal<>();
+			ThreadLocal<Integer> threadLocalTwo = new ThreadLocal<>();
+
+			threadLocalOne.set("test");
+			threadLocalTwo.set(100);
+
+		}).start();
 
 	}
 }
