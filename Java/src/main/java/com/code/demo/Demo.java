@@ -1,5 +1,7 @@
 package com.code.demo;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -28,6 +30,10 @@ public class Demo {
 		collect = collect.subList(4, collect.size());
 		collect.forEach(user -> System.out.println(user.getAge()));
 		System.out.println(collect.size());
+
+		JSONObject json = new JSONObject();
+		json.put("test", "2020-02-02 23:00");
+		System.out.println(json.getDate("test"));
 
 	}
 }

@@ -11,5 +11,12 @@
 
     <artifactId>Java</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.9.65</version>
+        </dependency>
+    </dependencies>
 
 </project>
