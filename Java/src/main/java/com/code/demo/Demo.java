@@ -22,7 +22,7 @@ public class Demo {
 		users.add(new User(3, "test"));
 		users.add(new User(16, "test"));
 
-		List<User> collect = users.stream().sorted(Comparator.comparing(User::getAge)).collect(Collectors.toList());
+		List<User> collect = users.stream().sorted(Comparator.comparing(user -> user.getAge() * (-1))).collect(Collectors.toList());
 		collect.forEach(user -> System.out.println(user.getAge()));
 
 		System.out.println("---");
@@ -34,6 +34,8 @@ public class Demo {
 		JSONObject json = new JSONObject();
 		json.put("test", "2020-02-02 23:00");
 		System.out.println(json.getDate("test"));
+
+		System.out.println(String.format("%.3f", 20 * 1.0 / 3));
 
 	}
 }
