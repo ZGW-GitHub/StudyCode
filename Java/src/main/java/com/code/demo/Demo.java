@@ -32,7 +32,7 @@ public class Demo {
 		System.out.println(collect.size());
 
 		JSONObject json = new JSONObject();
-		json.put("test", "2020-02-02 23:00");
+		json.put("test", "");
 		System.out.println(json.getDate("test"));
 
 		System.out.println(String.format("%.3f", 20 * 1.0 / 3));
