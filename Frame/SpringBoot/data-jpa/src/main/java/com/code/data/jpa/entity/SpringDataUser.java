@@ -23,7 +23,7 @@ public class SpringDataUser extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
 
 	public static final Integer SEX_MAN = 1;
-	public static final Integer SEX_WUMAN = 2;
+	public static final Integer SEX_WOMAN = 2;
 
 	private String name;
 	private Integer sex;
