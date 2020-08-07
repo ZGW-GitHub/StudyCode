@@ -8,9 +8,11 @@ import org.assertj.core.util.Lists;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author 愆凡
@@ -36,7 +38,11 @@ public class SpringDataUserDaoTest extends SpringBootDataJpaApplicationTest {
 
 	@Test
 	public void selectTest() {
-		Assert.assertNotNull(springDataUserDao.findAll());
+		List<SpringDataUser> users = springDataUserDao.findAll();
+
+		Assert.assertNotNull(users);
+
+		users.forEach(user -> System.out.println(user.toString()));
 	}
 
 }

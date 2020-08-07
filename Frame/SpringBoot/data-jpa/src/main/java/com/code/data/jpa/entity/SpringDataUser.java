@@ -29,6 +29,7 @@ public class SpringDataUser extends AbstractEntity {
 	private Integer sex;
 	private Integer age;
 	private String phone;
+	@Column(name = "is_active")
 	private Boolean isActive;
 
 }
