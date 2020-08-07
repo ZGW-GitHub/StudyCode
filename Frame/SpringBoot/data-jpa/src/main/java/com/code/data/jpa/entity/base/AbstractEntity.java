@@ -1,6 +1,9 @@
 package com.code.data.jpa.entity.base;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -13,6 +16,9 @@ import java.util.Date;
  * @date 2020/7/31 2:17 下午
  */
 @Data
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
 @MappedSuperclass
 @EntityListeners(MyEntityListener.class)
 public abstract class AbstractEntity implements Serializable {
