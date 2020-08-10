@@ -18,6 +18,7 @@ import java.net.InetAddress;
  */
 public class ReceiveDemo {
 	public static void main(String[] args) throws IOException {
+
 		// 创建接收端Socket对象
 		DatagramSocket socket = new DatagramSocket(10086);
 
@@ -41,5 +42,6 @@ public class ReceiveDemo {
 
 		// 释放资源，接收端应该一直开着等待接收数据，是不需要关闭
 //		socket.close();
+
 	}
 }

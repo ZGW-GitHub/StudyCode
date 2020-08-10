@@ -37,5 +37,6 @@ public class SendDemo {
 
 		// 释放资源
 		socket.close();
+
 	}
 }
