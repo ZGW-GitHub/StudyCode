@@ -1,4 +1,4 @@
-package com.code.study.NIO.qq;
+package com.code.io.net.io.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -53,6 +53,7 @@ public class Client {
 
     }
 
+    // 获取 Server 返回的消息
     public void getMsg() throws IOException {
 
         ByteBuffer buffer = ByteBuffer.allocate(1024);

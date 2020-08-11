@@ -1,4 +1,4 @@
-package com.code.study.NIO.qq;
+package com.code.io.net.io.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -19,6 +19,12 @@ public class Server {
     private static Selector selector;
 
     private static final int PORT = 9999;
+
+    public static void main(String[] args) {
+
+        new Server().start();
+
+    }
 
     private Server() {
         try {
@@ -44,7 +50,7 @@ public class Server {
             while (true) {
 
                 if ((selector.select(2_000)) == 0) {
-//                    System.out.println("无连接！");
+                    System.out.println("无连接！");
                     continue;
                 }
 
@@ -60,6 +66,7 @@ public class Server {
                         socketChannel.register(selector, SelectionKey.OP_READ);
                         System.out.println(socketChannel.getRemoteAddress().toString() + " -> 上线了。。。");
                     }
+
                     if (key.isReadable()) { // 处理读请求
                         getMsg(key);
                     }
@@ -89,6 +96,11 @@ public class Server {
         }
     }
 
+    private void printInfo(String msg) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(" [ " + simpleDateFormat + " ]  -> " + msg);
+    }
+
     // 发广播的方法
     private void setAnyBody(String msg, SocketChannel channel) throws IOException {
         Set<SelectionKey> keys = selector.keys();
@@ -101,17 +113,6 @@ public class Server {
             }
 
         }
-    }
-
-    private void printInfo(String msg) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(" [ " + simpleDateFormat + " ]  -> " + msg);
-    }
-
-    public static void main(String[] args) {
-
-        new Server().start();
-
     }
 
 }
