@@ -22,7 +22,7 @@ import java.nio.ByteBuffer;
  * @author 愆凡
  * @date 2020/8/11 9:48 上午
  */
-public class BufferDemo {
+public class BufferDemoA {
 	public static void main(String[] args) {
 
 		// 1、创建一个缓冲区
