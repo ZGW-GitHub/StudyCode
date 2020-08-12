@@ -1,4 +1,4 @@
-package com.code.io.net.io.nio;
+package com.code.io.net.io.nio.not.block;
 
 import java.io.IOException;
 import java.util.Scanner;
