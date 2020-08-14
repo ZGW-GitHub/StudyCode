@@ -1,4 +1,4 @@
-package com.code.data.jpa;
+package com.code.orm.jpa;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringBootDataJpaApplicationTest {
+public class SpringBootOrmJpaApplicationTest {
 
 	@Test
 	public void contextLoads() {

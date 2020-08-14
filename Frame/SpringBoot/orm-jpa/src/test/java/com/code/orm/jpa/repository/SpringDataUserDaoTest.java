@@ -1,14 +1,12 @@
-package com.code.data.jpa.repository;
+package com.code.orm.jpa.repository;
 
-import cn.hutool.core.util.IdUtil;
-import com.code.data.jpa.SpringBootDataJpaApplicationTest;
-import com.code.data.jpa.entity.SpringDataUser;
+import com.code.orm.jpa.SpringBootOrmJpaApplicationTest;
+import com.code.orm.jpa.entity.SpringDataUser;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Lists;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,7 +17,7 @@ import java.util.List;
  * @date 2020/8/7 10:58 上午
  */
 @Slf4j
-public class SpringDataUserDaoTest extends SpringBootDataJpaApplicationTest {
+public class SpringDataUserDaoTest extends SpringBootOrmJpaApplicationTest {
 
 	@Autowired
 	private SpringDataUserDao springDataUserDao;

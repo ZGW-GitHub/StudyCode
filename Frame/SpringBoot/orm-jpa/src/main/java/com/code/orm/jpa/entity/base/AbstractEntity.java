@@ -1,4 +1,4 @@
-package com.code.data.jpa.entity.base;
+package com.code.orm.jpa.entity.base;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

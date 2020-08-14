@@ -1,6 +1,6 @@
-package com.code.data.jpa.entity;
+package com.code.orm.jpa.entity;
 
-import com.code.data.jpa.entity.base.AbstractEntity;
+import com.code.orm.jpa.entity.base.AbstractEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 

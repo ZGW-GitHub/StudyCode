@@ -1,6 +1,6 @@
-package com.code.data.jpa.repository;
+package com.code.orm.jpa.repository;
 
-import com.code.data.jpa.entity.SpringDataUser;
+import com.code.orm.jpa.entity.SpringDataUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
