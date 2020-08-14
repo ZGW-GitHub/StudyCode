@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `spring_data_user`;
-CREATE TABLE `spring_data_user` (
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
     `id` INT(5) NOT NULL AUTO_INCREMENT COMMENT '主键',
     `name` VARCHAR(10) NOT NULL DEFAULT '' COMMENT '姓名',
     `sex` TINYINT(1) NOT NULL COMMENT '性别',

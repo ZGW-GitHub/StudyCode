@@ -1,6 +1,6 @@
 package com.code.orm.mybatis.mapper;
 
-import com.code.orm.mybatis.entity.SpringDataUser;
+import com.code.orm.mybatis.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -14,15 +14,15 @@ import java.util.List;
  */
 @Mapper
 @Component
-public interface SpringDataUserMapper {
+public interface UserMapper {
 
-	@Select("SELECT * FROM spring_data_user")
-	List<SpringDataUser> listSpringDataUser();
+	@Select("SELECT * FROM user")
+	List<User> listUser();
 
-	@Select("SELECT * FROM spring_data_user WHERE id = #{id}")
-	SpringDataUser selectUserById(@Param("id") Long id);
+	@Select("SELECT * FROM user WHERE id = #{id}")
+	User selectUserById(@Param("id") Long id);
 
 	// return : 1:成功，0：失败
-	int saveSpringDataUser(@Param("user") SpringDataUser user);
+	int saveUser(@Param("user") User user);
 
 }

@@ -1,6 +1,6 @@
 package com.code.orm.jpa.repository;
 
-import com.code.orm.jpa.SpringBootOrmJpaApplicationTest;
+import com.code.orm.jpa.OrmJpaApplicationTest;
 import com.code.orm.jpa.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Lists;
@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2020/8/7 10:58 上午
  */
 @Slf4j
-public class UserRepositoryTest extends SpringBootOrmJpaApplicationTest {
+public class UserRepositoryTest extends OrmJpaApplicationTest {
 
 	@Autowired
 	private UserRepository userRepository;

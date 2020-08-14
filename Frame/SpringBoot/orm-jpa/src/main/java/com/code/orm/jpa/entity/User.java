@@ -4,7 +4,9 @@ import com.code.orm.jpa.entity.base.AbstractEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * @author 愆凡
@@ -17,7 +19,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "spring_data_user")
+@Table(name = "user")
 public class User extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
