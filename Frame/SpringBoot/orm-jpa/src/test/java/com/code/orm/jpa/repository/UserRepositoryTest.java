@@ -22,12 +22,13 @@ public class UserRepositoryTest extends OrmJpaApplicationTest {
 	@Autowired
 	private UserRepository userRepository;
 
-	public void initData() {
+	@Test
+	public void saveAllTest() {
 		ArrayList<User> users = Lists.newArrayList();
 
 		for (int i = 1; i < 10; i++) {
 			User user = User.builder().name("test" + i).age(i).isActive(true)
-					.sex(User.SEX_MAN).phone("1310000000" + i).createTime(new Date()).build();
+					.sex(User.SEX_MAN).phone("1310000000" + i).createTime(new Date()).lastUpdateTime(new Date()).build();
 			users.add(user);
 		}
 
@@ -38,9 +39,7 @@ public class UserRepositoryTest extends OrmJpaApplicationTest {
 	public void selectTest() {
 		List<User> users = userRepository.findAll();
 
-		Assert.assertNotNull(users);
-
-		users.forEach(user -> System.out.println(user.toString()));
+		Assert.assertNotEquals(users.size(), 0);
 	}
 
 }

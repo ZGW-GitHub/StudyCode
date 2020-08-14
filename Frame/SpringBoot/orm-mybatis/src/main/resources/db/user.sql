@@ -7,6 +7,6 @@ CREATE TABLE `user` (
     `phone` VARCHAR(15) NOT NULL UNIQUE COMMENT '手机号',
     `is_active` TINYINT(1) NOT NULL COMMENT '是否激活，0：未激活，1：已激活',
     `create_time` DATETIME NOT NULL COMMENT '创建时间',
-    `last_update_time` DATETIME NOT NULL DEFAULT NOW() COMMENT '更新时间',
+    `last_update_time` DATETIME NOT NULL COMMENT '更新时间',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
