@@ -1,5 +1,7 @@
 package com.code.orm.mybatis.mapper;
 
+import cn.hutool.core.util.IdUtil;
+import cn.hutool.crypto.SecureUtil;
 import com.code.orm.mybatis.OrmMybatisApplicationTest;
 import com.code.orm.mybatis.entity.User;
 import lombok.extern.slf4j.Slf4j;
@@ -22,12 +24,13 @@ public class UserMapperTest extends OrmMybatisApplicationTest {
 
 	@Test
 	public void saveUserTest() {
+		String salt = IdUtil.fastSimpleUUID();
 
-		User user = User.builder().name("test").age(12).isActive(true)
-				.sex(User.SEX_MAN).phone("1310000000").createTime(new Date()).lastUpdateTime(new Date()).build();
+		User user = User.builder().name("test").age(10).isActive(true).sex(User.SEX_MAN)
+				.phone(SecureUtil.md5(System.currentTimeMillis() + salt)).salt(salt)
+				.createTime(new Date()).lastUpdateTime(new Date()).build();
 
 		Assert.assertEquals(userMapper.saveUser(user), 1);
-
 	}
 
 	@Test

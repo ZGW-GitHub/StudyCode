@@ -3,8 +3,8 @@
 <mapper namespace="com.code.orm.mybatis.mapper.UserMapper">
 
 	<insert id="saveUser">
-		INSERT INTO `user` (`name`, `sex`, `age`, `phone`, `is_active`, `create_time`, `last_update_time`)
-		VALUES (#{user.name}, #{user.sex}, #{user.age}, #{user.phone}, #{user.isActive}, #{user.createTime},
+		INSERT INTO `user` (`name`, `sex`, `age`, `phone`, `salt`, `is_active`, `create_time`, `last_update_time`)
+		VALUES (#{user.name}, #{user.sex}, #{user.age}, #{user.phone}, #{user.salt}, #{user.isActive}, #{user.createTime},
 				#{user.lastUpdateTime})
 	</insert>
 

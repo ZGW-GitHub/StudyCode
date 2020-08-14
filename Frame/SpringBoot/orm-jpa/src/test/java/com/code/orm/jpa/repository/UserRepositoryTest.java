@@ -1,5 +1,7 @@
 package com.code.orm.jpa.repository;
 
+import cn.hutool.core.util.IdUtil;
+import cn.hutool.crypto.SecureUtil;
 import com.code.orm.jpa.OrmJpaApplicationTest;
 import com.code.orm.jpa.entity.User;
 import lombok.extern.slf4j.Slf4j;
@@ -27,8 +29,10 @@ public class UserRepositoryTest extends OrmJpaApplicationTest {
 		ArrayList<User> users = Lists.newArrayList();
 
 		for (int i = 1; i < 10; i++) {
-			User user = User.builder().name("test" + i).age(i).isActive(true)
-					.sex(User.SEX_MAN).phone("1310000000" + i).createTime(new Date()).lastUpdateTime(new Date()).build();
+			String salt = IdUtil.fastSimpleUUID();
+			User user = User.builder().name("test" + i).age(i).isActive(true).sex(User.SEX_MAN)
+					.phone(SecureUtil.md5(System.currentTimeMillis() + salt)).salt(salt)
+					.createTime(new Date()).lastUpdateTime(new Date()).build();
 			users.add(user);
 		}
 

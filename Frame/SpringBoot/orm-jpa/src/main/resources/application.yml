@@ -8,7 +8,7 @@ spring:
     initialization-mode: always
     continue-on-error: true
 #    user:
-#      - "classpath:db/user.sql"
+#    - "classpath:db/user.sql"
     hikari:
       minimum-idle: 5
       connection-test-query: SELECT 1 FROM DUAL
@@ -28,6 +28,6 @@ spring:
     open-in-view: true
 logging:
   level:
-    com.xkcoding: debug
+    com.code: debug
     org.hibernate.SQL: debug
     org.hibernate.type: trace

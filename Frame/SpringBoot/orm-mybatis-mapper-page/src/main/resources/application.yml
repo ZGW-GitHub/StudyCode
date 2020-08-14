@@ -21,10 +21,24 @@ spring:
 logging:
   level:
     com.code: debug
-    com.code.orm.mybatis.mapper: trace
+    com.code.orm.mybatis.mapper.and.page.mapper: trace
 mybatis:
   configuration:
     # 下划线转驼峰
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mappers/*.xml
-  type-aliases-package: com.code.orm.mybatis.entity
+  type-aliases-package: com.code.orm.mybatis.mapper.and.page.entity
+mapper:
+  mappers:
+    - tk.mybatis.mapper.common.Mapper
+  not-empty: true
+  style: camelhump
+  wrap-keyword: "`{0}`"
+  safe-delete: true
+  safe-update: true
+  identity: MYSQL
+pagehelper:
+  auto-dialect: true
+  helper-dialect: mysql
+  reasonable: true
+  params: count=countSql

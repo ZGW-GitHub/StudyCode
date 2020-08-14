@@ -1,10 +1,13 @@
-package com.code.orm.mybatis.entity;
+package com.code.orm.mybatis.mapper.and.page.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -23,6 +26,8 @@ public class User implements Serializable {
 	public static final Integer SEX_MAN = 1;
 	public static final Integer SEX_WOMAN = 2;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private Integer sex;
