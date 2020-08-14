@@ -8,7 +8,7 @@ spring:
     initialization-mode: always
     continue-on-error: true
 #        spring_data_user:
-#          - "classpath:db/spring_data_user.sql"
+#          - "classpath:db/user.sql"
     hikari:
       minimum-idle: 5
       connection-test-query: SELECT 1 FROM DUAL

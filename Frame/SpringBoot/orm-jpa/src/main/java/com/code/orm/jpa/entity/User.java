@@ -18,7 +18,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "spring_data_user")
-public class SpringDataUser extends AbstractEntity {
+public class User extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
 

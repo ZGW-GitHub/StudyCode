@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code.orm.mybatis.mapper.SpringDataUserMapper">
+
+	<insert id="saveSpringDataUser">
+		INSERT INTO `orm_user` (`name`, `sex`, `age`, `phone`, `is_active`, `create_time`, `last_update_time`)
+		VALUES (#{user.name}, #{user.sex}, #{user.age}, #{user.phone}, #{user.is_active}, #{user.create_time},
+				#{user.last_update_time})
+	</insert>
+
+</mapper>
