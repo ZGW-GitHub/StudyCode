@@ -1,4 +1,4 @@
-package com.code.java8;
+package com.code.java.java8;
 
 /**
  * @author 愆凡
