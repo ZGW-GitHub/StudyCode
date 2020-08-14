@@ -20,6 +20,7 @@
 		<module>orm-jpa</module>
         <module>orm-mybatis</module>
         <module>orm-mybatis-plus</module>
+        <module>orm-mybatis-mapper-page</module>
     </modules>
 
 </project>
