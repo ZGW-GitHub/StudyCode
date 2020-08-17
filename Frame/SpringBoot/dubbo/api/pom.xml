@@ -11,5 +11,7 @@
 
     <artifactId>api</artifactId>
 
+    <packaging>jar</packaging>
+
 
 </project>
