@@ -12,9 +12,9 @@
 	<artifactId>Frame</artifactId>
 	<packaging>pom</packaging>
 	<modules>
+		<module>Spring</module>
 		<module>SpringBoot</module>
 		<module>SpringCloud</module>
-		<module>Spring</module>
 		<module>SpringCloudAlibaba</module>
 	</modules>
 
