@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -56,12 +57,14 @@ public class UserRepositoryTest extends OrmJpaApplicationTest {
 
 	/**
 	 * 动态 SQL
+	 *		使用 别名 拼接参数
 	 */
 	@Test
 	@SuppressWarnings("all")
-	public void sqlSelectTest() {
+	public void sqlSelectTest1() {
 		// 参数
-		String name = "test%";
+		String name = "test";
+		Boolean isActive = true;
 		ArrayList<Integer> ages = new ArrayList<>();
 		ages.add(5);
 
@@ -72,15 +75,21 @@ public class UserRepositoryTest extends OrmJpaApplicationTest {
 
 		// 根据条件拼接 Where SQL
 		if (StringUtils.isNotBlank(name)) {
-			whereSql.append(" AND name LIKE '").append(name).append("'");
+			whereSql.append(" AND name LIKE '").append(name).append("%'");
 		}
 		if (!ages.isEmpty()) {
 			whereSql.append(" AND age IN :age");
+		}
+		if (isActive != null) {
+			whereSql.append(" AND is_active = :isActive");
 		}
 
 		// 拼接 Where
 		selectSql = selectSql.append(whereSql);
 		countSql = countSql.append(whereSql);
+
+		log.debug("Select Sql : " + selectSql.toString());
+		log.debug("Count Sql : " + countSql.toString());
 
 		//创建本地 sql 查询实例
 		Query dataQuery = entityManager.createNativeQuery(selectSql.toString());
@@ -90,10 +99,75 @@ public class UserRepositoryTest extends OrmJpaApplicationTest {
 			dataQuery.setParameter("age", ages);
 			countQuery.setParameter("age", ages);
 		}
+		if (isActive != null) {
+			dataQuery.setParameter("isActive", isActive);
+			countQuery.setParameter("isActive", isActive);
+		}
 
 		// 获取查询结果
-		List resultList = dataQuery.getResultList();
+		List<Object[]> resultList = dataQuery.getResultList();
 		BigInteger count = (BigInteger) countQuery.getSingleResult();
+
+		log.debug(Arrays.toString(resultList.toArray()));
+
+		Assert.assertEquals(count.intValue(), 1);
+		Assert.assertEquals(resultList.size(), 1);
+	}
+
+	/**
+	 * 动态 SQL
+	 *		使用 位置编号 拼接参数
+	 */
+	@Test
+	@SuppressWarnings("all")
+	public void sqlSelectTest2() {
+		// 参数
+		String name = "test";
+		Boolean isActive = true;
+		ArrayList<Integer> ages = new ArrayList<>();
+		ages.add(5);
+
+		// 创建查询SQL
+		StringBuilder selectSql = new StringBuilder("SELECT * FROM user");
+		StringBuilder countSql = new StringBuilder("SELECT COUNT(*) FROM user");
+		StringBuilder whereSql = new StringBuilder(" WHERE 1 = 1");
+
+		// 根据条件拼接 Where SQL
+		if (StringUtils.isNotBlank(name)) {
+			whereSql.append(" AND name LIKE '").append(name).append("%'");
+		}
+		if (!ages.isEmpty()) {
+			whereSql.append(" AND age IN ?1");
+		}
+		if (isActive != null) {
+			whereSql.append(" AND is_active = ?2");
+		}
+
+		// 拼接 Where
+		selectSql = selectSql.append(whereSql);
+		countSql = countSql.append(whereSql);
+
+		log.debug("Select Sql : " + selectSql.toString());
+		log.debug("Count Sql : " + countSql.toString());
+
+		//创建本地 sql 查询实例
+		Query dataQuery = entityManager.createNativeQuery(selectSql.toString());
+		Query countQuery = entityManager.createNativeQuery(countSql.toString());
+
+		if (!ages.isEmpty()) {
+			dataQuery.setParameter(1, ages);
+			countQuery.setParameter(1, ages);
+		}
+		if (isActive != null) {
+			dataQuery.setParameter(2, isActive);
+			countQuery.setParameter(2, isActive);
+		}
+
+		// 获取查询结果
+		List<Object[]> resultList = dataQuery.getResultList();
+		BigInteger count = (BigInteger) countQuery.getSingleResult();
+
+		log.debug(Arrays.toString(resultList.toArray()));
 
 		Assert.assertEquals(count.intValue(), 1);
 		Assert.assertEquals(resultList.size(), 1);
