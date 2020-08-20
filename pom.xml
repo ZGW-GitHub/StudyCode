@@ -39,6 +39,9 @@
 		<mybatis.plus.version>3.1.0</mybatis.plus.version>
 		<mybatis.mapper.version>2.0.4</mybatis.mapper.version>
 		<mybatis.pagehelper.version>1.2.9</mybatis.pagehelper.version>
+
+		<netty.version>4.1.42.Final</netty.version>
+		<protobuf.version>3.6.1</protobuf.version>
 	</properties>
 
 	<dependencyManagement>
@@ -97,6 +100,18 @@
 				<groupId>com.github.pagehelper</groupId>
 				<artifactId>pagehelper-spring-boot-starter</artifactId>
 				<version>${mybatis.pagehelper.version}</version>
+			</dependency>
+			<!-- Netty -->
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-all</artifactId>
+				<version>${netty.version}</version>
+			</dependency>
+			<!-- Google 的一个序列化工具 -->
+			<dependency>
+				<groupId>com.google.protobuf</groupId>
+				<artifactId>protobuf-java</artifactId>
+				<version>${protobuf.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
