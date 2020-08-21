@@ -32,8 +32,10 @@ public class Demo {
 		System.out.println(collect.size());
 
 		JSONObject json = new JSONObject();
+//		json.put("blon", true);
 		json.put("test", "");
 		System.out.println(json.getDate("test"));
+		System.out.println(json.getBoolean("blon"));
 
 		System.out.println(String.format("%.3f", 20 * 1.0 / 3));
 
