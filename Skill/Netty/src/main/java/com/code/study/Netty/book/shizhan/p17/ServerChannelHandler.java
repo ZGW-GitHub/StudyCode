@@ -17,20 +17,20 @@ import io.netty.util.CharsetUtil;
 public class ServerChannelHandler extends ChannelInboundHandlerAdapter {
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
         System.out.println("Client send : " + ((ByteBuf) msg).toString(CharsetUtil.UTF_8));
         // 将接收到的消息写给发送者，而不冲刷出站消息
-        ctx.write((ByteBuf) msg);
+        ctx.write(msg);
     }
 
     @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+    public void channelReadComplete(ChannelHandlerContext ctx) {
         // 将未决消息冲刷到远程节点，并且关闭Channel
         ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         cause.printStackTrace();
         ctx.close();
     }

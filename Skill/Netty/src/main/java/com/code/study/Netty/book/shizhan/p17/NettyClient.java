@@ -14,17 +14,21 @@ public class NettyClient {
         EventLoopGroup group = new NioEventLoopGroup();
 
         try {
+
             Bootstrap bootstrap = new Bootstrap()
                     .group(group)
                     .channel(NioSocketChannel.class)
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
-                        protected void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new ClientChannelHandler());
+                        protected void initChannel(SocketChannel channel) {
+                            channel.pipeline().addLast(new ClientChannelHandler());
                         }
                     });
+
             ChannelFuture channelFuture = bootstrap.connect("localhost", 28082).sync();
+
             channelFuture.channel().closeFuture().sync();
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
