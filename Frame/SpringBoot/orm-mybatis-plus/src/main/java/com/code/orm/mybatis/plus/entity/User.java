@@ -2,10 +2,9 @@ package com.code.orm.mybatis.plus.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,8 +20,10 @@ import static com.baomidou.mybatisplus.annotation.FieldFill.INSERT_UPDATE;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
 @TableName("user")
-public class User implements Serializable {
+public class User extends Model<User> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -36,9 +37,9 @@ public class User implements Serializable {
 	private String phone;
 	private String salt;
 	private Boolean isActive;
-    @TableField(fill = INSERT)
+	@TableField(fill = INSERT)
 	private Date createTime;
-    @TableField(fill = INSERT_UPDATE)
+	@TableField(fill = INSERT_UPDATE)
 	private Date lastUpdateTime;
 
 }
