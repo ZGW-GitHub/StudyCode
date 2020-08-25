@@ -1,4 +1,4 @@
-package com.code.study.Netty.book.shizhan.p166;
+package com.code.netty.old.p166;
 
 import io.netty.channel.*;
 import io.netty.handler.codec.http.*;

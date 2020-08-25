@@ -1,4 +1,4 @@
-package com.code.study.Netty.book.shizhan.p129;
+package com.code.netty.old.p129;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;

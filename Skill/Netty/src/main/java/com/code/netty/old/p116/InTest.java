@@ -1,4 +1,4 @@
-package com.code.study.Netty.book.shizhan.p116;
+package com.code.netty.old.p116;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

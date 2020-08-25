@@ -1,4 +1,4 @@
-package com.code.study.Netty.book.shizhan.p128;
+package com.code.netty.old.p128;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
