@@ -1,7 +1,5 @@
 package com.code.demo;
 
-import com.alibaba.fastjson.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -30,12 +28,6 @@ public class Demo {
 		collect = collect.subList(4, collect.size());
 		collect.forEach(user -> System.out.println(user.getAge()));
 		System.out.println(collect.size());
-
-		JSONObject json = new JSONObject();
-//		json.put("blon", true);
-		json.put("test", "");
-		System.out.println(json.getDate("test"));
-		System.out.println(json.getBoolean("blon"));
 
 		System.out.println(String.format("%.3f", 20 * 1.0 / 3));
 
