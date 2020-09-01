@@ -2,7 +2,6 @@ package com.code.mq.kafka.config;
 
 import com.code.mq.kafka.constants.KafkaConsts;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
