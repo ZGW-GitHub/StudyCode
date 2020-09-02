@@ -13,12 +13,12 @@
 	<modules>
 		<!-- Java 技术 -->
 		<module>Java</module>
-		<!-- 基础 -->
-		<module>Cornerstone</module>
-		<!-- 技术 -->
-		<module>Skill</module>
 		<!-- 框架 -->
 		<module>Frame</module>
+		<!-- 数据结构 -->
+		<module>DataStructure</module>
+		<!-- 设计模式 -->
+		<module>DesignPatterns</module>
 	</modules>
 
 	<properties>
