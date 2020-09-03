@@ -1,11 +1,9 @@
-/*
-      Date:  2019-08-08 21:57
-                                 */
-package d.singleton;
+package d.dan.li;
 
 /**
  * 懒汉式
  * 只适用于单线程模式
+ *
  * @author 愆凡
  */
 public class SingletonA {

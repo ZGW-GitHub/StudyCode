@@ -1,7 +1,7 @@
 /*
       Date:  2019-08-08 21:57
                                  */
-package d.singleton;
+package d.dan.li;
 
 /**
  * 饿汉式
