@@ -30,12 +30,12 @@ public class Demo {
 		collect.forEach(user -> System.out.println(user.getAge()));
 		System.out.println(collect.size());
 
-		System.out.println("---");
+		System.out.println("----");
 
 		String format = String.format("%.3f", 20 * 1.0 / 3);
 		System.out.println(format);
 
-		System.out.println("---");
+		System.out.println("-----");
 
 		String sub = "测试截取1";
 		String subed = sub.length() > 4 ? sub.substring(0, 4) : sub;
