@@ -18,5 +18,6 @@ public class AddDemo {
 		listA.clear();
 
 		listB.forEach(System.out::println); // test
+		listA.forEach(System.out::println); // 无输出
 	}
 }
