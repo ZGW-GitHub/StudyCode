@@ -8,14 +8,10 @@ package d.dan.li;
  */
 public class SingletonA {
 
-    /**
-     * 构造函数私有化
-     */
+    // 构造函数私有化
     private SingletonA(){}
 
-    /**
-     * 用于保存单例对象
-     */
+    // 用于保存单例对象
     private static SingletonA singleton = null;
 
     public static SingletonA getInstance() {
