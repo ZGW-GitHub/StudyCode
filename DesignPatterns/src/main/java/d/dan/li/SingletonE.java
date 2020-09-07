@@ -8,12 +8,13 @@ package d.dan.li;
  */
 public class SingletonE {
 
-    private SingletonE(){}
+	private SingletonE() {
+	}
 
-    private static final SingletonE SINGLETON = new SingletonE();
+	private static final SingletonE SINGLETON = new SingletonE();
 
-    public static SingletonE getInstance() {
-        return SINGLETON;
-    }
+	public static SingletonE getInstance() {
+		return SINGLETON;
+	}
 
 }

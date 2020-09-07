@@ -8,20 +8,21 @@ package d.dan.li;
  */
 public class SingletonC {
 
-    private SingletonC(){}
+	private SingletonC() {
+	}
 
-    private static SingletonC singleton = null;
+	private static SingletonC singleton = null;
 
-    // 添加了 synchronized 关键字，并进行双重检查
-    public static SingletonC getInstance() {
-        if (singleton == null) {
-            synchronized (SingletonC.class) {
-                if (singleton == null) {
-                    singleton = new SingletonC();
-                }
-            }
-        }
-        return singleton;
-    }
+	// 添加了 synchronized 关键字，并进行双重检查
+	public static SingletonC getInstance() {
+		if (singleton == null) {
+			synchronized (SingletonC.class) {
+				if (singleton == null) {
+					singleton = new SingletonC();
+				}
+			}
+		}
+		return singleton;
+	}
 
 }

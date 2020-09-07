@@ -20,14 +20,15 @@ package d.dan.li;
  */
 public class SingletonD {
 
-    private SingletonD(){}
+	private SingletonD() {
+	}
 
-    private static class StaticSingletonHolder {
-        private static final SingletonD SINGLETON = new SingletonD();
-    }
+	private static class StaticSingletonHolder {
+		private static final SingletonD SINGLETON = new SingletonD();
+	}
 
-    public static SingletonD getInstance() {
-        return StaticSingletonHolder.SINGLETON;
-    }
+	public static SingletonD getInstance() {
+		return StaticSingletonHolder.SINGLETON;
+	}
 
 }

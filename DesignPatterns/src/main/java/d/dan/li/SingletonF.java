@@ -8,15 +8,15 @@ package d.dan.li;
  */
 public enum SingletonF {
 
-    // 用于保存单例对象
-    SINGLE;
+	// 用于保存单例对象
+	SINGLE;
 
-    private SingletonF() {
-    }
+	private SingletonF() {
+	}
 
-    public String thisSingletonName() {
-        System.out.println(this);
-        return "Hello";
-    }
+	public String thisSingletonName() {
+		System.out.println(this);
+		return "Hello";
+	}
 
 }

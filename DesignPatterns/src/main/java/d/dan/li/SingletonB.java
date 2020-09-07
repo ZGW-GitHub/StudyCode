@@ -8,16 +8,17 @@ package d.dan.li;
  */
 public class SingletonB {
 
-    private SingletonB(){}
+	private SingletonB() {
+	}
 
-    private static SingletonB singleton = null;
+	private static SingletonB singleton = null;
 
-    // 添加了 synchronized 关键字，进行同步
-    public static synchronized SingletonB getInstance() {
-        if (singleton == null) {
-            singleton = new SingletonB();
-        }
-        return singleton;
-    }
+	// 添加了 synchronized 关键字，进行同步
+	public static synchronized SingletonB getInstance() {
+		if (singleton == null) {
+			singleton = new SingletonB();
+		}
+		return singleton;
+	}
 
 }

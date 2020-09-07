@@ -8,17 +8,17 @@ package d.dan.li;
  */
 public class SingletonA {
 
-    // 构造函数私有化
-    private SingletonA(){}
+	private SingletonA() {
+	}
 
-    // 用于保存单例对象
-    private static SingletonA singleton = null;
+	// 用于保存单例对象
+	private static SingletonA singleton = null;
 
-    public static SingletonA getInstance() {
-        if (singleton == null) {
-            singleton = new SingletonA();
-        }
-        return singleton;
-    }
+	public static SingletonA getInstance() {
+		if (singleton == null) {
+			singleton = new SingletonA();
+		}
+		return singleton;
+	}
 
 }
