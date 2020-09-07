@@ -1,4 +1,6 @@
-package b.factory.simple.factory;
+package b.factory.simple.factory.parse.impl;
+
+import b.factory.simple.factory.parse.IConfigParse;
 
 /**
  * @author 愆凡

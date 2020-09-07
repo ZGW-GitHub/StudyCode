@@ -1,5 +1,7 @@
 package b.factory.simple.factory;
 
+import b.factory.simple.factory.parse.IConfigParse;
+
 /**
  * @author 愆凡
  * @date 2020/9/7 10:30 上午
@@ -8,7 +10,6 @@ public class ConfigSource {
 
 	public String load(String filePath) {
 		String fileType = getFileType(filePath);
-
 		IConfigParse configParse = ConfigParseFactory.createParse(fileType);
 
 		return configParse.doParse(filePath);

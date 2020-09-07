@@ -1,4 +1,4 @@
-package b.factory.simple.factory;
+package b.factory.factory.method.parse;
 
 /**
  * @author 愆凡
