@@ -1,10 +1,10 @@
-/*
-      Date:  2019-11-09 12:08
-                                 */
-package w.proxy.staticProxy;
+package f.proxy.dynamicProxy;
 
 import java.util.Random;
 
+/**
+ * @author NotUpToYou
+ */
 public class TanK implements Movable {
     @Override
     public void run() {

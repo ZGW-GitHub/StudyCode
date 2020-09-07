@@ -1,7 +1,4 @@
-/*
-      Date:  2019-11-09 13:23
-                                 */
-package w.proxy.cglibProxy;
+package f.proxy.cglibProxy;
 
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
@@ -9,6 +6,9 @@ import org.springframework.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 
+/**
+ * @author NotUpToYou
+ */
 public class Test {
     public static void main(String[] args) {
 

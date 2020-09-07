@@ -1,11 +1,12 @@
-/*
-      Date:  2019-11-09 12:08
-                                 */
-package w.proxy.cglibProxy;
+package f.proxy.staticProxy;
 
 import java.util.Random;
 
-public class TanK {
+/**
+ * @author NotUpToYou
+ */
+public class TanK implements Movable {
+    @Override
     public void run() {
         System.out.println("坦克移动中...");
         try {

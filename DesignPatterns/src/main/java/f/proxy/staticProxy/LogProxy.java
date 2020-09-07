@@ -1,8 +1,8 @@
-/*
-      Date:  2019-11-09 12:11
-                                 */
-package w.proxy.staticProxy;
+package f.proxy.staticProxy;
 
+/**
+ * @author NotUpToYou
+ */
 public class LogProxy implements Movable {
 
     private Movable tanK;

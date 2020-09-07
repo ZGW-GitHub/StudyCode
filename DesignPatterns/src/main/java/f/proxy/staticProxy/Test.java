@@ -1,7 +1,4 @@
-/*
-      Date:  2019-11-09 12:18
-                                 */
-package w.proxy.staticProxy;
+package f.proxy.staticProxy;
 
 public class Test {
 
@@ -17,7 +14,10 @@ public class Test {
          * 移动之后的日志：移动结束
          * 移动之后：1573273224464
          */
-//        proxy = new TimeProxy(new LogProxy(new TanK()));
+        proxy = new TimeProxy(new LogProxy(new TanK()));
+        proxy.run();
+
+        System.out.println("++++++++++++++++++++++++++++++");
 
         // 先记录时间，再记录日志
         /**
@@ -28,8 +28,6 @@ public class Test {
          * 移动之后的日志：移动结束
          */
         proxy = new LogProxy(new TimeProxy(new TanK()));
-
-
         proxy.run();
 
     }
