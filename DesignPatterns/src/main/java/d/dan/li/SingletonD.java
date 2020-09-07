@@ -1,6 +1,3 @@
-/*
-      Date:  2019-08-08 21:57
-                                 */
 package d.dan.li;
 
 /*
@@ -18,6 +15,7 @@ package d.dan.li;
 /**
  * 懒汉式
  * 适用于多线程，静态内部类方式   --->      推荐
+ *
  * @author 愆凡
  */
 public class SingletonD {
