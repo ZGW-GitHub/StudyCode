@@ -34,3 +34,4 @@ build/
 ### MySelf ###
 mvnw
 mvnw.cmd
+.DS_Store
