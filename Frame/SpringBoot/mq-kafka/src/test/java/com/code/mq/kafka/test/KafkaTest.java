@@ -20,7 +20,7 @@ public class KafkaTest extends MqKafkaApplicationTest {
 	private KafkaTemplate<String, String> kafkaTemplate;
 
 	/**
-	 * 测试发送消息
+	 * 测试同步发送消息
 	 */
 	@Test
 	public void testSend() {
