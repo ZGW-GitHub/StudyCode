@@ -30,24 +30,34 @@ public class KafkaConfig {
 		return new KafkaTemplate<>(producerFactory());
 	}
 
+	/**
+	 * 生产者工厂
+	 *
+	 * @return ProducerFactory
+	 */
 	@Bean
 	public ProducerFactory<String, String> producerFactory() {
 		return new DefaultKafkaProducerFactory<>(kafkaProperties.buildProducerProperties());
+	}
+
+	/**
+	 * 消费者工厂
+	 *
+	 * @return ConsumerFactory
+	 */
+	@Bean
+	public ConsumerFactory<String, String> consumerFactory() {
+		return new DefaultKafkaConsumerFactory<>(kafkaProperties.buildConsumerProperties());
 	}
 
 	@Bean
 	public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
 		ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
 		factory.setConsumerFactory(consumerFactory());
+		factory.getContainerProperties().setPollTimeout(3000);
 		factory.setConcurrency(KafkaConsts.DEFAULT_PARTITION_NUM);
 		factory.setBatchListener(true);
-		factory.getContainerProperties().setPollTimeout(3000);
 		return factory;
-	}
-
-	@Bean
-	public ConsumerFactory<String, String> consumerFactory() {
-		return new DefaultKafkaConsumerFactory<>(kafkaProperties.buildConsumerProperties());
 	}
 
 	@Bean("ackContainerFactory")
