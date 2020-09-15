@@ -5,6 +5,10 @@ import com.code.mq.kafka.constants.KafkaConsts;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
+import org.springframework.util.concurrent.ListenableFuture;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author 愆凡
@@ -20,7 +24,16 @@ public class KafkaTest extends MqKafkaApplicationTest {
 	 */
 	@Test
 	public void testSend() {
-		kafkaTemplate.send(KafkaConsts.TOPIC_TEST, "hello,kafka...");
+		try {
+			ListenableFuture<SendResult<String, String>> future =
+					kafkaTemplate.send(KafkaConsts.TOPIC_TEST, "hello,kafka...");
+
+			SendResult<String, String> sendResult = future.get();
+
+			System.out.println(sendResult.toString());
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
