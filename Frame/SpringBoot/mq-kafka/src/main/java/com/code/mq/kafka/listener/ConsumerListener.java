@@ -1,4 +1,4 @@
-package com.code.mq.kafka.handler;
+package com.code.mq.kafka.listener;
 
 import com.code.mq.kafka.constants.KafkaConsts;
 import lombok.extern.slf4j.Slf4j;
@@ -8,17 +8,17 @@ import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
 
 /**
- * 消息处理器
+ * Kafka 消费者，其实就是一个监听类
  *
  * @author 愆凡
  * @date 2020/8/31 4:17 下午
  */
 @Slf4j
 @Component
-public class MessageHandler {
+public class ConsumerListener {
 
 	@KafkaListener(topics = KafkaConsts.TOPIC_TEST, containerFactory = "ackContainerFactory")
-	public void handleMessage(ConsumerRecord<String, String> record, Acknowledgment acknowledgment) {
+	public void listen(ConsumerRecord<String, String> record, Acknowledgment acknowledgment) {
 		try {
 			String message = record.value();
 			log.info("收到消息: {}", message);
