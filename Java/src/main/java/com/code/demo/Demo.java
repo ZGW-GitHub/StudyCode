@@ -3,6 +3,7 @@ package com.code.demo;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -18,8 +19,10 @@ public class Demo {
 		users.add(new User(13, "test"));
 		users.add(new User(6, "test"));
 		users.add(new User(2, "test"));
-		users.add(new User(3, "test"));
+		users.add(new User(13, "test"));
 		users.add(new User(16, "test"));
+
+		Map<String, List<User>> collect1 = users.stream().collect(Collectors.groupingBy(u -> u.getName() + u.getAge()));
 
 		List<User> collect = users.stream().sorted(Comparator.comparing(user -> user.getAge() * (-1))).collect(Collectors.toList());
 		collect.forEach(user -> System.out.println(user.getAge()));
