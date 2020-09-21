@@ -1,6 +1,7 @@
 package com.code.collection.arraylist;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -10,14 +11,27 @@ import java.util.List;
 public class AddDemo {
 	public static void main(String[] args) {
 
-		List<String> listA = new ArrayList<>();
-		listA.add("test");
+		List<Integer> integers = Arrays.asList(1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000);
 
-		List<String> listB = new ArrayList<>(listA);
+		List<Integer> push = new ArrayList<>();
+		for (Integer i : integers) {
+			push.add(i);
 
-		listA.clear();
+			if (push.size() >= 5) {
+				List<Integer> dopush = new ArrayList<>(push);
+				push.clear();
 
-		listB.forEach(System.out::println); // test
-		listA.forEach(System.out::println); // 无输出
+				doprint(dopush);
+			}
+		}
+
+		if (push.size() > 0) {
+			doprint(push);
+		}
+
+	}
+
+	private static void doprint(List<Integer> dopush) {
+		System.out.println(Arrays.toString(dopush.toArray()));
 	}
 }
