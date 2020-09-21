@@ -5,7 +5,7 @@ package f.proxy.staticProxy;
  */
 public class TimeProxy implements Movable {
 
-    private Movable tank;
+    private final Movable tank;
 
     public TimeProxy(Movable tank) {
         this.tank = tank;

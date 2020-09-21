@@ -5,7 +5,7 @@ package f.proxy.staticProxy;
  */
 public class LogProxy implements Movable {
 
-    private Movable tanK;
+    private final Movable tanK;
 
     public LogProxy(Movable tanK) {
         this.tanK = tanK;
