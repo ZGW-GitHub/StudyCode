@@ -16,11 +16,15 @@ public class RemoveDemo {
 
 	public static void main(String[] args) {
 
-		Predicate<String> predicate = p -> p.equals("a") || p.equals("b");
+		Predicate<String> predicate = p -> "a".equals(p) || "b".equals(p);
 
 		// 迭代器循环，使用迭代器的remove()方法删除
 		// 可以正常删除结果正确
-		deleteByIterator(getList(), predicate);
+//		deleteByIterator(getList(), predicate);
+
+		// 迭代器循环，使用迭代器的remove()方法删除
+		// 可以正常删除结果正确
+		deleteByMethod(getList(), predicate);
 
 		// 普通for循环倒序删除
 		// 可以正常删除结果正确
@@ -45,7 +49,6 @@ public class RemoveDemo {
 		// 增强版for循环删除
 		// 不能删除 报错 java.util.ConcurrentModificationException
 		deleteByEnhancedForLoop(getList(), predicate);
-
 	}
 
 	public static List<String> getList() {
@@ -112,6 +115,16 @@ public class RemoveDemo {
 		}
 		System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName() + ":" + list.toString());
 
+	}
+
+	/**
+	 * 迭代器循环，使用集合的removeIf()方法删除
+	 * 可以正常删除结果正确
+	 */
+	public static void deleteByMethod(List<String> list, Predicate<String> predicate) {
+		list.removeIf(predicate);
+
+		System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName() + ":" + list.toString());
 	}
 
 	/**
