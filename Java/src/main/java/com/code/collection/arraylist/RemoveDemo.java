@@ -20,7 +20,7 @@ public class RemoveDemo {
 
 		// 迭代器循环，使用迭代器的remove()方法删除
 		// 可以正常删除结果正确
-//		deleteByIterator(getList(), predicate);
+		deleteByIterator(getList(), predicate);
 
 		// 迭代器循环，使用迭代器的remove()方法删除
 		// 可以正常删除结果正确
