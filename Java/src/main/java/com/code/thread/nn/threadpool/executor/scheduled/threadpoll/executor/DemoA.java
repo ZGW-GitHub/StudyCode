@@ -15,9 +15,9 @@ public class DemoA {
 
 	public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-//        testScheduleWithRunnable();
-//        testScheduleWithCallable();
-//        testScheduleAtFixedRate();
+        testScheduleWithRunnable();
+        testScheduleWithCallable();
+        testScheduleAtFixedRate();
 		testScheduleWithFixedDelay();
 
 	}
