@@ -8,7 +8,7 @@ import java.util.List;
  * @author 愆凡
  * @date 2020/9/3 11:41 上午
  */
-public class AddDemo {
+public class Demo {
 	public static void main(String[] args) {
 
 		List<Integer> integers = Arrays.asList(1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000);

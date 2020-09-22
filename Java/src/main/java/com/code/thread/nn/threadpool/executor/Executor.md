@@ -10,11 +10,11 @@
 | ------------------------------------ | ------------------------------------------------------------ |
 | `int  corePoolSize`                  | 核心线程数                                                   |
 | `int  maximumPoolSize`               | 最大线程数                                                   |
-| `long  keepAliveTime`                | 当线程数大于核心线程数时，<br />多余的空闲线程在终止之前等待新任务的最长时间 |
+| `long  keepAliveTime`                | 非核心线程空闲后的存活时间 |
 | `TimeUnit  unit`                     | 时间单位                                                     |
-| `BlockingQueue<Runnable>  workQueue` | block队列                                                    |
+| `BlockingQueue<Runnable>  workQueue` | 线程池所使用的缓冲队列                                                    |
 | `ThreadFactory  threadFactory`       | 执行程序创建新线程时使用的工厂                               |
-| `RejectedExecutionHandler  handler`  | 当线程数量已达到线程边界和队列容量最大值时，<br />阻止线程使用的处理程序 |
+| `RejectedExecutionHandler  handler`  | 线程池对拒绝任务的处理策略 |
 
 
      提交 < 核心线程数
@@ -22,11 +22,11 @@
      提交 > 核心线程数
          放入等待队列
      提交 >= 核心线程数 + 等待队列大小
-         创建线程数++ ，直到创建线程数 = 最大线程数
+         创建线程数非核心线程执行任务 ，直到创建线程数 = 最大线程数
      提交 > 最大线程数 + 等待队列大小
          执行”拒绝策略“
      提交 < 最大线程数
-         这些线程（最大线程数 - 提交），将在空闲时间 > keepAliveTime 时被销毁
+         空闲下来的非核心线程将在空闲时间超过 keepAliveTime 时被销毁
 ------------------------------------------------------------------------------------------
 ### shutDown	&	shutDownNow
 
