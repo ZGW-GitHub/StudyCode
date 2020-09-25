@@ -1,5 +1,7 @@
 package com.code.thread.oo.queue.and.container.block.queue;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -8,28 +10,16 @@ import java.util.concurrent.TimeUnit;
 /**
  * 注意：
  *      大小固定、不允许NULL
+ *
+ * @author 愆凡
  */
 public class ArrayBlockingQueueTest {
 
-    private static final ArrayBlockingQueue<Integer> queue = new ArrayBlockingQueue<Integer>(2);
-
-    public static void main(String[] args) throws InterruptedException {
-
-//        testAdd();
-//        testOffer();
-//        testPut();
-//        testPoll();
-//        testPeek();
-//        testElement();
-//        testRemove();
-//        testTake();
-//        testDrainTo();
-//        testRemainingCapacity();
-
-    }
+    private final ArrayBlockingQueue<Integer> queue = new ArrayBlockingQueue<>(2);
 
     // 满，抛异常
-    private static void testAdd() {
+    @Test
+    public void testAdd() {
 
         queue.add(1);
         queue.add(2);
@@ -37,7 +27,8 @@ public class ArrayBlockingQueueTest {
     }
 
     // 满，返回 false
-    private static void testOffer() {
+    @Test
+    public void testOffer() {
 
         queue.offer(1);
         queue.offer(2);
@@ -45,7 +36,8 @@ public class ArrayBlockingQueueTest {
     }
 
     // 满，阻塞
-    private static void testPut() throws InterruptedException {
+    @Test
+    public void testPut() throws InterruptedException {
 
         queue.put(1);
         queue.put(2);
@@ -66,7 +58,8 @@ public class ArrayBlockingQueueTest {
 
     // 删除并返回头。
     // 空：返回null
-    private static void testPoll() {
+    @Test
+    public void testPoll() {
 
         queue.add(1);
         queue.add(2);
@@ -78,7 +71,8 @@ public class ArrayBlockingQueueTest {
 
     // 返回头
     // 空：返回null
-    private static void testPeek() {
+    @Test
+    public void testPeek() {
 
         queue.add(1);
         queue.add(2);
@@ -92,7 +86,8 @@ public class ArrayBlockingQueueTest {
 
     // 返回头
     // 空：抛异常
-    private static void testElement() {
+    @Test
+    public void testElement() {
 
         queue.add(1);
         System.out.println(queue.element()); // 1
@@ -105,7 +100,8 @@ public class ArrayBlockingQueueTest {
 
     // 删除并返回头。
     // 空：抛异常
-    private static void testRemove() {
+    @Test
+    public void testRemove() {
 
         queue.add(1);
         System.out.println(queue.remove()); // 1
@@ -115,14 +111,16 @@ public class ArrayBlockingQueueTest {
 
     // 删除并返回头
     // 空：阻塞
-    private static void testTake() throws InterruptedException {
+    @Test
+    public void testTake() throws InterruptedException {
         queue.add(1);
         System.out.println(queue.take());
         System.out.println(queue.take()); // 阻塞住
     }
 
     // 将队列中的值复制到一个容器
-    private static void testDrainTo() {
+    @Test
+    public void testDrainTo() {
 
         queue.add(1);
         queue.add(2);
@@ -135,7 +133,8 @@ public class ArrayBlockingQueueTest {
     }
 
     // 剩余容量
-    private static void testRemainingCapacity() {
+    @Test
+    public void testRemainingCapacity() {
 
         System.out.println(queue.remainingCapacity()); // 2
         queue.add(1);
