@@ -1,6 +1,3 @@
-/*
-      Date:  2019-07-30 12:43
-                                 */
 package com.code.collection.block.queue;
 
 import java.util.concurrent.LinkedTransferQueue;
@@ -10,6 +7,8 @@ import java.util.concurrent.LinkedTransferQueue;
  * 无界的
  * <p>
  * 有担保地交付元素
+ *
+ * @author 愆凡
  */
 public class LinkedTransferQueueTest {
 

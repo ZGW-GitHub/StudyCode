@@ -1,6 +1,3 @@
-/*
-      Date:  2019-12-15 17:08
-                                 */
 package book;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;

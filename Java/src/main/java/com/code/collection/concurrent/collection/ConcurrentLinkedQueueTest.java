@@ -1,10 +1,10 @@
-/*
-      Date:  2019-08-06 7:41
-                                 */
 package com.code.collection.concurrent.collection;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+/**
+ * @author 愆凡
+ */
 public class ConcurrentLinkedQueueTest {
 
 	public static void main(String[] args) {

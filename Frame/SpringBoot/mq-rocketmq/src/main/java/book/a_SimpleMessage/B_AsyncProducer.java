@@ -1,6 +1,3 @@
-/*
-      Date:  2019-12-15 17:29
-                                 */
 package book.a_SimpleMessage;
 
 import org.apache.rocketmq.client.exception.MQBrokerException;
@@ -18,6 +15,8 @@ import java.io.UnsupportedEncodingException;
  * 消息类型：简单消息
  * 消息发送方式：异步发送
  * 应用：异步发送通常被用于对响应时间敏感的业务场景
+ *
+ * @author 愆凡
  */
 public class B_AsyncProducer {
 	public static void main(String[] args) throws MQClientException, RemotingException, InterruptedException, MQBrokerException, UnsupportedEncodingException {

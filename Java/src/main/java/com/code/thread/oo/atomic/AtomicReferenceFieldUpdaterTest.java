@@ -3,7 +3,7 @@ package com.code.thread.oo.atomic;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 /**
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class AtomicReferenceFieldUpdaterTest {
 

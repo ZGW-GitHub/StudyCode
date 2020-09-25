@@ -15,6 +15,8 @@ import java.net.InetAddress;
  * C:调用Socket对象的接收方法接收数据
  * D:解析数据包，并显示在控制台
  * E:释放资源
+ *
+ * @author 愆凡
  */
 public class ReceiveDemo {
 	public static void main(String[] args) throws IOException {

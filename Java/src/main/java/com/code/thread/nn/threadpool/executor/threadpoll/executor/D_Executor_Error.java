@@ -9,6 +9,8 @@ import java.util.stream.IntStream;
 
 /**
  * 定义异常处理器，并为 ExecutorService 设置。
+ *
+ * @author 愆凡
  */
 public class D_Executor_Error {
 

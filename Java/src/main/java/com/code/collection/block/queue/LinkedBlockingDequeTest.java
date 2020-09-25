@@ -1,6 +1,3 @@
-/*
-      Date:  2019-07-30 12:15
-                                 */
 package com.code.collection.block.queue;
 
 import java.util.concurrent.LinkedBlockingDeque;
@@ -16,6 +13,8 @@ import java.util.concurrent.LinkedBlockingDeque;
  * 可以双向存取
  * <p>
  * 不能有NULL元素
+ *
+ * @author 愆凡
  */
 public class LinkedBlockingDequeTest {
 

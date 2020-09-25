@@ -1,6 +1,3 @@
-/*
-      Date:  2019-12-17 18:33
-                                 */
 package come.code.dubbo.provider.serviceimpl;
 
 import com.code.dubbo.api.TestService;
@@ -11,9 +8,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author NotUpToYou
- * <p>
  * 暴露服务
+ *
+ * @author 愆凡
  */
 @Service
 public class TestServiceImpl implements TestService {

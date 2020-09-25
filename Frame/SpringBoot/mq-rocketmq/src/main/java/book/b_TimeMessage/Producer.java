@@ -1,6 +1,3 @@
-/*
-      Date:  2019-12-15 19:42
-                                 */
 package book.b_TimeMessage;
 
 import org.apache.rocketmq.client.exception.MQBrokerException;

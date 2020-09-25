@@ -9,7 +9,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.CharsetUtil;
 
 /**
- * @author NotUpToYou
+ * @author 愆凡
  * <p>
  * Sharable ：标记该类的实例可以被多个Channel共享
  */

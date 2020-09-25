@@ -7,7 +7,7 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class Client {
 

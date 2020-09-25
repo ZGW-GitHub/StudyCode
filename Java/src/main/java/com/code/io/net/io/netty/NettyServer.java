@@ -10,7 +10,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.util.concurrent.Future;
 
 /**
- * @author zgw
+ * @author 愆凡
  */
 public class NettyServer {
 	public static void main(String[] args) {

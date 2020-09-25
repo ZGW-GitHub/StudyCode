@@ -4,7 +4,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 /**
- * @author zgw
+ * @author 愆凡
  * @date 2020/4/21 3:06 下午
  */
 public class ApiExceptionallyTestC {

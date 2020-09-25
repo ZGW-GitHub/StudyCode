@@ -1,6 +1,3 @@
-/*
-      Date:  2019-08-06 7:10
-                                 */
 package com.code.collection.concurrent.collection;
 
 import java.util.concurrent.ConcurrentSkipListMap;

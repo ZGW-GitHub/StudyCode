@@ -1,7 +1,7 @@
 package f.proxy.dynamicProxy;
 
 /**
- * @author NotUpToYou
+ * @author 愆凡
  */
 public interface Movable {
     void run();

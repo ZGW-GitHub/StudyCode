@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * acquireUninterruptibly      不可被中断地获取信号量（对中断操作不理睬）
  * drainPermits                获取所有信号量
  *
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class SemaphoreTest2 {
 

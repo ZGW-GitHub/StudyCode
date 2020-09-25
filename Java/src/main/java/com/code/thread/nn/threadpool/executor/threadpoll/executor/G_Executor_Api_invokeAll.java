@@ -8,6 +8,8 @@ import java.util.stream.IntStream;
 /**
  * invokeAll(callableList) ：
  * 提交了多个 Callable ，并等待其全部完成。
+ *
+ * @author 愆凡
  */
 public class G_Executor_Api_invokeAll {
 

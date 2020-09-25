@@ -7,6 +7,8 @@ import java.util.stream.IntStream;
 
 /**
  * 通过自定义 Runnable 实现异常的处理
+ *
+ * @author 愆凡
  */
 public class E_Executor_Error {
 

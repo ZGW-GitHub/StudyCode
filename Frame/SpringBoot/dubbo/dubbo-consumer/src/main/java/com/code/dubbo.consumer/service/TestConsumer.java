@@ -5,7 +5,7 @@ import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
 
 /**
- * @author NotUpToYou
+ * @author 愆凡
  */
 @Component
 public class TestConsumer {

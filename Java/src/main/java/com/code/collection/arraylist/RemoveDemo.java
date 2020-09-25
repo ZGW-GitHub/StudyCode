@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.function.Predicate;
 
 /**
+ * 循环删除 ArrayList 中指定元素
+ *
  * @author 愆凡
  * @date 2020/7/17 4:21 下午
- * <p>
- * 循环删除 ArrayList 中指定元素
  */
 public class RemoveDemo {
 

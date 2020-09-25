@@ -8,6 +8,8 @@ import java.util.stream.IntStream;
 /**
  * invokeAny(callableList) ：
  * 提交了多个 Callable ，等待其中一个完成，其余的就会退出工作。（注意：有可能有两个线程几乎同时完成任务，但只会返回其中的一个的工作结果）
+ *
+ * @author 愆凡
  */
 public class F_Executor_Api_invokeAny {
 

@@ -3,7 +3,7 @@ package f.proxy.cglibProxy;
 import java.util.Random;
 
 /**
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class TanK {
     public void run() {

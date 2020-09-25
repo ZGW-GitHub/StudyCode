@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.IOException;
 
 /**
- * @author NotUpToYou
- * <p>
  * EnableDubbo 指定服务所在的包，从而进行扫描
+ *
+ * @author 愆凡
  */
 @SpringBootApplication
 @EnableDubbo(scanBasePackages = {"come.code.dubbo.provider.serviceimpl"})

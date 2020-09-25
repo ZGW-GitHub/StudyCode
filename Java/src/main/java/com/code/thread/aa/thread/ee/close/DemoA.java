@@ -3,7 +3,7 @@ package com.code.thread.aa.thread.ee.close;
 /**
  * 通过一个 Boolean 标识位来终止线程，有 BUG
  *
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class DemoA {
 

@@ -1,7 +1,7 @@
 package com.code.thread.aa.thread.ee.close;
 
 /**
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class ForceCloseService {
 

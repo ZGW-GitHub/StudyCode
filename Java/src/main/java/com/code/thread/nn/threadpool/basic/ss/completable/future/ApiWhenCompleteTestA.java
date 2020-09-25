@@ -4,9 +4,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 /**
- * @author 愆凡
- * @date 2020/4/20 11:55 上午
- * <p>
  * 结果：
  * begin to start compute
  * end to compute, passed:1587362005158
@@ -17,6 +14,8 @@ import java.util.concurrent.ExecutionException;
  * <p>
  * 结论：
  * 使用 whenComplete ：future1 、future2 同步执行
+ *
+ * @author 愆凡
  */
 public class ApiWhenCompleteTestA {
 	public static void main(String[] args) throws ExecutionException, InterruptedException {

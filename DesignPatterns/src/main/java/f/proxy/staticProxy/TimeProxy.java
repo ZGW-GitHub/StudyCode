@@ -1,7 +1,7 @@
 package f.proxy.staticProxy;
 
 /**
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class TimeProxy implements Movable {
 

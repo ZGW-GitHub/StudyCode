@@ -9,6 +9,8 @@ import java.util.concurrent.TimeUnit;
  *      如果此移相器是分层相位器的成员，则该组中的所有移相器都将终止。
  *      如果此移相器已终止，则此方法无效。
  *      在一个或多个任务遇到意外异常后，此方法可用于协调恢复。
+ *
+ * @author 愆凡
  */
 public class PhaserTestIsTerminated {
 

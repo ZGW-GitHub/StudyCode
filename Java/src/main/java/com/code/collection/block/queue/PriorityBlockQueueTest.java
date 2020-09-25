@@ -12,6 +12,8 @@ import java.util.concurrent.PriorityBlockingQueue;
  * 与 ArrayBlockingQueue 相比：
  * 增加了排序
  * put() 、offer()、add() 与 ArrayBlockingQueue 一致
+ *
+ * @author 愆凡
  */
 public class PriorityBlockQueueTest {
 

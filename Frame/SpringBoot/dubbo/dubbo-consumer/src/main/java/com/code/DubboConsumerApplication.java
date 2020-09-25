@@ -9,7 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import java.io.IOException;
 
 /**
- * @author NotUpToYou
+ * @author 愆凡
  * <p>
  * EnableDubbo 指定要扫描的消费注解，会触发注入
  * <p>

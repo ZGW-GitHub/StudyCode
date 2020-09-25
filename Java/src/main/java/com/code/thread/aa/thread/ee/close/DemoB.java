@@ -3,7 +3,7 @@ package com.code.thread.aa.thread.ee.close;
 /**
  * 通过 中断标识位 来终止线程，有 BUG
  *
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class DemoB {
 

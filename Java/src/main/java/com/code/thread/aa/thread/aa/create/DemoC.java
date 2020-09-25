@@ -7,7 +7,7 @@ import java.util.concurrent.FutureTask;
 /**
  * 通过创建类实现 Callable 接口，来创建线程
  *
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class DemoC {
 

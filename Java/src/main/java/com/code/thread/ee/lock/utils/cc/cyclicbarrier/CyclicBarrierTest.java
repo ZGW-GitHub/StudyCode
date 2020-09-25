@@ -4,6 +4,9 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author 愆凡
+ */
 public class CyclicBarrierTest {
 
 	private static final CyclicBarrier barrier = new CyclicBarrier(3, () -> System.out.println(Thread.currentThread().getName() + " 回调函数！"));

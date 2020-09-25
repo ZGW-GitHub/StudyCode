@@ -14,6 +14,8 @@ import java.net.Socket;
  * B:监听客户端连接。返回一个对应的Socket对象
  * C:获取输入流，读取数据显示在控制台
  * D:释放资源
+ *
+ * @author 愆凡
  */
 public class ServerDemo {
 	public static void main(String[] args) throws IOException {

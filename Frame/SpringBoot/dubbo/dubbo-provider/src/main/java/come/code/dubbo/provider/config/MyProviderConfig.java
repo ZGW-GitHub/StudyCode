@@ -1,6 +1,3 @@
-/*
-      Date:  2019-12-17 18:47
-                                 */
 package come.code.dubbo.provider.config;
 
 import org.apache.dubbo.config.ApplicationConfig;
@@ -11,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author NotUpToYou
+ * @author 愆凡
  */
 @Configuration
 public class MyProviderConfig {

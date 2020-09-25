@@ -14,6 +14,8 @@ import java.net.InetAddress;
  * B:创建数据，并把数据打包
  * C:调用Socket对象的发送方法发送数据包
  * D:释放资源
+ *
+ * @author 愆凡
  */
 public class SendDemo {
 	public static void main(String[] args) throws IOException {

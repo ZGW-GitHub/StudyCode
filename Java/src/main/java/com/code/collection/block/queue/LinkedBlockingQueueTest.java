@@ -10,6 +10,8 @@ import java.util.concurrent.LinkedBlockingQueue;
  * 无参构造：则队列最大为 Integer.MAX_VALUE
  * 有参构造：则队列最大为传入的参数
  * 有参（参数为容器对象）构造：此构造会先调用有参构造：this(Integer.MAX_VALUE);
+ *
+ * @author 愆凡
  */
 public class LinkedBlockingQueueTest {
 

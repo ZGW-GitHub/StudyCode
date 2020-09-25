@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * ThreadFactory threadFactory,             执行程序创建新线程时使用的工厂
  * RejectedExecutionHandler handler         当线程数量已达到线程边界和队列容量最大值时，阻止线程使用的处理程序
  *
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class A_ThreadPoolExecutor_ExecutorService {
 

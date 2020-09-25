@@ -3,9 +3,9 @@ package com.code.thread.nn.threadpool.basic.nn.futuretask;
 import java.util.concurrent.*;
 
 /**
- * @author zgw
+ * @author 愆凡
  * @date 2020-03-24 14:04
- **/
+ */
 public class DemoA {
 	public static void main(String[] args) throws ExecutionException, InterruptedException {
 

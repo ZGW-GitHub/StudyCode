@@ -1,7 +1,7 @@
 package com.code.thread.aa.thread.cc.methods;
 
 /**
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class Join {
 

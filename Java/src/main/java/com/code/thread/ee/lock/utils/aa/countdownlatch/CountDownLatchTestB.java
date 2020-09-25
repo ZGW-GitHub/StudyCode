@@ -4,6 +4,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author 愆凡
+ */
 public class CountDownLatchTestB {
 
 	// 线程池（参数：线程可以通过 await 之前必须调用 countDown 的次数）

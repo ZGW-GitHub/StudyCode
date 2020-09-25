@@ -3,7 +3,7 @@ package com.code.thread.aa.thread.aa.create;
 /**
  * 通过创建类实现 Runnable 接口，来创建线程
  *
- * @author NotUpToYou
+ * @author 愆凡
  * @date 2019-11-30 15:35
  */
 public class DemoB {

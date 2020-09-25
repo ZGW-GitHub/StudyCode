@@ -8,6 +8,8 @@ import java.util.concurrent.Executors;
  * API :
  * await()
  * countDown()
+ *
+ * @author 愆凡
  */
 public class CountDownLatchTestA {
 

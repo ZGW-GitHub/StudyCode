@@ -3,7 +3,7 @@ package com.code.thread.aa.thread.ee.close;
 /**
  * 强制结束线程
  *
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class ForceCloseTest {
 

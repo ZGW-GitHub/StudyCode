@@ -6,7 +6,7 @@ package com.code.thread.aa.thread.cc.methods;
  * Thread 类的实例方法：isInterrupted()	不清除中断标记
  * Thread 类的静态方法：interrupted()		清除中断标记
  *
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class Interrupted {
 

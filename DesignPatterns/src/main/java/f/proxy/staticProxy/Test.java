@@ -1,5 +1,8 @@
 package f.proxy.staticProxy;
 
+/**
+ * @author 愆凡
+ */
 public class Test {
 
     public static void main(String[] args) {

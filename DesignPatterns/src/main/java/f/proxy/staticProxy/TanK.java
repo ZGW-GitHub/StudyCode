@@ -3,7 +3,7 @@ package f.proxy.staticProxy;
 import java.util.Random;
 
 /**
- * @author NotUpToYou
+ * @author 愆凡
  */
 public class TanK implements Movable {
     @Override

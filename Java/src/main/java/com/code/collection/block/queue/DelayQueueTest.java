@@ -12,6 +12,8 @@ package com.code.collection.block.queue;
  * 3、使用迭代器取元素不会等待过期元素，iterator.next() 直接返回 null/element.
  * 4、当没有元素过期，使用 poll() 、take() 取元素会阻塞
  * 5、不允许NULL元素
+ *
+ * @author 愆凡
  */
 public class DelayQueueTest {
 
