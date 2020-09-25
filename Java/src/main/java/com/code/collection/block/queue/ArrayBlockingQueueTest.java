@@ -20,25 +20,24 @@ public class ArrayBlockingQueueTest {
 	// 满，抛异常
 	@Test
 	public void testAdd() {
-
 		queue.add(1);
 		queue.add(2);
-//        System.out.println(queue.add(3)); // 抛异常
+
+        System.out.println(queue.add(3)); // 抛异常
 	}
 
 	// 满，返回 false
 	@Test
 	public void testOffer() {
-
 		queue.offer(1);
 		queue.offer(2);
+
 		System.out.println(queue.offer(3)); // 返回 false
 	}
 
 	// 满，阻塞
 	@Test
 	public void testPut() throws InterruptedException {
-
 		queue.put(1);
 		queue.put(2);
 
@@ -53,49 +52,47 @@ public class ArrayBlockingQueueTest {
 		queue.put(4); // 排后面
 
 		System.out.println("结束！");
-
 	}
 
 	// 删除并返回头。
 	// 空：返回null
 	@Test
 	public void testPoll() {
-
 		queue.add(1);
 		queue.add(2);
+
 		System.out.println(queue.poll()); // 1
 		System.out.println(queue.poll()); // 2
 		System.out.println(queue.poll()); // null
-
 	}
 
 	// 返回头
 	// 空：返回null
 	@Test
 	public void testPeek() {
-
 		queue.add(1);
 		queue.add(2);
+
 		System.out.println(queue.peek()); // 1
 		System.out.println(queue.peek()); // 1
 
 		queue.clear();
-		System.out.println(queue.peek()); // null
 
+		System.out.println(queue.peek()); // null
 	}
 
 	// 返回头
 	// 空：抛异常
 	@Test
 	public void testElement() {
-
 		queue.add(1);
+
 		System.out.println(queue.element()); // 1
 		System.out.println(queue.element()); // 1
 
 		queue.clear();
-		System.out.println(queue.element()); // 抛异常
 
+		System.out.println(queue.element()); // 抛异常
 	}
 
 	// 删除并返回头。
