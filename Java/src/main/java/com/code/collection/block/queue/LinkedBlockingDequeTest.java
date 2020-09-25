@@ -1,5 +1,7 @@
 package com.code.collection.block.queue;
 
+import org.junit.Test;
+
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**
@@ -18,9 +20,10 @@ import java.util.concurrent.LinkedBlockingDeque;
  */
 public class LinkedBlockingDequeTest {
 
-	public static void main(String[] args) {
+	private final LinkedBlockingDeque<Object> deque = new LinkedBlockingDeque<>(2);
 
-		LinkedBlockingDeque<Object> blockingDeque = new LinkedBlockingDeque<>();
+	@Test
+	public void addTest() {
 
 	}
 
