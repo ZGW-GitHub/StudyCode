@@ -12,28 +12,29 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MyConsumerConfig {
 
-    @Bean
-    ApplicationConfig applicationConfig() {
-        ApplicationConfig applicationConfig = new ApplicationConfig();
-        applicationConfig.setName("echo-dubbo.consumer");
-        return applicationConfig;
-    }
+	@Bean
+	ApplicationConfig applicationConfig() {
+		ApplicationConfig applicationConfig = new ApplicationConfig();
+		applicationConfig.setName("echo-dubbo.consumer");
+		return applicationConfig;
+	}
 
-    @Bean
-    public ConsumerConfig consumerConfig() {
-        return new ConsumerConfig();
-    }
+	@Bean
+	public ConsumerConfig consumerConfig() {
+		return new ConsumerConfig();
+	}
 
-    /**
-     * 注册中心配置
-     * @return RegistryConfig
-     */
-    @Bean
-    public RegistryConfig registryConfig() {
-        RegistryConfig registryConfig = new RegistryConfig();
-        registryConfig.setProtocol("zookeeper");
-        registryConfig.setAddress("127.0.0.1:2181");
-        return registryConfig;
-    }
+	/**
+	 * 注册中心配置
+	 *
+	 * @return RegistryConfig
+	 */
+	@Bean
+	public RegistryConfig registryConfig() {
+		RegistryConfig registryConfig = new RegistryConfig();
+		registryConfig.setProtocol("zookeeper");
+		registryConfig.setAddress("127.0.0.1:2181");
+		return registryConfig;
+	}
 
 }

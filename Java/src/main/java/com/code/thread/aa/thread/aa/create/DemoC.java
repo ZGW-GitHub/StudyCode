@@ -11,21 +11,21 @@ import java.util.concurrent.FutureTask;
  */
 public class DemoC {
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+	public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-        FutureTask<String> futureTask = new FutureTask<>(new MyCallable());
-        // 实际还是以 Callable 来创建并启动线程
-        new Thread(futureTask).start();
-        futureTask.get();
+		FutureTask<String> futureTask = new FutureTask<>(new MyCallable());
+		// 实际还是以 Callable 来创建并启动线程
+		new Thread(futureTask).start();
+		futureTask.get();
 
-    }
+	}
 
-    private static class MyCallable implements Callable<String> {
-        @Override
-        public String call() throws Exception {
-            // 线程需要执行的业务逻辑
-            return null;
-        }
-    }
+	private static class MyCallable implements Callable<String> {
+		@Override
+		public String call() throws Exception {
+			// 线程需要执行的业务逻辑
+			return null;
+		}
+	}
 
 }

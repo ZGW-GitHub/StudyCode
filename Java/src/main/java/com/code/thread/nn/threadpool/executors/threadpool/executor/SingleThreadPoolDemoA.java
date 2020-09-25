@@ -10,26 +10,26 @@ import java.util.stream.IntStream;
  */
 public class SingleThreadPoolDemoA {
 
-    public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException {
 
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
+		ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-        // 不能输出了，因为获取 SingleThreadExecutor 时被包装了，不能强转为 ThreadPoolExecutor
+		// 不能输出了，因为获取 SingleThreadExecutor 时被包装了，不能强转为 ThreadPoolExecutor
 //        System.out.println(((ThreadPoolExecutor)executorService).getActiveCount()); // 0
 
-        IntStream.range(0, 100).boxed().forEach(integer -> executorService.execute(()->{
-            try {
-                TimeUnit.SECONDS.sleep(2);
-                System.out.println(Thread.currentThread().getName() + " is ok !");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }));
-        TimeUnit.SECONDS.sleep(1);
+		IntStream.range(0, 100).boxed().forEach(integer -> executorService.execute(() -> {
+			try {
+				TimeUnit.SECONDS.sleep(2);
+				System.out.println(Thread.currentThread().getName() + " is ok !");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}));
+		TimeUnit.SECONDS.sleep(1);
 
-        // 不能输出了，因为获取 SingleThreadExecutor 时被包装了，不能强转为 ThreadPoolExecutor
+		// 不能输出了，因为获取 SingleThreadExecutor 时被包装了，不能强转为 ThreadPoolExecutor
 //        System.out.println(((ThreadPoolExecutor)executorService).getActiveCount()); // 1
 
-    }
+	}
 
 }

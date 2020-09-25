@@ -14,7 +14,7 @@ public class ApiThenComposeTestB {
 
 		CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> "abc");
 
-		CompletableFuture<String> f =  future.thenCombine(future2, (x,y) -> y + "-" + x);
+		CompletableFuture<String> f = future.thenCombine(future2, (x, y) -> y + "-" + x);
 
 		System.out.println(f.get()); //abc-100
 

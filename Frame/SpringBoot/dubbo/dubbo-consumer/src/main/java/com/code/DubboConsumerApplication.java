@@ -10,24 +10,24 @@ import java.io.IOException;
 
 /**
  * @author NotUpToYou
- *
+ * <p>
  * EnableDubbo 指定要扫描的消费注解，会触发注入
- *
+ * <p>
  * 消费者
  */
 @SpringBootApplication
 @EnableDubbo(scanBasePackages = {"com.code.dubbo.consumer.service"})
 public class DubboConsumerApplication {
-    public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 
-        ConfigurableApplicationContext context = SpringApplication.run(DubboConsumerApplication.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(DubboConsumerApplication.class, args);
 
-        EchoConsumer echoConsumer = context.getBean(EchoConsumer.class);
-        String echo = echoConsumer.echo("Hello World !");
+		EchoConsumer echoConsumer = context.getBean(EchoConsumer.class);
+		String echo = echoConsumer.echo("Hello World !");
 
-        System.out.println("result : " + echo);
+		System.out.println("result : " + echo);
 
-        System.in.read();
+		System.in.read();
 
-    }
+	}
 }

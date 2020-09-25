@@ -16,18 +16,18 @@ import java.util.Date;
 @Component
 public class CommonFieldHandler implements MetaObjectHandler {
 
-    @Override
-    public void insertFill(MetaObject metaObject) {
-        log.info("start insert fill ....");
+	@Override
+	public void insertFill(MetaObject metaObject) {
+		log.info("start insert fill ....");
 
-        this.setFieldValByName("createTime", new Date(), metaObject);
-        this.setFieldValByName("lastUpdateTime", new Date(), metaObject);
-    }
+		this.setFieldValByName("createTime", new Date(), metaObject);
+		this.setFieldValByName("lastUpdateTime", new Date(), metaObject);
+	}
 
-    @Override
-    public void updateFill(MetaObject metaObject) {
-        log.info("start update fill ....");
+	@Override
+	public void updateFill(MetaObject metaObject) {
+		log.info("start update fill ....");
 
-        this.setFieldValByName("lastUpdateTime", new Date(), metaObject);
-    }
+		this.setFieldValByName("lastUpdateTime", new Date(), metaObject);
+	}
 }

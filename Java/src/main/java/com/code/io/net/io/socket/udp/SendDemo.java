@@ -8,12 +8,12 @@ import java.net.InetAddress;
 /**
  * @author 愆凡
  * @date 2020/8/10 10:27 上午
- *
+ * <p>
  * UDP协议发送数据：
- * 		A:创建发送端Socket对象
- * 		B:创建数据，并把数据打包
- * 		C:调用Socket对象的发送方法发送数据包
- * 		D:释放资源
+ * A:创建发送端Socket对象
+ * B:创建数据，并把数据打包
+ * C:调用Socket对象的发送方法发送数据包
+ * D:释放资源
  */
 public class SendDemo {
 	public static void main(String[] args) throws IOException {

@@ -111,7 +111,7 @@ public class UserMapperTest extends OrmMybatisMapperAndPageApplicationTest {
 	 * 测试通用Mapper - 查询单个
 	 */
 	@Test
-	public void queryOneTest(){
+	public void queryOneTest() {
 		User user = userMapper.selectByPrimaryKey(2L);
 
 		Assert.assertNotNull(user);

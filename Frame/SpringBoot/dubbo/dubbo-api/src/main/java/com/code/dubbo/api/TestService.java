@@ -8,6 +8,7 @@ public interface TestService {
 
 	/**
 	 * 测试方法
+	 *
 	 * @param msg msg
 	 * @return String
 	 */

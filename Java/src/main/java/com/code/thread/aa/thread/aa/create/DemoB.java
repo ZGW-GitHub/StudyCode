@@ -8,17 +8,17 @@ package com.code.thread.aa.thread.aa.create;
  */
 public class DemoB {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        new Thread(new MyRunnable()).start();
+		new Thread(new MyRunnable()).start();
 
-    }
+	}
 
-    private static class MyRunnable implements Runnable {
-        @Override
-        public void run() {
-            // 线程需要执行的业务逻辑
-        }
-    }
+	private static class MyRunnable implements Runnable {
+		@Override
+		public void run() {
+			// 线程需要执行的业务逻辑
+		}
+	}
 
 }

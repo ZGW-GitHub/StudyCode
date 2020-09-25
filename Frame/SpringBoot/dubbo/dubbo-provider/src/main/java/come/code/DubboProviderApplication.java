@@ -8,17 +8,17 @@ import java.io.IOException;
 
 /**
  * @author NotUpToYou
- *
+ * <p>
  * EnableDubbo 指定服务所在的包，从而进行扫描
  */
 @SpringBootApplication
 @EnableDubbo(scanBasePackages = {"come.code.dubbo.provider.serviceimpl"})
 public class DubboProviderApplication {
-    public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 
-        SpringApplication.run(DubboProviderApplication.class, args);
+		SpringApplication.run(DubboProviderApplication.class, args);
 
-        System.in.read();
+		System.in.read();
 
-    }
+	}
 }

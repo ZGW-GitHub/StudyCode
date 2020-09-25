@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class TestConsumer {
 
-    /**
-     * 调用服务
-     */
-    @Reference
-    private TestService testService;
+	/**
+	 * 调用服务
+	 */
+	@Reference
+	private TestService testService;
 
-    public String test(String msg) {
-        return testService.test(msg);
-    }
+	public String test(String msg) {
+		return testService.test(msg);
+	}
 
 }

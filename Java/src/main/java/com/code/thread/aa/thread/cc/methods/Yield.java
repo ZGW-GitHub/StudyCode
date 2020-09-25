@@ -7,26 +7,27 @@ package com.code.thread.aa.thread.cc.methods;
  * @author NotUpToYou
  */
 public class Yield {
-    /**
-     * 本程序看不出来
-     * @param args args
-     */
-    public static void main(String[] args) {
+	/**
+	 * 本程序看不出来
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
 
-        new Thread(()->{
-            for (int i = 0; i <= 100; i++) {
-                System.out.println(i);
-                if (i == 50) {
-                    Thread.yield();
-                }
-            }
-        }).start();
+		new Thread(() -> {
+			for (int i = 0; i <= 100; i++) {
+				System.out.println(i);
+				if (i == 50) {
+					Thread.yield();
+				}
+			}
+		}).start();
 
-        new Thread(()->{
-            for (int i = 0; i <= 10; i++) {
-                System.out.println("======");
-            }
-        }).start();
+		new Thread(() -> {
+			for (int i = 0; i <= 10; i++) {
+				System.out.println("======");
+			}
+		}).start();
 
-    }
+	}
 }

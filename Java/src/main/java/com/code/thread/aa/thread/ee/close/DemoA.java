@@ -7,34 +7,36 @@ package com.code.thread.aa.thread.ee.close;
  */
 public class DemoA {
 
-    private static class Worker extends Thread{
+	private static class Worker extends Thread {
 
-        private volatile boolean flag = true;
+		private volatile boolean flag = true;
 
-        @Override
-        public void run() {
-            // BUG : 如果线程在这里 阻塞 了，此时不能通过 Boolean 或 中断 标识位来结束线程了，怎么办？看后续的代码
-            while (flag){
-                // 干活。。。
-            }
-        }
+		@Override
+		public void run() {
+			// BUG : 如果线程在这里 阻塞 了，此时不能通过 Boolean 或 中断 标识位来结束线程了，怎么办？看后续的代码
+			while (flag) {
+				// 干活。。。
+			}
+		}
 
-        public void shutdown(){
-            this.flag = false;
-        }
+		public void shutdown() {
+			this.flag = false;
+		}
 
-    };
+	}
 
-    public static void main(String[] args) throws InterruptedException {
+	;
 
-        Worker worker = new Worker();
+	public static void main(String[] args) throws InterruptedException {
 
-        worker.start();
+		Worker worker = new Worker();
 
-        Thread.sleep(3000);
+		worker.start();
 
-        worker.shutdown();
+		Thread.sleep(3000);
 
-    }
+		worker.shutdown();
+
+	}
 
 }

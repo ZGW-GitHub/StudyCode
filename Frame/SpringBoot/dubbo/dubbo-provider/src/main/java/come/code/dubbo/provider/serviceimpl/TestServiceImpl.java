@@ -12,19 +12,19 @@ import java.util.Date;
 
 /**
  * @author NotUpToYou
- *
+ * <p>
  * 暴露服务
  */
 @Service
 public class TestServiceImpl implements TestService {
 
-    @Override
-    public String test(String msg) {
+	@Override
+	public String test(String msg) {
 
-        String time = new SimpleDateFormat("HH:mm:ss").format(new Date());
-        System.out.println("[" + time + "] Get : " + msg + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
-        return msg;
+		String time = new SimpleDateFormat("HH:mm:ss").format(new Date());
+		System.out.println("[" + time + "] Get : " + msg + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
+		return msg;
 
-    }
+	}
 
 }

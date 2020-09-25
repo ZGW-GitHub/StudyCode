@@ -12,21 +12,21 @@ import java.util.concurrent.TimeUnit;
  */
 public class PhaserTestIsTerminated {
 
-    public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException {
 
-        final Phaser phaser = new Phaser(3);
+		final Phaser phaser = new Phaser(3);
 
-        new Thread(phaser::arriveAndAwaitAdvance).start();
+		new Thread(phaser::arriveAndAwaitAdvance).start();
 
-        TimeUnit.SECONDS.sleep(2);
+		TimeUnit.SECONDS.sleep(2);
 
-        System.out.println(phaser.isTerminated()); // false
+		System.out.println(phaser.isTerminated()); // false
 
-        // 强制该相量进入终止状态。
-        phaser.forceTermination();
+		// 强制该相量进入终止状态。
+		phaser.forceTermination();
 
-        System.out.println(phaser.isTerminated()); // true
+		System.out.println(phaser.isTerminated()); // true
 
-    }
+	}
 
 }

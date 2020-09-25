@@ -16,19 +16,19 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan(basePackages = {"com.code.orm.mybatis.plus.mapper"})
 @EnableTransactionManagement
 public class MybatisPlusConfig {
-    /**
-     * 性能分析拦截器，不建议生产使用
-     */
-    @Bean
-    public PerformanceInterceptor performanceInterceptor(){
-        return new PerformanceInterceptor();
-    }
+	/**
+	 * 性能分析拦截器，不建议生产使用
+	 */
+	@Bean
+	public PerformanceInterceptor performanceInterceptor() {
+		return new PerformanceInterceptor();
+	}
 
-    /**
-     * 分页插件
-     */
-    @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        return new PaginationInterceptor();
-    }
+	/**
+	 * 分页插件
+	 */
+	@Bean
+	public PaginationInterceptor paginationInterceptor() {
+		return new PaginationInterceptor();
+	}
 }

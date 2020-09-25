@@ -17,46 +17,46 @@ import java.util.concurrent.TimeUnit;
  */
 public class A_ThreadPoolExecutor_ExecutorService {
 
-    private static final ThreadPoolExecutor THREAD_POOL_EXECUTOR = new ThreadPoolExecutor(
-            1,
-            2,
-            30,
-            TimeUnit.SECONDS,
-            new ArrayBlockingQueue<>(1),
-            Thread::new,
-            new ThreadPoolExecutor.AbortPolicy());
+	private static final ThreadPoolExecutor THREAD_POOL_EXECUTOR = new ThreadPoolExecutor(
+			1,
+			2,
+			30,
+			TimeUnit.SECONDS,
+			new ArrayBlockingQueue<>(1),
+			Thread::new,
+			new ThreadPoolExecutor.AbortPolicy());
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        System.out.println("线程池初始容量：" + THREAD_POOL_EXECUTOR.getCorePoolSize());
-        System.out.println("线程池最大容量：" + THREAD_POOL_EXECUTOR.getMaximumPoolSize());
+		System.out.println("线程池初始容量：" + THREAD_POOL_EXECUTOR.getCorePoolSize());
+		System.out.println("线程池最大容量：" + THREAD_POOL_EXECUTOR.getMaximumPoolSize());
 
-        THREAD_POOL_EXECUTOR.execute(()-> submitDemo(10, "T1"));
-        THREAD_POOL_EXECUTOR.execute(()-> submitDemo(1 , "T2"));
-        THREAD_POOL_EXECUTOR.execute(()-> submitDemo(10,  "T3"));
+		THREAD_POOL_EXECUTOR.execute(() -> submitDemo(10, "T1"));
+		THREAD_POOL_EXECUTOR.execute(() -> submitDemo(1, "T2"));
+		THREAD_POOL_EXECUTOR.execute(() -> submitDemo(10, "T3"));
 //        executorService.execute(()-> submitDemo(10,  "T4"));
 
-        int activeCount = -1;
-        int queueSize = -1;
-        while (true){
-            if (activeCount != THREAD_POOL_EXECUTOR.getActiveCount() || queueSize != THREAD_POOL_EXECUTOR.getQueue().size()) {
-                System.out.println("活动线程的大致数量：" + THREAD_POOL_EXECUTOR.getActiveCount());
-                System.out.println("等待队列中的线程个数：" + THREAD_POOL_EXECUTOR.getQueue().size());
-                activeCount = THREAD_POOL_EXECUTOR.getActiveCount();
-                queueSize = THREAD_POOL_EXECUTOR.getQueue().size();
-            }
-        }
+		int activeCount = -1;
+		int queueSize = -1;
+		while (true) {
+			if (activeCount != THREAD_POOL_EXECUTOR.getActiveCount() || queueSize != THREAD_POOL_EXECUTOR.getQueue().size()) {
+				System.out.println("活动线程的大致数量：" + THREAD_POOL_EXECUTOR.getActiveCount());
+				System.out.println("等待队列中的线程个数：" + THREAD_POOL_EXECUTOR.getQueue().size());
+				activeCount = THREAD_POOL_EXECUTOR.getActiveCount();
+				queueSize = THREAD_POOL_EXECUTOR.getQueue().size();
+			}
+		}
 
-    }
+	}
 
-    private static void submitDemo(long time, String name) {
-        try {
-            System.out.println(name + " ---> 执行了：");
-            TimeUnit.SECONDS.sleep(time);
-            System.out.println(name + " ---> 结束了。");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+	private static void submitDemo(long time, String name) {
+		try {
+			System.out.println(name + " ---> 执行了：");
+			TimeUnit.SECONDS.sleep(time);
+			System.out.println(name + " ---> 结束了。");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

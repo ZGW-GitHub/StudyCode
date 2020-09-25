@@ -13,7 +13,7 @@ public class ApiThenComposeTestA {
 		CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
 			return 100;
 		});
-		CompletableFuture<String> f =  future.thenCompose( i -> {
+		CompletableFuture<String> f = future.thenCompose(i -> {
 			return CompletableFuture.supplyAsync(() -> {
 				return (i * 10) + "";
 			});

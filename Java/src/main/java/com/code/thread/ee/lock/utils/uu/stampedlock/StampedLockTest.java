@@ -4,6 +4,6 @@ import java.util.concurrent.locks.StampedLock;
 
 public class StampedLockTest {
 
-    private static final StampedLock LOCK = new StampedLock();
+	private static final StampedLock LOCK = new StampedLock();
 
 }

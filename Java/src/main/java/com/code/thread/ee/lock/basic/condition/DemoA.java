@@ -20,13 +20,13 @@ public class DemoA {
 
 	public static void main(String[] args) {
 
-		new Thread(()->{
+		new Thread(() -> {
 			while (true) {
 				DemoA.consumer();
 			}
 		}).start();
 
-		new Thread(()->{
+		new Thread(() -> {
 			while (true) {
 				DemoA.provider();
 			}

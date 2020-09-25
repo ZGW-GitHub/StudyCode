@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class EchoConsumer {
 
-    /**
-     * 调用服务
-     */
-    @Reference
-    private EchoService echoService;
+	/**
+	 * 调用服务
+	 */
+	@Reference
+	private EchoService echoService;
 
-    public String echo(String msg) {
-        return echoService.echo(msg);
-    }
+	public String echo(String msg) {
+		return echoService.echo(msg);
+	}
 
 }

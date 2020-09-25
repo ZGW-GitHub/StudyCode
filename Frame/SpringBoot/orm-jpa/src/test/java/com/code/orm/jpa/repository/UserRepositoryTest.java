@@ -57,7 +57,7 @@ public class UserRepositoryTest extends OrmJpaApplicationTest {
 
 	/**
 	 * 动态 SQL
-	 *		使用 别名 拼接参数
+	 * 使用 别名 拼接参数
 	 */
 	@Test
 	@SuppressWarnings("all")
@@ -116,7 +116,7 @@ public class UserRepositoryTest extends OrmJpaApplicationTest {
 
 	/**
 	 * 动态 SQL
-	 *		使用 位置编号 拼接参数
+	 * 使用 位置编号 拼接参数
 	 */
 	@Test
 	@SuppressWarnings("all")

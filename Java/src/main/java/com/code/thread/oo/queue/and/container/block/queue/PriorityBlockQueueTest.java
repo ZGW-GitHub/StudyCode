@@ -7,22 +7,19 @@ import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * 注意：
- *      大小无限（ 直到撑爆 JVM ）
- *
+ * 大小无限（ 直到撑爆 JVM ）
+ * <p>
  * 与 ArrayBlockingQueue 相比：
- *      增加了排序
- *      put() 、offer()、add() 与 ArrayBlockingQueue 一致
- *
+ * 增加了排序
+ * put() 、offer()、add() 与 ArrayBlockingQueue 一致
  */
 public class PriorityBlockQueueTest {
 
-    private static final PriorityBlockingQueue queue = new PriorityBlockingQueue();
+	private static final PriorityBlockingQueue queue = new PriorityBlockingQueue();
 
-    public static void main(String[] args) {
-
-
+	public static void main(String[] args) {
 
 
-    }
+	}
 
 }

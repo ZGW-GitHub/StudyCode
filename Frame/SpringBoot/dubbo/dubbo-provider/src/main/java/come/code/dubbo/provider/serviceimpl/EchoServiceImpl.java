@@ -12,19 +12,19 @@ import java.util.Date;
 
 /**
  * @author NotUpToYou
- *
+ * <p>
  * 暴露服务
  */
 @Service
 public class EchoServiceImpl implements EchoService {
 
-    @Override
-    public String echo(String msg) {
+	@Override
+	public String echo(String msg) {
 
-        String time = new SimpleDateFormat("HH:mm:ss").format(new Date());
-        System.out.println("[" + time + "] Get : " + msg + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
-        return msg;
+		String time = new SimpleDateFormat("HH:mm:ss").format(new Date());
+		System.out.println("[" + time + "] Get : " + msg + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
+		return msg;
 
-    }
+	}
 
 }

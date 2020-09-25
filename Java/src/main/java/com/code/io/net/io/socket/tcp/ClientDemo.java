@@ -1,18 +1,17 @@
 package com.code.io.net.io.socket.tcp;
 
-import java.net.Socket;
-
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.Socket;
 
 /**
  * @author 愆凡
  * @date 2020/8/10 10:26 上午
- *
+ * <p>
  * TCP协议发送数据：
- * 		A:创建发送端的Socket对象，这一步如果成功，就说明连接已经建立成功了
- * 		B:获取输出流，写数据
- * 		C:释放资源
+ * A:创建发送端的Socket对象，这一步如果成功，就说明连接已经建立成功了
+ * B:获取输出流，写数据
+ * C:释放资源
  */
 public class ClientDemo {
 	public static void main(String[] args) throws IOException {

@@ -8,13 +8,13 @@ import java.net.InetAddress;
 /**
  * @author 愆凡
  * @date 2020/8/10 10:29 上午
- *
+ * <p>
  * UDP协议接收数据：
- * 		A:创建接收端Socket对象
- * 		B:创建一个数据包(接收容器)
- * 		C:调用Socket对象的接收方法接收数据
- * 		D:解析数据包，并显示在控制台
- * 		E:释放资源
+ * A:创建接收端Socket对象
+ * B:创建一个数据包(接收容器)
+ * C:调用Socket对象的接收方法接收数据
+ * D:解析数据包，并显示在控制台
+ * E:释放资源
  */
 public class ReceiveDemo {
 	public static void main(String[] args) throws IOException {

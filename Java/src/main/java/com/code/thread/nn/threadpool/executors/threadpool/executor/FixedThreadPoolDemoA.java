@@ -11,26 +11,26 @@ import java.util.stream.IntStream;
  */
 public class FixedThreadPoolDemoA {
 
-    public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException {
 
-        ExecutorService executorService = Executors.newFixedThreadPool(10);
+		ExecutorService executorService = Executors.newFixedThreadPool(10);
 
 		// 0
-        System.out.println(((ThreadPoolExecutor)executorService).getActiveCount());
+		System.out.println(((ThreadPoolExecutor) executorService).getActiveCount());
 
-        IntStream.range(0, 100).boxed().forEach(i -> executorService.execute(()->{
-            try {
-                TimeUnit.SECONDS.sleep(1);
-                System.out.println(Thread.currentThread().getName() + " is ok !");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }));
-        TimeUnit.SECONDS.sleep(1);
+		IntStream.range(0, 100).boxed().forEach(i -> executorService.execute(() -> {
+			try {
+				TimeUnit.SECONDS.sleep(1);
+				System.out.println(Thread.currentThread().getName() + " is ok !");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}));
+		TimeUnit.SECONDS.sleep(1);
 
 		// 10
-        System.out.println(((ThreadPoolExecutor)executorService).getActiveCount());
+		System.out.println(((ThreadPoolExecutor) executorService).getActiveCount());
 
-    }
+	}
 
 }

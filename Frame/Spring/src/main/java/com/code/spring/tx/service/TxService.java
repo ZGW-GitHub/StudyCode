@@ -28,7 +28,7 @@ public class TxService {
 	@Transactional(readOnly = false)
 	public String add(TxEntity txEntity) {
 //		try {
-			return addException(txEntity);
+		return addException(txEntity);
 //		} catch (Exception e) {
 //			return "SUCCESS";
 //		}
@@ -37,7 +37,7 @@ public class TxService {
 	@Transactional(readOnly = false)
 	public String addException(TxEntity txEntity) {
 		txDao.save(txEntity);
-		int e = 1/0;
+		int e = 1 / 0;
 		return "SUCCESS";
 	}
 
