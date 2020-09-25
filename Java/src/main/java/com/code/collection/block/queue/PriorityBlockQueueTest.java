@@ -1,7 +1,7 @@
 /* ******************************
  *   Time:  2019-07-26 16:37    *
  ****************************** */
-package com.code.thread.oo.queue.and.container.block.queue;
+package com.code.collection.block.queue;
 
 import java.util.concurrent.PriorityBlockingQueue;
 

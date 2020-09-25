@@ -1,4 +1,4 @@
-package com.code.thread.oo.queue.and.container.block.queue;
+package com.code.collection.block.queue;
 
 import org.junit.Test;
 

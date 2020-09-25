@@ -1,7 +1,7 @@
 /*
       Date:  2019-07-30 12:15
                                  */
-package com.code.thread.oo.queue.and.container.block.queue;
+package com.code.collection.block.queue;
 
 import java.util.concurrent.LinkedBlockingDeque;
 

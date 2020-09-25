@@ -1,4 +1,4 @@
-package com.code.thread.ss.atomic;
+package com.code.thread.oo.atomic;
 
 import java.util.concurrent.atomic.AtomicLong;
 

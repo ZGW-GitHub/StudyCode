@@ -1,7 +1,4 @@
-/*
-      Date:  2019-07-30 10:30
-                                 */
-package com.code.thread.oo.queue.and.container.block.queue;
+package com.code.collection.block.queue;
 
 /**
  * 注意：

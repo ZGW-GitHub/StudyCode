@@ -1,4 +1,4 @@
-package com.code.thread.ss.atomic;
+package com.code.thread.oo.atomic;
 
 import java.util.Collections;
 import java.util.HashSet;
