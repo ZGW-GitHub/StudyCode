@@ -1,4 +1,4 @@
-package com.code.collection.hashmap;
+package com.code.collection.map.hashmap;
 
 /**
  * @author 愆凡
