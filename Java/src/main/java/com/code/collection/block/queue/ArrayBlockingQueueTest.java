@@ -22,7 +22,7 @@ public class ArrayBlockingQueueTest {
 		queue.add(1);
 		queue.add(2);
 
-        System.out.println(queue.add(3)); // 抛异常
+        queue.add(3); // 抛异常
 	}
 
 	// 满，返回 false
@@ -31,7 +31,7 @@ public class ArrayBlockingQueueTest {
 		queue.offer(1);
 		queue.offer(2);
 
-		System.out.println(queue.offer(3)); // 返回 false
+		queue.offer(3); // 返回 false
 	}
 
 	// 满，阻塞
