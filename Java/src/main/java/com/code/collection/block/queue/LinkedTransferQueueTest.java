@@ -3,10 +3,7 @@ package com.code.collection.block.queue;
 import java.util.concurrent.LinkedTransferQueue;
 
 /**
- * 注意：
- * 无界的
- * <p>
- * 有担保地交付元素
+ * 无界
  *
  * @author 愆凡
  */

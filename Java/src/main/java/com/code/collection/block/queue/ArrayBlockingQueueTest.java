@@ -8,8 +8,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 注意：
- * 大小固定、不允许NULL
+ * 有界
  *
  * @author 愆凡
  */

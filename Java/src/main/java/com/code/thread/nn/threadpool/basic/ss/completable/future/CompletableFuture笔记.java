@@ -1,9 +1,5 @@
 package com.code.thread.nn.threadpool.basic.ss.completable.future;
 
-/* ******************************
- *   Time:  2019-07-26 9:20     *
- ****************************** */
-
 public class CompletableFuture笔记 {
 
 	/*
