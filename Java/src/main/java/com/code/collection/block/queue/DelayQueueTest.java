@@ -1,5 +1,9 @@
 package com.code.collection.block.queue;
 
+import java.util.concurrent.DelayQueue;
+import java.util.concurrent.Delayed;
+import java.util.concurrent.TimeUnit;
+
 /**
  * 无界
  *
@@ -7,9 +11,20 @@ package com.code.collection.block.queue;
  */
 public class DelayQueueTest {
 
-	public static void main(String[] args) {
+	private final DelayQueue<Test> queue = new DelayQueue<>();
 
+	class Test implements Delayed {
+		@Override
+		public long getDelay(TimeUnit timeUnit) {
+			System.out.println(timeUnit.toString());
+			return 0;
+		}
 
+		@Override
+		public int compareTo(Delayed delayed) {
+			System.out.println(delayed.toString());
+			return 0;
+		}
 	}
 
 }

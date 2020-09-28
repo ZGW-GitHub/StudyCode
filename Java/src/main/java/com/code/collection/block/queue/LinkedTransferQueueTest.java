@@ -9,20 +9,6 @@ import java.util.concurrent.LinkedTransferQueue;
  */
 public class LinkedTransferQueueTest {
 
-	public static void main(String[] args) {
-
-		LinkedTransferQueue<Object> queue = new LinkedTransferQueue<>();
-
-        /*queue.add(2);
-        System.out.println(queue.size());
-        System.out.println(queue.size());
-
-        System.out.println(queue.tryTransfer(3));*/
-
-		queue.add(1);
-		System.out.println(queue.remove());
-		System.out.println(queue.poll());
-
-	}
+	private final LinkedTransferQueue<Integer> queue = new LinkedTransferQueue<>();
 
 }

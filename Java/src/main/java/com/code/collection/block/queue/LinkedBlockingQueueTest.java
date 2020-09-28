@@ -9,12 +9,6 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class LinkedBlockingQueueTest {
 
-	public static void main(String[] args) throws InterruptedException {
-
-		LinkedBlockingQueue<Object> queue = new LinkedBlockingQueue<>();
-
-		queue.put(null);
-
-	}
+	private final LinkedBlockingQueue<Integer> queue = new LinkedBlockingQueue<>();
 
 }

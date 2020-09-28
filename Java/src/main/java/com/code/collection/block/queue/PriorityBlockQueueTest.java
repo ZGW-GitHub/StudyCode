@@ -9,11 +9,6 @@ import java.util.concurrent.PriorityBlockingQueue;
  */
 public class PriorityBlockQueueTest {
 
-	private static final PriorityBlockingQueue queue = new PriorityBlockingQueue();
-
-	public static void main(String[] args) {
-
-
-	}
+	private final PriorityBlockingQueue<Integer> queue = new PriorityBlockingQueue<>(20);
 
 }
