@@ -1,5 +1,7 @@
 package com.code.collection.block.queue;
 
+import org.junit.Test;
+
 import java.util.concurrent.SynchronousQueue;
 
 /**
@@ -9,12 +11,17 @@ import java.util.concurrent.SynchronousQueue;
  */
 public class SynchronousQueueTest {
 
-	public static void main(String[] args) {
+	private final SynchronousQueue<Integer> queue = new SynchronousQueue<>();
 
-		SynchronousQueue<Integer> synchronousQueue = new SynchronousQueue<>();
+	@Test
+	public void putTest() throws InterruptedException {
+		queue.put(0);
+		queue.put(1);
+	}
 
-//        Executors.newCachedThreadPool(); // 这里用到了
-
+	@Test
+	public void takeTest() throws InterruptedException {
+		System.out.println(queue.take());
 	}
 
 }
