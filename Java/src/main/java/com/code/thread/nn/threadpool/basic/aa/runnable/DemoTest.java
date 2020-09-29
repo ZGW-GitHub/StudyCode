@@ -10,7 +10,7 @@ import java.util.concurrent.*;
  * @date 2020/5/11 9:14 上午
  */
 @Slf4j
-public class RunnableTest {
+public class DemoTest {
 
 	private final ExecutorService executor = Executors.newCachedThreadPool();
 
