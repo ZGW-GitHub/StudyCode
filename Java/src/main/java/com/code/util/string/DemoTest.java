@@ -27,4 +27,10 @@ public class DemoTest {
 		System.out.println(subed);
 	}
 
+	@Test
+	public void valueOfTest() {
+		int num = -123;
+		System.out.println(String.valueOf(num));
+	}
+
 }
