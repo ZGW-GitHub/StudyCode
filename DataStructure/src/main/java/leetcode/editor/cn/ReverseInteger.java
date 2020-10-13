@@ -35,62 +35,41 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ReverseInteger {
 
-    private static final String CODE = "-";
+	private static final String CODE = "-";
 
 	public static void main(String[] args) {
 		Solution solution = new ReverseInteger().new Solution();
 
-        System.out.println(solution.one(-1999999999));
-    }
+//		System.out.println(solution.one(-1999999999));
+        System.out.println(solution.two(342));
+	}
 
 	//leetcode submit region begin(Prohibit modification and deletion)
 	class Solution {
 		public int one(int x) {
-		    boolean less = false;
-            StringBuilder numStr = new StringBuilder(String.valueOf(x));
-
-            if (numStr.toString().contains(CODE)) {
-                less = true;
-                numStr = new StringBuilder(numStr.substring(1, numStr.length()));
-            }
-
-            char[] numChars = numStr.toString().toCharArray();
-
-            for (int i = 0; i < numChars.length / 2; i++) {
-                char perNum = numChars[i];
-                numChars[i] = numChars[numChars.length - 1 - i];
-                numChars[numChars.length - 1 - i] = perNum;
-            }
-
-            numStr = new StringBuilder();
-            for (char numChar : numChars) {
-                if (numStr.length() == 0 && numChar == 0) {
-                    continue;
-                }
-                numStr.append(numChar);
-            }
-
-            try {
-                int re;
-                if (less) {
-                    re = Integer.parseInt("-" + numStr.toString());
-                } else {
-                    re = Integer.parseInt(numStr.toString());
-                }
-                return re;
-            } catch (Exception e) {
-                log.error("转化出错：", e);
-            }
-
-            return 0;
-        }
+			long n = 0;
+			while (x != 0) {
+				n = n * 10 + x % 10;
+				x = x / 10;
+			}
+			return (int) n == n ? (int) n : 0;
+		}
 
         public int two(int x) {
             String numStr = String.valueOf(x);
 
-            return 0;
+            int flag = 1;
+            if (numStr.contains(CODE)) {
+                flag = -1;
+            }
+
+            try {
+                return Integer.parseInt(new StringBuilder(String.valueOf(x)).reverse().toString()) * flag;
+            } catch (Exception e) {
+                return 0;
+            }
         }
 	}
-    //leetcode submit region end(Prohibit modification and deletion)
+	//leetcode submit region end(Prohibit modification and deletion)
 
 }
