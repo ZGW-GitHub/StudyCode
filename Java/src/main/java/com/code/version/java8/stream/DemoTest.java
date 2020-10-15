@@ -65,6 +65,11 @@ public class DemoTest {
 				System.out.println("---- " + v1);
 			});
 		});
+
+
+		Map<Integer, List<String>> userMapList = users.stream()
+				.collect(Collectors.groupingBy(User::getAge, Collectors.mapping(User::getName, Collectors.toList())));
+
 	}
 
 }
