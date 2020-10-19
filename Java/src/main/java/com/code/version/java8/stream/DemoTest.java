@@ -3,10 +3,7 @@ package com.code.version.java8.stream;
 import com.code.entity.User;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -66,10 +63,15 @@ public class DemoTest {
 			});
 		});
 
+		System.out.println("---------------------------");
 
 		Map<Integer, List<String>> userMapList = users.stream()
 				.collect(Collectors.groupingBy(User::getAge, Collectors.mapping(User::getName, Collectors.toList())));
 
+		userMapList.forEach((k, v) -> {
+			System.out.println(k);
+			System.out.println(Arrays.toString(v.toArray()));
+		});
 	}
 
 }
