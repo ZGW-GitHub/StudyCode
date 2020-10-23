@@ -1,6 +1,8 @@
 package p.ce.lue.fly;
 
 /**
+ * 表现2：会飞
+ *
  * @author 愆凡
  */
 public class CanFly implements FlyParent {
