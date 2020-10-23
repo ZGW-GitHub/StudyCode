@@ -1,9 +1,13 @@
 package p.ce.lue.fly;
 
-public class YaFly implements FlyParent {
+/**
+ * @author 愆凡
+ */
+public class CanFly implements FlyParent {
 
     @Override
     public void fly() {
         System.out.println("我用翅膀飞起来了！");
     }
+
 }
