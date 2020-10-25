@@ -14,7 +14,7 @@ public class Test {
 
         TanK proxy = (TanK) Enhancer.create(TanK.class, new MethodInterceptor() {
             @Override
-            public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+            public Object intercept(Object o, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
                 System.out.println(System.currentTimeMillis());
                 method.invoke(new TanK(), args);
                 System.out.println(System.currentTimeMillis());
