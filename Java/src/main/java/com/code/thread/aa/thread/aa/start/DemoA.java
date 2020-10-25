@@ -1,7 +1,7 @@
-package com.code.thread.aa.thread.aa.create;
+package com.code.thread.aa.thread.aa.start;
 
 /**
- * 通过创建类继承 Thread 类来创建线程
+ * 通过创建类继承 Thread 类来启动一个线程
  *
  * @author 愆凡
  */

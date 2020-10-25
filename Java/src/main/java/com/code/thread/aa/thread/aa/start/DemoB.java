@@ -1,7 +1,7 @@
-package com.code.thread.aa.thread.aa.create;
+package com.code.thread.aa.thread.aa.start;
 
 /**
- * 通过创建类实现 Runnable 接口，来创建线程
+ * 通过创建类实现 Runnable 接口，来启动一个线程
  *
  * @author 愆凡
  * @date 2019-11-30 15:35

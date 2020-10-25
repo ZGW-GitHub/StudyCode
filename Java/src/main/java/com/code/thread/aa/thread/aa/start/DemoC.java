@@ -1,11 +1,11 @@
-package com.code.thread.aa.thread.aa.create;
+package com.code.thread.aa.thread.aa.start;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 /**
- * 通过创建类实现 Callable 接口，来创建线程
+ * 通过创建类实现 Callable 接口，来启动一个线程
  *
  * @author 愆凡
  */
