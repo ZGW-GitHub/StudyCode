@@ -6,12 +6,8 @@ package com.code.thread.aa.thread.cc.methods;
  *
  * @author 愆凡
  */
+@SuppressWarnings("all")
 public class Yield {
-	/**
-	 * 本程序看不出来
-	 *
-	 * @param args args
-	 */
 	public static void main(String[] args) {
 
 		new Thread(() -> {

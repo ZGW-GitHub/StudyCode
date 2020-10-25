@@ -8,6 +8,7 @@ package com.code.thread.aa.thread.cc.methods;
  *
  * @author 愆凡
  */
+@SuppressWarnings("All")
 public class Interrupted {
 
 	private static final Object MONITOR = new Object();
