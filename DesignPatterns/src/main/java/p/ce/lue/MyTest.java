@@ -1,4 +1,4 @@
-package p.ce.lue.test;
+package p.ce.lue;
 
 import org.junit.Test;
 import p.ce.lue.entity.Animals;
