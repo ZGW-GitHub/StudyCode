@@ -15,6 +15,7 @@
 
 	<modules>
 		<module>mybatis-basic</module>
+		<module>mybatis-more-datasource</module>
 	</modules>
 
 	<dependencies>
