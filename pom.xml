@@ -33,8 +33,8 @@
 		<SpringCloudAlibaba.version>2.1.0.RELEASE</SpringCloudAlibaba.version>
 
 		<hutool.version>5.3.9</hutool.version>
-		<lombok.version>1.18.12</lombok.version>
-		<guava.version>28.1-jre</guava.version>
+		<lombok.version>1.18.10</lombok.version>
+		<guava.version>27.0.1-jre</guava.version>
 
 		<mybatis.version>1.3.2</mybatis.version>
 		<mybatis.plus.version>3.1.0</mybatis.plus.version>
