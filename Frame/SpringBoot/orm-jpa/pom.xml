@@ -10,6 +10,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>orm-jpa</artifactId>
+	<packaging>pom</packaging>
+	<modules>
+		<module>jpa-basic</module>
+		<module>jpa-more-datasource</module>
+	</modules>
 
 	<dependencies>
 		<dependency>
