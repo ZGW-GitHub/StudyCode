@@ -1,6 +1,6 @@
-package com.code.orm.mybatis.mapper;
+package com.code.orm.mybatis.basic.mapper;
 
-import com.code.orm.mybatis.entity.User;
+import com.code.orm.mybatis.basic.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

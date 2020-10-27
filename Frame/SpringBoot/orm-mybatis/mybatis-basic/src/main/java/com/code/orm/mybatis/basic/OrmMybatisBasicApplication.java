@@ -1,4 +1,4 @@
-package com.code.orm.mybatis;
+package com.code.orm.mybatis.basic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,11 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2020/7/31 11:49 上午
  */
 @SpringBootApplication
-public class OrmMybatisApplication {
+public class OrmMybatisBasicApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(OrmMybatisApplication.class, args);
+		SpringApplication.run(OrmMybatisBasicApplication.class, args);
 
 	}
 

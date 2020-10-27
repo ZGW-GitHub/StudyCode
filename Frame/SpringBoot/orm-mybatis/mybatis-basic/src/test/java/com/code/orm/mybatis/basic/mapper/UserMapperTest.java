@@ -1,9 +1,9 @@
-package com.code.orm.mybatis.mapper;
+package com.code.orm.mybatis.basic.mapper;
 
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.crypto.SecureUtil;
-import com.code.orm.mybatis.OrmMybatisApplicationTest;
-import com.code.orm.mybatis.entity.User;
+import com.code.orm.mybatis.basic.OrmMybatisBasicApplicationTest;
+import com.code.orm.mybatis.basic.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2020/8/14 2:42 下午
  */
 @Slf4j
-public class UserMapperTest extends OrmMybatisApplicationTest {
+public class UserMapperTest extends OrmMybatisBasicApplicationTest {
 
 	@Autowired
 	private UserMapper userMapper;

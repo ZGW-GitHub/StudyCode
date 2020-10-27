@@ -11,6 +11,12 @@
 
 	<artifactId>orm-mybatis</artifactId>
 
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>mybatis-basic</module>
+	</modules>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
