@@ -13,15 +13,10 @@ import org.springframework.context.annotation.Configuration;
 public class MyConsumerConfig {
 
 	@Bean
-	ApplicationConfig applicationConfig() {
+	public ApplicationConfig applicationConfig() {
 		ApplicationConfig applicationConfig = new ApplicationConfig();
 		applicationConfig.setName("echo-dubbo.consumer");
 		return applicationConfig;
-	}
-
-	@Bean
-	public ConsumerConfig consumerConfig() {
-		return new ConsumerConfig();
 	}
 
 	/**
@@ -35,6 +30,11 @@ public class MyConsumerConfig {
 		registryConfig.setProtocol("zookeeper");
 		registryConfig.setAddress("127.0.0.1:2181");
 		return registryConfig;
+	}
+
+	@Bean
+	public ConsumerConfig consumerConfig() {
+		return new ConsumerConfig();
 	}
 
 }
