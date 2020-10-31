@@ -21,7 +21,7 @@ spring:
 logging:
   level:
     com.code: debug
-    com.code.orm.mybatis.plus.mapper: trace
+    com.code.data.mybatis.plus.mapper: trace
 mybatis-plus:
   mapper-locations: classpath:mappers/*.xml
   #实体扫描，多个package用逗号或者分号分隔

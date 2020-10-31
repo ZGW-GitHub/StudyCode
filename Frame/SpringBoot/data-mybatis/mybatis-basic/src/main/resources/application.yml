@@ -21,7 +21,7 @@ spring:
 logging:
   level:
     com.code: debug
-    com.code.orm.mybatis.basic.mapper: trace
+    com.code.data.mybatis.basic.mapper: trace
 mybatis:
   configuration:
     # 下划线转驼峰
