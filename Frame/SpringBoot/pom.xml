@@ -17,8 +17,8 @@
         <module>mq-rabbitmq</module>
         <module>mq-rocketmq</module>
         <module>mq-kafka</module>
-		<module>orm-jpa</module>
-        <module>orm-mybatis</module>
+		<module>data-jpa</module>
+        <module>data-mybatis</module>
 		<module>data-redis</module>
 	</modules>
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code.data.mybatis.basic.mapper.UserMapper">
+
+	<insert id="saveUser">
+		INSERT INTO `user` (`name`, `sex`, `age`, `phone`, `salt`, `is_active`, `create_time`, `last_update_time`)
+		VALUES (#{user.name}, #{user.sex}, #{user.age}, #{user.phone}, #{user.salt}, #{user.isActive}, #{user.createTime},
+				#{user.lastUpdateTime})
+	</insert>
+
+</mapper>
