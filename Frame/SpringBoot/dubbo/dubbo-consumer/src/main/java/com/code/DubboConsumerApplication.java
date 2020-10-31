@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * @author 愆凡
  * <p>
- * EnableDubbo 指定要扫描的消费注解，会触发注入
+ * {@link EnableDubbo @EnableDubbo} 指定要扫描的消费注解，会触发注入
  * <p>
  * 消费者
  */
