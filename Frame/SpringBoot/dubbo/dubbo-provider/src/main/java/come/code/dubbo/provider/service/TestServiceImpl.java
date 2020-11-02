@@ -1,6 +1,6 @@
-package come.code.dubbo.provider.serviceimpl;
+package come.code.dubbo.provider.service;
 
-import com.code.dubbo.api.TestService;
+import com.code.dubbo.api.service.TestService;
 import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.RpcContext;
 

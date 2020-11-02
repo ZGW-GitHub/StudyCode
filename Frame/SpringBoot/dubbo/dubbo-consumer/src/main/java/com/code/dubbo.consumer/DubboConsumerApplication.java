@@ -1,4 +1,4 @@
-package com.code;
+package com.code.dubbo.consumer;
 
 import com.code.dubbo.consumer.service.EchoConsumer;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;

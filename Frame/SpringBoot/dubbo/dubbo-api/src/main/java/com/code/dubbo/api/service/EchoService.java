@@ -1,4 +1,4 @@
-package com.code.dubbo.api;
+package com.code.dubbo.api.service;
 
 /**
  * @author 愆凡

@@ -1,6 +1,6 @@
 package com.code.dubbo.consumer.service;
 
-import com.code.dubbo.api.TestService;
+import com.code.dubbo.api.service.TestService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
 

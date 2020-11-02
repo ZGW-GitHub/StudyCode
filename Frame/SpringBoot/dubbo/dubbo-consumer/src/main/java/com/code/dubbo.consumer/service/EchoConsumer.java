@@ -1,6 +1,6 @@
 package com.code.dubbo.consumer.service;
 
-import com.code.dubbo.api.EchoService;
+import com.code.dubbo.api.service.EchoService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
 

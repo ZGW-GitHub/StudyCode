@@ -1,0 +1,22 @@
+#dubbo:
+
+#  application:
+#    name: demo-server
+
+  # 注册中心
+#  registry:
+#    address: 192.168.56.1:2181
+#    protocol: zookeeper
+
+  # 协议
+#  protocol:
+#    name: dubbo
+#    port: 20880
+
+  # 配置中心
+#  config-center:
+#    address: 192.168.56.101
+
+  # 元数据中心
+#  metadata-report:
+#    address: 192.168.56.101
