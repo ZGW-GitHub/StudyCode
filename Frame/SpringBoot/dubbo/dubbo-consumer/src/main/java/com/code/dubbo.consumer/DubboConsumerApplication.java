@@ -6,8 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import java.io.IOException;
-
 /**
  * @author 愆凡
  * <p>
@@ -18,7 +16,7 @@ import java.io.IOException;
 @SpringBootApplication
 @EnableDubbo(scanBasePackages = {"com.code.dubbo.consumer.service"})
 public class DubboConsumerApplication {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws InterruptedException {
 
 		ConfigurableApplicationContext context = SpringApplication.run(DubboConsumerApplication.class, args);
 
@@ -27,7 +25,7 @@ public class DubboConsumerApplication {
 
 		System.out.println("result : " + echo);
 
-		System.in.read();
+		Thread.currentThread().join();
 
 	}
 }
