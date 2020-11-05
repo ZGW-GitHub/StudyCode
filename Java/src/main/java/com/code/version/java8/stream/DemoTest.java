@@ -74,4 +74,13 @@ public class DemoTest {
 		});
 	}
 
+	@Test
+	public void skipTest() {
+		List<User> users = initData();
+
+		users.stream().limit(2).forEach(u -> {
+			System.out.println(u.getAge());
+		});
+	}
+
 }
