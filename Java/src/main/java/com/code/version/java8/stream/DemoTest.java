@@ -1,6 +1,8 @@
 package com.code.version.java8.stream;
 
 import com.code.entity.User;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.*;
@@ -12,16 +14,21 @@ import java.util.stream.Collectors;
  */
 public class DemoTest {
 
-	public List<User> initData() {
-		List<User> users = new ArrayList<>();
-		users.add(new User(12, "test"));
-		users.add(new User(13, "test"));
-		users.add(new User(6, "test"));
-		users.add(new User(2, "test"));
-		users.add(new User(13, "test"));
-		users.add(new User(16, "test"));
+	private static final List<User> USER_LIST = new ArrayList<>();
 
-		return users;
+	@Before
+	public void initData() {
+		USER_LIST.add(new User(1, "test"));
+		USER_LIST.add(new User(2, "test"));
+		USER_LIST.add(new User(3, "test"));
+		USER_LIST.add(new User(3, "test"));
+		USER_LIST.add(new User(2, "test"));
+		USER_LIST.add(new User(1, "test"));
+	}
+
+	@After
+	public void destroy() {
+		System.out.println("\n\nTest Over !");
 	}
 
 	/**
@@ -29,9 +36,7 @@ public class DemoTest {
 	 */
 	@Test
 	public void sortTest() {
-		List<User> users = initData();
-
-		List<User> collect = users.stream()
+		List<User> collect = USER_LIST.stream()
 				.sorted(Comparator.comparing(user -> user.getAge() * (-1)))
 				.collect(Collectors.toList());
 
@@ -49,9 +54,7 @@ public class DemoTest {
 	 */
 	@Test
 	public void groupByTest() {
-		List<User> users = initData();
-
-		Map<Integer, Map<Integer, String>> userMap = users.stream()
+		Map<Integer, Map<Integer, String>> userMap = USER_LIST.stream()
 				.collect(Collectors.groupingBy(User::getAge, Collectors.toMap(User::getAge, User::getName, (v1, v2) -> v2)));
 
 		userMap.forEach((k, v) -> {
@@ -65,7 +68,7 @@ public class DemoTest {
 
 		System.out.println("---------------------------");
 
-		Map<Integer, List<String>> userMapList = users.stream()
+		Map<Integer, List<String>> userMapList = USER_LIST.stream()
 				.collect(Collectors.groupingBy(User::getAge, Collectors.mapping(User::getName, Collectors.toList())));
 
 		userMapList.forEach((k, v) -> {
@@ -75,12 +78,10 @@ public class DemoTest {
 	}
 
 	@Test
-	public void skipTest() {
-		List<User> users = initData();
-
-		users.stream().limit(2).forEach(u -> {
-			System.out.println(u.getAge());
-		});
+	public void skipAndLimitTest() {
+		USER_LIST.stream().skip(2).forEach(u -> System.out.println(u.getAge()));
+		System.out.println("---");
+		USER_LIST.stream().limit(2).forEach(u -> System.out.println(u.getAge()));
 	}
 
 }
