@@ -11,6 +11,7 @@ import java.util.function.Predicate;
  * @author 愆凡
  * @date 2020/7/17 4:21 下午
  */
+@SuppressWarnings("all")
 public class RemoveDemo {
 
 
