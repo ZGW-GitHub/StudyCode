@@ -20,7 +20,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
-@EntityListeners(MyEntityListener.class)
+//@EntityListeners(MyEntityListener.class)
 public abstract class AbstractEntity implements Serializable {
 	/**
 	 * 主键
