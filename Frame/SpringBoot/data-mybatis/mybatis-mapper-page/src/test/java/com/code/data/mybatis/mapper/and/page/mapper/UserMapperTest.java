@@ -9,14 +9,18 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Lists;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author 愆凡
@@ -27,6 +31,31 @@ public class UserMapperTest extends DataMybatisMapperAndPageApplicationTest {
 
 	@Autowired
 	private UserMapper userMapper;
+
+	@Before
+	public void init() {
+		ArrayList<User> userList = Lists.newArrayList();
+
+		IntStream.range(1, 6).forEach(i -> {
+			String salt = IdUtil.fastSimpleUUID();
+			User user = User.builder().name("Mapper" + i).age(10).isActive(true).sex(User.SEX_MAN)
+					.phone(SecureUtil.md5(System.currentTimeMillis() + salt)).salt(salt)
+					.createTime(new Date()).lastUpdateTime(new Date()).build();
+			userList.add(user);
+		});
+
+		userMapper.insertList(userList);
+	}
+
+	@After
+	public void destroy() {
+		userMapper.deleteAll();
+	}
+
+	@Test
+	public void initTest() {
+		System.out.println("init success !");
+	}
 
 	/**
 	 * 测试通用Mapper - 保存
@@ -40,9 +69,10 @@ public class UserMapperTest extends DataMybatisMapperAndPageApplicationTest {
 				.createTime(new Date()).lastUpdateTime(new Date()).build();
 
 		userMapper.insertUseGeneratedKeys(user);
+
 		Assert.assertNotNull(user.getId());
 
-		log.debug("【 测试主键回写：user.getId() 】= {}", user.getId());
+		log.info("【 测试主键回写：user.getId() 】= {}", user.getId());
 	}
 
 	/**
@@ -52,13 +82,13 @@ public class UserMapperTest extends DataMybatisMapperAndPageApplicationTest {
 	public void insertListTest() {
 		List<User> userList = Lists.newArrayList();
 
-		for (int i = 4; i < 10; i++) {
+		IntStream.range(2, 6).forEach(i -> {
 			String salt = IdUtil.fastSimpleUUID();
 			User user = User.builder().name("test").age(10).isActive(true).sex(User.SEX_MAN)
 					.phone(SecureUtil.md5(System.currentTimeMillis() + salt)).salt(salt)
 					.createTime(new Date()).lastUpdateTime(new Date()).build();
 			userList.add(user);
-		}
+		});
 
 		int i = userMapper.insertList(userList);
 
@@ -66,57 +96,7 @@ public class UserMapperTest extends DataMybatisMapperAndPageApplicationTest {
 
 		List<Long> ids = userList.stream().map(User::getId).collect(Collectors.toList());
 
-		log.debug("【 测试主键回写：userList.ids 】= {}", ids);
-	}
-
-	/**
-	 * 测试通用Mapper - 删除
-	 */
-	@Test
-	public void deleteTest() {
-		Long primaryKey = 1L;
-
-		int i = userMapper.deleteByPrimaryKey(primaryKey);
-
-		Assert.assertEquals(1, i);
-
-		User user = userMapper.selectByPrimaryKey(primaryKey);
-
-		Assert.assertNull(user);
-	}
-
-	/**
-	 * 测试通用Mapper - 更新
-	 */
-	@Test
-	public void updateTest() {
-		Long primaryKey = 2L;
-
-		User user = userMapper.selectByPrimaryKey(primaryKey);
-		user.setName("通用Mapper");
-
-		int i = userMapper.updateByPrimaryKeySelective(user);
-
-		Assert.assertEquals(1, i);
-
-		User update = userMapper.selectByPrimaryKey(primaryKey);
-
-		Assert.assertNotNull(update);
-		Assert.assertEquals("通用Mapper", update.getName());
-
-		log.debug("【 update 】= {}", update);
-	}
-
-	/**
-	 * 测试通用Mapper - 查询单个
-	 */
-	@Test
-	public void queryOneTest() {
-		User user = userMapper.selectByPrimaryKey(2L);
-
-		Assert.assertNotNull(user);
-
-		log.debug("【 user 】= {}", user);
+		log.info("【 测试主键回写：userList.ids 】= {}", ids);
 	}
 
 	/**
@@ -128,7 +108,7 @@ public class UserMapperTest extends DataMybatisMapperAndPageApplicationTest {
 
 		Assert.assertTrue(CollUtil.isNotEmpty(users));
 
-		log.debug("【 users 】= {}", users);
+		log.info("【 users 】= {}", users);
 	}
 
 	/**
@@ -151,7 +131,7 @@ public class UserMapperTest extends DataMybatisMapperAndPageApplicationTest {
 		Assert.assertEquals(5, userPageInfo.getSize());
 		Assert.assertEquals(count, userPageInfo.getTotal());
 
-		log.debug("【 userPageInfo 】= {}", userPageInfo);
+		log.info("【 userPageInfo 】= {}", userPageInfo);
 	}
 
 	/**
@@ -171,10 +151,10 @@ public class UserMapperTest extends DataMybatisMapperAndPageApplicationTest {
 		List<User> userList = userMapper.selectByExample(example);
 		PageInfo<User> userPageInfo = new PageInfo<>(userList);
 
-		Assert.assertEquals(1, userPageInfo.getSize());
+		Assert.assertEquals(3, userPageInfo.getSize());
 		Assert.assertEquals(count, userPageInfo.getTotal());
 
-		log.debug("【 userPageInfo 】= {}", userPageInfo);
+		log.info("【 userPageInfo 】= {}", userPageInfo);
 	}
 
 }

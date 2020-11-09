@@ -1,6 +1,7 @@
 package com.code.data.mybatis.mapper.and.page.mapper;
 
 import com.code.data.mybatis.mapper.and.page.entity.User;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.stereotype.Component;
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;
@@ -11,5 +12,8 @@ import tk.mybatis.mapper.common.MySqlMapper;
  */
 @Component
 public interface UserMapper extends Mapper<User>, MySqlMapper<User> {
+
+	@Delete(value = " DELETE FROM `user` WHERE 1 = 1 ")
+	void deleteAll();
 
 }
