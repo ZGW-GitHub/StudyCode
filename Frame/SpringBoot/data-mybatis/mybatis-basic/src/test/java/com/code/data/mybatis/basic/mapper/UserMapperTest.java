@@ -5,7 +5,9 @@ import cn.hutool.crypto.SecureUtil;
 import com.code.data.mybatis.basic.DataMybatisBasicApplicationTest;
 import com.code.data.mybatis.basic.entity.User;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,22 +24,32 @@ public class UserMapperTest extends DataMybatisBasicApplicationTest {
 	@Autowired
 	private UserMapper userMapper;
 
-	@Test
-	public void saveUserTest() {
+	@Before
+	public void init() {
 		String salt = IdUtil.fastSimpleUUID();
 
 		User user = User.builder().name("test").age(10).isActive(true).sex(User.SEX_MAN)
 				.phone(SecureUtil.md5(System.currentTimeMillis() + salt)).salt(salt)
 				.createTime(new Date()).lastUpdateTime(new Date()).build();
 
-		Assert.assertEquals(userMapper.saveUser(user), 1);
+		userMapper.saveUser(user);
+	}
+
+	@After
+	public void destroy() {
+		userMapper.deleteAll();
+	}
+
+	@Test
+	public void initTest() {
+		System.out.println("init success !");
 	}
 
 	@Test
 	public void listUserTest() {
 		List<User> users = userMapper.listUser();
 
-		Assert.assertNotEquals(users.size(), 0);
+		Assert.assertEquals(users.size(), 1);
 	}
 
 }

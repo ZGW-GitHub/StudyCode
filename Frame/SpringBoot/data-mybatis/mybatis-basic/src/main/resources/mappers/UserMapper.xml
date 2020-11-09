@@ -8,4 +8,8 @@
 				#{user.lastUpdateTime})
 	</insert>
 
+	<delete id="deleteAll">
+		DELETE FROM `user` WHERE 1 = 1
+	</delete>
+
 </mapper>

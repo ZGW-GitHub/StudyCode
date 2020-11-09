@@ -16,13 +16,15 @@ import java.util.List;
 @Component
 public interface UserMapper {
 
-	@Select("SELECT * FROM user")
+	@Select(" SELECT * FROM user ")
 	List<User> listUser();
 
-	@Select("SELECT * FROM user WHERE id = #{id}")
+	@Select(" SELECT * FROM user WHERE id = #{id} ")
 	User selectUserById(@Param("id") Long id);
 
 	// return : 1:成功，0：失败
 	int saveUser(@Param("user") User user);
+
+	void deleteAll();
 
 }
