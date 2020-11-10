@@ -23,7 +23,7 @@ public class ClientTest extends ZookeeperApplicationTest {
 	public void init() {
 		client = CuratorFrameworkFactory.builder()
 				.connectString(ZOOKEEPER_ADDERS)
-				.namespace("base")
+				.namespace("test")
 				.sessionTimeoutMs(5000)
 				.connectionTimeoutMs(5000)
 				.retryPolicy(new ExponentialBackoffRetry(1000, 3))
