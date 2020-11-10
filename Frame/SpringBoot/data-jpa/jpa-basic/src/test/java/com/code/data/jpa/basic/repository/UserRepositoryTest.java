@@ -55,7 +55,7 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 
 	@Test
 	public void initTest() {
-		System.out.println("init success !");
+		log.info("init success !");
 	}
 
 	@Test
