@@ -54,7 +54,7 @@ public class UserMapperTest extends DataMybatisMapperAndPageApplicationTest {
 
 	@Test
 	public void initTest() {
-		System.out.println("init success !");
+		log.info("init success !");
 	}
 
 	/**
