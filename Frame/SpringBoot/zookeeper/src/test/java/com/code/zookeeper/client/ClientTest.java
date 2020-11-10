@@ -42,4 +42,15 @@ public class ClientTest extends ZookeeperApplicationTest {
 		log.info("init success !");
 	}
 
+	@Test
+	public void createNodeTest() throws Exception {
+		String test1 = client.create().forPath("test-1");
+		log.info("test-1 : " + test1);
+
+		String test2 = client.create().forPath("test-2", "data".getBytes());
+		log.info("test-2 : " + test2);
+		
+		
+	}
+
 }
