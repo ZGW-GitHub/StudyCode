@@ -2,12 +2,16 @@ package com.code.zookeeper.client;
 
 import com.code.zookeeper.ZookeeperApplicationTest;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.zookeeper.CreateMode;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Scanner;
 
 /**
  * @author 愆凡
@@ -33,7 +37,15 @@ public class ClientTest extends ZookeeperApplicationTest {
 	}
 
 	@After
-	public void destroy() {
+	public void destroy() throws Exception {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("是否删除所有节点?（直接回车为删除，输入任意字符则不删除。）");
+		String scanstr = scanner.nextLine();
+		
+		if (StringUtils.isBlank(scanstr)) {
+			client.delete().deletingChildrenIfNeeded().forPath("/");
+		}
+		
 		client.close();
 	}
 
@@ -42,15 +54,30 @@ public class ClientTest extends ZookeeperApplicationTest {
 		log.info("init success !");
 	}
 
+	/**
+	 * <h3>Node Type :</h3>
+	 * <pre>
+	 * PERSISTENT：持久化
+	 * PERSISTENT_SEQUENTIAL：持久化并且带序列号
+	 * EPHEMERAL：临时
+	 * EPHEMERAL_SEQUENTIAL：临时并且带序列号
+	 * </pre>
+	 * 
+	 * @throws Exception 异常
+	 */
 	@Test
 	public void createNodeTest() throws Exception {
-		String test1 = client.create().forPath("test-1");
-		log.info("test-1 : " + test1);
+		String nodeName1 = client.create().forPath("/test-1");
+		log.info("test-1 : " + nodeName1);
 
-		String test2 = client.create().forPath("test-2", "data".getBytes());
-		log.info("test-2 : " + test2);
-		
-		
+		String nodeName2 = client.create().forPath("/test-2", "data".getBytes());
+		log.info("test-2 : " + nodeName2);
+
+		String nodeName3 = client.create().withMode(CreateMode.EPHEMERAL).forPath("/test-3");
+		log.info("test-3 : " + nodeName3);
+
+		String nodeName4 = client.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL).forPath("/test-4");
+		log.info("test-4 : " + nodeName4);
 	}
 
 }
