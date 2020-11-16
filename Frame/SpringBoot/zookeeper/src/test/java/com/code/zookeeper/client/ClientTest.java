@@ -33,18 +33,12 @@ public class ClientTest extends ZookeeperApplicationTest {
 				.build();
 
 		client.start();
-
-		client.getChildren().forPath("/").forEach(node -> {
-			try {
-				client.delete().guaranteed().deletingChildrenIfNeeded().forPath(NODE_PER_CODE + node);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
 	}
 
 	@After
-	public void destroy() {
+	public void destroy() throws Exception {
+		client.delete().guaranteed().deletingChildrenIfNeeded().forPath(NODE_PER_CODE);
+		
 		client.close();
 	}
 
@@ -91,5 +85,7 @@ public class ClientTest extends ZookeeperApplicationTest {
 		client.delete().guaranteed().deletingChildrenIfNeeded().withVersion(10086).forPath("/test-5");
 		
 	}
+	
+	
 
 }
