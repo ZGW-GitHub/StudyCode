@@ -25,7 +25,7 @@ public class ClientTest extends ZookeeperApplicationTest {
 	public static CuratorFramework client = null;
 
 	@Before
-	public void init() throws Exception {
+	public void init() {
 		client = CuratorFrameworkFactory.builder()
 				.connectString(ZOOKEEPER_ADDERS)
 				.namespace(NAME_SPACE)
