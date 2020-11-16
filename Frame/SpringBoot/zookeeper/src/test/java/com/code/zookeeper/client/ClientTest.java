@@ -2,7 +2,6 @@ package com.code.zookeeper.client;
 
 import com.code.zookeeper.ZookeeperApplicationTest;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
@@ -10,8 +9,6 @@ import org.apache.zookeeper.CreateMode;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Scanner;
 
 /**
  * @author 愆凡
@@ -21,31 +18,34 @@ import java.util.Scanner;
 public class ClientTest extends ZookeeperApplicationTest {
 
 	public static final String ZOOKEEPER_ADDERS = "127.0.0.1:2181";
+	public static final String NAME_SPACE = "test";
+	public static final String NODE_PER_CODE = "/";
 	public static CuratorFramework client = null;
 
 	@Before
-	public void init() {
+	public void init() throws Exception {
 		client = CuratorFrameworkFactory.builder()
 				.connectString(ZOOKEEPER_ADDERS)
-				.namespace("test")
+				.namespace(NAME_SPACE)
 				.sessionTimeoutMs(5000)
 				.connectionTimeoutMs(5000)
 				.retryPolicy(new ExponentialBackoffRetry(1000, 3))
 				.build();
 
 		client.start();
+
+		client.getChildren().forPath("/").forEach(node -> {
+			try {
+				System.out.println(node);
+				client.delete().deletingChildrenIfNeeded().forPath(NODE_PER_CODE + node);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
 	}
 
 	@After
-	public void destroy() throws Exception {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("是否删除所有节点?（直接回车为删除，输入任意字符则不删除。）");
-		String scanstr = scanner.nextLine();
-		
-		if (StringUtils.isBlank(scanstr)) {
-			client.delete().deletingChildrenIfNeeded().forPath("/");
-		}
-		
+	public void destroy() {
 		client.close();
 	}
 
