@@ -36,8 +36,7 @@ public class ClientTest extends ZookeeperApplicationTest {
 
 		client.getChildren().forPath("/").forEach(node -> {
 			try {
-				System.out.println(node);
-				client.delete().deletingChildrenIfNeeded().forPath(NODE_PER_CODE + node);
+				client.delete().guaranteed().deletingChildrenIfNeeded().forPath(NODE_PER_CODE + node);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -67,17 +66,30 @@ public class ClientTest extends ZookeeperApplicationTest {
 	 */
 	@Test
 	public void createNodeTest() throws Exception {
-		String nodeName1 = client.create().forPath("/test-1");
-		log.info("test-1 : " + nodeName1);
+		
+		client.create().forPath("/test-1");
 
-		String nodeName2 = client.create().forPath("/test-2", "data".getBytes());
-		log.info("test-2 : " + nodeName2);
+		client.create().forPath("/test-2", "data".getBytes());
 
-		String nodeName3 = client.create().withMode(CreateMode.EPHEMERAL).forPath("/test-3");
-		log.info("test-3 : " + nodeName3);
+		client.create().withMode(CreateMode.EPHEMERAL).forPath("/test-3");
 
-		String nodeName4 = client.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL).forPath("/test-4");
-		log.info("test-4 : " + nodeName4);
+		client.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL).forPath("/test-4");
+
+	}
+	
+	@Test
+	public void deleteNodeTest() throws Exception {
+		
+		client.delete().forPath("/test-1");
+
+		client.delete().guaranteed().forPath("/test-2");
+		
+		client.delete().withVersion(10086).forPath("/test-3");
+
+		client.delete().deletingChildrenIfNeeded().forPath("/test-4");
+		
+		client.delete().guaranteed().deletingChildrenIfNeeded().withVersion(10086).forPath("/test-5");
+		
 	}
 
 }
