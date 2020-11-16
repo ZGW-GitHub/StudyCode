@@ -93,10 +93,13 @@ public class ClientTest extends ZookeeperApplicationTest {
 		client.create().forPath("/test", "initData".getBytes());
 
 		byte[] datas1 = client.getData().forPath("/test");
+		
 		log.info("data : " + new String(datas1));
 
+		
 		Stat stat = new Stat();
 		byte[] datas2 = client.getData().storingStatIn(stat).forPath("/test");
+		
 		log.info("data : " + new String(datas2));
 		log.info("stat : " + ToStringBuilder.reflectionToString(stat));
 	}
@@ -104,15 +107,44 @@ public class ClientTest extends ZookeeperApplicationTest {
 	@Test
 	public void updateNodeDataTest() throws Exception {
 		client.create().forPath("/test", "initData".getBytes());
+		
 		log.info("data : " + new String(client.getData().forPath("/test")));
 		
+		
 		Stat stat1 = client.setData().forPath("/test", "updateData".getBytes());
+		
 		log.info("data : " + new String(client.getData().forPath("/test")));
 		log.info("stat : " + ToStringBuilder.reflectionToString(stat1));
 
+		
 		Stat stat2 = client.setData().withVersion(1).forPath("/test", "updateData".getBytes());
+		
 		log.info("data : " + new String(client.getData().forPath("/test")));
 		log.info("stat : " + ToStringBuilder.reflectionToString(stat2));
 	}
+	
+	@Test
+	public void checkNodeTest() throws Exception {
+		Stat stat1 = client.checkExists().forPath("/test");
+
+		log.info("stat1 : " + (stat1 == null ? "" : ToStringBuilder.reflectionToString(stat1)));
+
+		client.create().forPath("/test", "initData".getBytes());
+
+		Stat stat2 = client.checkExists().forPath("/test");
+
+		log.info("stat2 : " + ToStringBuilder.reflectionToString(stat2));
+	}
+	
+	@Test
+	public void chiledNodeTest() throws Exception {
+		client.getChildren().forPath("/").forEach(path -> log.info("path : " + path));
+
+		client.create().forPath("/test");
+
+		client.getChildren().forPath("/").forEach(path -> log.info("path : " + path));
+	}
+	
+	// TODO 事务、异步接口
 
 }
