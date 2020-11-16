@@ -1,6 +1,7 @@
 package com.code.data.jpa.basic.repository;
 
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.code.data.jpa.basic.DataJpaBasicApplicationTest;
 import com.code.data.jpa.basic.entity.User;
@@ -9,7 +10,6 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.platform.commons.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
@@ -84,7 +84,7 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 		StringBuilder whereSql = new StringBuilder(" WHERE 1 = 1 ");
 
 		// 根据条件拼接 Where SQL
-		if (StringUtils.isNotBlank(name)) {
+		if (StrUtil.isNotBlank(name)) {
 			whereSql.append(" AND name LIKE '").append(name).append("%'");
 		}
 		if (!ages.isEmpty()) {
@@ -144,7 +144,7 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 		StringBuilder whereSql = new StringBuilder(" WHERE 1 = 1");
 
 		// 根据条件拼接 Where SQL
-		if (StringUtils.isNotBlank(name)) {
+		if (StrUtil.isNotBlank(name)) {
 			whereSql.append(" AND name LIKE '").append(name).append("%'");
 		}
 		if (!ages.isEmpty()) {
