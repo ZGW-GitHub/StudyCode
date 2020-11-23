@@ -75,6 +75,16 @@ public class DemoTest {
 			System.out.println(k);
 			System.out.println(Arrays.toString(v.toArray()));
 		});
+
+		System.out.println("---------------------------");
+
+		Map<Integer, Set<String>> userMapSet = USER_LIST.stream()
+				.collect(Collectors.groupingBy(User::getAge, Collectors.mapping(User::getName, Collectors.toSet())));
+
+		userMapSet.forEach((k, v) -> {
+			System.out.println(k);
+			System.out.println(Arrays.toString(v.toArray()));
+		});
 	}
 
 	@Test
