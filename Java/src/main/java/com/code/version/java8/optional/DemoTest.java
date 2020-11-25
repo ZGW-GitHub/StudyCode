@@ -15,19 +15,19 @@ public class DemoTest {
 
 	@Test
 	public void createTest() {
-		// 返回一个：包含 test 字符串的 Optional
-		Optional<String> o1 = Optional.of("test");
-		// 抛异常
-		Optional<Object> o2 = Optional.of(null);
+		{
+			// 返回一个：包含 test 字符串的 Optional
+			Optional<String> o1 = Optional.of("test");
+			// 抛异常
+			Optional<Object> o2 = Optional.of(null);
+		}
 		
-
-		System.out.println("------------------");
-
-		
-		// 返回一个：包含 test 字符串的 Optional
-		Optional<String> o3 = Optional.ofNullable("test");
-		// 返回一个：空 Optional
-		Optional<Object> o4 = Optional.ofNullable(null);
+		{
+			// 返回一个：包含 test 字符串的 Optional
+			Optional<String> o3 = Optional.ofNullable("test");
+			// 返回一个：空 Optional
+			Optional<Object> o4 = Optional.ofNullable(null);
+		}
 	}
 
 	@Test
@@ -38,25 +38,21 @@ public class DemoTest {
 
 	@Test
 	public void getTest() {
-		// Optional 不为空则返回，为空则抛异常
-		String str1 = Optional.of("test").get();
+		{
+			// Optional 不为空则返回，为空则抛异常
+			String str1 = Optional.of("test").get();
+		}
+		
+		{
+			// Optional 不为空则返回test，为空则返回test2
+			String str2 = Optional.of("test").orElse("test2");
+		}
 
+		{
+			// Optional 不为空则返回test，为空则返回Supplier函数返回的值
+			String str3 = Optional.of("test").orElseGet(() -> "test3");
+		}
 
-		System.out.println("------------------");
-
-
-		// Optional 不为空则返回test，为空则返回test2
-		String str2 = Optional.of("test").orElse("test2");
-
-
-		System.out.println("------------------");
-
-
-		// Optional 不为空则返回test，为空则返回Supplier函数返回的值
-		String str3 = Optional.of("test").orElseGet(() -> "test3");
-
-
-		System.out.println("------------------");
 
 
 		// Optional 不为空则返回test，为空则抛出Supplier函数返回的异常
