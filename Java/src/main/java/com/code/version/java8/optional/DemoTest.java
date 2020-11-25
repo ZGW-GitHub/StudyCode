@@ -53,32 +53,30 @@ public class DemoTest {
 			String str3 = Optional.of("test").orElseGet(() -> "test3");
 		}
 
-
-
-		// Optional 不为空则返回test，为空则抛出Supplier函数返回的异常
-		String str4 = Optional.of("test").orElseThrow(() -> new RuntimeException());
+		{
+			// Optional 不为空则返回test，为空则抛出Supplier函数返回的异常
+			String str4 = Optional.of("test").orElseThrow(() -> new RuntimeException());
+		}
 	}
 	
 	@Test
 	public void consumerTest() {
-		// Optional 不为空则执行consumer函数，为空则不做处理
-		Optional.of("test").ifPresent(str -> System.out.println(str));
+		{
+			// Optional 不为空则执行consumer函数，为空则不做处理
+			Optional.of("test").ifPresent(str -> System.out.println(str));
+		}
 
+		{
+			// Optional 不为空则执行 mapping 函数，返回的 Optional 是否包含值取决于 mapping 函数的返回值是否为 null
+			Optional<String> test1 = Optional.of("test").map(str -> str.toUpperCase());
+		}
 
-		System.out.println("------------------");
-
-
-		// Optional 不为空则执行 mapping 函数，返回的 Optional 是否包含值取决于 mapping 函数的返回值是否为 null
-		Optional<String> test1 = Optional.of("test").map(str -> str.toUpperCase());
-
-
-		System.out.println("------------------");
-
-
-		// 与 map 的区别在于：
-		// map 会将 mapping 函数的返回值包装为 Optional ，所以我们在编写 map 的 mapping 函数时返回值可以是任意类型
-		// flatMap 不会这样，所以我们在编写 flatMap 的 mapping 函数时必须手动将返回值包装为 Optional 类型
-		Optional<String> test2 = Optional.of("test").flatMap(str -> Optional.of(str.toUpperCase()));
+		{
+			// 与 map 的区别在于：
+			// map 会将 mapping 函数的返回值包装为 Optional ，所以我们在编写 map 的 mapping 函数时返回值可以是任意类型
+			// flatMap 不会这样，所以我们在编写 flatMap 的 mapping 函数时必须手动将返回值包装为 Optional 类型
+			Optional<String> test2 = Optional.of("test").flatMap(str -> Optional.of(str.toUpperCase()));
+		}
 	}
 	
 	@Test
