@@ -11,6 +11,7 @@
 
 	<artifactId>data-redis</artifactId>
 	<packaging>pom</packaging>
+	
 	<modules>
 		<module>redis-cache</module>
 		<module>redis-client</module>
