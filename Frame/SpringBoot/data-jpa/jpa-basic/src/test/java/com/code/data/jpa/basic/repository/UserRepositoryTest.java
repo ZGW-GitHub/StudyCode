@@ -8,9 +8,10 @@ import com.code.data.jpa.basic.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -36,7 +37,7 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 //	@PersistenceContext
 	private EntityManager entityManager;
 
-	@Before
+//	@Before
 	public void init() {
 		List<User> users = IntStream.rangeClosed(1, 10).boxed().map(i -> {
 			String salt = IdUtil.fastSimpleUUID();
@@ -56,6 +57,28 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 	@Test
 	public void initTest() {
 		log.info("init success !");
+	}
+	
+	@Test
+	@Transactional()
+	@Rollback(value = false)
+	public void demoTest() {
+		List<User> all1 = userRepository.findAll();
+		log.info("size1 : " + all1.size());
+		
+		userRepository.deleteAll();
+
+		List<User> all2 = userRepository.findAll();
+		log.info("size2 : " + all2.size());
+
+		String salt = IdUtil.fastSimpleUUID();
+		User user = User.builder().name("test11").age(10).isActive(true).sex(User.SEX_MAN)
+				.phone(SecureUtil.md5(System.currentTimeMillis() + salt)).salt(salt)
+				.createTime(new Date()).lastUpdateTime(new Date()).build();
+		userRepository.save(user);
+
+		List<User> all3 = userRepository.findAll();
+		log.info("size3 : " + all3.size());
 	}
 
 	@Test
