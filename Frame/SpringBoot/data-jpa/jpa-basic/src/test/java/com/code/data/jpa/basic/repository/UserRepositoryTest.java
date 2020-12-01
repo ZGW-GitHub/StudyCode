@@ -8,6 +8,7 @@ import com.code.data.jpa.basic.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
@@ -37,7 +38,7 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 //	@PersistenceContext
 	private EntityManager entityManager;
 
-//	@Before
+	@Before
 	public void init() {
 		List<User> users = IntStream.rangeClosed(1, 10).boxed().map(i -> {
 			String salt = IdUtil.fastSimpleUUID();
