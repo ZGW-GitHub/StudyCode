@@ -61,7 +61,7 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 	}
 	
 	@Test
-	@Transactional()
+	@Transactional
 	@Rollback(value = false)
 	public void demoTest() {
 		List<User> all1 = userRepository.findAll();
