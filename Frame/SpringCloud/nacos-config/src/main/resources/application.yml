@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  profiles.include: common
+  
+  application:
+    name: dev
+
+---
+spring:
+  profiles: test
+  profiles.include: common
+
+  application:
+    name: test
+          
+---
+spring:
+  profiles: common
+  
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
