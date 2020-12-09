@@ -37,7 +37,7 @@ public class DemoTest {
 	@Test
 	public void sortTest() {
 		List<User> collect = USER_LIST.stream()
-				.sorted(Comparator.comparing(user -> user.getAge() * (-1)))
+				.sorted(Comparator.comparing(User::getAge))
 				.collect(Collectors.toList());
 
 		collect.forEach(user -> System.out.println(user.getAge()));
