@@ -18,12 +18,12 @@ public class DemoTest {
 
 	@Before
 	public void initData() {
-		USER_LIST.add(new User(1, "test"));
-		USER_LIST.add(new User(2, "test"));
-		USER_LIST.add(new User(3, "test"));
-		USER_LIST.add(new User(3, "test"));
-		USER_LIST.add(new User(2, "test"));
-		USER_LIST.add(new User(1, "test"));
+		USER_LIST.add(new User(1, "test2"));
+		USER_LIST.add(new User(2, "test2"));
+		USER_LIST.add(new User(2, "test5"));
+		USER_LIST.add(new User(2, "test3"));
+		USER_LIST.add(new User(2, "test1"));
+		USER_LIST.add(new User(1, "test1"));
 	}
 
 	@After
@@ -37,15 +37,15 @@ public class DemoTest {
 	@Test
 	public void sortTest() {
 		List<User> collect = USER_LIST.stream()
-				.sorted(Comparator.comparing(User::getAge))
+				.sorted(Comparator.comparing(User::getAge).thenComparing(User::getName))
 				.collect(Collectors.toList());
 
-		collect.forEach(user -> System.out.println(user.getAge()));
+		collect.forEach(user -> System.out.println(user.getAge() + "——" + user.getName()));
 
 		System.out.println("---");
 
 		collect = collect.subList(4, collect.size());
-		collect.forEach(user -> System.out.println(user.getAge()));
+		collect.forEach(user -> System.out.println(user.getAge() + "——" + user.getName()));
 		System.out.println(collect.size());
 	}
 
