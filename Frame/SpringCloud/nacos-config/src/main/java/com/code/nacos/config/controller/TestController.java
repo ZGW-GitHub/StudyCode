@@ -1,7 +1,7 @@
 package com.code.nacos.config.controller;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+import com.code.nacos.config.config.AppConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/config")
-@RefreshScope
+@SuppressWarnings("all")
 public class TestController {
 	
-	@Value("${test:true}")
-	private Boolean test;
+	@Autowired
+	private AppConfiguration appConfiguration;
 	
 	@RequestMapping("/get")
-	public boolean get() {
-		return test;
+	public Integer get() {
+		return appConfiguration.getTest();
 	}
 	
 }
