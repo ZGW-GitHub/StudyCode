@@ -54,7 +54,7 @@
 				</executions>
 				<configuration>
 					<executable>bash</executable>
-					<commandlineArgs>./docker.sh</commandlineArgs>
+					<commandlineArgs>./docker.sh ${project.artifactId} ${project.version}</commandlineArgs>
 				</configuration>
 			</plugin>
 		</plugins>
