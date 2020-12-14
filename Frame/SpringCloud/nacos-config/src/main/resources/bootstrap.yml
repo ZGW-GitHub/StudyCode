@@ -2,5 +2,5 @@ spring:
   cloud:
     nacos:
       config:
-        server-addr: 127.0.0.1:8848
+        server-addr: linux.notuptoyou.site:8848
         file-extension: yaml
