@@ -20,8 +20,8 @@ public class DemoTest {
 	public void initData() {
 		USER_LIST.add(new User(1, "test2"));
 		USER_LIST.add(new User(2, "test2"));
-		USER_LIST.add(new User(2, "test5"));
-		USER_LIST.add(new User(2, "test3"));
+		USER_LIST.add(new User(3, "test5"));
+		USER_LIST.add(new User(4, "test3"));
 		USER_LIST.add(new User(2, "test1"));
 		USER_LIST.add(new User(1, "test1"));
 	}
