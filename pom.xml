@@ -29,8 +29,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<SpringBoot.version>2.2.2.RELEASE</SpringBoot.version>
-		<SpringCloud.version>Finchley.SR1</SpringCloud.version>
-		<SpringCloudAlibaba.version>2.1.0.RELEASE</SpringCloudAlibaba.version>
+		<SpringCloud.version>Hoxton.RELEASE</SpringCloud.version>
+		<SpringCloudAlibaba.version>2.2.0.RELEASE</SpringCloudAlibaba.version>
 
 		<hutool.version>5.3.9</hutool.version>
 		<lombok.version>1.18.10</lombok.version>
@@ -48,7 +48,7 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- Spring Boot : 2.2.2 -->
+			<!-- Spring Boot : 2.2.2.RELEASE -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
@@ -56,7 +56,7 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<!-- Spring Cloud : Hoxton.SR1 -->
+			<!-- Spring Cloud : Hoxton.RELEASE -->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
@@ -64,7 +64,7 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<!-- Spring Cloud Alibaba : 2.1.0 -->
+			<!-- Spring Cloud Alibaba : 2.2.0.RELEASE -->
 			<dependency>
 				<groupId>com.alibaba.cloud</groupId>
 				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
