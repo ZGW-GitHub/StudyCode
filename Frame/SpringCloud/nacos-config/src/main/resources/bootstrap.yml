@@ -3,10 +3,12 @@ server:
 
 spring:
   application:
-    name: demo
+    name: NacosConfig
 
   cloud:
     nacos:
       config:
         server-addr: linux.notuptoyou.site:8848
         file-extension: yaml
+        namespace: 6cfbf2eb-ef65-4a5b-92ea-6777d4d62428
+        group: COMMON_GROUP

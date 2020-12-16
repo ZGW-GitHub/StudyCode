@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/config")
 public class TestController {
 	
-	@Value("${test:10}")
-	private Integer test;
+	@Value("${age:10}")
+	private Integer age;
 	
 	@RequestMapping("/get")
 	public Integer get() {
-		return test;
+		return age;
 	}
 	
 }
