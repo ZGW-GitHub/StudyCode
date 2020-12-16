@@ -29,7 +29,7 @@ public class DemoController {
 	public String echo(@PathVariable String param) {
 		// 1、获得服务 demo-provider 的一个实例
 		List<ServiceInstance> instances = discoveryClient.getInstances("NacosService-Provider");
-		ServiceInstance instance = instances.size() > 0 ? instances.get(0) : null; // 选择第一个
+		ServiceInstance instance = instances.isEmpty() ? null : instances.get(0); // 选择第一个
 
 		// 2、发起调用
 		if (instance == null) {
