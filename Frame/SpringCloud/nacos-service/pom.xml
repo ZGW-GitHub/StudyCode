@@ -10,5 +10,17 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>nacos-service</artifactId>
+	<packaging>pom</packaging>
+	<modules>
+		<module>nacos-service-provider</module>
+		<module>nacos-service-consumer</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+		</dependency>
+	</dependencies>
 
 </project>
