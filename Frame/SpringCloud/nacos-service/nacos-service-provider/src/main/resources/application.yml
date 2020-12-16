@@ -1,0 +1,11 @@
+server:
+  port: 60001
+
+spring:
+  application:
+    name: NacosService-Provider
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: linux.notuptoyou.site:8848
