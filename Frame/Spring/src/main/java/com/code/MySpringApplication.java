@@ -2,6 +2,7 @@ package com.code;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @author 愆凡
@@ -12,7 +13,9 @@ public class MySpringApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(MySpringApplication.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(MySpringApplication.class, args);
+
+		System.err.println(context.getBeanFactory().getBean("test"));
 
 	}
 
