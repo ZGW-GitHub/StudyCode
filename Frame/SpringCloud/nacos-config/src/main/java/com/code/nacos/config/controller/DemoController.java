@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 @RestController
 @RequestMapping("/config")
-public class TestController {
+public class DemoController {
 
 	@Autowired
 	private EnvironmentManager environmentManager;
-	
+
 	@Value("${age:10}")
 	private Integer age;
-	
+
 	@RequestMapping("/get")
 	public Integer get() {
 		System.err.println(ToStringBuilder.reflectionToString(environmentManager));
