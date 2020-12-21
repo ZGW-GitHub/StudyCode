@@ -19,7 +19,7 @@ public class BeanDefinitionLoadTest extends MySpringApplicationTest {
 		PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
 
 		// Properties 资源的位置
-		String file = "/META-INF/beanDefinitionLoad.properties";
+		String file = "/beanDefinitionLoad.properties";
 
 		// 解决乱码
 		Resource resource = new ClassPathResource(file);
