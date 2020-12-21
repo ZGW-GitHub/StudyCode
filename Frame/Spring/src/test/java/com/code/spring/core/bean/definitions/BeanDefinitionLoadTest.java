@@ -19,12 +19,13 @@ public class BeanDefinitionLoadTest extends MySpringApplicationTest {
 		PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
 
 		// Properties 资源的位置
-		String file = "/beanDefinitionLoad.properties";
+		String file = "/META-INF/beanDefinitionLoad.properties";
 
 		// 解决乱码
 		Resource resource = new ClassPathResource(file);
 		EncodedResource encodedResource = new EncodedResource(resource, "UTF-8");
 
+		// 加载 Properties 资源
 		int beanDefinitionsNum = beanDefinitionReader.loadBeanDefinitions(encodedResource);
 		System.err.println("已加载 BeanDefinition 数量：" + beanDefinitionsNum);
 
