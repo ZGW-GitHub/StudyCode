@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>SpringBoot</artifactId>
-        <groupId>com.code</groupId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>SpringBoot</artifactId>
+		<groupId>com.code</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dubbo</artifactId>
-    
+	<artifactId>dubbo</artifactId>
+
 	<packaging>pom</packaging>
-	
-    <modules>
+
+	<modules>
 		<module>dubbo-api</module>
 		<module>dubbo-consumer</module>
 		<module>dubbo-provider</module>
 		<module>dubbo-provider-two</module>
 	</modules>
 
-    <dependencies>
+	<dependencies>
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo</artifactId>
@@ -35,7 +35,7 @@
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-recipes</artifactId>
 		</dependency>
-    </dependencies>
+	</dependencies>
 
 
 </project>

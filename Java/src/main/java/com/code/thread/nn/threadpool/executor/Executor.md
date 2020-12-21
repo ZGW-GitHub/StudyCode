@@ -16,7 +16,6 @@
 | `ThreadFactory  threadFactory`       | 执行程序创建新线程时使用的工厂                               |
 | `RejectedExecutionHandler  handler`  | 线程池对拒绝任务的处理策略 |
 
-
      提交 < 核心线程数
          创建线程数 = 提交数
      提交 > 核心线程数
@@ -27,8 +26,10 @@
          执行”拒绝策略“
      提交 < 最大线程数
          空闲下来的非核心线程将在空闲时间超过 keepAliveTime 时被销毁
+
 ------------------------------------------------------------------------------------------
-### shutDown	&	shutDownNow
+
+### shutDown & shutDownNow
 
     shutDown()
          20 Threads
@@ -54,15 +55,21 @@
          或
          设置了核心线程的回收为 true（ ExecutorService.allowCoreThreadTimeOut(true) ）
              注意：此时 KeepAliveTime 不能为 0
+
 ------------------------------------------------------------------------------------------
+
 ### xecutors 工具类
+
      cached          缓存
      fixed           固定（x）
      scheduled       计划
      single          单
      work stealing   偷工作
+
 ------------------------------------------------------------------------------------------
+
 ### TimerScheduler 计时器调度程序
+
                                  任务时间大于循环时间，下一次循环是否会推迟：
      Timer / TimerTask                       会推迟
      crontab（Linux）                         不会推迟
