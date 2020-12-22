@@ -9,6 +9,10 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.EncodedResource;
 
+/**
+ * @author 愆凡
+ * @date 2020/12/22 20:54
+ */
 public class BeanDefinitionLoadTest extends MySpringApplicationTest {
 
 	@Test
