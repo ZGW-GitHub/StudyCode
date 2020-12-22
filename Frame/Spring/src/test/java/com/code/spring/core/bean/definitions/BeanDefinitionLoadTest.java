@@ -51,6 +51,9 @@ public class BeanDefinitionLoadTest extends MySpringApplicationTest {
 		System.err.println(user);
 	}
 
+	/**
+	 * 通过注解读取解析 BeanDefinition
+	 */
 	@Test
 	public void AnnotatedTest() {
 		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
