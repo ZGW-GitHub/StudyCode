@@ -51,6 +51,7 @@ public class BeanInstantiationTest extends MySpringApplicationTest {
 	/**
 	 * 自定义 BeanPostProcess
 	 */
+	@SuppressWarnings("NullableProblems")
 	static class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
 		@Override
