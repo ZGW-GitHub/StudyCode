@@ -4,6 +4,9 @@ import com.code.spring.MySpringApplicationTest;
 import com.code.spring.entity.User;
 import org.junit.Test;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.MutablePropertyValues;
+import org.springframework.beans.PropertyValue;
+import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -44,6 +47,7 @@ public class BeanInstantiationTest extends MySpringApplicationTest {
 
 		testOne(beanFactory);
 		testTwo(beanFactory);
+		testThree(beanFactory);
 	}
 
 	/**
@@ -65,6 +69,14 @@ public class BeanInstantiationTest extends MySpringApplicationTest {
 	 */
 	private void testTwo(DefaultListableBeanFactory beanFactory) {
 		User user = beanFactory.getBean("userTwo", User.class);
+		System.err.println(user);
+	}
+
+	/**
+	 * 测试 属性填充前阶段
+	 */
+	private void testThree(DefaultListableBeanFactory beanFactory) {
+		User user = beanFactory.getBean("userThree", User.class);
 		System.err.println(user);
 	}
 
@@ -115,6 +127,34 @@ public class BeanInstantiationTest extends MySpringApplicationTest {
 			return true;
 		}
 
+		/* ------------------------------------------ 华丽的分割线 ------------------------------------------ */
+
+		@Override
+		public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
+			final MutablePropertyValues propertyValues;
+			if (pvs instanceof MutablePropertyValues) {
+				propertyValues = (MutablePropertyValues) pvs;
+			} else {
+				propertyValues = new MutablePropertyValues();
+			}
+
+			if (ObjectUtils.nullSafeEquals("userThree", beanName)) {
+				// 配置 id = 33
+				propertyValues.add("id", "33");
+
+				// 修改配置文件中的配置
+				PropertyValue namePropertyValue = propertyValues.getPropertyValue("name");
+				if (namePropertyValue != null) {
+					if ("愆凡3".equals(namePropertyValue.getValue())) {
+						// 因为 PropertyValue 的 value 属性为 final ，不能修改，所以这里只能先删除再添加
+						propertyValues.removePropertyValue("name");
+						propertyValues.add("name", "愆凡33");
+					}
+				}
+			}
+
+			return propertyValues;
+		}
 	}
 
 }
