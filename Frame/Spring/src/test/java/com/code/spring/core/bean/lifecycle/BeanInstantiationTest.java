@@ -51,10 +51,9 @@ public class BeanInstantiationTest extends MySpringApplicationTest {
 	}
 
 	/**
-	 * 测试 {@link InstantiationAwareBeanPostProcessor#postProcessBeforeInstantiation(Class, String)} 和
-	 * {@link BeanPostProcessor#postProcessAfterInitialization(Object, String)} 方法
-	 * <br/><br/> postProcessBeforeInitialization(Class<?> beanClass, String beanName) ：<br/>可以通过返回一个对象来跳过 Spring 正常的实例化操作。
-	 * <br/><br/> postProcessAfterInitialization(Object bean, String beanName) ：<br/>当 postProcessBeforeInitialization 返回的对象不为 null 时，会执行该方法，此时可以对该对象进行一些自定义操作。
+	 * 测试 实例化前
+	 * <br/><br/> {@link InstantiationAwareBeanPostProcessor#postProcessBeforeInstantiation(Class, String)} ：<br/>可以通过返回一个对象来跳过 Spring 正常的实例化操作。
+	 * <br/><br/> {@link BeanPostProcessor#postProcessAfterInitialization(Object, String)} ：<br/>当 postProcessBeforeInitialization 返回的对象不为 null 时，会执行该方法，此时可以对该对象进行一些自定义操作。
 	 */
 	private void testOne(DefaultListableBeanFactory beanFactory) {
 		User user = beanFactory.getBean("userOne", User.class);
@@ -62,10 +61,9 @@ public class BeanInstantiationTest extends MySpringApplicationTest {
 	}
 
 	/**
-	 * 测试 {@link BeanPostProcessor#postProcessBeforeInitialization(Object, String)} 和
-	 * {@link InstantiationAwareBeanPostProcessor#postProcessAfterInstantiation(Object, String)} 方法
-	 * <br/><br/> postProcessBeforeInitialization(Object bean, String beanName) ：<br/>
-	 * <br/><br/> postProcessAfterInstantiation(Object bean, String beanName) ：<br/>true：允许属性赋值（配置元信息 ——> 属性值），false：不允许
+	 * 测试 实例化后
+	 * <br/><br/> {@link BeanPostProcessor#postProcessBeforeInitialization(Object, String)} ：<br/>
+	 * <br/><br/> {@link InstantiationAwareBeanPostProcessor#postProcessAfterInstantiation(Object, String)} ：<br/>返回值：true：继续向下执行进行属性值填充（配置元信息 ——> 属性值），false：不继续向下执行不进行属性值填充
 	 */
 	private void testTwo(DefaultListableBeanFactory beanFactory) {
 		User user = beanFactory.getBean("userTwo", User.class);
