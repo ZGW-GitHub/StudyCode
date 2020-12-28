@@ -62,6 +62,6 @@ spring:
 
 logging:
   level:
-    com.xkcoding: debug
+    com.code.spring: debug
     org.hibernate.SQL: debug
     org.hibernate.type: trace
