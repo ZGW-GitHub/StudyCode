@@ -1,6 +1,6 @@
 package com.code.nacos.service.consumer.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +17,11 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/demo")
+@RequiredArgsConstructor
 public class DemoController {
 
-	@Autowired
-	private RestTemplate restTemplate;
-
-	@Autowired
-	private DiscoveryClient discoveryClient;
+	private final RestTemplate restTemplate;
+	private final DiscoveryClient discoveryClient;
 
 	@GetMapping(value = "/get/{param}")
 	public String echo(@PathVariable String param) {
