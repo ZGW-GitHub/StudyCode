@@ -16,19 +16,19 @@ import org.springframework.core.io.support.EncodedResource;
 import org.springframework.util.ObjectUtils;
 
 /**
- * Bean 实例化示例
+ * Bean 实例化 & 初始化 示例
  *
  * @author 愆凡
  * @date 2020/12/23 22:41
  */
-public class BeanInstantiationTest extends MySpringApplicationTest {
+public class BeanInstantiationAndInitializationTest extends MySpringApplicationTest {
 
 	@Test
 	public void beanPostProcessTest() {
 		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
 		// 添加 BeanPostProcessor
-		beanFactory.addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
+		beanFactory.addBeanPostProcessor(new MyBeanPostProcessor());
 
 		// 实例化基于 Properties 资源的 BeanDefinitionReader
 		PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
@@ -77,7 +77,7 @@ public class BeanInstantiationTest extends MySpringApplicationTest {
 	 * 自定义 BeanPostProcess
 	 */
 	@SuppressWarnings("NullableProblems")
-	static class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
+	static class MyBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
 		/**
 		 * 实例化前会被调用
