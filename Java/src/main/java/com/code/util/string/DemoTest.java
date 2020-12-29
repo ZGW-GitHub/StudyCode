@@ -10,14 +10,6 @@ import org.junit.Test;
 public class DemoTest {
 
 	/**
-	 * 测试格式化
-	 */
-	@Test
-	public void formatTest() {
-		System.out.println(String.format("%.3f", 20 * 1.0 / 3));
-	}
-
-	/**
 	 * 测试截取
 	 */
 	@Test
