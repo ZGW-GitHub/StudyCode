@@ -5,6 +5,7 @@ import com.code.spring.entity.User;
 import org.junit.Test;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.support.PropertiesBeanDefinitionReader;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotatedBeanDefinitionReader;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -23,7 +24,19 @@ public class BeanDefinitionLoadTest extends MySpringApplicationTest {
 	 */
 	@Test
 	public void xmlTest() {
+		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
+		// 实例化基于 xml 资源的 BeanDefinitionReader
+		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
+
+		// xml 资源的位置
+		String file = "/META-INF/beanDefinitionLoad.xml";
+
+		int beanDefinitionsNum = beanDefinitionReader.loadBeanDefinitions(file);
+		System.err.println("已加载 BeanDefinition 数量：" + beanDefinitionsNum);
+
+		User user = beanFactory.getBean("user", User.class);
+		System.err.println(user);
 	}
 
 	/**
