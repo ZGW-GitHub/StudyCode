@@ -8,4 +8,9 @@
 		<property name="name" value="愆凡"/>
 	</bean>
 
+	<bean id="userThree" class="com.code.spring.core.bean.lifecycle.UserBeanLifecycle" init-method="init">
+		<property name="id" value="3"/>
+		<property name="name" value="愆凡"/>
+	</bean>
+
 </beans>

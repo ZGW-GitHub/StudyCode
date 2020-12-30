@@ -9,6 +9,8 @@ import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.support.PropertiesBeanDefinitionReader;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.context.annotation.CommonAnnotationBeanPostProcessor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.EncodedResource;
@@ -22,48 +24,81 @@ import org.springframework.util.ObjectUtils;
  */
 public class BeanInstantiationAndInitializationTest extends MySpringApplicationTest {
 
-	private DefaultListableBeanFactory beforeTest() {
+	private DefaultListableBeanFactory beforeTest(String fileType) {
 		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
 		// 添加 BeanPostProcessor
 		beanFactory.addBeanPostProcessor(new MyBeanPostProcessor());
 
-		// 实例化基于 Properties 资源的 BeanDefinitionReader
-		PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
+		if ("xml".equals(fileType)) {
+			// 解决 @PostConstruct 方法无法回调的问题
+			beanFactory.addBeanPostProcessor(new CommonAnnotationBeanPostProcessor());
 
-		// Properties 资源的位置
-		String file = "/META-INF/beanDefinitionLoad.properties";
+			// 实例化基于 XML 资源的 BeanDefinitionReader
+			XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
-		// 解决乱码
-		Resource resource = new ClassPathResource(file);
-		EncodedResource encodedResource = new EncodedResource(resource, "UTF-8");
+			// XML 资源的位置
+			String file = "/META-INF/beanDefinitionLoad.xml";
 
-		// 加载 Properties 资源
-		int beanDefinitionsNum = beanDefinitionReader.loadBeanDefinitions(encodedResource);
-		System.err.println("已加载 BeanDefinition 数量：" + beanDefinitionsNum + "\n");
+			// 解决乱码
+			Resource resource = new ClassPathResource(file);
+			EncodedResource encodedResource = new EncodedResource(resource, "UTF-8");
+
+			// 加载 Properties 资源
+			int beanDefinitionsNum = beanDefinitionReader.loadBeanDefinitions(encodedResource);
+			System.err.println("已加载 BeanDefinition 数量：" + beanDefinitionsNum + "\n");
+
+		} else {
+
+			// 实例化基于 Properties 资源的 BeanDefinitionReader
+			PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
+
+			// Properties 资源的位置
+			String file = "/META-INF/beanDefinitionLoad.properties";
+
+			// 解决乱码
+			Resource resource = new ClassPathResource(file);
+			EncodedResource encodedResource = new EncodedResource(resource, "UTF-8");
+
+			// 加载 Properties 资源
+			int beanDefinitionsNum = beanDefinitionReader.loadBeanDefinitions(encodedResource);
+			System.err.println("已加载 BeanDefinition 数量：" + beanDefinitionsNum + "\n");
+
+		}
 
 		return beanFactory;
 	}
 
 	/**
-	 * 测试跳过 Bean 部分的实例化、初始化阶段
+	 * 测试 Bean 的实例化、初始化阶段调用的 PostProcess 方法（这里会跳过 Bean 部分的实例化、初始化阶段）
 	 */
 	@Test
 	public void beanPostProcessTestOne() {
-		DefaultListableBeanFactory beanFactory = beforeTest();
+		DefaultListableBeanFactory beanFactory = beforeTest(null);
 
 		UserBeanLifecycle user = beanFactory.getBean("userOne", UserBeanLifecycle.class);
 		System.err.println("\n" + user);
 	}
 
 	/**
-	 * 测试 Bean 的实例化、初始化阶段
+	 * 测试 Bean 的实例化、初始化阶段调用的 PostProcess 方法
 	 */
 	@Test
 	public void beanPostProcessTestTwo() {
-		DefaultListableBeanFactory beanFactory = beforeTest();
+		DefaultListableBeanFactory beanFactory = beforeTest(null);
 
 		UserBeanLifecycle user = beanFactory.getBean("userTwo", UserBeanLifecycle.class);
+		System.err.println("\n" + user);
+	}
+
+	/**
+	 * 测试 Bean 的实例化过程（ @PostConstruct 、afterPropertiesSet() 、init() ）
+	 */
+	@Test
+	public void beanPostProcessTestThree() {
+		DefaultListableBeanFactory beanFactory = beforeTest("xml");
+
+		UserBeanLifecycle user = beanFactory.getBean("userThree", UserBeanLifecycle.class);
 		System.err.println("\n" + user);
 	}
 
@@ -80,10 +115,10 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 		public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userOne", beanName)) {
 				UserBeanLifecycle user = new UserBeanLifecycle();
+				user.setName("愆凡V1");
 
 				System.err.println(beanName + " --> postProcessBeforeInstantiation : 返回对象跳过剩余的实例化、初始化操作");
 
-				user.setName("愆凡V1");
 				return user; // 该对象将作为创建的 Bean对象 返回，而不再继续执行 Spring 提供的 Bean 的构建流程
 			}
 			return null; // 继续执行 Bean 的实例化、初始化操作
@@ -96,10 +131,10 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 		public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userOne", beanName)) {
 				UserBeanLifecycle user = (UserBeanLifecycle) bean;
+				user.setName("愆凡V2");
 
 				System.err.println(beanName + " --> postProcessAfterInstantiation : user.name = " + user.getName());
 
-				user.setName("愆凡V2");
 				return false; // 返回 false 将不允许属性赋值（配置元信息 ——> 属性值）
 			}
 			return true;
@@ -120,7 +155,6 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 			}
 
 			if (ObjectUtils.nullSafeEquals("userOne", beanName) || ObjectUtils.nullSafeEquals("userTwo", beanName)) {
-				System.err.println(beanName + " --> postProcessProperties : user.name = " + propertyValues.getPropertyValue("name"));
 				// 配置 name = 11
 				propertyValues.add("id", "9");
 
@@ -131,6 +165,8 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 					propertyValues.removePropertyValue("name");
 					propertyValues.add("name", "愆凡V3");
 				}
+
+				System.err.println(beanName + " --> postProcessProperties : user.name = " + propertyValues.getPropertyValue("name"));
 			}
 
 			return propertyValues;
@@ -145,10 +181,10 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 		public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userOne", beanName) || ObjectUtils.nullSafeEquals("userTwo", beanName)) {
 				UserBeanLifecycle user = (UserBeanLifecycle) bean;
+				user.setName("愆凡V4");
 
 				System.err.println(beanName + " --> postProcessBeforeInitialization : user.name = " + user.getName());
 
-				user.setName("愆凡V4");
 				return user;
 			}
 			return bean;
@@ -161,10 +197,10 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 		public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userOne", beanName) || ObjectUtils.nullSafeEquals("userTwo", beanName)) {
 				UserBeanLifecycle user = (UserBeanLifecycle) bean;
+				user.setName("愆凡V5");
 
 				System.err.println(beanName + " --> postProcessAfterInitialization : user.name = " + user.getName());
 
-				user.setName("愆凡V5");
 				return user;
 			}
 			return bean;
