@@ -12,16 +12,23 @@
     <artifactId>SpringBoot</artifactId>
 	
     <packaging>pom</packaging>
-	
-    <modules>
-        <module>dubbo</module>
-        <module>zookeeper</module>
-        <module>mq-rabbitmq</module>
-        <module>mq-rocketmq</module>
-        <module>mq-kafka</module>
+
+	<modules>
+		<module>dubbo</module>
+		<module>zookeeper</module>
+		<module>mq-rabbitmq</module>
+		<module>mq-rocketmq</module>
+		<module>mq-kafka</module>
 		<module>data-jpa</module>
-        <module>data-mybatis</module>
+		<module>data-mybatis</module>
 		<module>data-redis</module>
 	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+	</dependencies>
 
 </project>
