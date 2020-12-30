@@ -22,6 +22,9 @@ public interface UserMapper {
 	@Select(" SELECT * FROM user WHERE id = #{id} ")
 	User selectUserById(@Param("id") Long id);
 
+	@Select(value = " SELECT sex FROM user WHERE name = #{name} LIMIT 1 ")
+	Integer findSexByName(String name);
+
 	// return : 1:成功，0：失败
 	int saveUser(@Param("user") User user);
 

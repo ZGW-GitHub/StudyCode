@@ -46,6 +46,13 @@ public class UserMapperTest extends DataMybatisBasicApplicationTest {
 	}
 
 	@Test
+	public void demoTest() {
+		Integer sex = userMapper.findSexByName("test");
+
+		System.err.println("sex : " + sex);
+	}
+
+	@Test
 	public void listUserTest() {
 		List<User> users = userMapper.listUser();
 
