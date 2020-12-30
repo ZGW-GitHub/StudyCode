@@ -5,7 +5,7 @@ CREATE TABLE test.user
 (
     id               INT(5)      NOT NULL AUTO_INCREMENT COMMENT '主键',
     name             VARCHAR(10) NOT NULL DEFAULT '' COMMENT '姓名',
-    sex              TINYINT(1)  NOT NULL COMMENT '性别',
+    sex              TINYINT     NOT NULL COMMENT '性别',
     age              INT(5)      NOT NULL COMMENT '年龄',
     phone            VARCHAR(32) NOT NULL UNIQUE COMMENT '手机号',
     salt             VARCHAR(32) NOT NULL COMMENT '加密使用的盐',
