@@ -1,0 +1,11 @@
+配置中心:
+  - Nacos
+
+注册中心:
+  - Nacos
+
+服务网关:
+  - Gateway
+
+服务调用:
+  - OpenFeign
