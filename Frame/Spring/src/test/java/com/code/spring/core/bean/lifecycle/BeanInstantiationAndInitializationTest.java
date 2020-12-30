@@ -1,7 +1,6 @@
 package com.code.spring.core.bean.lifecycle;
 
 import com.code.spring.MySpringApplicationTest;
-import com.code.spring.entity.User;
 import org.junit.Test;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.MutablePropertyValues;
@@ -23,8 +22,7 @@ import org.springframework.util.ObjectUtils;
  */
 public class BeanInstantiationAndInitializationTest extends MySpringApplicationTest {
 
-	@Test
-	public void beanPostProcessTest() {
+	private DefaultListableBeanFactory beforeTest() {
 		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
 		// 添加 BeanPostProcessor
@@ -42,35 +40,31 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 
 		// 加载 Properties 资源
 		int beanDefinitionsNum = beanDefinitionReader.loadBeanDefinitions(encodedResource);
-		System.err.println("已加载 BeanDefinition 数量：" + beanDefinitionsNum);
+		System.err.println("已加载 BeanDefinition 数量：" + beanDefinitionsNum + "\n");
 
-		testOne(beanFactory);
-		testTwo(beanFactory);
-		testThree(beanFactory);
-	}
-
-	/**
-	 * 测试 Bean 的实例化、初始化阶段
-	 */
-	private void testOne(DefaultListableBeanFactory beanFactory) {
-		User user = beanFactory.getBean("userOne", User.class);
-		System.err.println(user);
+		return beanFactory;
 	}
 
 	/**
 	 * 测试跳过 Bean 部分的实例化、初始化阶段
 	 */
-	private void testTwo(DefaultListableBeanFactory beanFactory) {
-		User user = beanFactory.getBean("userTwo", User.class);
-		System.err.println(user);
+	@Test
+	public void beanPostProcessTestOne() {
+		DefaultListableBeanFactory beanFactory = beforeTest();
+
+		UserBeanLifecycle user = beanFactory.getBean("userOne", UserBeanLifecycle.class);
+		System.err.println("\n" + user);
 	}
 
 	/**
-	 * 测试 属性填充前阶段
+	 * 测试 Bean 的实例化、初始化阶段
 	 */
-	private void testThree(DefaultListableBeanFactory beanFactory) {
-		User user = beanFactory.getBean("userThree", User.class);
-		System.err.println(user);
+	@Test
+	public void beanPostProcessTestTwo() {
+		DefaultListableBeanFactory beanFactory = beforeTest();
+
+		UserBeanLifecycle user = beanFactory.getBean("userTwo", UserBeanLifecycle.class);
+		System.err.println("\n" + user);
 	}
 
 	/**
@@ -84,12 +78,15 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 		 */
 		@Override
 		public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
-			if (ObjectUtils.nullSafeEquals("userTwo", beanName)) {
-				// 该对象将作为创建的 Bean对象 返回，而不再继续执行 Spring 提供的 Bean 的构建流程
-				return new User();
+			if (ObjectUtils.nullSafeEquals("userOne", beanName)) {
+				UserBeanLifecycle user = new UserBeanLifecycle();
+
+				System.err.println(beanName + " --> postProcessBeforeInstantiation : 返回对象跳过剩余的实例化、初始化操作");
+
+				user.setName("愆凡V1");
+				return user; // 该对象将作为创建的 Bean对象 返回，而不再继续执行 Spring 提供的 Bean 的构建流程
 			}
-			// 继续执行 Bean 的实例化、初始化操作
-			return null;
+			return null; // 继续执行 Bean 的实例化、初始化操作
 		}
 
 		/**
@@ -98,40 +95,14 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 		@Override
 		public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userOne", beanName)) {
-				User user = (User) bean;
-				user.setId(22L);
-				// "user" 对象不允许属性赋值（配置元信息 ——> 属性值）
-				return false;
+				UserBeanLifecycle user = (UserBeanLifecycle) bean;
+
+				System.err.println(beanName + " --> postProcessAfterInstantiation : user.name = " + user.getName());
+
+				user.setName("愆凡V2");
+				return false; // 返回 false 将不允许属性赋值（配置元信息 ——> 属性值）
 			}
 			return true;
-		}
-
-		/* ------------------------------------------ 华丽的分割线 ------------------------------------------ */
-
-		/**
-		 * 初始化前会被调用
-		 */
-		@Override
-		public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-			if (ObjectUtils.nullSafeEquals("userOne", beanName)) {
-				User user = (User) bean;
-				user.setId(222L);
-				return user;
-			}
-			return bean;
-		}
-
-		/**
-		 * 初始化后会被调用
-		 */
-		@Override
-		public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-			if (ObjectUtils.nullSafeEquals("userTwo", beanName)) {
-				User user = (User) bean;
-				user.setId(11L);
-				return user;
-			}
-			return bean;
 		}
 
 		/* ------------------------------------------ 华丽的分割线 ------------------------------------------ */
@@ -148,23 +119,57 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 				propertyValues = new MutablePropertyValues();
 			}
 
-			if (ObjectUtils.nullSafeEquals("userThree", beanName)) {
-				// 配置 id = 33
-				propertyValues.add("id", "33");
+			if (ObjectUtils.nullSafeEquals("userOne", beanName) || ObjectUtils.nullSafeEquals("userTwo", beanName)) {
+				System.err.println(beanName + " --> postProcessProperties : user.name = " + propertyValues.getPropertyValue("name"));
+				// 配置 name = 11
+				propertyValues.add("id", "9");
 
 				// 修改配置文件中的配置
 				PropertyValue namePropertyValue = propertyValues.getPropertyValue("name");
 				if (namePropertyValue != null) {
-					if ("愆凡3".equals(namePropertyValue.getValue())) {
-						// 因为 PropertyValue 的 value 属性为 final ，不能修改，所以这里只能先删除再添加
-						propertyValues.removePropertyValue("name");
-						propertyValues.add("name", "愆凡33");
-					}
+					// 因为 PropertyValue 的 value 属性为 final ，不能修改，所以这里只能先删除再添加
+					propertyValues.removePropertyValue("name");
+					propertyValues.add("name", "愆凡V3");
 				}
 			}
 
 			return propertyValues;
 		}
+
+		/* ------------------------------------------ 华丽的分割线 ------------------------------------------ */
+
+		/**
+		 * 初始化前会被调用
+		 */
+		@Override
+		public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+			if (ObjectUtils.nullSafeEquals("userOne", beanName) || ObjectUtils.nullSafeEquals("userTwo", beanName)) {
+				UserBeanLifecycle user = (UserBeanLifecycle) bean;
+
+				System.err.println(beanName + " --> postProcessBeforeInitialization : user.name = " + user.getName());
+
+				user.setName("愆凡V4");
+				return user;
+			}
+			return bean;
+		}
+
+		/**
+		 * 初始化后会被调用
+		 */
+		@Override
+		public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+			if (ObjectUtils.nullSafeEquals("userOne", beanName) || ObjectUtils.nullSafeEquals("userTwo", beanName)) {
+				UserBeanLifecycle user = (UserBeanLifecycle) bean;
+
+				System.err.println(beanName + " --> postProcessAfterInitialization : user.name = " + user.getName());
+
+				user.setName("愆凡V5");
+				return user;
+			}
+			return bean;
+		}
+
 	}
 
 }
