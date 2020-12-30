@@ -64,22 +64,9 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 	@Transactional
 	@Rollback(value = false)
 	public void demoTest() {
-		List<User> all1 = userRepository.findAll();
-		log.info("size1 : " + all1.size());
-		
-		userRepository.deleteAll();
+		Integer sex = userRepository.findSexByName("test1");
 
-		List<User> all2 = userRepository.findAll();
-		log.info("size2 : " + all2.size());
-
-		String salt = IdUtil.fastSimpleUUID();
-		User user = User.builder().name("test11").age(10).isActive(true).sex(User.SEX_MAN)
-				.phone(SecureUtil.md5(System.currentTimeMillis() + salt)).salt(salt)
-				.createTime(new Date()).lastUpdateTime(new Date()).build();
-		userRepository.save(user);
-
-		List<User> all3 = userRepository.findAll();
-		log.info("size3 : " + all3.size());
+		System.err.println("sex : " + sex);
 	}
 
 	@Test
