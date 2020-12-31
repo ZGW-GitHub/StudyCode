@@ -1,4 +1,4 @@
-package book;
+package com.code.mq.rocketmq.consumer;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
@@ -8,12 +8,14 @@ import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
+import org.junit.Test;
 
 import java.util.List;
 
-public class PushConsumer {
-	public static void main(String[] args) throws MQClientException {
+public class ConsumerTest {
 
+	@Test
+	public void demoTest() throws MQClientException {
 		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("rename_unique_group_name");
 		consumer.setNamesrvAddr("192.168.56.101:9876;192.168.56.102:9876");
 		consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
@@ -30,6 +32,6 @@ public class PushConsumer {
 		});
 
 		consumer.start();
-
 	}
+
 }
