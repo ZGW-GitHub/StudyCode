@@ -1,5 +1,6 @@
 package com.code.mq.rocketmq.consumer;
 
+import com.code.mq.rocketmq.RocketMqApplicationTest;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -12,7 +13,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class ConsumerTest {
+public class ConsumerTest extends RocketMqApplicationTest {
 
 	@Test
 	public void demoTest() throws MQClientException {

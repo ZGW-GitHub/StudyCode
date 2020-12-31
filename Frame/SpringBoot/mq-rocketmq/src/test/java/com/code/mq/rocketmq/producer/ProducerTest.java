@@ -1,5 +1,6 @@
 package com.code.mq.rocketmq.producer;
 
+import com.code.mq.rocketmq.RocketMqApplicationTest;
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
@@ -16,7 +17,7 @@ import java.io.UnsupportedEncodingException;
  * @author 愆凡
  * @date 2020/12/31 11:36
  */
-public class ProducerTest {
+public class ProducerTest extends RocketMqApplicationTest {
 
 	/**
 	 * 消息类型：简单消息
