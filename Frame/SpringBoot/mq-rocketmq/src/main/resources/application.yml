@@ -1,0 +1,5 @@
+rocketmq:
+  producer:
+    groupName: demoProducerGroup
+    retryTimesWhenSendFailed: 3
+    NamesrvAddr: linux.notuptoyou.site:9876

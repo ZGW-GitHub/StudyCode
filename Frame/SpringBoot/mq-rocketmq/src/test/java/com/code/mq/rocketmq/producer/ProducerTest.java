@@ -10,6 +10,7 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.UnsupportedEncodingException;
 
@@ -19,6 +20,9 @@ import java.io.UnsupportedEncodingException;
  */
 public class ProducerTest extends RocketMqApplicationTest {
 
+	@Autowired
+	private DefaultMQProducer producer;
+
 	/**
 	 * 消息类型：简单消息
 	 * 消息发送方式：同步发送
@@ -26,12 +30,6 @@ public class ProducerTest extends RocketMqApplicationTest {
 	 */
 	@Test
 	public void syncProducerTest() throws MQClientException, UnsupportedEncodingException, RemotingException, InterruptedException, MQBrokerException {
-		// 构建生产者实例
-		DefaultMQProducer producer = new DefaultMQProducer("group_name_sync");
-		// 设置发送消息失败重试次数
-		producer.setRetryTimesWhenSendFailed(3);
-		// 设置NameServer地址
-		producer.setNamesrvAddr("192.168.56.101:9876;192.168.56.102:9876");
 		// 启动生产者
 		producer.start();
 
