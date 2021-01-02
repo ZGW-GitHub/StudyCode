@@ -11,7 +11,7 @@ import javax.annotation.PreDestroy;
  * @author 愆凡
  * @date 2020/12/30 20:47
  */
-public class UserEntity extends User implements InitializingBean, DisposableBean {
+public class LifecycleUser extends User implements InitializingBean, DisposableBean {
 
 	/**
 	 * 依赖于注解驱动，当使用 BeanFactory 启动上下文时并不会回调该方法。<br />

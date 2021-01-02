@@ -78,7 +78,7 @@ public class BeanLifecycleTest extends MySpringApplicationTest {
 	public void beanPostProcessTestOne() {
 		DefaultListableBeanFactory beanFactory = beforeTest(null);
 
-		UserEntity user = beanFactory.getBean("userOne", UserEntity.class);
+		LifecycleUser user = beanFactory.getBean("userOne", LifecycleUser.class);
 		System.err.println("\n" + user);
 	}
 
@@ -89,7 +89,7 @@ public class BeanLifecycleTest extends MySpringApplicationTest {
 	public void beanPostProcessTestTwo() {
 		DefaultListableBeanFactory beanFactory = beforeTest(null);
 
-		UserEntity user = beanFactory.getBean("userTwo", UserEntity.class);
+		LifecycleUser user = beanFactory.getBean("userTwo", LifecycleUser.class);
 		System.err.println("\n" + user);
 	}
 
@@ -100,7 +100,7 @@ public class BeanLifecycleTest extends MySpringApplicationTest {
 	public void beanPostProcessTestThree() {
 		DefaultListableBeanFactory beanFactory = beforeTest("xml");
 
-		UserEntity user = beanFactory.getBean("userThree", UserEntity.class);
+		LifecycleUser user = beanFactory.getBean("userThree", LifecycleUser.class);
 		System.err.println("\n" + user);
 	}
 
@@ -111,7 +111,7 @@ public class BeanLifecycleTest extends MySpringApplicationTest {
 	public void beanPostProcessTestFour() {
 		DefaultListableBeanFactory beanFactory = beforeTest("xml");
 
-		UserEntity user = beanFactory.getBean("userFour", UserEntity.class);
+		LifecycleUser user = beanFactory.getBean("userFour", LifecycleUser.class);
 		System.err.println("\n" + user);
 
 		beanFactory.destroyBean(user); // 销毁 Bean ，并不代表 Bean 被 GC 了
@@ -129,7 +129,7 @@ public class BeanLifecycleTest extends MySpringApplicationTest {
 		@Override
 		public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userOne", beanName)) {
-				UserEntity user = new UserEntity();
+				LifecycleUser user = new LifecycleUser();
 				user.setName("愆凡V1");
 
 				System.err.println(beanName + " --> postProcessBeforeInstantiation : 返回对象跳过剩余的实例化、初始化操作");
@@ -145,7 +145,7 @@ public class BeanLifecycleTest extends MySpringApplicationTest {
 		@Override
 		public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userOne", beanName)) {
-				UserEntity user = (UserEntity) bean;
+				LifecycleUser user = (LifecycleUser) bean;
 				user.setName("愆凡V2");
 
 				System.err.println(beanName + " --> postProcessAfterInstantiation : user.name = " + user.getName());
@@ -195,7 +195,7 @@ public class BeanLifecycleTest extends MySpringApplicationTest {
 		@Override
 		public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userOne", beanName) || ObjectUtils.nullSafeEquals("userTwo", beanName)) {
-				UserEntity user = (UserEntity) bean;
+				LifecycleUser user = (LifecycleUser) bean;
 				user.setName("愆凡V4");
 
 				System.err.println(beanName + " --> postProcessBeforeInitialization : user.name = " + user.getName());
@@ -211,7 +211,7 @@ public class BeanLifecycleTest extends MySpringApplicationTest {
 		@Override
 		public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userOne", beanName) || ObjectUtils.nullSafeEquals("userTwo", beanName)) {
-				UserEntity user = (UserEntity) bean;
+				LifecycleUser user = (LifecycleUser) bean;
 				user.setName("愆凡V5");
 
 				System.err.println(beanName + " --> postProcessAfterInitialization : user.name = " + user.getName());
@@ -226,7 +226,7 @@ public class BeanLifecycleTest extends MySpringApplicationTest {
 		@Override
 		public void postProcessBeforeDestruction(Object bean, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userFour", beanName)) {
-				UserEntity user = (UserEntity) bean;
+				LifecycleUser user = (LifecycleUser) bean;
 				user.setName("愆凡销毁前");
 
 				System.err.println(beanName + " --> postProcessAfterInitialization : user.name = " + user.getName());
