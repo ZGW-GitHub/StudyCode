@@ -8,8 +8,14 @@
 		<property name="name" value="愆凡"/>
 	</bean>
 
-	<bean id="userThree" class="com.code.spring.core.bean.lifecycle.UserEntity" init-method="init">
+	<bean id="userThree" class="com.code.spring.core.bean.lifecycle.UserEntity" init-method="init"
+		  destroy-method="destroyDemo">
 		<property name="id" value="3"/>
+		<property name="name" value="愆凡"/>
+	</bean>
+
+	<bean id="userFour" class="com.code.spring.core.bean.lifecycle.UserEntity" destroy-method="destroyDemo">
+		<property name="id" value="4"/>
 		<property name="name" value="愆凡"/>
 	</bean>
 
