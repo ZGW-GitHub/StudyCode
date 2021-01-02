@@ -6,6 +6,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.PropertyValue;
 import org.springframework.beans.PropertyValues;
+import org.springframework.beans.factory.config.DestructionAwareBeanPostProcessor;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.support.PropertiesBeanDefinitionReader;
@@ -17,14 +18,15 @@ import org.springframework.core.io.support.EncodedResource;
 import org.springframework.util.ObjectUtils;
 
 /**
- * Bean 实例化 & 初始化 示例
+ * Bean 实例化 & 初始化 & 销毁 示例
  *
  * @author 愆凡
  * @date 2020/12/23 22:41
  */
-public class BeanInstantiationAndInitializationTest extends MySpringApplicationTest {
+public class BeanLifecycleTest extends MySpringApplicationTest {
 
 	private DefaultListableBeanFactory beforeTest(String fileType) {
+
 		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
 		// 添加 BeanPostProcessor
@@ -76,7 +78,7 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 	public void beanPostProcessTestOne() {
 		DefaultListableBeanFactory beanFactory = beforeTest(null);
 
-		UserBeanLifecycle user = beanFactory.getBean("userOne", UserBeanLifecycle.class);
+		UserEntity user = beanFactory.getBean("userOne", UserEntity.class);
 		System.err.println("\n" + user);
 	}
 
@@ -87,18 +89,34 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 	public void beanPostProcessTestTwo() {
 		DefaultListableBeanFactory beanFactory = beforeTest(null);
 
-		UserBeanLifecycle user = beanFactory.getBean("userTwo", UserBeanLifecycle.class);
+		UserEntity user = beanFactory.getBean("userTwo", UserEntity.class);
 		System.err.println("\n" + user);
 	}
 
 	/**
-	 * 测试 Bean 的实例化过程（ @PostConstruct 、afterPropertiesSet() 、init() ）
+	 * 测试 Bean 的初始化（ @PostConstruct 、afterPropertiesSet() 、init() ）
 	 */
 	@Test
 	public void beanPostProcessTestThree() {
 		DefaultListableBeanFactory beanFactory = beforeTest("xml");
 
-		UserBeanLifecycle user = beanFactory.getBean("userThree", UserBeanLifecycle.class);
+		UserEntity user = beanFactory.getBean("userThree", UserEntity.class);
+		System.err.println("\n" + user);
+	}
+
+	/**
+	 * 测试 Bean 的销毁（ @PostConstruct 、afterPropertiesSet() 、init() ）
+	 */
+	@Test
+	public void beanPostProcessTestFour() {
+		DefaultListableBeanFactory beanFactory = beforeTest("xml");
+
+		UserEntity user = beanFactory.getBean("userFour", UserEntity.class);
+		System.err.println("\n" + user);
+
+		beanFactory.destroyBean(user); // 销毁 Bean ，并不代表 Bean 被 GC 了
+		
+		user = beanFactory.getBean("userFour", UserEntity.class);
 		System.err.println("\n" + user);
 	}
 
@@ -106,7 +124,7 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 	 * 自定义 BeanPostProcess
 	 */
 	@SuppressWarnings("NullableProblems")
-	static class MyBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
+	static class MyBeanPostProcessor implements InstantiationAwareBeanPostProcessor, DestructionAwareBeanPostProcessor {
 
 		/**
 		 * 实例化前会被调用
@@ -114,7 +132,7 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 		@Override
 		public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userOne", beanName)) {
-				UserBeanLifecycle user = new UserBeanLifecycle();
+				UserEntity user = new UserEntity();
 				user.setName("愆凡V1");
 
 				System.err.println(beanName + " --> postProcessBeforeInstantiation : 返回对象跳过剩余的实例化、初始化操作");
@@ -130,7 +148,7 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 		@Override
 		public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userOne", beanName)) {
-				UserBeanLifecycle user = (UserBeanLifecycle) bean;
+				UserEntity user = (UserEntity) bean;
 				user.setName("愆凡V2");
 
 				System.err.println(beanName + " --> postProcessAfterInstantiation : user.name = " + user.getName());
@@ -180,7 +198,7 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 		@Override
 		public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userOne", beanName) || ObjectUtils.nullSafeEquals("userTwo", beanName)) {
-				UserBeanLifecycle user = (UserBeanLifecycle) bean;
+				UserEntity user = (UserEntity) bean;
 				user.setName("愆凡V4");
 
 				System.err.println(beanName + " --> postProcessBeforeInitialization : user.name = " + user.getName());
@@ -196,7 +214,7 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 		@Override
 		public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 			if (ObjectUtils.nullSafeEquals("userOne", beanName) || ObjectUtils.nullSafeEquals("userTwo", beanName)) {
-				UserBeanLifecycle user = (UserBeanLifecycle) bean;
+				UserEntity user = (UserEntity) bean;
 				user.setName("愆凡V5");
 
 				System.err.println(beanName + " --> postProcessAfterInitialization : user.name = " + user.getName());
@@ -206,6 +224,17 @@ public class BeanInstantiationAndInitializationTest extends MySpringApplicationT
 			return bean;
 		}
 
+		/* ------------------------------------------ 华丽的分割线 ------------------------------------------ */
+
+		@Override
+		public void postProcessBeforeDestruction(Object bean, String beanName) throws BeansException {
+			if (ObjectUtils.nullSafeEquals("userFour", beanName)) {
+				UserEntity user = (UserEntity) bean;
+				user.setName("愆凡销毁前");
+
+				System.err.println(beanName + " --> postProcessAfterInitialization : user.name = " + user.getName());
+			}
+		}
 	}
 
 }

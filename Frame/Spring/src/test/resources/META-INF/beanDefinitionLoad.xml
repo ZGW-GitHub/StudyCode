@@ -3,12 +3,12 @@
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="user" class="com.code.spring.core.bean.lifecycle.UserBeanLifecycle">
+	<bean id="user" class="com.code.spring.core.bean.lifecycle.UserEntity">
 		<property name="id" value="1"/>
 		<property name="name" value="愆凡"/>
 	</bean>
 
-	<bean id="userThree" class="com.code.spring.core.bean.lifecycle.UserBeanLifecycle" init-method="init">
+	<bean id="userThree" class="com.code.spring.core.bean.lifecycle.UserEntity" init-method="init">
 		<property name="id" value="3"/>
 		<property name="name" value="愆凡"/>
 	</bean>
