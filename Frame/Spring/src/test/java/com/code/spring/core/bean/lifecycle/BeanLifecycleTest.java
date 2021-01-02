@@ -105,7 +105,7 @@ public class BeanLifecycleTest extends MySpringApplicationTest {
 	}
 
 	/**
-	 * 测试 Bean 的销毁（ @PostConstruct 、afterPropertiesSet() 、init() ）
+	 * 测试 Bean 的销毁（ @PreDestroy 、destroy() 、destroyDemo() ）
 	 */
 	@Test
 	public void beanPostProcessTestFour() {
@@ -115,9 +115,6 @@ public class BeanLifecycleTest extends MySpringApplicationTest {
 		System.err.println("\n" + user);
 
 		beanFactory.destroyBean(user); // 销毁 Bean ，并不代表 Bean 被 GC 了
-		
-		user = beanFactory.getBean("userFour", UserEntity.class);
-		System.err.println("\n" + user);
 	}
 
 	/**
