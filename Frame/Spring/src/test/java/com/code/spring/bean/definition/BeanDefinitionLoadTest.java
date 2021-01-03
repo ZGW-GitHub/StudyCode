@@ -1,4 +1,4 @@
-package com.code.spring.bean.lifecycle;
+package com.code.spring.bean.definition;
 
 import com.code.spring.MySpringApplicationTest;
 import com.code.spring.entity.User;

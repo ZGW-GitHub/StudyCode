@@ -1,4 +1,4 @@
-package com.code.spring.bean.lifecycle;
+package com.code.spring.bean;
 
 import com.code.spring.entity.User;
 import org.springframework.beans.factory.DisposableBean;
@@ -11,7 +11,7 @@ import javax.annotation.PreDestroy;
  * @author 愆凡
  * @date 2020/12/30 20:47
  */
-public class LifecycleUser extends User implements InitializingBean, DisposableBean {
+public class BeanUser extends User implements InitializingBean, DisposableBean {
 
 	/**
 	 * 依赖于注解驱动，当使用 BeanFactory 启动上下文时并不会回调该方法。<br />
