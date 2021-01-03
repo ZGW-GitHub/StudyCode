@@ -11,11 +11,18 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.util.ObjectUtils;
 
 /**
+ * Spring Bean 元信息 示例：
+ * <br/>- 配置元信息
+ * <br/>- 属性元信息
+ *
  * @author 愆凡
  * @date 2021/1/2 18:03
  */
 public class BeanConfigurationTest extends MySpringApplicationTest {
 
+	/**
+	 * 测试 Spring Bean 的配置元信息、属性元信息
+	 */
 	@Test
 	@SuppressWarnings("NullableProblems")
 	public void beanConfigurationTest() {
