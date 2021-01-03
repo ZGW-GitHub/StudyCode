@@ -52,9 +52,9 @@ public class BeanDefinitionLoadTest extends MySpringApplicationTest {
 		// Properties 资源的位置
 		String file = "/META-INF/bean/definition/beanDefinitionLoad.properties";
 
-		// 解决乱码
+		// 解决乱码 ( Properties 资源加载默认是通过 ISO-8859-1 编码的 )
 		Resource resource = new ClassPathResource(file);
-		EncodedResource encodedResource = new EncodedResource(resource, "UTF-8");
+		EncodedResource encodedResource = new EncodedResource(resource, "UTF-8"); // 转换成带有字符编码的 EncodedResource 对象
 
 		// 加载 Properties 资源
 		int beanDefinitionsNum = beanDefinitionReader.loadBeanDefinitions(encodedResource);
