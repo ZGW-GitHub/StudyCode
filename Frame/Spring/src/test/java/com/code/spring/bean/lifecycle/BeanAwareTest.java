@@ -1,4 +1,4 @@
-package com.code.spring.core.bean.lifecycle;
+package com.code.spring.bean.lifecycle;
 
 import com.code.spring.MySpringApplicationTest;
 import lombok.Getter;
