@@ -30,7 +30,7 @@ public class BeanDefinitionLoadTest extends MySpringApplicationTest {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String file = "/META-INF/beanDefinitionLoad.xml";
+		String file = "/META-INF/bean/definition/beanDefinitionLoad.xml";
 
 		int beanDefinitionsNum = beanDefinitionReader.loadBeanDefinitions(file);
 		System.err.println("已加载 BeanDefinition 数量：" + beanDefinitionsNum);
@@ -50,7 +50,7 @@ public class BeanDefinitionLoadTest extends MySpringApplicationTest {
 		PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
 
 		// Properties 资源的位置
-		String file = "/META-INF/beanDefinitionLoad.properties";
+		String file = "/META-INF/bean/definition/beanDefinitionLoad.properties";
 
 		// 解决乱码
 		Resource resource = new ClassPathResource(file);
