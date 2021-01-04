@@ -1,17 +1,17 @@
-package com.code.openfeign.consumer;
+package com.code.openfeign;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author 愆凡
- * @date 2021/1/4 16:41
+ * @date 2021/1/4 17:06
  */
 @SpringBootApplication
-public class OpenFeignConsumerApplication {
+public class OpenFeignApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OpenFeignConsumerApplication.class, args);
+		SpringApplication.run(OpenFeignApplication.class, args);
 	}
 
 }

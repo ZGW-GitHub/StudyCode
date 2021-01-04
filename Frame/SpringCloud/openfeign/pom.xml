@@ -11,10 +11,6 @@
 
 	<artifactId>openfeign</artifactId>
 	<packaging>pom</packaging>
-	<modules>
-		<module>openfeign-consumer</module>
-		<module>openfeign-provider</module>
-	</modules>
 
 	<dependencies>
 		<dependency>
