@@ -32,6 +32,8 @@
 		<SpringCloud.version>Hoxton.RELEASE</SpringCloud.version>
 		<SpringCloudAlibaba.version>2.2.0.RELEASE</SpringCloudAlibaba.version>
 
+		<rocketmq.stater.version>2.1.1</rocketmq.stater.version>
+
 		<hutool.version>5.3.9</hutool.version>
 		<lombok.version>1.18.10</lombok.version>
 		<guava.version>22.0</guava.version>
@@ -72,6 +74,13 @@
 				<version>${SpringCloudAlibaba.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+
+			<!-- RocketMQ -->
+			<dependency>
+				<groupId>org.apache.rocketmq</groupId>
+				<artifactId>rocketmq-spring-boot-starter</artifactId>
+				<version>${rocketmq.stater.version}</version>
 			</dependency>
 
 			<!-- Mybatis -->
