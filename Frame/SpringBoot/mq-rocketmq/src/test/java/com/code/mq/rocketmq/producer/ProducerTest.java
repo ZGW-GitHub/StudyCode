@@ -9,8 +9,10 @@ import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 import org.apache.rocketmq.remoting.exception.RemotingException;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.UnsupportedEncodingException;
 
@@ -21,40 +23,26 @@ import java.io.UnsupportedEncodingException;
 public class ProducerTest extends RocketMqApplicationTest {
 
 	@Autowired
-	private DefaultMQProducer producer;
+	private RocketMQTemplate rocketMQTemplate;
+
+	@Value("${rocketmq.producer.customized-trace-topic}")
+	private String topic;
 
 	/**
-	 * 消息类型：简单消息
-	 * 消息发送方式：同步发送
+	 * 消息类型：简单消息<br />
+	 * 消息发送方式：同步发送<br />
 	 * 应用：可靠同步发送在众多场景中被使用，例如：重要的通知消息、短信通知、短信营销系统，等
 	 */
 	@Test
-	public void syncProducerTest() throws MQClientException, UnsupportedEncodingException, RemotingException, InterruptedException, MQBrokerException {
-		// 启动生产者
-		producer.start();
+	public void syncProducerTest() {
+		SendResult sendResult = rocketMQTemplate.syncSend(topic, "Hello, World!");
 
-		for (int i = 0; i < 10; i++) {
-
-			// 创建一个消息实例，指定主题、Tag、消息主题
-			Message message = new Message(
-					"TopicTest",
-					"TagA",
-					("Hello RocketMQ !" + i).getBytes(RemotingHelper.DEFAULT_CHARSET)
-			);
-
-			// 同步发送消息，并获取发送结果
-			SendResult result = producer.send(message);
-			System.out.println("发送 + " + message + " : " + result);
-
-		}
-
-		// 关闭生产者
-		producer.shutdown();
+		System.err.println("sendResult : " + sendResult);
 	}
 
 	/**
-	 * 消息类型：简单消息
-	 * 消息发送方式：异步发送
+	 * 消息类型：简单消息<br />
+	 * 消息发送方式：异步发送<br />
 	 * 应用：异步发送通常被用于对响应时间敏感的业务场景
 	 */
 	@Test
@@ -97,8 +85,8 @@ public class ProducerTest extends RocketMqApplicationTest {
 	}
 
 	/**
-	 * 消息类型：简单消息
-	 * 消息发送方式：单向发送
+	 * 消息类型：简单消息<br />
+	 * 消息发送方式：单向发送<br />
 	 * 应用：单向发送用于要求一定可靠性的场景，例如：日志收集。
 	 */
 	@Test

@@ -1,5 +1,6 @@
 rocketmq:
+  name-server: linux.notuptoyou.site:9876
+
   producer:
-    groupName: demoProducerGroup
-    retryTimesWhenSendFailed: 3
-    NamesrvAddr: linux.notuptoyou.site:9876
+    group: group-test
+    customized-trace-topic: topic-test
