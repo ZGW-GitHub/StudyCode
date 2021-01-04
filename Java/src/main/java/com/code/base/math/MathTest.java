@@ -1,4 +1,4 @@
-package com.code.util.math;
+package com.code.base.math;
 
 import org.junit.Test;
 
