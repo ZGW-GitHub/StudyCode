@@ -34,10 +34,12 @@ public class ProducerTest extends RocketMqApplicationTest {
 	 * 应用：可靠同步发送在众多场景中被使用，例如：重要的通知消息、短信通知、短信营销系统，等
 	 */
 	@Test
-	public void syncProducerTest() {
-		SendResult sendResult = rocketMQTemplate.syncSend(topic, "Hello, World!");
+	public void syncProducerTest() throws InterruptedException {
+		SendResult sendResult = rocketMQTemplate.syncSend(topic, "Sync 消息");
 
 		System.err.println("sendResult : " + sendResult);
+
+		Thread.sleep(3_000);
 	}
 
 	/**
@@ -46,42 +48,18 @@ public class ProducerTest extends RocketMqApplicationTest {
 	 * 应用：异步发送通常被用于对响应时间敏感的业务场景
 	 */
 	@Test
-	public void asyncProducerTest() throws MQClientException, RemotingException, InterruptedException, UnsupportedEncodingException {
-		// 构建生产者实例
-		DefaultMQProducer producer = new DefaultMQProducer("group_name_sync");
-		// 设置发送消息失败重试次数
-		producer.setRetryTimesWhenSendFailed(3);
-		// 设置NameServer地址
-		producer.setNamesrvAddr("192.168.56.101:9876;192.168.56.102:9876");
-		// 启动生产者
-		producer.start();
+	public void asyncProducerTest() {
+		rocketMQTemplate.asyncSend(topic, "Async 消息", new SendCallback() {
+			@Override
+			public void onSuccess(SendResult sendResult) {
+				System.err.println("SendResult : " + sendResult);
+			}
 
-		for (int i = 0; i < 10; i++) {
-
-			// 创建一个消息实例，指定主题、Tag、消息主题
-			Message message = new Message(
-					"TopicTest",
-					"TagA",
-					("Hello RocketMQ !" + i).getBytes(RemotingHelper.DEFAULT_CHARSET)
-			);
-
-			// 异步发送消息
-			producer.send(message, new SendCallback() {
-				@Override
-				public void onSuccess(SendResult sendResult) {
-					System.out.println("发送 + " + message + " : 成功！");
-				}
-
-				@Override
-				public void onException(Throwable e) {
-					e.printStackTrace();
-				}
-			});
-
-		}
-
-		// 关闭生产者
-		producer.shutdown();
+			@Override
+			public void onException(Throwable throwable) {
+				System.err.println("Error : " + throwable.getMessage());
+			}
+		}, 3_000);
 	}
 
 	/**
