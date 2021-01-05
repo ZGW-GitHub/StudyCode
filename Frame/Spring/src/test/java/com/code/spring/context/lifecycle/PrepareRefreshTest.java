@@ -14,8 +14,8 @@ import org.springframework.context.support.AbstractApplicationContext;
 public class PrepareRefreshTest extends MySpringApplicationTest {
 
 	/**
-	 * {@link AbstractApplicationContext#initPropertySources() initPropertySources()}
-	 * 测试初始化 Environment 、初始化 Environment 关联的 PropertySource 、设置 Environment 必需的属性
+	 * 示例：<br />
+	 * 初始化 Environment 、<br />初始化 Environment 关联的 PropertySource 、<br />设置 Environment 必需的属性 、<br />必需属性的校验 。
 	 */
 	@Test
 	public void initPropertySourcesTest() {
