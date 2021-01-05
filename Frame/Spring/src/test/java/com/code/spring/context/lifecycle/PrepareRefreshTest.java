@@ -23,7 +23,7 @@ public class PrepareRefreshTest extends MySpringApplicationTest {
 		context.start();
 	}
 
-	class TestApplicationContext extends AnnotationConfigApplicationContext {
+	static class TestApplicationContext extends AnnotationConfigApplicationContext {
 		public TestApplicationContext(String... basePackages) {
 			super(basePackages);
 		}
