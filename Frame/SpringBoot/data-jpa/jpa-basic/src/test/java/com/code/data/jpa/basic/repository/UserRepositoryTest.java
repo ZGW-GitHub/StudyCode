@@ -129,7 +129,7 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 		List<Object[]> resultList = dataQuery.getResultList();
 		BigInteger count = (BigInteger) countQuery.getSingleResult();
 
-		log.debug(Arrays.toString(resultList.toArray()));
+		log.error(Arrays.toString(resultList.toArray()));
 
 		Assert.assertEquals(count.intValue(), 3);
 		Assert.assertEquals(resultList.size(), 3);
