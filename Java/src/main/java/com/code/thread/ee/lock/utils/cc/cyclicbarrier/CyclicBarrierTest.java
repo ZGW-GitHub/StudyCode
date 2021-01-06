@@ -1,6 +1,5 @@
 package com.code.thread.ee.lock.utils.cc.cyclicbarrier;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.util.concurrent.BrokenBarrierException;
@@ -10,14 +9,13 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author 愆凡
  */
-@Slf4j
 public class CyclicBarrierTest {
 
 	@Test
 	public void test() throws BrokenBarrierException, InterruptedException {
 
 		final CyclicBarrier barrier = new CyclicBarrier(3,
-				() -> log.info(Thread.currentThread().getName() + " 回调函数！"));
+				() -> System.err.println(Thread.currentThread().getName() + " 回调函数！"));
 
 		System.err.println("main start !");
 
