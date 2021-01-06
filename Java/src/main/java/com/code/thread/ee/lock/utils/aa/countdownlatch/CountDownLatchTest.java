@@ -7,6 +7,10 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * API：
+ * <br />{@link CountDownLatch#await() await()} —— 等待 countdown 达标
+ * <br />{@link CountDownLatch#countDown() countDown()} —— countdown
+ *
  * @author 愆凡
  * @date 2021/1/5 16:15
  */

@@ -7,7 +7,7 @@ public class Lock笔记 {
 	 *--------------------------------------------------------------------------------------------------
 	 *
 	 * CountDownLatch
-	 *      Aa-Threads等待（await）B-Threads完成（countDown），Aa-Threads再继续执行。 ---> await()、countDown()
+	 *      Aa-Threads等待（await）B-Threads完成（countDown）。 ---> await()、countDown()
 	 *
 	 *--------------------------------------------------------------------------------------------------
 	 *
