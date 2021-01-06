@@ -25,7 +25,7 @@ public class CountDownLatchTest {
 		final CountDownLatch latch = new CountDownLatch(1);
 
 		new Thread(() -> {
-			log.debug("为任务准备资源。。。");
+			System.err.println("为任务准备资源。。。");
 			try {
 				// 准备资源
 				Thread.sleep(2_000);
@@ -35,11 +35,11 @@ public class CountDownLatchTest {
 				// 资源准备完成（计数减一）
 				latch.countDown();
 			}
-			log.debug("准备资源完成。");
+			System.err.println("准备资源完成。");
 		}).start();
 
 		new Thread(() -> {
-			log.debug("准备初始化任务。。。");
+			System.err.println("准备初始化任务。。。");
 			try {
 				// 初始化任务
 				Thread.sleep(1_000);
@@ -48,7 +48,7 @@ public class CountDownLatchTest {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			log.debug("任务开始执行。。。");
+			System.err.println("任务开始执行。。。");
 		}).start();
 	}
 
@@ -60,7 +60,6 @@ public class CountDownLatchTest {
 		final CountDownLatch latch = new CountDownLatch(1);
 
 		new Thread(() -> {
-			log.debug("开始 wait");
 			try {
 				TimeUnit.SECONDS.sleep(2);
 			} catch (InterruptedException e) {
@@ -71,8 +70,9 @@ public class CountDownLatchTest {
 
 		}).start();
 
+		System.err.println("开始 wait");
 		boolean isSuccess = latch.await(3, TimeUnit.SECONDS);
-		log.debug("结束！isSuccess : " + isSuccess);
+		System.err.println("结束！isSuccess : " + isSuccess);
 	}
 
 }
