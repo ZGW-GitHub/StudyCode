@@ -20,9 +20,15 @@ public class CyclicBarrierTest {
 	@Test
 	public void awaitTest() throws BrokenBarrierException, InterruptedException {
 
-		final CyclicBarrier barrier = new CyclicBarrier(3,
-				// 最后一个完成的线程将执行该回调函数
-				() -> System.err.println(Thread.currentThread().getName() + " 执行回调函数！"));
+		// 最后一个完成的线程将执行该回调函数
+		final CyclicBarrier barrier = new CyclicBarrier(3, () -> {
+			try {
+				System.err.println(Thread.currentThread().getName() + " 执行回调函数！");
+				TimeUnit.SECONDS.sleep(2);
+			} catch (InterruptedException e) {
+				log.error("Error : " + e);
+			}
+		});
 
 		startNewThread(barrier, 3, "T1");
 		startNewThread(barrier, 2, "T2");
@@ -30,7 +36,7 @@ public class CyclicBarrierTest {
 		System.err.println(Thread.currentThread().getName() + " awaiting ...");
 		barrier.await(); // 相互等待
 
-		System.err.println("over !");
+		System.err.println("over !"); // 执行完方法回调才会继续执行到这里
 	}
 
 	@Test
