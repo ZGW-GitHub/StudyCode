@@ -1,5 +1,6 @@
 package com.code.thread.ee.lock.utils.cc.cyclicbarrier;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.util.concurrent.BrokenBarrierException;
@@ -13,6 +14,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author 愆凡
  */
+@Slf4j
 public class CyclicBarrierTest {
 
 	@Test
@@ -22,30 +24,32 @@ public class CyclicBarrierTest {
 				// 最后一个完成的线程将执行该回调函数
 				() -> System.err.println(Thread.currentThread().getName() + " 执行回调函数！"));
 
-		new Thread(() -> {
-			try {
-				TimeUnit.MILLISECONDS.sleep(3_000);
-				System.err.println(Thread.currentThread().getName() + " awaiting ...");
-				barrier.await(); // 相互等待
-			} catch (InterruptedException | BrokenBarrierException e) {
-				e.printStackTrace();
-			}
-		}, "T1").start();
-
-		new Thread(() -> {
-			try {
-				TimeUnit.MILLISECONDS.sleep(2_000);
-				System.err.println(Thread.currentThread().getName() + " awaiting ...");
-				barrier.await(); // 相互等待
-			} catch (InterruptedException | BrokenBarrierException e) {
-				e.printStackTrace();
-			}
-		}, "T2").start();
+		startNewThread(barrier, 3, "T1");
+		startNewThread(barrier, 2, "T2");
 
 		System.err.println(Thread.currentThread().getName() + " awaiting ...");
 		barrier.await(); // 相互等待
 
 		System.err.println("over !");
+	}
+
+	@Test
+	public void resetTest() {
+
+	}
+
+	private void startNewThread(CyclicBarrier barrier, int sleepSeconds, String threadName) {
+		new Thread(() -> {
+			try {
+				TimeUnit.SECONDS.sleep(sleepSeconds);
+
+				System.err.println(Thread.currentThread().getName() + " awaiting ...");
+
+				barrier.await(); // 相互等待
+			} catch (InterruptedException | BrokenBarrierException e) {
+				log.error("Error : ", e);
+			}
+		}, threadName).start();
 	}
 
 }
