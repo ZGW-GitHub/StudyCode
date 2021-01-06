@@ -1,5 +1,8 @@
 package com.code.thread.ee.lock.utils.cc.cyclicbarrier;
 
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
@@ -7,20 +10,23 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author 愆凡
  */
+@Slf4j
 public class CyclicBarrierTest {
 
-	private static final CyclicBarrier barrier = new CyclicBarrier(3, () -> System.out.println(Thread.currentThread().getName() + " 回调函数！"));
+	@Test
+	public void test() throws BrokenBarrierException, InterruptedException {
 
-	public static void main(String[] args) throws InterruptedException, BrokenBarrierException {
+		final CyclicBarrier barrier = new CyclicBarrier(3,
+				() -> log.info(Thread.currentThread().getName() + " 回调函数！"));
 
-		System.out.println("main start !");
+		System.err.println("main start !");
 
 		new Thread(() -> {
 			try {
-				System.out.println("Thread 1 start !");
+				System.err.println("Thread 1 start !");
 				TimeUnit.MILLISECONDS.sleep(2_000);
 				barrier.await();
-				System.out.println("Thread 1 over !");
+				System.err.println("Thread 1 over !");
 			} catch (InterruptedException | BrokenBarrierException e) {
 				e.printStackTrace();
 			}
@@ -28,10 +34,10 @@ public class CyclicBarrierTest {
 
 		new Thread(() -> {
 			try {
-				System.out.println("Thread 2 start !");
-				TimeUnit.MILLISECONDS.sleep(8_000);
+				System.err.println("Thread 2 start !");
+				TimeUnit.MILLISECONDS.sleep(3_000);
 				barrier.await();
-				System.out.println("Thread 2 over !");
+				System.err.println("Thread 2 over !");
 			} catch (InterruptedException | BrokenBarrierException e) {
 				e.printStackTrace();
 			}
@@ -39,8 +45,7 @@ public class CyclicBarrierTest {
 
 		barrier.await();
 
-		System.out.println("main over !");
-
+		System.err.println("main over !");
 	}
 
 }
