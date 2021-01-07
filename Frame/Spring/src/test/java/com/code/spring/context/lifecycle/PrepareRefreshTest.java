@@ -11,6 +11,7 @@ import org.springframework.context.support.AbstractApplicationContext;
  * @author 愆凡
  * @date 2021/1/5 11:58
  */
+@SuppressWarnings("all")
 public class PrepareRefreshTest extends MySpringApplicationTest {
 
 	/**
@@ -19,8 +20,7 @@ public class PrepareRefreshTest extends MySpringApplicationTest {
 	 */
 	@Test
 	public void initPropertySourcesTest() {
-		TestApplicationContext context = new TestApplicationContext("com.code.spring.context.lifecycle");
-		context.start();
+		new TestApplicationContext("com.code.spring.context.lifecycle").start();
 	}
 
 	static class TestApplicationContext extends AnnotationConfigApplicationContext {
