@@ -1,6 +1,5 @@
 package com.code.mq.kafka.listener;
 
-import com.code.mq.kafka.constants.KafkaConsts;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -17,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConsumerListener {
 
-	@KafkaListener(topics = KafkaConsts.TOPIC_TEST, containerFactory = "ackContainerFactory")
+	@KafkaListener(topics = "${spring.kafka.template.default-topic}", containerFactory = "ackContainerFactory")
 	public void listen(ConsumerRecord<String, String> record, Acknowledgment acknowledgment) {
 		try {
 			String message = record.value();

@@ -1,9 +1,9 @@
 package com.code.mq.kafka.test;
 
 import com.code.mq.kafka.MqKafkaApplicationTest;
-import com.code.mq.kafka.constants.KafkaConsts;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.util.concurrent.ListenableFuture;
@@ -19,14 +19,16 @@ public class KafkaTest extends MqKafkaApplicationTest {
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;
 
+	@Value("${spring.kafka.template.default-topic}")
+	private String topic;
+
 	/**
 	 * 测试同步发送消息
 	 */
 	@Test
 	public void testSend() {
 		try {
-			ListenableFuture<SendResult<String, String>> future =
-					kafkaTemplate.send(KafkaConsts.TOPIC_TEST, "hello,kafka...");
+			ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, "hello,kafka...");
 
 			SendResult<String, String> sendResult = future.get();
 

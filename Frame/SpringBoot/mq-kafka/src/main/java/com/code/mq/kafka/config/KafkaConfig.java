@@ -1,7 +1,7 @@
 package com.code.mq.kafka.config;
 
-import com.code.mq.kafka.constants.KafkaConsts;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +24,9 @@ import org.springframework.kafka.listener.ContainerProperties;
 public class KafkaConfig {
 
 	private final KafkaProperties kafkaProperties;
+
+	@Value("${spring.kafka.producer.properties.default-partition-num}")
+	private final Integer defaultPartitionNum;
 
 	@Bean
 	public KafkaTemplate<String, String> kafkaTemplate() {
@@ -55,7 +58,7 @@ public class KafkaConfig {
 		ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
 		factory.setConsumerFactory(consumerFactory());
 		factory.getContainerProperties().setPollTimeout(3000);
-		factory.setConcurrency(KafkaConsts.DEFAULT_PARTITION_NUM);
+		factory.setConcurrency(defaultPartitionNum);
 		factory.setBatchListener(true);
 		return factory;
 	}
@@ -65,7 +68,7 @@ public class KafkaConfig {
 		ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
 		factory.setConsumerFactory(consumerFactory());
 		factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL_IMMEDIATE);
-		factory.setConcurrency(KafkaConsts.DEFAULT_PARTITION_NUM);
+		factory.setConcurrency(defaultPartitionNum);
 		return factory;
 	}
 

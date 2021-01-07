@@ -11,6 +11,8 @@ spring:
       buffer-memory: 33554432
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        default-partition-num: 3
     consumer:
       group-id: spring-boot-demo
       # 手动提交
@@ -25,6 +27,8 @@ spring:
       concurrency: 5
       # 手动提交
       ack-mode: manual_immediate
+    template:
+      default-topic: test
 logging:
   level:
     com.code.mq.kafka: debug
