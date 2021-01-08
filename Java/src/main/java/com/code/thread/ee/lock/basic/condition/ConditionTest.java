@@ -56,7 +56,7 @@ public class ConditionTest {
 			} catch (InterruptedException e) {
 				log.error("生产者发生异常 : ", e);
 			} finally {
-				lock.unlock(); // 释放锁
+				lock.unlock(); // 在 finally 处再次释放锁，防止 try 出异常导致没有调用 await 进而导致死锁
 			}
 		}
 	}
