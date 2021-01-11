@@ -1,7 +1,9 @@
 package com.code.mq.rocketmq.consumer;
 
 import com.code.mq.rocketmq.RocketMqApplicationTest;
+import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.spring.support.DefaultRocketMQListenerContainer;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
@@ -16,10 +18,19 @@ public class ConsumerTest extends RocketMqApplicationTest {
 	@Value("${rocketmq.producer.group}")
 	private String group;
 
+	@Test
 	public void consumerTest() throws InterruptedException {
 		DefaultRocketMQListenerContainer container = new DefaultRocketMQListenerContainer();
 
-		container.setRocketMQListener(message -> System.err.println("Consumer msg : " + message));
+
+		container.setConsumer(new DefaultMQPushConsumer(group));
+
+		container.setNameServer("linux.notuptoyou.site:9876");
+
+		container.setTopic(topic);
+
+		container.setConsumerGroup(group);
+
 
 		container.start();
 
