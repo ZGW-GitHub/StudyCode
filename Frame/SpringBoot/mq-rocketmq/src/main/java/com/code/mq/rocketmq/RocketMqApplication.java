@@ -1,10 +1,7 @@
 package com.code.mq.rocketmq;
 
-import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
-import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Service;
 
 /**
  * @author 愆凡
@@ -17,13 +14,13 @@ public class RocketMqApplication {
 		SpringApplication.run(RocketMqApplication.class, args);
 	}
 
-	@Service
-	@RocketMQMessageListener(topic = "${rocketmq.producer.customized-trace-topic}", consumerGroup = "${rocketmq.producer.group}")
-	class StringConsumer implements RocketMQListener<String> {
-		@Override
-		public void onMessage(String message) {
-			System.err.println("Consumer msg : " + message);
-		}
-	}
+//	@Service
+//	@RocketMQMessageListener(topic = "${rocketmq.producer.customized-trace-topic}", consumerGroup = "${rocketmq.producer.group}")
+//	class StringConsumer implements RocketMQListener<String> {
+//		@Override
+//		public void onMessage(String message) {
+//			System.err.println("Consumer msg : " + message);
+//		}
+//	}
 
 }

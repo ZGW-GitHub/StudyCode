@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
+ * RocketMq 发送消息的三种方式：同步发送、异步发送、单向发送
+ *
  * @author 愆凡
  * @date 2020/12/31 11:36
  */
-public class ProducerTest extends RocketMqApplicationTest {
+public class ProducerSendWayTest extends RocketMqApplicationTest {
 
 	@Autowired
 	private RocketMQTemplate rocketMQTemplate;
@@ -21,12 +23,10 @@ public class ProducerTest extends RocketMqApplicationTest {
 	private String topic;
 
 	/**
-	 * 消息类型：简单消息<br />
-	 * 消息发送方式：同步发送<br />
-	 * 应用：可靠同步发送在众多场景中被使用，例如：重要的通知消息、短信通知、短信营销系统，等
+	 * 同步发送
 	 */
 	@Test
-	public void syncProducerTest() throws InterruptedException {
+	public void syncSendTest() throws InterruptedException {
 		SendResult sendResult = rocketMQTemplate.syncSend(topic, "Sync 消息");
 
 		System.err.println("sendResult : " + sendResult);
@@ -35,12 +35,10 @@ public class ProducerTest extends RocketMqApplicationTest {
 	}
 
 	/**
-	 * 消息类型：简单消息<br />
-	 * 消息发送方式：异步发送<br />
-	 * 应用：异步发送通常被用于对响应时间敏感的业务场景
+	 * 异步发送
 	 */
 	@Test
-	public void asyncProducerTest() {
+	public void asyncSendTest() {
 		rocketMQTemplate.asyncSend(topic, "Async 消息", new SendCallback() {
 			@Override
 			public void onSuccess(SendResult sendResult) {
@@ -55,12 +53,10 @@ public class ProducerTest extends RocketMqApplicationTest {
 	}
 
 	/**
-	 * 消息类型：简单消息<br />
-	 * 消息发送方式：单向发送<br />
-	 * 应用：单向发送用于要求一定可靠性的场景，例如：日志收集。
+	 * 单向发送
 	 */
 	@Test
-	public void oneWayProducerTest() throws InterruptedException {
+	public void oneWaySendTest() throws InterruptedException {
 		// 由于在OneWay方式发送消息时没有请求应答处理，一旦出现消息发送失败，则会因为没有重试而导致数据丢失。
 		// 若数据不可丢，建议选用可靠同步或可靠异步发送方式。
 		rocketMQTemplate.sendOneWay(topic, "OneWay 消息");
