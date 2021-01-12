@@ -2,9 +2,11 @@ server:
   port: 8080
   servlet:
     context-path: /demo
+
 spring:
   kafka:
     bootstrap-servers: localhost:9092
+
     producer:
       retries: 0
       batch-size: 16384
@@ -13,6 +15,7 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       properties:
         default-partition-num: 3
+
     consumer:
       group-id: spring-boot-demo
       # 手动提交
@@ -22,13 +25,16 @@ spring:
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       properties:
         session.timeout.ms: 60000
+
     listener:
       log-container-config: false
       concurrency: 5
       # 手动提交
       ack-mode: manual_immediate
+
     template:
       default-topic: test
+
 logging:
   level:
     com.code.mq.kafka: debug

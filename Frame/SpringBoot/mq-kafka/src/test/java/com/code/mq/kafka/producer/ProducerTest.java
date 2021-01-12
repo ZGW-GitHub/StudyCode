@@ -1,4 +1,4 @@
-package com.code.mq.kafka.test;
+package com.code.mq.kafka.producer;
 
 import com.code.mq.kafka.MqKafkaApplicationTest;
 import org.junit.Test;
@@ -12,9 +12,9 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * @author 愆凡
- * @date 2020/9/1 11:55 上午
+ * @date 2021/1/12 14:10
  */
-public class KafkaTest extends MqKafkaApplicationTest {
+public class ProducerTest extends MqKafkaApplicationTest {
 
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;
@@ -22,20 +22,14 @@ public class KafkaTest extends MqKafkaApplicationTest {
 	@Value("${spring.kafka.template.default-topic}")
 	private String topic;
 
-	/**
-	 * 测试同步发送消息
-	 */
 	@Test
-	public void testSend() {
-		try {
-			ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, "hello,kafka...");
+	public void testSend() throws ExecutionException, InterruptedException {
+		// 发送消息
+		ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, "hello,kafka...");
 
-			SendResult<String, String> sendResult = future.get();
+		SendResult<String, String> sendResult = future.get();
 
-			System.out.println(sendResult.toString());
-		} catch (InterruptedException | ExecutionException e) {
-			e.printStackTrace();
-		}
+		System.out.println(sendResult.toString());
 	}
 
 }
