@@ -45,5 +45,25 @@ public class ConsumerTest extends RocketMqApplicationTest {
 		Thread.currentThread().join();
 	}
 
+	@Test
+	public void consumer2Test() throws InterruptedException, MQClientException {
+		// 创建消费者
+		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(group + "-2");
+		// 设置消费的开始位置
+		consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
+		// 订阅主题
+		consumer.subscribe(topic, "*");
+		// 注册监听器
+		consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
+			System.err.println(Thread.currentThread().getName() + " consumer : " + msgs.toString() + "\n"
+					+ msgs.stream().map(msg -> new String(msg.getBody(), Charset.defaultCharset())).collect(Collectors.joining("、")));
+
+			return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+		});
+		// 启动消费者
+		consumer.start();
+
+		Thread.currentThread().join();
+	}
 
 }

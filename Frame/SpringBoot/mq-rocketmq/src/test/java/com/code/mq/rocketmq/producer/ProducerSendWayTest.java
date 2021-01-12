@@ -26,7 +26,7 @@ public class ProducerSendWayTest extends RocketMqApplicationTest {
 	 * 同步发送
 	 */
 	@Test
-	public void syncSendTest() throws InterruptedException {
+	public void syncSendTest() {
 		SendResult sendResult = rocketMQTemplate.syncSend(topic, "Sync 消息");
 
 		System.err.println("sendResult : " + sendResult);

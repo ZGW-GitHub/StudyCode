@@ -14,13 +14,4 @@ public class RocketMqApplication {
 		SpringApplication.run(RocketMqApplication.class, args);
 	}
 
-//	@Service
-//	@RocketMQMessageListener(topic = "${rocketmq.producer.customized-trace-topic}", consumerGroup = "${rocketmq.producer.group}")
-//	class StringConsumer implements RocketMQListener<String> {
-//		@Override
-//		public void onMessage(String message) {
-//			System.err.println("Consumer msg : " + message);
-//		}
-//	}
-
 }
