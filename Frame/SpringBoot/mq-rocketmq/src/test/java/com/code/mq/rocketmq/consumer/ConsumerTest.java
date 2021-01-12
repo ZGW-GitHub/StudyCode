@@ -30,7 +30,7 @@ public class ConsumerTest extends RocketMqApplicationTest {
 		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(group);
 		// 设置消费的开始位置
 		consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
-		// 订阅主题
+		// 订阅主题（可多次订阅不同 topic）
 		consumer.subscribe(topic, "*");
 		// 注册监听器
 		consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
@@ -51,7 +51,7 @@ public class ConsumerTest extends RocketMqApplicationTest {
 		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(group + "-2");
 		// 设置消费的开始位置
 		consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
-		// 订阅主题
+		// 订阅主题（可多次订阅不同 topic）
 		consumer.subscribe(topic, "*");
 		// 注册监听器
 		consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
