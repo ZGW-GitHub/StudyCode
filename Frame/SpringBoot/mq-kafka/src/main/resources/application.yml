@@ -1,11 +1,6 @@
-server:
-  port: 8080
-  servlet:
-    context-path: /demo
-
 spring:
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: linux.notuptoyou.site:9092
 
     producer:
       retries: 0
@@ -17,7 +12,7 @@ spring:
         default-partition-num: 3
 
     consumer:
-      group-id: spring-boot-demo
+      group-id: group-test
       # 手动提交
       enable-auto-commit: false
       auto-offset-reset: latest
@@ -33,7 +28,7 @@ spring:
       ack-mode: manual_immediate
 
     template:
-      default-topic: test
+      default-topic: topic-test
 
 logging:
   level:
