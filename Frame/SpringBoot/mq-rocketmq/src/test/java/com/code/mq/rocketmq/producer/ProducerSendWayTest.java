@@ -30,8 +30,6 @@ public class ProducerSendWayTest extends RocketMqApplicationTest {
 		SendResult sendResult = rocketMQTemplate.syncSend(topic, "Sync 消息");
 
 		System.err.println("sendResult : " + sendResult);
-
-		Thread.sleep(3_000);
 	}
 
 	/**
