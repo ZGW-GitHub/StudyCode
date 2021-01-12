@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
  * @author 愆凡
  * @date 2020/12/31 11:36
  */
-public class ProducerSendWayTest extends RocketMqApplicationTest {
+public class ProducerTest extends RocketMqApplicationTest {
 
 	@Autowired
 	private RocketMQTemplate rocketMQTemplate;
@@ -23,7 +23,7 @@ public class ProducerSendWayTest extends RocketMqApplicationTest {
 	private String topic;
 
 	/**
-	 * 同步发送
+	 * 发送方式一：同步发送
 	 */
 	@Test
 	public void syncSendTest() {
@@ -33,7 +33,7 @@ public class ProducerSendWayTest extends RocketMqApplicationTest {
 	}
 
 	/**
-	 * 异步发送
+	 * 发送方式二：异步发送
 	 */
 	@Test
 	public void asyncSendTest() {
@@ -51,22 +51,13 @@ public class ProducerSendWayTest extends RocketMqApplicationTest {
 	}
 
 	/**
-	 * 单向发送
+	 * 发送方式三：单向发送
 	 */
 	@Test
 	public void oneWaySendTest() throws InterruptedException {
-		// 由于在OneWay方式发送消息时没有请求应答处理，一旦出现消息发送失败，则会因为没有重试而导致数据丢失。
-		// 若数据不可丢，建议选用可靠同步或可靠异步发送方式。
 		rocketMQTemplate.sendOneWay(topic, "OneWay 消息");
 
 		Thread.sleep(3_000);
-	}
-
-	@Test
-	public void timeMessageTest() {
-//		rocketMQTemplate.sendAndReceive();
-//		rocketMQTemplate.sendMessageInTransaction();
-//		rocketMQTemplate.convertAndSend();
 	}
 
 }
