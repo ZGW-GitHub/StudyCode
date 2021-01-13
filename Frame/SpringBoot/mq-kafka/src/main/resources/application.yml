@@ -1,11 +1,10 @@
 spring:
   kafka:
-    bootstrap-servers: linux.notuptoyou.site:9092
+    bootstrap-servers: 101.37.65.146:9092
 
     producer:
-      retries: 0
-      batch-size: 16384
-      buffer-memory: 33554432
+      acks: 1 # 0 ：(不应答) ，1 ：(leader 应答) ，all ：(所有 leader 和 follower 应答)
+      retries: 3 # 发送失败重试次数
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       properties:
@@ -13,23 +12,15 @@ spring:
 
     consumer:
       group-id: group-test
-      # 手动提交
-      enable-auto-commit: false
-      auto-offset-reset: latest
+      auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       properties:
         session.timeout.ms: 60000
 
     listener:
-      log-container-config: false
-      concurrency: 5
-      # 手动提交
-      ack-mode: manual_immediate
+      missing-topics-fatal: false
 
     template:
       default-topic: topic-test
-
-logging:
-  level:
-    com.code.mq.kafka: debug
+    

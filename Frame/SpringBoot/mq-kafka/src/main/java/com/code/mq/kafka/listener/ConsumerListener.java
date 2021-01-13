@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConsumerListener {
 
-	@KafkaListener(topics = "${spring.kafka.template.default-topic}", containerFactory = "ackContainerFactory")
+	@KafkaListener(topics = "${spring.kafka.template.default-topic}")
 	public void listen(ConsumerRecord<String, String> record, Acknowledgment acknowledgment) {
 		try {
 			String message = record.value();

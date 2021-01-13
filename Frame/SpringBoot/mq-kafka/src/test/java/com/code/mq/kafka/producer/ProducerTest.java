@@ -29,7 +29,7 @@ public class ProducerTest extends MqKafkaApplicationTest {
 
 		SendResult<String, String> sendResult = future.get();
 
-		System.out.println(sendResult.toString());
+		System.err.println(sendResult.toString());
 	}
 
 }
