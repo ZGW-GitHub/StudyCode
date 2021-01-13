@@ -27,7 +27,7 @@ public class ProducerTest extends RocketMqApplicationTest {
 	 */
 	@Test
 	public void syncSendTest() {
-		SendResult sendResult = rocketMQTemplate.syncSend(topic + 2, "Sync 消息");
+		SendResult sendResult = rocketMQTemplate.syncSend(topic, "Sync 消息");
 
 		System.err.println("sendResult : " + sendResult);
 	}
