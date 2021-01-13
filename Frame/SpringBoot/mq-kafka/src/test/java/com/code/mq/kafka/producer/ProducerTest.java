@@ -30,7 +30,7 @@ public class ProducerTest extends MqKafkaApplicationTest {
 	@Test
 	public void syncSendTest() throws ExecutionException, InterruptedException {
 		// 异步发送消息，通过 get() 阻塞获取发送结果，从而实现同步的效果
-		SendResult<String, String> sendResult = kafkaTemplate.send(topic, "hello,kafka...").get();
+		SendResult<String, String> sendResult = kafkaTemplate.send(topic, "Async 消息").get();
 
 		System.err.println(sendResult.toString());
 	}
@@ -41,7 +41,7 @@ public class ProducerTest extends MqKafkaApplicationTest {
 	@Test
 	public void asyncSendTest() throws ExecutionException, InterruptedException {
 		// 异步发送消息
-		ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, "hello,kafka...");
+		ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, "Async 消息");
 
 		// 获取发送结果
 		SendResult<String, String> sendResult = future.get();
