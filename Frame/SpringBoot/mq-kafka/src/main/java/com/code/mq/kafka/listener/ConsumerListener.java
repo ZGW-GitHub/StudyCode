@@ -3,7 +3,6 @@ package com.code.mq.kafka.listener;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,15 +16,12 @@ import org.springframework.stereotype.Component;
 public class ConsumerListener {
 
 	@KafkaListener(topics = "${spring.kafka.template.default-topic}")
-	public void listen(ConsumerRecord<String, String> record, Acknowledgment acknowledgment) {
+	public void listen(ConsumerRecord<String, String> record) {
 		try {
 			String message = record.value();
 			log.info("收到消息: {}", message);
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
-		} finally {
-			// 手动提交 offset
-			acknowledgment.acknowledge();
 		}
 	}
 
