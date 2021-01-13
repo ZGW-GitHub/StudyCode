@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
- * RocketMq 发送消息的三种方式：同步发送、异步发送、单向发送
+ * 三种发送方式：同步发送、异步发送、单向发送
  *
  * @author 愆凡
  * @date 2020/12/31 11:36
