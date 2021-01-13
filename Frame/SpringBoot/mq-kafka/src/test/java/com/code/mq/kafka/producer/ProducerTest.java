@@ -1,13 +1,16 @@
 package com.code.mq.kafka.producer;
 
 import com.code.mq.kafka.MqKafkaApplicationTest;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.util.concurrent.ListenableFuture;
+import org.springframework.util.concurrent.ListenableFutureCallback;
 
+import javax.annotation.Nonnull;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -16,6 +19,7 @@ import java.util.concurrent.ExecutionException;
  * @author 愆凡
  * @date 2021/1/12 14:10
  */
+@Slf4j
 public class ProducerTest extends MqKafkaApplicationTest {
 
 	@Autowired
@@ -39,14 +43,22 @@ public class ProducerTest extends MqKafkaApplicationTest {
 	 * 发送方式二：异步发送
 	 */
 	@Test
-	public void asyncSendTest() throws ExecutionException, InterruptedException {
+	public void asyncSendTest() {
 		// 异步发送消息
 		ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, "Async 消息");
 
 		// 获取发送结果
-		SendResult<String, String> sendResult = future.get();
+		future.addCallback(new ListenableFutureCallback<>() {
+			@Override
+			public void onFailure(@Nonnull Throwable e) {
+				log.error("发送失败，e ：", e);
+			}
 
-		System.err.println(sendResult.toString());
+			@Override
+			public void onSuccess(SendResult<String, String> result) {
+				System.err.println(result.toString());
+			}
+		});
 	}
 
 	/**
