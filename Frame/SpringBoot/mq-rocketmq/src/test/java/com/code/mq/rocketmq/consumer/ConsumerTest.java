@@ -48,7 +48,7 @@ public class ConsumerTest extends RocketMqApplicationTest {
 	@Test
 	public void consumer2Test() throws InterruptedException, MQClientException {
 		// 创建消费者
-		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(group + "-2");
+		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(group);
 		// 设置消费的开始位置
 		consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
 		// 订阅主题（可多次订阅不同 topic）
