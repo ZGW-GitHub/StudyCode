@@ -1,6 +1,7 @@
 package com.code.mq.kafka.producer;
 
 import com.code.mq.kafka.KafkaApplicationTest;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -22,6 +23,7 @@ public class MsgTypeTest extends KafkaApplicationTest {
 	/**
 	 * 广播消息
 	 */
+	@Test
 	public void broadcastingTest() {
 
 	}
@@ -29,6 +31,7 @@ public class MsgTypeTest extends KafkaApplicationTest {
 	/**
 	 * 顺序消息
 	 */
+	@Test
 	public void orderTest() {
 
 	}
@@ -36,13 +39,15 @@ public class MsgTypeTest extends KafkaApplicationTest {
 	/**
 	 * 定时消息
 	 */
+	@Test
 	public void timeTest() {
-		
+
 	}
 
 	/**
 	 * 事务消息
 	 */
+	@Test
 	public void transactionalTest() {
 
 	}
