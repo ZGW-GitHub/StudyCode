@@ -1,6 +1,6 @@
 package com.code.mq.kafka.consumer;
 
-import com.code.mq.kafka.MqKafkaApplicationTest;
+import com.code.mq.kafka.KafkaApplicationTest;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -16,7 +16,7 @@ import java.util.Properties;
  * @date 2021/1/12 14:10
  */
 @SuppressWarnings("all")
-public class ConsumerTest extends MqKafkaApplicationTest {
+public class ConsumerTest extends KafkaApplicationTest {
 
 	@Value("${spring.kafka.bootstrap-servers}")
 	private String bootstrapServers;

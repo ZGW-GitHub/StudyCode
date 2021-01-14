@@ -1,6 +1,6 @@
 package com.code.mq.kafka.producer;
 
-import com.code.mq.kafka.MqKafkaApplicationTest;
+import com.code.mq.kafka.KafkaApplicationTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import java.util.concurrent.ExecutionException;
  * @date 2021/1/12 14:10
  */
 @Slf4j
-public class ProducerTest extends MqKafkaApplicationTest {
+public class ProducerTest extends KafkaApplicationTest {
 
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;

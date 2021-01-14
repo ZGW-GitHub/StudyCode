@@ -1,6 +1,6 @@
 package com.code.mq.kafka.producer;
 
-import com.code.mq.kafka.MqKafkaApplicationTest;
+import com.code.mq.kafka.KafkaApplicationTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -11,7 +11,7 @@ import org.springframework.kafka.core.KafkaTemplate;
  * @author 愆凡
  * @date 2021/1/14 17:23
  */
-public class MsgTypeTest extends MqKafkaApplicationTest {
+public class MsgTypeTest extends KafkaApplicationTest {
 
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;

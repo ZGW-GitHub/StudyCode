@@ -8,11 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2020/8/31 4:06 下午
  */
 @SpringBootApplication
-public class MqKafkaApplication {
+public class KafkaApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(MqKafkaApplication.class, args);
+		SpringApplication.run(KafkaApplication.class, args);
 
 	}
 
