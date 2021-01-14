@@ -29,7 +29,7 @@ public class ProducerTest extends MqKafkaApplicationTest {
 	private String topic;
 
 	/**
-	 * 发送方式一：同步发送
+	 * 同步发送
 	 */
 	@Test
 	public void syncSendTest() throws ExecutionException, InterruptedException {
@@ -40,7 +40,7 @@ public class ProducerTest extends MqKafkaApplicationTest {
 	}
 
 	/**
-	 * 发送方式二：异步发送
+	 * 异步发送
 	 */
 	@Test
 	public void asyncSendTest() {
@@ -62,7 +62,7 @@ public class ProducerTest extends MqKafkaApplicationTest {
 	}
 
 	/**
-	 * 发送方式三：单向发送
+	 * 单向发送
 	 */
 	@Test
 	public void oneWaySendTest() {
