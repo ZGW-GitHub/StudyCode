@@ -7,16 +7,12 @@ spring:
       retries: 3 # 发送失败重试次数
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-      properties:
-        default-partition-num: 3
 
     consumer:
       group-id: group-test
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      properties:
-        session.timeout.ms: 60000
 
     listener:
       missing-topics-fatal: false
