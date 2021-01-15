@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 
 /**
- * 四种消息类型：广播消息、顺序消息、定时消息、事务消息
+ * 四种消息类型：顺序消息、定时消息、事务消息
  *
  * @author 愆凡
  * @date 2021/1/14 17:23
@@ -19,14 +19,6 @@ public class MsgTypeTest extends KafkaApplicationTest {
 
 	@Value("${spring.kafka.template.default-topic}")
 	private String topic;
-
-	/**
-	 * 广播消息
-	 */
-	@Test
-	public void broadcastingTest() {
-
-	}
 
 	/**
 	 * 顺序消息
