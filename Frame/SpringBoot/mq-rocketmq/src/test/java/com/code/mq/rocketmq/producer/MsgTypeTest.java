@@ -12,7 +12,7 @@ import org.springframework.messaging.support.MessageBuilder;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 四种消息类型：广播消息、顺序消息、定时消息、事务消息
+ * 四种消息类型：顺序消息、定时消息、事务消息
  *
  * @author 愆凡
  * @date 2021/1/14 17:23
