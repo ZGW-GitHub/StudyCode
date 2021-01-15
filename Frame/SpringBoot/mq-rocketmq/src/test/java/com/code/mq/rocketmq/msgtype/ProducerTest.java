@@ -1,7 +1,9 @@
-package com.code.mq.rocketmq.producer;
+package com.code.mq.rocketmq.msgtype;
 
 import com.code.mq.rocketmq.RocketMqApplicationTest;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendResult;
+import org.apache.rocketmq.client.producer.selector.SelectMessageQueueByHash;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 /**
  * 四种消息类型：顺序消息、定时消息、事务消息
@@ -17,7 +20,8 @@ import java.util.concurrent.TimeUnit;
  * @author 愆凡
  * @date 2021/1/14 17:23
  */
-public class MsgTypeTest extends RocketMqApplicationTest {
+@Slf4j
+public class ProducerTest extends RocketMqApplicationTest {
 
 	@Autowired
 	private RocketMQTemplate rocketMQTemplate;
@@ -26,11 +30,20 @@ public class MsgTypeTest extends RocketMqApplicationTest {
 	private String topic;
 
 	/**
-	 * 顺序消息
+	 * 顺序消息：部分有序
 	 */
 	@Test
 	public void orderTest() {
+		IntStream.range(0, 10).forEach(i -> {
+			// 组装消息
+			Message<String> message = MessageBuilder.withPayload("顺序消息" + i).build();
+			// 设置队列选择策略
+			rocketMQTemplate.setMessageQueueSelector(new SelectMessageQueueByHash());
+			// 发送消息
+			SendResult sendResult = rocketMQTemplate.syncSendOrderly(topic, message, "hashKey");
 
+			System.err.println(sendResult);
+		});
 	}
 
 	/**
