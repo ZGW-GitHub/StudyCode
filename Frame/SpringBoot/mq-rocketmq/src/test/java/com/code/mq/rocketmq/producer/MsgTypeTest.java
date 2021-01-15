@@ -26,14 +26,6 @@ public class MsgTypeTest extends RocketMqApplicationTest {
 	private String topic;
 
 	/**
-	 * 广播消息
-	 */
-	@Test
-	public void broadcastingTest() {
-
-	}
-
-	/**
 	 * 顺序消息
 	 */
 	@Test
