@@ -14,11 +14,10 @@ public class ReentrantLockTest {
 	private final Lock lock = new ReentrantLock();
 
 	@Test
-	public void test() {
-
+	public void test() throws InterruptedException {
 		new Thread(this::work, "T1").start();
-		new Thread(this::work, "T2").start();
 
+		Thread.currentThread().join();
 	}
 
 	private void work() {
