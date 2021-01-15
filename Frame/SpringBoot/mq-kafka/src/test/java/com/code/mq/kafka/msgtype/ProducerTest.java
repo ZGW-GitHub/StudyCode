@@ -1,4 +1,4 @@
-package com.code.mq.kafka.producer;
+package com.code.mq.kafka.msgtype;
 
 import com.code.mq.kafka.KafkaApplicationTest;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import org.springframework.kafka.core.KafkaTemplate;
  * @author 愆凡
  * @date 2021/1/14 17:23
  */
-public class MsgTypeTest extends KafkaApplicationTest {
+public class ProducerTest extends KafkaApplicationTest {
 
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;
