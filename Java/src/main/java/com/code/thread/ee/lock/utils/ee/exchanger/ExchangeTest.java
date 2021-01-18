@@ -30,7 +30,7 @@ public class ExchangeTest {
 
 			TimeUnit.SECONDS.sleep(1);
 
-			String result = exchanger.exchange("My Name -> " + Thread.currentThread().getName());
+			String result = exchanger.exchange("my name is " + Thread.currentThread().getName());
 
 			System.err.println(Thread.currentThread().getName() + " 收到：" + result);
 
