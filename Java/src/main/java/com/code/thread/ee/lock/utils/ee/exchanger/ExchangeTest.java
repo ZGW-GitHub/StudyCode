@@ -6,10 +6,6 @@ import java.util.concurrent.Exchanger;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 注意：
- * 在构造方法中添加超时，此时A会等待超时结束，但B休眠后会等待A，但A已死，所以线程B会一直wait Aa，程序会一直运行不会结束
- * exchange方法接收到的是同一个对象
- *
  * @author 愆凡
  */
 public class ExchangeTest {
