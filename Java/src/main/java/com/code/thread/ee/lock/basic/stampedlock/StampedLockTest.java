@@ -1,5 +1,7 @@
 package com.code.thread.ee.lock.basic.stampedlock;
 
+import org.junit.Test;
+
 import java.util.concurrent.locks.StampedLock;
 
 /**
@@ -8,14 +10,14 @@ import java.util.concurrent.locks.StampedLock;
  */
 public class StampedLockTest {
 
-	private static final StampedLock STAMPEDLOCK = new StampedLock();
+	private final StampedLock stampedLock = new StampedLock();
 
-	private static final long WRITELOCK = STAMPEDLOCK.writeLock();
-	private static final long READLOCK = STAMPEDLOCK.readLock();
-	private static final long OPTIMISTICREADLOCK = STAMPEDLOCK.tryOptimisticRead();
+	private final long writeLock = stampedLock.writeLock();
+	private final long readLock = stampedLock.readLock();
+	private final long optimisticRead = stampedLock.tryOptimisticRead();
 
-	public static void main(String[] args) {
-
-
+	@Test
+	public void test() {
 	}
+
 }
