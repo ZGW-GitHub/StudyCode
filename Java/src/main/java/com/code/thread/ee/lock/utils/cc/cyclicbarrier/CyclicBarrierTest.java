@@ -34,9 +34,12 @@ public class CyclicBarrierTest {
 		startNewThread(barrier, 2, "T2");
 
 		System.err.println(Thread.currentThread().getName() + " awaiting ...");
-		barrier.await(); // 相互等待
 
-		System.err.println("over !"); // 执行完方法回调才会继续执行到这里
+		// 相互等待
+		barrier.await();
+
+		// 执行完方法回调才会继续执行到这里
+		System.err.println("over !");
 	}
 
 	@Test
