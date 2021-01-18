@@ -2,6 +2,7 @@ package com.code.thread.ee.lock.basic.readwritelock;
 
 import org.junit.Test;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -16,23 +17,25 @@ public class ReentrantReadWriteLockTest {
 	private final Lock readLock = lock.readLock();
 	private final Lock writeLock = lock.writeLock();
 
+	private final CountDownLatch latch = new CountDownLatch(2);
+
 	@Test
 	public void readLockTest() throws InterruptedException {
-		new Thread(() -> work(readLock), "T1").start();
-		new Thread(() -> work(readLock), "T2").start();
+		new Thread(() -> work(readLock, latch), "T1").start();
+		new Thread(() -> work(readLock, latch), "T2").start();
 
-		TimeUnit.SECONDS.sleep(3);
+		latch.await();
 	}
 
 	@Test
 	public void writeLockTest() throws InterruptedException {
-		new Thread(() -> work(writeLock), "T1").start();
-		new Thread(() -> work(writeLock), "T2").start();
+		new Thread(() -> work(writeLock, latch), "T1").start();
+		new Thread(() -> work(writeLock, latch), "T2").start();
 
-		Thread.currentThread().join();
+		latch.await();
 	}
 
-	private void work(Lock lock) {
+	private void work(Lock lock, CountDownLatch latch) {
 		lock.lock();
 		try {
 			System.out.println(Thread.currentThread().getName() + " 抢到了锁！");
@@ -43,6 +46,7 @@ public class ReentrantReadWriteLockTest {
 			lock.unlock();
 			System.out.println(Thread.currentThread().getName() + " 释放了锁！");
 		}
+		latch.countDown();
 	}
 
 }
