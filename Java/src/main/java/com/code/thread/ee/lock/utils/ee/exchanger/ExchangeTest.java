@@ -1,8 +1,9 @@
 package com.code.thread.ee.lock.utils.ee.exchanger;
 
+import org.junit.Test;
+
 import java.util.concurrent.Exchanger;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 /**
  * 注意：
@@ -13,40 +14,29 @@ import java.util.concurrent.TimeoutException;
  */
 public class ExchangeTest {
 
-	public static void main(String[] args) throws InterruptedException {
+	private final Exchanger<String> exchanger = new Exchanger<>();
 
-		final Exchanger<String> exchanger = new Exchanger<>();
+	@Test
+	public void test() throws InterruptedException {
 
-		new Thread(() -> {
-			System.out.println("Thread -> Aa : run...");
-			try {
-				// 在构造方法中添加超时
-				//      注意！！！：此时A会等待超时结束，但B休眠后会等待A，但A已死，所以线程B会一直waitA，程序会一直运行不会结束
-				String result = exchanger.exchange("Give you from Aa", 3, TimeUnit.SECONDS);
-				System.out.println(Thread.currentThread().getName() + result);
-			} catch (InterruptedException | TimeoutException e) {
-				e.printStackTrace();
-				System.out.println("超时！！！");
-				System.out.println("注意！！！：此时A会等待超时结束，但B休眠后会等待A，但A已死，所以线程B会一直waitA，程序会一直运行不会结束");
-			}
-			System.out.println("Thread -> Aa : over...");
-		}, "==Aa==").start();
+		new Thread(this::doExchange, "T1").start();
+		new Thread(this::doExchange, "T2").start();
 
-		new Thread(() -> {
-			System.out.println("Thread -> Aa : run...");
-			try {
-				TimeUnit.SECONDS.sleep(6); // 模拟阻塞，A线程会等待B线程
-				String result = exchanger.exchange("Give you from B");
-				System.out.println(Thread.currentThread().getName() + result);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			System.out.println("Thread -> Aa : over...");
-		}, "==B==").start();
+		TimeUnit.SECONDS.sleep(2);
+	}
 
+	public void doExchange() {
+		try {
 
-		TimeUnit.SECONDS.sleep(5);
+			TimeUnit.SECONDS.sleep(1);
 
+			String result = exchanger.exchange("My Name -> " + Thread.currentThread().getName());
+
+			System.err.println(Thread.currentThread().getName() + " 收到：" + result);
+
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
