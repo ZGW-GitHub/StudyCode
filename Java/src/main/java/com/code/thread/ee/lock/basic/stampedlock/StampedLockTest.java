@@ -6,7 +6,7 @@ import java.util.concurrent.locks.StampedLock;
  * @author 愆凡
  * @date 2020/5/19 4:47 下午
  */
-public class StampedLockDemoA {
+public class StampedLockTest {
 
 	private static final StampedLock STAMPEDLOCK = new StampedLock();
 
