@@ -19,6 +19,9 @@ public class ReentrantReadWriteLockTest {
 
 	private final CountDownLatch latch = new CountDownLatch(2);
 
+	/**
+	 * 读读 不互斥
+	 */
 	@Test
 	public void readLockTest() throws InterruptedException {
 		new Thread(() -> work(readLock, latch), "T1").start();
@@ -27,9 +30,23 @@ public class ReentrantReadWriteLockTest {
 		latch.await();
 	}
 
+	/**
+	 * 写写 互斥
+	 */
 	@Test
 	public void writeLockTest() throws InterruptedException {
 		new Thread(() -> work(writeLock, latch), "T1").start();
+		new Thread(() -> work(writeLock, latch), "T2").start();
+
+		latch.await();
+	}
+
+	/**
+	 * 读写 互斥
+	 */
+	@Test
+	public void readWriteLockTest() throws InterruptedException {
+		new Thread(() -> work(readLock, latch), "T1").start();
 		new Thread(() -> work(writeLock, latch), "T2").start();
 
 		latch.await();
