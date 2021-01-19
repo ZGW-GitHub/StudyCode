@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class SubjectDemo implements Subject {
 
-	private List<Observer> observers = new ArrayList<>();
+	private final List<Observer> observers = new ArrayList<>();
 
 	// 注册观察者
 	@Override
