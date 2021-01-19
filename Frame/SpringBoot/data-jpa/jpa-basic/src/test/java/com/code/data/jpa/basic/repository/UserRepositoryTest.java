@@ -6,6 +6,7 @@ import cn.hutool.crypto.SecureUtil;
 import com.code.data.jpa.basic.DataJpaBasicApplicationTest;
 import com.code.data.jpa.basic.entity.User;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -82,11 +83,10 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 	 * 使用 别名 拼接参数
 	 */
 	@Test
-	@SuppressWarnings("all")
 	public void sqlSelectTest1() {
 		// 参数
 		String name = "test";
-		Boolean isActive = true;
+		Boolean isActive = Math.random() > 66 ? Math.random() > 66 : null;
 		List<Integer> ages = IntStream.range(3, 6).boxed().collect(Collectors.toList());
 
 		// 创建查询SQL
@@ -106,8 +106,8 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 		}
 
 		// 拼接 Where
-		selectSql = selectSql.append(whereSql);
-		countSql = countSql.append(whereSql);
+		selectSql.append(whereSql);
+		countSql.append(whereSql);
 
 		log.debug("Select Sql : " + selectSql.toString());
 		log.debug("Count Sql : " + countSql.toString());
@@ -126,7 +126,7 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 		}
 
 		// 获取查询结果
-		List<Object[]> resultList = dataQuery.getResultList();
+		val resultList = dataQuery.getResultList();
 		BigInteger count = (BigInteger) countQuery.getSingleResult();
 
 		log.error(Arrays.toString(resultList.toArray()));
@@ -141,11 +141,10 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 	 * 使用 位置编号 拼接参数
 	 */
 	@Test
-	@SuppressWarnings("all")
 	public void sqlSelectTest2() {
 		// 参数
 		String name = "test";
-		Boolean isActive = true;
+		Boolean isActive = Math.random() > 66 ? Math.random() > 66 : null;
 		ArrayList<Integer> ages = new ArrayList<>();
 		ages.add(5);
 
@@ -166,8 +165,8 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 		}
 
 		// 拼接 Where
-		selectSql = selectSql.append(whereSql);
-		countSql = countSql.append(whereSql);
+		selectSql.append(whereSql);
+		countSql.append(whereSql);
 
 		log.debug("Select Sql : " + selectSql.toString());
 		log.debug("Count Sql : " + countSql.toString());
@@ -186,7 +185,7 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 		}
 
 		// 获取查询结果
-		List<Object[]> resultList = dataQuery.getResultList();
+		var resultList = dataQuery.getResultList();
 		BigInteger count = (BigInteger) countQuery.getSingleResult();
 
 		log.debug(Arrays.toString(resultList.toArray()));
