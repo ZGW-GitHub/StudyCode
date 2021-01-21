@@ -1,4 +1,4 @@
-package com.code.thread.ee.lock.utils.xx.phaser;
+package com.code.thread.ee.lock.utils.oo.phaser;
 
 import java.util.Random;
 import java.util.concurrent.Phaser;
