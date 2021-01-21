@@ -6,6 +6,9 @@ import java.util.concurrent.Exchanger;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * API：
+ * <br />{@link Exchanger#exchange(Object) exchange(Object obj)} —— 交换数据并等待对方调用exchange
+ *
  * @author 愆凡
  */
 public class ExchangeTest {
