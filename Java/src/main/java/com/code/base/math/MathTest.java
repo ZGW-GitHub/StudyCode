@@ -17,9 +17,9 @@ public class MathTest {
 	public void formatTest() {
 		System.err.println("- 方式1 ------>  " + String.format("%.2f", 0.300));
 
-		// 对于小数部分：# 表示最多有几位 ，0 表示必须有几位
 		// 对于整数部分，若整数部分为0 ：# 表示最多有几位（因此时整数为0所以认为整数没有） ，0 表示必须有几位
 		// 对于整数部分，若整数部分不为0 ：无论是 # 或 0 ，整数部分将显示全
+		// 对于小数部分：# 表示最多有几位 ，0 表示必须有几位
 		System.err.println("- 方式2 ------>  " + new DecimalFormat("0.00").format(0.300));
 		System.err.println("- 方式2 ------>  " + new DecimalFormat("0.##").format(0.300));
 
