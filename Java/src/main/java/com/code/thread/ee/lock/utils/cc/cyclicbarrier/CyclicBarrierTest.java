@@ -21,7 +21,7 @@ public class CyclicBarrierTest {
 	 * 通过 CyclicBarrier 实现阶段任务
 	 */
 	@Test
-	public void awaitTest() throws BrokenBarrierException, InterruptedException {
+	public void baseTest() throws BrokenBarrierException, InterruptedException {
 
 		// 最后一个完成的线程将执行该回调函数
 		final CyclicBarrier barrier = new CyclicBarrier(3, () -> {
@@ -47,7 +47,7 @@ public class CyclicBarrierTest {
 	 * 通过 CyclicBarrier 实现多阶段任务
 	 */
 	@Test
-	public void awaitTest2() throws BrokenBarrierException, InterruptedException {
+	public void baseTest2() throws BrokenBarrierException, InterruptedException {
 		final CyclicBarrier barrier = new CyclicBarrier(3, () -> System.err.println(Thread.currentThread().getName() + " 执行回调函数！"));
 
 		startNewThread(barrier, 2, "T1");
