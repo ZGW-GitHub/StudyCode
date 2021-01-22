@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class CountDownLatchTest {
 
 	/**
-	 * 通过 CountDownLatch 实现线程间通信
+	 * 通过 CountDownLatch 实现阶段任务
 	 */
 	@Test
 	public void observerTest() throws InterruptedException {
@@ -26,12 +26,16 @@ public class CountDownLatchTest {
 
 		startNewThread(latch, 1, "T1");
 		startNewThread(latch, 2, "T2");
+		startNewThread(latch, 3, "T3");
+		startNewThread(latch, 4, "T4");
 
-		System.err.println(Thread.currentThread().getName() + " 等待阶段完成... ");
+		System.err.println(" 等待阶段完成... ");
 		latch.await();
-		System.err.println(Thread.currentThread().getName() + " 阶段完成 ");
+		System.err.println(" 阶段完成 ");
 
-		Thread.currentThread().join();
+		System.err.println(" 等待阶段完成... ");
+		latch.await();
+		System.err.println(" 阶段完成 ");
 	}
 
 	private void startNewThread(CountDownLatch latch, int sleepSeconds, String threadName) {
@@ -41,7 +45,7 @@ public class CountDownLatchTest {
 			} catch (InterruptedException e) {
 				log.error("Error : ", e);
 			} finally {
-				System.err.println(Thread.currentThread().getName() + " over ");
+				System.err.println(Thread.currentThread().getName() + " 阶段 over ");
 				latch.countDown();
 			}
 		}, threadName).start();
