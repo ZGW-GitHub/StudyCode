@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class PhaserTest {
 
 	@Test
-	public void demoTest() {
+	public void baseTest() {
 		final Phaser phaser = new Phaser();
 
 		startNewThread(phaser, 1, "T1");
