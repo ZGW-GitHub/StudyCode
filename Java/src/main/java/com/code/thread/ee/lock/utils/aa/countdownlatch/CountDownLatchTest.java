@@ -21,7 +21,7 @@ public class CountDownLatchTest {
 	 * 通过 CountDownLatch 实现阶段任务
 	 */
 	@Test
-	public void observerTest() throws InterruptedException {
+	public void baseTest() throws InterruptedException {
 		final CountDownLatch latch = new CountDownLatch(2);
 
 		startNewThread(latch, 1, "T1");
