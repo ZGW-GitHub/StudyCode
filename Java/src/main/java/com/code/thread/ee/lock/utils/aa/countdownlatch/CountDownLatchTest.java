@@ -21,35 +21,17 @@ public class CountDownLatchTest {
 	 * 通过 CountDownLatch 实现线程间通信
 	 */
 	@Test
-	public void observerTest() {
-		final CountDownLatch latch = new CountDownLatch(1);
+	public void observerTest() throws InterruptedException {
+		final CountDownLatch latch = new CountDownLatch(2);
 
-		new Thread(() -> {
-			System.err.println("为任务准备资源。。。");
-			try {
-				// 准备资源
-				Thread.sleep(2_000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			} finally {
-				// 资源准备完成（计数减一）
-				latch.countDown();
-			}
-			System.err.println("准备资源完成。");
-		}).start();
+		startNewThread(latch, 1, "T1");
+		startNewThread(latch, 2, "T2");
 
-		new Thread(() -> {
-			System.err.println("准备初始化任务。。。");
-			try {
-				// 初始化任务
-				Thread.sleep(1_000);
-				// 等待其它线程为其准备资源
-				latch.await(); // block 住，等待计数器计数为0
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			System.err.println("任务开始执行。。。");
-		}).start();
+		System.err.println(Thread.currentThread().getName() + " 等待阶段完成... ");
+		latch.await();
+		System.err.println(Thread.currentThread().getName() + " 阶段完成 ");
+
+		Thread.currentThread().join();
 	}
 
 	/**
@@ -73,6 +55,19 @@ public class CountDownLatchTest {
 		System.err.println("开始 wait");
 		boolean isSuccess = latch.await(3, TimeUnit.SECONDS);
 		System.err.println("结束！isSuccess : " + isSuccess);
+	}
+
+	private void startNewThread(CountDownLatch latch, int sleepSeconds, String threadName) {
+		new Thread(() -> {
+			try {
+				TimeUnit.SECONDS.sleep(sleepSeconds);
+			} catch (InterruptedException e) {
+				log.error("Error : ", e);
+			} finally {
+				System.err.println(Thread.currentThread().getName() + " over ");
+				latch.countDown();
+			}
+		}, threadName).start();
 	}
 
 }
