@@ -33,6 +33,7 @@ public class CountDownLatchTest {
 		latch.await();
 		System.err.println(" 阶段完成 ");
 
+		// latch 是一次性的，所以下面的 await 是无效的。
 		System.err.println(" 等待阶段完成... ");
 		latch.await();
 		System.err.println(" 阶段完成 ");
