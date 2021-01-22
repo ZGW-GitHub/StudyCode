@@ -1,4 +1,4 @@
-package com.code.thread.ee.lock.utils.nn.semaphore;
+package com.code.thread.ee.lock.utils.oo.semaphore;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
