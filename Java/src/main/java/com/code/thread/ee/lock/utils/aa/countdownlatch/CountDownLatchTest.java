@@ -34,29 +34,6 @@ public class CountDownLatchTest {
 		Thread.currentThread().join();
 	}
 
-	/**
-	 * 测试 CountDownLatch 的等待超时
-	 */
-	@Test
-	public void timeOutTest() throws InterruptedException {
-		final CountDownLatch latch = new CountDownLatch(1);
-
-		new Thread(() -> {
-			try {
-				TimeUnit.SECONDS.sleep(2);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			} finally {
-				latch.countDown();
-			}
-
-		}).start();
-
-		System.err.println("开始 wait");
-		boolean isSuccess = latch.await(3, TimeUnit.SECONDS);
-		System.err.println("结束！isSuccess : " + isSuccess);
-	}
-
 	private void startNewThread(CountDownLatch latch, int sleepSeconds, String threadName) {
 		new Thread(() -> {
 			try {
