@@ -78,7 +78,7 @@ public class CyclicBarrierTest {
 
 				System.err.println(Thread.currentThread().getName() + " 阶段 over ");
 
-				barrier.await(); // 相互等待
+				barrier.await(); // 等待
 			} catch (InterruptedException | BrokenBarrierException e) {
 				log.error("Error : ", e);
 			}
