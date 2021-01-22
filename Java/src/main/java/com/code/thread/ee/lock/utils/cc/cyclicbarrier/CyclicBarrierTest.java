@@ -9,8 +9,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * API：
- * <br />{@link CyclicBarrier#await()} await()} —— 相互等待
- * <br />{@link CyclicBarrier#reset()} reset()} ——
+ * <br />{@link CyclicBarrier#await() await()} —— 相互等待
+ * <br />{@link CyclicBarrier#reset() reset()} ——
  *
  * @author 愆凡
  */
