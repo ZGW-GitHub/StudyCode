@@ -26,8 +26,8 @@ public class CountDownLatchTest {
 
 		startNewThread(latch, 1, "T1");
 		startNewThread(latch, 2, "T2");
-		startNewThread(latch, 3, "T3");
-		startNewThread(latch, 4, "T4");
+		startNewThread(latch, 6, "T3");
+		startNewThread(latch, 6, "T4");
 
 		System.err.println(" 等待阶段完成... ");
 		latch.await();
