@@ -1,4 +1,4 @@
-package com.code.thread.ee.lock.utils.ee.exchanger;
+package com.code.thread.ee.lock.utils.nn.exchanger;
 
 import org.junit.Test;
 
