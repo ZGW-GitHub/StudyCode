@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
- * Spring 事件示例
+ * Spring 事件监听器示例
  *
  * @see ApplicationEvent
  * @see ApplicationListener
