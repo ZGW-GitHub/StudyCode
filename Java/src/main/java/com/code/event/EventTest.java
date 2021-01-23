@@ -49,7 +49,7 @@ public class EventTest {
 	class EventListenter implements Observer, EventListener {
 		@Override
 		public void update(Observable eventMulticaster, Object event) {
-			// 监听自己感兴趣的事件（当监听多种事件时就是多事件监听、反之则为单事件监听）
+			// 监听自己感兴趣的事件（当监听多类事件时就是多事件监听、反之则为单事件监听）
 			if (event instanceof EventObject) {
 				System.err.println("收到了【 " + eventMulticaster.toString() + " 】广播的事件：" + ((EventObject) event).getSource().toString());
 			}
