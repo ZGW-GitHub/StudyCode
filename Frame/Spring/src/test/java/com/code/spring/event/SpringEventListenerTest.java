@@ -14,9 +14,11 @@ import org.springframework.scheduling.annotation.EnableAsync;
 /**
  * Spring 事件示例
  *
- * @see ApplicationListener
  * @see ApplicationEvent
- * @see
+ * @see ApplicationListener
+ * @see EventListener
+ * @see EnableAsync
+ * @see Async
  *
  * @author 愆凡
  * @date 2021/1/23 20:30
