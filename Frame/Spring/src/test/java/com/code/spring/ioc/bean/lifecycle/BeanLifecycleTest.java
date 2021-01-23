@@ -1,7 +1,7 @@
-package com.code.spring.bean.lifecycle;
+package com.code.spring.ioc.bean.lifecycle;
 
 import com.code.spring.MySpringApplicationTest;
-import com.code.spring.bean.BeanUser;
+import com.code.spring.ioc.bean.BeanUser;
 import org.junit.Test;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.MutablePropertyValues;

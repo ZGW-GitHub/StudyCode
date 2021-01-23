@@ -1,4 +1,4 @@
-package com.code.spring.context.lifecycle;
+package com.code.spring.ioc.lifecycle;
 
 import com.code.spring.MySpringApplicationTest;
 import org.junit.Test;

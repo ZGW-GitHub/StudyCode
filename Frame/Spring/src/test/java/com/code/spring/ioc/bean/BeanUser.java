@@ -1,4 +1,4 @@
-package com.code.spring.bean;
+package com.code.spring.ioc.bean;
 
 import com.code.spring.entity.User;
 import org.springframework.beans.factory.DisposableBean;

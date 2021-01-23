@@ -3,18 +3,18 @@
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="user" class="com.code.spring.bean.BeanUser">
+	<bean id="user" class="com.code.spring.ioc.bean.BeanUser">
 		<property name="id" value="1"/>
 		<property name="name" value="愆凡"/>
 	</bean>
 
-	<bean id="userThree" class="com.code.spring.bean.BeanUser" init-method="init"
+	<bean id="userThree" class="com.code.spring.ioc.bean.BeanUser" init-method="init"
 		  destroy-method="destroyDemo">
 		<property name="id" value="3"/>
 		<property name="name" value="愆凡"/>
 	</bean>
 
-	<bean id="userFour" class="com.code.spring.bean.BeanUser" destroy-method="destroyDemo">
+	<bean id="userFour" class="com.code.spring.ioc.bean.BeanUser" destroy-method="destroyDemo">
 		<property name="id" value="4"/>
 		<property name="name" value="愆凡"/>
 	</bean>

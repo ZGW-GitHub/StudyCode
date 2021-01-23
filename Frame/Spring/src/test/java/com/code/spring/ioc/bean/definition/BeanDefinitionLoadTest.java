@@ -1,4 +1,4 @@
-package com.code.spring.bean.definition;
+package com.code.spring.ioc.bean.definition;
 
 import com.code.spring.MySpringApplicationTest;
 import com.code.spring.entity.User;
