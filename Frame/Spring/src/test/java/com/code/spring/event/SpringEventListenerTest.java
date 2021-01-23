@@ -24,16 +24,19 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync // 激活异步执行
 @Slf4j
 @SuppressWarnings("all")
-public class SpringEventTest extends MySpringApplicationTest {
+public class SpringEventListenerTest extends MySpringApplicationTest {
 
 	/**
 	 * 基于接口的事件监听示例
+	 *
+	 * <br/><br/>注册 Spring 事件监听器：
+	 * <br/>方式一 ：通过 ConfigurableApplicationContext API 注册
 	 */
 	@Test
 	public void interfaceTest() {
 		GenericApplicationContext context = new GenericApplicationContext();
 
-		// 添加事件监听器
+		// 注册事件监听器
 		context.addApplicationListener(new ApplicationListener<ApplicationEvent>() {
 			@Override
 			public void onApplicationEvent(ApplicationEvent event) {
@@ -45,13 +48,36 @@ public class SpringEventTest extends MySpringApplicationTest {
 	}
 
 	/**
+	 * 基于接口的事件监听示例
+	 *
+	 * <br/><br/>注册 Spring 事件监听器：
+	 * <br/>方式二 ：作为 Spring Bean 注册
+	 */
+	@Test
+	public void interfaceTest2() {
+		GenericApplicationContext context = new GenericApplicationContext();
+
+		// 注册事件监听器
+		context.registerBean(MyApplicationListener.class);
+
+		context.refresh();
+	}
+
+	class MyApplicationListener implements ApplicationListener<ApplicationEvent> {
+		@Override
+		public void onApplicationEvent(ApplicationEvent event) {
+			System.err.println(event.toString());
+		}
+	}
+
+	/**
 	 * 基于注解的事件监听示例
 	 */
 	@Test
 	public void annotationTest() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 
-		context.register(SpringEventTest.class);
+		context.register(SpringEventListenerTest.class);
 
 		context.refresh();
 	}
