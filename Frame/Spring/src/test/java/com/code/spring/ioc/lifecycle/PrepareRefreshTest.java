@@ -20,7 +20,7 @@ public class PrepareRefreshTest extends MySpringApplicationTest {
 	 */
 	@Test
 	public void initPropertySourcesTest() {
-		new TestApplicationContext("com.code.spring.context.lifecycle").start();
+		new TestApplicationContext("com.code.spring.ioc.lifecycle").start();
 	}
 
 	static class TestApplicationContext extends AnnotationConfigApplicationContext {
