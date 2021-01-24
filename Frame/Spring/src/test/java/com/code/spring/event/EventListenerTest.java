@@ -26,7 +26,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync // 激活异步执行
 @Slf4j
 @SuppressWarnings("all")
-public class SpringEventListenerTest extends MySpringApplicationTest {
+public class EventListenerTest extends MySpringApplicationTest {
 
 	/**
 	 * 基于接口的事件监听示例
@@ -79,7 +79,7 @@ public class SpringEventListenerTest extends MySpringApplicationTest {
 	public void annotationTest() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 
-		context.register(SpringEventListenerTest.class);
+		context.register(EventListenerTest.class);
 
 		context.refresh();
 	}

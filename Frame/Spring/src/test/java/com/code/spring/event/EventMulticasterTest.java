@@ -18,14 +18,17 @@ import org.springframework.context.support.GenericApplicationContext;
  * @date 2021/1/23 22:42
  */
 @SuppressWarnings("all")
-public class SpringEventMulticasterTest extends MySpringApplicationTest implements ApplicationEventPublisherAware {
+public class EventMulticasterTest extends MySpringApplicationTest implements ApplicationEventPublisherAware {
 
+	/**
+	 * Spring 事件发布器示例
+	 */
 	@Test
 	public void publisherTest() {
 		GenericApplicationContext context = new GenericApplicationContext();
 
 		// 注册当前类为 Spring Bean 以实现 ApplicationEventPublisher 的注入
-		context.registerBean(SpringEventMulticasterTest.class);
+		context.registerBean(EventMulticasterTest.class);
 
 		// 注册 Spring 事件监听器
 		context.addApplicationListener(new ApplicationListener<ApplicationEvent>() {
