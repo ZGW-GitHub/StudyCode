@@ -2,10 +2,7 @@ package com.code.spring.event;
 
 import com.code.spring.MySpringApplicationTest;
 import org.junit.Test;
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.context.ApplicationEventPublisherAware;
-import org.springframework.context.ApplicationListener;
+import org.springframework.context.*;
 import org.springframework.context.support.GenericApplicationContext;
 
 /**
@@ -13,6 +10,7 @@ import org.springframework.context.support.GenericApplicationContext;
  *
  * @see ApplicationEventPublisher
  * @see ApplicationEventPublisherAware
+ * @see PayloadApplicationEvent
  *
  * @author 愆凡
  * @date 2021/1/23 22:42
@@ -47,6 +45,7 @@ public class EventMulticasterTest extends MySpringApplicationTest implements App
 		publisher.publishEvent(new ApplicationEvent("Hello World !") {
 		});
 
+		// 发布一个 PayloadApplicationEvent
 		publisher.publishEvent("Hello World !!!");
 	}
 
