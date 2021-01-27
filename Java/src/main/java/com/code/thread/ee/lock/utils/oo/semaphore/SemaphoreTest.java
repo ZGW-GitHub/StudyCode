@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * API：
  * <br />{@link Semaphore#acquire(int) acquire(int)} —— 从信号量获取给定数量的许可证，会阻塞直至许可证获取成功
- * <br />{@link Semaphore#release(int) acquire(int)} —— 释放给定数量的许可证
+ * <br />{@link Semaphore#release(int) release(int)} —— 释放给定数量的许可证
  *
  * @author 愆凡
  */
