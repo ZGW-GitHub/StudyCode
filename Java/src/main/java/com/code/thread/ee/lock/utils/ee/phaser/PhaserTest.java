@@ -43,12 +43,12 @@ public class PhaserTest {
 		startNewThread(phaser, 2, "T2");
 		startNewThread(phaser, 3, "T3");
 
-		System.err.println(phaser.getPhase()); // 获取当前阶段
+		System.err.println("当前 Phaser ：" + phaser.getPhase()); // 获取当前阶段
 
-//		phaser.register(); // 注册一个参与者
+		phaser.register(); // 注册一个参与者
 		phaser.arriveAndAwaitAdvance(); // 等待其它参与者到达
 
-		System.err.println(phaser.getPhase()); // 获取当前阶段
+		System.err.println("当前 Phaser ：" + phaser.getPhase()); // 获取当前阶段
 
 		System.err.println("over !");
 	}
