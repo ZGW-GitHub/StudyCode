@@ -8,7 +8,7 @@ import java.util.concurrent.*;
  * @author 愆凡
  * @date 2020-03-24 13:41
  **/
-public class DemoTest {
+public class FutureTest {
 
 	private final ExecutorService executor = Executors.newCachedThreadPool();
 

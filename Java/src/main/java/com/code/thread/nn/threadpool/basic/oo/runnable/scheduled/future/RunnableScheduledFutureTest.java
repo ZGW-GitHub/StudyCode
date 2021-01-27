@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
  * @author 愆凡
  * @date 2020/5/11 9:14 上午
  */
-public class DemoTest {
+public class RunnableScheduledFutureTest {
 
 	private final ExecutorService executor = Executors.newScheduledThreadPool(2);
 

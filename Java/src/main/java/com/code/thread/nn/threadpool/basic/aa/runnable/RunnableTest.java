@@ -10,12 +10,12 @@ import java.util.concurrent.*;
  * @date 2020/5/11 9:14 上午
  */
 @Slf4j
-public class DemoTest {
-
-	private final ExecutorService executor = Executors.newCachedThreadPool();
+public class RunnableTest {
 
 	@Test
 	public void threadPoolTest() throws ExecutionException, InterruptedException {
+		final ExecutorService executor = Executors.newCachedThreadPool();
+
 		Future<?> future = executor.submit(() -> {
 			try {
 				TimeUnit.SECONDS.sleep(3);
@@ -32,18 +32,16 @@ public class DemoTest {
 
 	@Test
 	public void threadTest() throws InterruptedException {
-		Thread thread = new Thread(() -> {
+		new Thread(() -> {
 			try {
 				TimeUnit.SECONDS.sleep(3);
 				System.out.println("OK");
 			} catch (InterruptedException e) {
 				log.error("Exception : ", e);
 			}
-		});
+		}).start();
 
-		thread.start();
-
-		thread.join();
+		Thread.currentThread().join();
 	}
 
 }
