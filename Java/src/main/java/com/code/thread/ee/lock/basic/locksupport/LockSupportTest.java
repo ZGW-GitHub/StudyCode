@@ -7,6 +7,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
 
 /**
+ * API：
+ * <br />{@link LockSupport#park() park()} —— 阻塞当前线程，除非许可证可用
+ * <br />{@link LockSupport#unpark(Thread) unpark(Thread)} —— 将指定线程的许可证设为可用
+ *
  * @author 愆凡
  * @date 2020/5/11 9:14 上午
  */
