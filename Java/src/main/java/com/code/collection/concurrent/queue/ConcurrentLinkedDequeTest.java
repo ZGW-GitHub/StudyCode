@@ -1,4 +1,4 @@
-package com.code.collection.concurrent.collection;
+package com.code.collection.concurrent.queue;
 
 /**
  * @author 愆凡

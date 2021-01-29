@@ -1,4 +1,4 @@
-package com.code.collection.concurrent.collection;
+package com.code.collection.concurrent.map;
 
 import java.util.concurrent.ConcurrentSkipListMap;
 

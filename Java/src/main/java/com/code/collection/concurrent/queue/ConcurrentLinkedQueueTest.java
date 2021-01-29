@@ -1,4 +1,4 @@
-package com.code.collection.concurrent.collection;
+package com.code.collection.concurrent.queue;
 
 import org.junit.After;
 import org.junit.Before;
