@@ -21,9 +21,10 @@ import java.util.Date;
 @Table(name = "user")
 public class User implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	public static final Integer SEX_MAN = 1;
 	public static final Integer SEX_WOMAN = 2;
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	private Long id;
