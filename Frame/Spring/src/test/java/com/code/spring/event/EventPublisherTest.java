@@ -25,7 +25,7 @@ public class EventPublisherTest extends MySpringApplicationTest implements Appli
 	public void publisherTest() {
 		GenericApplicationContext context = new GenericApplicationContext();
 
-		// 注册当前类为 Spring Bean 以实现 ApplicationEventPublisher 的注入
+		// 注册当前类为注册为 Spring Bean ，以实现 ApplicationEventPublisher 的注入
 		context.registerBean(EventPublisherTest.class);
 
 		// 注册 Spring 事件监听器
