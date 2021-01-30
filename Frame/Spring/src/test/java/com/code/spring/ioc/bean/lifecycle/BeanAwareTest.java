@@ -22,7 +22,7 @@ public class BeanAwareTest extends MySpringApplicationTest {
 	@Test
 	public void test() {
 		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext();
-		applicationContext.setConfigLocation("META-INF/bean/lifecycle/beanAware.xml");
+		applicationContext.setConfigLocation("META-INF/ioc/bean/lifecycle/beanAware.xml");
 
 		// 启动应用上下文
 		applicationContext.refresh();
