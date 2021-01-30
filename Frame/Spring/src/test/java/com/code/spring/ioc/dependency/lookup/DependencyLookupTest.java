@@ -9,6 +9,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
@@ -74,29 +75,15 @@ public class DependencyLookupTest extends MySpringApplicationTest {
 
 	/**
 	 * 示例：<br />
-	 * 通过 Java 注解查找：查找单个 Bean 对象
+	 * 通过 Java 注解查找：查找集合 Bean 对象
 	 */
 	@Test
 	public void byAnnotationTest1() {
 		if (beanFactory instanceof ListableBeanFactory) {
 			ListableBeanFactory listableBeanFactory = (ListableBeanFactory) beanFactory;
-			Map<String, DependencyUser> userMap = listableBeanFactory.getBeansOfType(DependencyUser.class);
+			Map<String, Object> map = listableBeanFactory.getBeansWithAnnotation(Component.class);
 
-			System.err.println(userMap.toString());
-		}
-	}
-
-	/**
-	 * 示例：<br />
-	 * 通过 Java 注解查找：查找单个 Bean 对象
-	 */
-	@Test
-	public void byAnnotationTest2() {
-		if (beanFactory instanceof ListableBeanFactory) {
-			ListableBeanFactory listableBeanFactory = (ListableBeanFactory) beanFactory;
-			Map<String, DependencyUser> userMap = listableBeanFactory.getBeansOfType(DependencyUser.class);
-
-			System.err.println(userMap.toString());
+			System.err.println(map.toString());
 		}
 	}
 
