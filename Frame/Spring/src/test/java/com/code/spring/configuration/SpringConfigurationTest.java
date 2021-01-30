@@ -17,7 +17,7 @@ import java.util.Map;
  * @author 愆凡
  * @date 2021/1/3 22:43
  */
-@PropertySource("classpath:/META-INF/configuration/springConfiguration.properties")
+@PropertySource("classpath:/META-INF/configuration/spring-configuration.properties")
 public class SpringConfigurationTest extends MySpringApplicationTest {
 
 	@Bean

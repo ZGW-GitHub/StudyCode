@@ -30,7 +30,7 @@ public class BeanDefinitionLoadTest extends MySpringApplicationTest {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String file = "/META-INF/ioc/bean/definition/beanDefinitionLoad.xml";
+		String file = "/META-INF/ioc/bean/definition/bean-definition-load.xml";
 
 		int beanDefinitionsNum = beanDefinitionReader.loadBeanDefinitions(file);
 		System.err.println("已加载 BeanDefinition 数量：" + beanDefinitionsNum);
@@ -50,7 +50,7 @@ public class BeanDefinitionLoadTest extends MySpringApplicationTest {
 		PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
 
 		// Properties 资源的位置
-		String file = "/META-INF/ioc/bean/definition/beanDefinitionLoad.properties";
+		String file = "/META-INF/ioc/bean/definition/bean-definition-load.properties";
 
 		// 解决乱码 ( Properties 资源加载默认是通过 ISO-8859-1 编码的 )
 		Resource resource = new ClassPathResource(file);

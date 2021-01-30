@@ -14,7 +14,7 @@ import java.util.Map;
  * @author 愆凡
  * @date 2021/1/3 22:05
  */
-@ImportResource("classpath:/META-INF/configuration/springIocConfiguration.xml")
+@ImportResource("classpath:/META-INF/configuration/spring-ioc-configuration.xml")
 @Import(ConfigurationUser.class)
 public class SpringIocConfigurationTest extends MySpringApplicationTest {
 
