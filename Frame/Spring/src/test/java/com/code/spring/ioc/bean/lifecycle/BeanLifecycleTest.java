@@ -41,7 +41,7 @@ public class BeanLifecycleTest extends MySpringApplicationTest {
 			XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 			// XML 资源的位置
-			String file = "/META-INF/ioc/bean/lifecycle/bean-definition-load.xml";
+			String file = "/META-INF/ioc/bean/lifecycle/bean-definition.xml";
 
 			// 解决乱码
 			Resource resource = new ClassPathResource(file);
@@ -57,7 +57,7 @@ public class BeanLifecycleTest extends MySpringApplicationTest {
 			PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
 
 			// Properties 资源的位置
-			String file = "/META-INF/ioc/bean/lifecycle/bean-definition-load.properties";
+			String file = "/META-INF/ioc/bean/lifecycle/bean-definition.properties";
 
 			// 解决乱码
 			Resource resource = new ClassPathResource(file);
