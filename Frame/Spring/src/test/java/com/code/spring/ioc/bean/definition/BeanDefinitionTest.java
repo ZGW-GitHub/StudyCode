@@ -6,10 +6,7 @@ import com.code.spring.ioc.bean.BeanUser;
 import org.junit.Test;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.support.BeanDefinitionBuilder;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.beans.factory.support.GenericBeanDefinition;
-import org.springframework.beans.factory.support.PropertiesBeanDefinitionReader;
+import org.springframework.beans.factory.support.*;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotatedBeanDefinitionReader;
 import org.springframework.core.io.ClassPathResource;
@@ -17,15 +14,15 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.EncodedResource;
 
 /**
- * BeanDefinition 构建示例
+ * BeanDefinition 构建、解析、注册示例
  *
  * @author 愆凡
  * @date 2020/12/22 20:54
  */
-public class BeanDefinitionCreationTest extends MySpringApplicationTest {
+public class BeanDefinitionTest extends MySpringApplicationTest {
 
 	/**
-	 * 面向 资源 构建 BeanDefinition ：从 XML 资源中解析构建 BeanDefinition
+	 * 面向资源 ：XML 资源
 	 */
 	@Test
 	public void byXmlTest() {
@@ -35,17 +32,17 @@ public class BeanDefinitionCreationTest extends MySpringApplicationTest {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String file = "/META-INF/ioc/bean/definition/bean-definition-create.xml";
+		String file = "/META-INF/ioc/bean/definition/bean-definition.xml";
 
-		int beanDefinitionsNum = beanDefinitionReader.loadBeanDefinitions(file);
-		System.err.println("已加载 BeanDefinition 数量：" + beanDefinitionsNum);
+		// 注册 BeanDefinition 到 Ioc 容器
+		beanDefinitionReader.loadBeanDefinitions(file);
 
 		User user = beanFactory.getBean("user", User.class);
 		System.err.println(user);
 	}
 
 	/**
-	 * 面向 资源 构建 BeanDefinition ：从 Properties 资源中解析构建 BeanDefinition
+	 * 面向资源 ：Properties 资源
 	 */
 	@Test
 	public void byPropertieTest() {
@@ -55,22 +52,21 @@ public class BeanDefinitionCreationTest extends MySpringApplicationTest {
 		PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
 
 		// Properties 资源的位置
-		String file = "/META-INF/ioc/bean/definition/bean-definition-create.properties";
+		String file = "/META-INF/ioc/bean/definition/bean-definition.properties";
 
 		// 解决乱码 ( Properties 资源加载默认是通过 ISO-8859-1 编码的 )
 		Resource resource = new ClassPathResource(file);
 		EncodedResource encodedResource = new EncodedResource(resource, "UTF-8"); // 转换成带有字符编码的 EncodedResource 对象
 
-		// 加载 Properties 资源
-		int beanDefinitionsNum = beanDefinitionReader.loadBeanDefinitions(encodedResource);
-		System.err.println("已加载 BeanDefinition 数量：" + beanDefinitionsNum);
+		// 注册 BeanDefinition 到 Ioc 容器
+		beanDefinitionReader.loadBeanDefinitions(encodedResource);
 
 		User user = beanFactory.getBean("user", User.class);
 		System.err.println(user);
 	}
 
 	/**
-	 * 面向 注解 构建 BeanDefinition
+	 * 面向注解
 	 */
 	@Test
 	public void byAnnotatedTest() {
@@ -79,40 +75,48 @@ public class BeanDefinitionCreationTest extends MySpringApplicationTest {
 		// 实例化基于 Java 注解的 AnnotatedBeanDefinitionReader
 		AnnotatedBeanDefinitionReader beanDefinitionReader = new AnnotatedBeanDefinitionReader(beanFactory);
 
-		int beanDefinitionCountBeforeRegister = beanFactory.getBeanDefinitionCount();
-
 		// 注册（不要求类必须有 @Component 注解）
-		beanDefinitionReader.register(BeanDefinitionCreationTest.class);
+		beanDefinitionReader.register(BeanDefinitionTest.class);
 
-		int beanDefinitionCountAfterRegister = beanFactory.getBeanDefinitionCount();
-		System.err.println("BeanDefinition Register Count : " + (beanDefinitionCountAfterRegister - beanDefinitionCountBeforeRegister));
+		beanFactory.getBeanDefinitionCount();
 
 		// 普通的 Class 注册到 Spring IoC 容器后，通常 Bean 名称为 Class 的名称且首字母小写
 		// Bean 名称的生成来自于 BeanNameGenerator ，注解 Bean 名称的生成来自于 AnnotatedBeanNameGenerator
-		BeanDefinitionCreationTest bean = beanFactory.getBean("beanDefinitionLoadTest", BeanDefinitionCreationTest.class);
+		BeanDefinitionTest bean = beanFactory.getBean("beanDefinitionLoadTest", BeanDefinitionTest.class);
 		System.err.println(bean);
 	}
 
 	/**
-	 * 面向 Api 构建 BeanDefinition ：BeanDefinitionBuilder
+	 * 面向 Api
 	 */
 	@Test
 	public void byApiTest1() {
+		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+
+		// 创建 BeanDefinitionBuilder 用于构建 BeanDefinition
 		BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(BeanUser.class);
 
 		beanDefinitionBuilder.addPropertyValue("id", 1)
 				.addPropertyValue("name", "愆凡");
 
+		// 获取 BeanDefinition
 		BeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
 
-		System.err.println(beanDefinition.toString());
+		// 注册 BeanDefinition 到 Ioc 容器
+		beanFactory.registerBeanDefinition("user", beanDefinition);
+
+		BeanUser user = beanFactory.getBean("user", BeanUser.class);
+		System.err.println(user);
 	}
 
 	/**
-	 * 面向 Api 构建 BeanDefinition ：AbstractBeanDefinition 以及派生类
+	 * 面向 Api
 	 */
 	@Test
 	public void byApiTest2() {
+		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+
+		// 创建 BeanDefinition 对象
 		GenericBeanDefinition genericBeanDefinition = new GenericBeanDefinition();
 
 		genericBeanDefinition.setBeanClass(BeanUser.class);
@@ -124,7 +128,11 @@ public class BeanDefinitionCreationTest extends MySpringApplicationTest {
 
 		genericBeanDefinition.setPropertyValues(propertyValues);
 
-		System.err.println(genericBeanDefinition.toString());
+		// 注册 BeanDefinition 到 Ioc 容器
+		BeanDefinitionReaderUtils.registerWithGeneratedName(genericBeanDefinition, beanFactory);
+
+		BeanUser user = beanFactory.getBean(BeanUser.class);
+		System.err.println(user);
 	}
 
 }
