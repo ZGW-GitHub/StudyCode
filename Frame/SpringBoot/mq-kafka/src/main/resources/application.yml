@@ -1,6 +1,6 @@
 spring:
   kafka:
-    bootstrap-servers: 101.37.65.146:9092
+    bootstrap-servers: linux.notuptoyou.site:9092
 
     producer:
       acks: 1 # 0 ：(不应答) ，1 ：(leader 应答) ，all ：(所有 leader 和 follower 应答)
