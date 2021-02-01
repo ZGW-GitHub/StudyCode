@@ -13,6 +13,8 @@
 	<modules>
 		<!-- Java 技术 -->
 		<module>Java</module>
+		<!-- Go 技术 -->
+		<module>Go</module>
 		<!-- 框架 -->
 		<module>Frame</module>
 		<!-- 数据结构 -->
