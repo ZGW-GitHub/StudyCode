@@ -8,7 +8,7 @@ import org.springframework.beans.factory.FactoryBean;
  */
 public class TestUserFactoryBean implements FactoryBean<TestUser> {
 	@Override
-	public TestUser getObject() throws Exception {
+	public TestUser getObject() {
 		TestUser user = new TestUser();
 		user.setId(1L);
 		user.setName("愆凡");

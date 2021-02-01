@@ -6,7 +6,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * Spring Bean 的实例化方式 ：通过静态工厂方法
+ * Spring Bean 的实例化方式 ：通过静态方法
  *
  * @author 愆凡
  * @date 2021/1/31 22:04
