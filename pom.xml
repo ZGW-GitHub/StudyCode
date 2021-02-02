@@ -21,6 +21,7 @@
 		<module>DataStructure</module>
 		<!-- 设计模式 -->
 		<module>DesignPatterns</module>
+		<module>Python</module>
 	</modules>
 
 	<properties>
