@@ -1,1 +1,1 @@
-http\://www.mycompany.com/schema/test=com.code.spring.schema.MyNamespaceHandler
+http\://www.code.com/schema/test=com.code.spring.schema.MyNamespaceHandler

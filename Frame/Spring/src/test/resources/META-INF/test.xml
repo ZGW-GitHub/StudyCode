@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xmlns:test="http://www.mycompany.com/schema/test"
+	   xmlns:test="http://www.code.com/schema/test"
 	   xsi:schemaLocation="
 	        http://www.springframework.org/schema/beans 
 	        http://www.springframework.org/schema/beans/spring-beans.xsd
-	        http://www.mycompany.com/schema/test 
-	        http://www.mycompany.com/schema/test.xsd">
+	        http://www.code.com/schema/test 
+	        http://www.code.com/schema/test.xsd">
 
 	<test:applicationConfig appName="TestApp" address="localhost" port="1080"/>
 
