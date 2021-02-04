@@ -4,4 +4,14 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 	    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<bean id="user" class="com.code.spring.ioc.dependency.DependencyUser">
+		<property name="id" value="1"/>
+		<property name="name" value="愆凡"/>
+	</bean>
+
+	<!-- 通过 XML 编码进行 Setter 方法注入依赖 -->
+	<bean id="userHodler" class="com.code.spring.ioc.dependency.injection.DependencyUserHolder">
+		<property name="user" ref="user"/>
+	</bean>
+
 </beans>
