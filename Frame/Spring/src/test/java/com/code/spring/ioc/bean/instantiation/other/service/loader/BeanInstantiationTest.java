@@ -1,6 +1,7 @@
 package com.code.spring.ioc.bean.instantiation.other.service.loader;
 
 import com.code.spring.MySpringApplicationTest;
+import com.code.spring.ioc.bean.instantiation.other.service.loader.factory.TestUserFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

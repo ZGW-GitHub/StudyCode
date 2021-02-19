@@ -1,4 +1,6 @@
-package com.code.spring.ioc.bean.instantiation.other.service.loader;
+package com.code.spring.ioc.bean.instantiation.other.service.loader.factory;
+
+import com.code.spring.ioc.bean.instantiation.other.service.loader.TestUser;
 
 /**
  * @author 愆凡
