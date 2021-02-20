@@ -1,0 +1,2 @@
+WrapperA=com.code.dubbo.spi.wrapper.WrapperImplA
+WrapperB=com.code.dubbo.spi.wrapper.WrapperImplB
