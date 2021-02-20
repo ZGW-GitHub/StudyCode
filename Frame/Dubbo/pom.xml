@@ -3,33 +3,29 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<artifactId>StudyCode</artifactId>
+		<artifactId>Frame</artifactId>
 		<groupId>com.code</groupId>
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>Frame</artifactId>
-
-	<packaging>pom</packaging>
-
-	<modules>
-		<module>Dubbo</module>
-		<module>Spring</module>
-		<module>SpringBoot</module>
-		<module>SpringCloud</module>
-	</modules>
+	<artifactId>Dubbo</artifactId>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<groupId>org.apache.dubbo</groupId>
+			<artifactId>dubbo</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-recipes</artifactId>
 		</dependency>
 	</dependencies>
 
