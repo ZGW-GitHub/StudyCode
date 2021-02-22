@@ -49,7 +49,7 @@ public class StampedLockTest {
 	}
 
 	private void doRead(CountDownLatch latch) {
-		// 获取悲观读锁
+		// 阻塞地获取悲观读锁
 		long readLock = stampedLock.readLock();
 
 		try {
@@ -67,7 +67,7 @@ public class StampedLockTest {
 	}
 
 	private void doOptimisticRead(CountDownLatch latch) {
-		// 获取乐观读锁，乐观读锁不需要释放
+		// 阻塞地获取乐观读锁，乐观读锁不需要释放
 		long optimisticRead = stampedLock.tryOptimisticRead();
 
 		try {
@@ -86,7 +86,7 @@ public class StampedLockTest {
 	}
 
 	private void doWrite(CountDownLatch latch) {
-		// 获取写锁
+		// 阻塞地获取写锁
 		long writeLock = stampedLock.writeLock();
 
 		try {
