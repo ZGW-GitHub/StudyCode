@@ -24,7 +24,6 @@ public class SpiTest extends DubboApplicationTest {
 
 		Spi spiB = extensionLoader.getExtension("SpiB");
 		spiB.hello();
-
 	}
 
 	/**
