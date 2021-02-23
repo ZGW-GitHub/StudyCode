@@ -13,7 +13,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>nacos-config</module>
-		<module>nacos-service</module>
+		<module>nacos-discovery</module>
 		<module>openfeign</module>
 	</modules>
 
