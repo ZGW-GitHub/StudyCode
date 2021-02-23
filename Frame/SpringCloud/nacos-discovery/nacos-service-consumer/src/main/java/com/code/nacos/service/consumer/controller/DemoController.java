@@ -24,7 +24,7 @@ public class DemoController {
 	@GetMapping(value = "/get")
 	public List<ServiceInstance> get() {
 		// 从远端获取服务 demo-provider 的实例
-		return discoveryClient.getInstances("NacosService-Consumer");
+		return discoveryClient.getInstances("NacosService-Provider");
 	}
 
 }
