@@ -15,7 +15,9 @@ public class ScheduledThreadPoolExecutorTest {
 
 	private final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(2);
 
-	// 一次性延迟任务
+	/**
+	 * 一次性延迟任务
+	 */
 	@Test
 	public void testScheduleWithCallable() throws ExecutionException, InterruptedException {
 		ScheduledFuture<?> future = executor.schedule(() -> {
@@ -28,9 +30,11 @@ public class ScheduledThreadPoolExecutorTest {
 		System.err.println("end : " + future.get());
 	}
 
-	// 周期任务
-	// 若任务工作时间大于循环时间，下一次循环会在任务完成后立即执行
-	// 若任务工作时间小于循环时间，下一次循环会等待 循环时间 - 任务工作时间 后执行
+	/**
+	 * 周期任务
+	 * 若任务工作时间大于循环时间，下一次循环会在任务完成后立即执行
+	 * 若任务工作时间小于循环时间，下一次循环会等待 循环时间 - 任务工作时间 后执行
+	 */
 	@Test
 	public void testScheduleAtFixedRate() throws InterruptedException {
 
@@ -48,8 +52,10 @@ public class ScheduledThreadPoolExecutorTest {
 		Thread.currentThread().join();
 	}
 
-	// 延迟任务（也是周期的）
-	// 无论任务执行多长时间，下一次循环都要在任务完成后再等待 delay 秒，再执行
+	/**
+	 * 延迟任务（也是周期的）
+	 * 无论任务执行多长时间，下一次循环都要在任务完成后再等待 delay 秒，再执行
+	 */
 	@Test
 	public void testScheduleWithFixedDelay() throws InterruptedException {
 
