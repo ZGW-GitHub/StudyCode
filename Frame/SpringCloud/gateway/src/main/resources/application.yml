@@ -1,0 +1,14 @@
+server:
+  port: 60000
+spring:
+  cloud:
+    gateway:
+      routes:
+        # 下面这段配置的意思是，配置了一个 id 为 test_route 的路由规则，
+        # 当访问地址 http://localhost:60000/spring-cloud 时会自动转发到地址：http://www.ityouknow.com/spring-cloud
+        - id: test_route # 路由 ID，保持唯一
+          # 目标服务地址
+          uri: http://www.ityouknow.com
+          # 路由条件
+          predicates:
+            - Path=/spring-cloud
