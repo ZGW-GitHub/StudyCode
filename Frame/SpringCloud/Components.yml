@@ -1,11 +1,14 @@
 配置中心:
-  - Nacos
+  - Nacos（ SpringCloud Alibaba ）
 
 注册中心:
-  - Nacos
+  - Nacos（ SpringCloud Alibaba ）
 
 服务网关:
   - Gateway
 
 服务调用:
   - OpenFeign
+
+服务熔断、限流:
+  - Sentinel（ SpringCloud Alibaba ）
