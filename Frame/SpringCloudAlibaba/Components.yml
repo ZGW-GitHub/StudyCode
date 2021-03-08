@@ -1,0 +1,14 @@
+配置中心:
+  - Nacos（ SpringCloud Alibaba ）
+
+注册中心:
+  - Nacos（ SpringCloud Alibaba ）
+
+服务网关:
+  - 
+
+服务调用:
+  - 
+
+服务熔断、限流:
+  - Sentinel（ SpringCloud Alibaba ）
