@@ -7,16 +7,16 @@ USE `db0`;
 DROP TABLE IF EXISTS `user_0`;
 CREATE TABLE `user_0` (
     `id`   int(11) NOT NULL,
-    `name` varchar(255) DEFAULT NULL,
-    `age`  int(11)      DEFAULT NULL,
+    `name` varchar(25) DEFAULT NULL,
+    `age`  int(5)      DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 DROP TABLE IF EXISTS `user_1`;
 CREATE TABLE `user_1` (
     `id` int(11) NOT NULL,
-    `name` varchar(255) DEFAULT NULL,
-    `age` int(11) DEFAULT NULL,
+    `name` varchar(25) DEFAULT NULL,
+    `age` int(5) DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
@@ -30,15 +30,15 @@ USE `db1`;
 DROP TABLE IF EXISTS `user_0`;
 CREATE TABLE `user_0` (
     `id`   int(11) NOT NULL,
-    `name` varchar(255) DEFAULT NULL,
-    `age`  int(11)      DEFAULT NULL,
+    `name` varchar(25) DEFAULT NULL,
+    `age`  int(5)      DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 DROP TABLE IF EXISTS `user_1`;
 CREATE TABLE `user_1` (
     `id` int(11) NOT NULL,
-    `name` varchar(255) DEFAULT NULL,
-    `age` int(11) DEFAULT NULL,
+    `name` varchar(25) DEFAULT NULL,
+    `age` int(5) DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
