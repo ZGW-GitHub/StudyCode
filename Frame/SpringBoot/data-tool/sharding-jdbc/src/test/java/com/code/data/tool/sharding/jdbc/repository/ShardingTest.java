@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 /**
+ * 分库分表测试
+ * 
  * @author 愆凡
  * @date 2021/3/9 16:33
  */
-public class UserRepositoryTest extends DataToolShardingJdbcApplicationTest {
+public class ShardingTest extends DataToolShardingJdbcApplicationTest {
 	
 	@Autowired
 	private UserRepository userRepository;
