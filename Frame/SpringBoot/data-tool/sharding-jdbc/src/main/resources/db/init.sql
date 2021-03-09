@@ -6,16 +6,16 @@ USE `db0`;
 
 DROP TABLE IF EXISTS `user_0`;
 CREATE TABLE `user_0` (
-    `id`   int(11) PRIMARY KEY AUTO_INCREMENT,
+    `id`   bigint(20) PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(25) DEFAULT NULL,
     `age`  int(5)      DEFAULT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 DROP TABLE IF EXISTS `user_1`;
 CREATE TABLE `user_1` (
-    `id` int(11) PRIMARY KEY AUTO_INCREMENT,
+    `id`   bigint(20) PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(25) DEFAULT NULL,
-    `age` int(5) DEFAULT NULL
+    `age`  int(5)      DEFAULT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 
@@ -27,14 +27,14 @@ USE `db1`;
 
 DROP TABLE IF EXISTS `user_0`;
 CREATE TABLE `user_0` (
-    `id`   int(11) PRIMARY KEY AUTO_INCREMENT,
+    `id`   bigint(20) PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(25) DEFAULT NULL,
     `age`  int(5)      DEFAULT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 DROP TABLE IF EXISTS `user_1`;
 CREATE TABLE `user_1` (
-    `id` int(11) PRIMARY KEY AUTO_INCREMENT,
+    `id`   bigint(20) PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(25) DEFAULT NULL,
-    `age` int(5) DEFAULT NULL
+    `age`  int(5)      DEFAULT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;

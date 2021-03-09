@@ -45,9 +45,13 @@ spring:
               sharding-column: age
               algorithm-expression: user_$->{age % 2}
           # user 表的自增列配置
-#          key-generator:
-#            column: id
-#            type: UUID
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+            props:
+              worker-id: 5
+              max-tolerate-time-difference-milliseconds: 10000
+
       # 绑定表规则列表
 #      binding-tables: user
       # 广播表规则列表
