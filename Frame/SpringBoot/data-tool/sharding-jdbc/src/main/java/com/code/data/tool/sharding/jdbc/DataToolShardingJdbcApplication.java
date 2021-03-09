@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2021/3/8 17:24
  */
 @SpringBootApplication
-public class DataToolShardingJdbc {
+public class DataToolShardingJdbcApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DataToolShardingJdbc.class, args);
+		SpringApplication.run(DataToolShardingJdbcApplication.class, args);
 	}
 	
 }
