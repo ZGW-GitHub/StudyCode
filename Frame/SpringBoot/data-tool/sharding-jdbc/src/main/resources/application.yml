@@ -1,0 +1,62 @@
+server:
+  port: 60000
+
+spring:
+  shardingsphere:
+    # 配置数据源
+    datasource:
+      names: db0,db1
+
+      # 第一个数据库
+      db0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://linux.notuptoyou.site:13306/db0?serverTimezone=UTC&useSSL=false
+        username: root
+        password: Snow----
+
+      # 第二个数据库
+      db1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://linux.notuptoyou.site:13306/db1?serverTimezone=UTC&useSSL=false
+        username: root
+        password: Snow----
+
+    # 配置分库分表
+    sharding:
+      # 未配置分库分表的表将使用默认数据源
+      default-data-source-name: db0
+      
+      # 为指定的表配置分库分表
+      tables:
+        # user 表的分库分表策略
+        user:
+          # user 表的实际数据节点
+          actual-data-nodes: db$->{0..1}.user_$->{0..1}
+          # user 表的分库策略
+          database-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: db$->{id % 2}
+          # user 表的分表策略
+          table-strategy:
+            inline:
+              sharding-column: age
+              algorithm-expression: user_$->{age % 2}
+          # user 表的自增列配置
+          key-generator:
+            column: id
+            type: UUID
+      # 绑定表规则列表
+#      binding-tables: user
+      # 广播表规则列表
+#      broadcast-tables: user
+
+    # 其它配置
+    props: 
+      sql: 
+        show: true # 开启SQL显示
+      executor:
+        size: 4 # 工作线程数量，默认值: CPU核数
+
