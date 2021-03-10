@@ -1,4 +1,4 @@
-package com.code.mq.kafka.msgtype;
+package com.code.mq.kafka.basic.consumer;
 
 import com.code.mq.kafka.KafkaApplicationTest;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -38,6 +38,32 @@ public class ConsumerTest extends KafkaApplicationTest {
 
 	@Test
 	public void consumerTest() {
+		// 配置消费者
+		Properties properties = new Properties();
+		properties.setProperty("bootstrap.servers", bootstrapServers);
+		properties.setProperty("group.id", groupId);
+		properties.setProperty("auto.offset.reset", autoOffsetReset);
+		properties.setProperty("key.deserializer", keyDeserializer);
+		properties.setProperty("value.deserializer", valueDeserializer);
+
+		// 创建消费者对象
+		KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
+
+		// 订阅主题
+		consumer.subscribe(List.of(topic));
+
+		// 循环拉取消息
+		while (true) {
+			ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(3));
+
+			for (ConsumerRecord<String, String> record : records) {
+				System.err.println(record.toString());
+			}
+		}
+	}
+
+	@Test
+	public void consumer2Test() {
 		// 配置消费者
 		Properties properties = new Properties();
 		properties.setProperty("bootstrap.servers", bootstrapServers);

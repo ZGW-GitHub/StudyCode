@@ -1,4 +1,4 @@
-package com.code.mq.kafka.producer;
+package com.code.mq.kafka.basic.producer;
 
 import com.code.mq.kafka.KafkaApplicationTest;
 import lombok.extern.slf4j.Slf4j;

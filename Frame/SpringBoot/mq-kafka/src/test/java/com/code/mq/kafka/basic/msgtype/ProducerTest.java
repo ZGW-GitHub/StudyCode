@@ -1,4 +1,4 @@
-package com.code.mq.kafka.msgtype;
+package com.code.mq.kafka.basic.msgtype;
 
 import com.code.mq.kafka.KafkaApplicationTest;
 import org.junit.Test;
