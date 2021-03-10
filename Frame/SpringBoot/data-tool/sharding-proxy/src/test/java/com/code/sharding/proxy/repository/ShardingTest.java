@@ -1,7 +1,7 @@
-package com.code.data.tool.sharding.proxy.repository;
+package com.code.sharding.proxy.repository;
 
-import com.code.data.tool.sharding.proxy.DataToolShardingProxyApplicationTest;
-import com.code.data.tool.sharding.proxy.entity.User;
+import com.code.sharding.proxy.ShardingProxyApplicationTest;
+import com.code.sharding.proxy.entity.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,11 +13,11 @@ import java.util.List;
  * @author 愆凡
  * @date 2021/3/9 16:33
  */
-public class ShardingTest extends DataToolShardingProxyApplicationTest {
+public class ShardingTest extends ShardingProxyApplicationTest {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Test
 	public void insertTest() {
 

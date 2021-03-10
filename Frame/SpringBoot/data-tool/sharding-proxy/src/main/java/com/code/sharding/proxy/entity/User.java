@@ -1,4 +1,4 @@
-package com.code.data.tool.sharding.proxy.entity;
+package com.code.sharding.proxy.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

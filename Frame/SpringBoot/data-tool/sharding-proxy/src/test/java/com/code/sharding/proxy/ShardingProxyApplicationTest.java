@@ -1,4 +1,4 @@
-package com.code.data.tool.sharding.proxy;
+package com.code.sharding.proxy;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class DataToolShardingProxyApplicationTest {
+public class ShardingProxyApplicationTest {
 
 	@Test
 	public void contextLoads() {

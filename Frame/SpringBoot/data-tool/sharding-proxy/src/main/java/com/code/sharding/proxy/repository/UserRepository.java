@@ -1,6 +1,6 @@
-package com.code.data.tool.sharding.proxy.repository;
+package com.code.sharding.proxy.repository;
 
-import com.code.data.tool.sharding.proxy.entity.User;
+import com.code.sharding.proxy.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
