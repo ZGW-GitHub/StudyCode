@@ -1,4 +1,4 @@
-package com.code.mq.rocketmq.msgtype;
+package com.code.mq.rocketmq.basic.msgtype;
 
 import com.code.mq.rocketmq.RocketMqApplicationTest;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;

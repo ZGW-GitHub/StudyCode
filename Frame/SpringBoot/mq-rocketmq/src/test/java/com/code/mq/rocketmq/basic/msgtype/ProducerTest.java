@@ -1,4 +1,4 @@
-package com.code.mq.rocketmq.msgtype;
+package com.code.mq.rocketmq.basic.msgtype;
 
 import com.code.mq.rocketmq.RocketMqApplicationTest;
 import lombok.extern.slf4j.Slf4j;
