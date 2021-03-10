@@ -1,14 +1,32 @@
+服务发现:
+  - Nacos
+
 配置中心:
-  - Nacos（ SpringCloud Alibaba ）
-
-注册中心:
-  - Nacos（ SpringCloud Alibaba ）
-
-服务网关:
-  - 
-
-服务调用:
-  - 
+  - Nacos
 
 服务熔断、限流:
-  - Sentinel（ SpringCloud Alibaba ）
+  - Sentinel
+
+链路追踪:
+  -
+
+负载均衡:
+  -
+
+远程调用:
+  - Dubbo
+
+分布式事务:
+  - Seata
+
+API 网关:
+  -
+
+服务消息队列:
+  - Nacos
+
+服务监控:
+  -
+
+服务定时任务调度:
+  - 
