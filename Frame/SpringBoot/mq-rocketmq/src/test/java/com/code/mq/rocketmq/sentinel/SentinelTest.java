@@ -20,6 +20,9 @@ public class SentinelTest extends RocketMqApplicationTest {
 	@Value("${rocketmq.producer.customized-trace-topic}")
 	private String topic;
 
+	@Value("${rocketmq.producer.group}")
+	private String group;
+
 	@Test
 	public void producerTest() {
 
