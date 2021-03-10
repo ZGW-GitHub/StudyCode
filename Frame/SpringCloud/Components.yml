@@ -1,14 +1,32 @@
+服务发现:
+  -
+
 配置中心:
-  - 
-
-注册中心:
-  - 
-
-服务网关:
-  - Gateway
-
-服务调用:
-  - OpenFeign
+  - Spring Cloud Config
 
 服务熔断、限流:
+  -
+
+链路追踪:
+  - Sleuth
+
+负载均衡:
+  -
+
+远程调用:
+  - OpenFeign
+
+分布式事务:
+  -
+
+API 网关:
+  - Gateway
+
+服务消息队列:
+  - Spring Cloud Bus
+
+服务监控:
+  -
+
+服务定时任务调度:
   - 
