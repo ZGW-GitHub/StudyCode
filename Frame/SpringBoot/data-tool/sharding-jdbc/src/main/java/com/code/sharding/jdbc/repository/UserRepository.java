@@ -1,6 +1,6 @@
-package com.code.data.tool.sharding.jdbc.repository;
+package com.code.sharding.jdbc.repository;
 
-import com.code.data.tool.sharding.jdbc.entity.User;
+import com.code.sharding.jdbc.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

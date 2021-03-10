@@ -1,4 +1,4 @@
-package com.code.data.tool.sharding.jdbc;
+package com.code.sharding.jdbc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,5 +13,5 @@ public class DataToolShardingJdbcApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DataToolShardingJdbcApplication.class, args);
 	}
-	
+
 }

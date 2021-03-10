@@ -1,4 +1,4 @@
-package com.code.data.tool.sharding.jdbc.entity;
+package com.code.sharding.jdbc.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,5 +24,5 @@ public class User {
 	private long id;
 	private String name;
 	private int age;
-	
+
 }
