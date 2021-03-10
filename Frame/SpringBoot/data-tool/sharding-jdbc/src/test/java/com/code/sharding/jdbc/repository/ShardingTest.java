@@ -1,7 +1,7 @@
-package com.code.data.tool.sharding.jdbc.repository;
+package com.code.sharding.jdbc.repository;
 
-import com.code.data.tool.sharding.jdbc.DataToolShardingJdbcApplicationTest;
-import com.code.data.tool.sharding.jdbc.entity.User;
+import com.code.sharding.jdbc.DataToolShardingJdbcApplicationTest;
+import com.code.sharding.jdbc.entity.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

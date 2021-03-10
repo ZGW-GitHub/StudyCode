@@ -1,4 +1,4 @@
-package com.code.data.tool.sharding.jdbc;
+package com.code.sharding.jdbc;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
