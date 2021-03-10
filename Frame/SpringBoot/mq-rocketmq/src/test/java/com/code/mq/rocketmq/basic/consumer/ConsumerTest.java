@@ -31,8 +31,8 @@ public class ConsumerTest extends RocketMqApplicationTest {
 		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(group);
 		/**
 		 * 设置消费的开始位置：
-		 * 		CONSUME_FROM_LAST_OFFSET		一个新的订阅组第一次启动从队列的最后位置开始消费，后续再启动接着上次消费的进度开始消费
 		 * 		CONSUME_FROM_FIRST_OFFSET		一个新的订阅组第一次启动从队列的最前位置开始消费，后续再启动接着上次消费的进度开始消费
+		 * 		CONSUME_FROM_LAST_OFFSET		一个新的订阅组第一次启动从队列的最后位置开始消费，后续再启动接着上次消费的进度开始消费
 		 * 		CONSUME_FROM_TIMESTAMP			一个新的订阅组第一次启动从指定时间点开始消费，后续再启动接着上次消费的进度开始消费，时间点设置参见 DefaultMQPushConsumer.consumeTimestamp 参数
 		 */
 		consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
