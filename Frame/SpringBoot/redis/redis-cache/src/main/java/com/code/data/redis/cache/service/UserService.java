@@ -1,17 +1,39 @@
 package com.code.data.redis.cache.service;
 
 import com.code.data.redis.cache.entity.User;
+import com.code.data.redis.cache.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
 
 /**
  * @author 愆凡
- * @date 2020/9/1 9:19 上午
+ * @date 2020/9/1 9:20 上午
  */
-public interface UserService {
+@Slf4j
+@Service
+@SuppressWarnings("all")
+public class UserService {
 
-	User saveOrUpdate(User user);
+	@Autowired
+	private UserRepository userRepository;
 
-	User get(Long id);
+	@CachePut(key = "#user.id", value = "user")
+	public void saveOrUpdate(User user) {
+		userRepository.save(user);
+	}
 
-	void delete(Long id);
+	@Cacheable(key = "#id", value = "user")
+	public User get(Integer id) {
+		return userRepository.findById(id).get();
+	}
+
+	@CacheEvict(key = "#id", value = "user")
+	public void delete(Integer id) {
+		userRepository.deleteById(id);
+	}
 
 }

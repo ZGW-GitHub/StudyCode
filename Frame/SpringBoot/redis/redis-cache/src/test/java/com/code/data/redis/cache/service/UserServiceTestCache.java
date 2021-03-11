@@ -24,11 +24,11 @@ public class UserServiceTestCache extends DataRedisCacheApplicationTest {
 	@Test
 	public void getTwice() {
 		// 模拟查询id为1的用户
-		User user1 = userService.get(1L);
+		User user1 = userService.get(1);
 		log.debug("【user1】= {}", user1);
 
 		// 再次查询
-		User user2 = userService.get(1L);
+		User user2 = userService.get(1);
 		log.debug("【user2】= {}", user2);
 
 		// 查看日志，只打印一次日志，证明缓存生效
@@ -39,9 +39,9 @@ public class UserServiceTestCache extends DataRedisCacheApplicationTest {
 	 */
 	@Test
 	public void getAfterSave() {
-		userService.saveOrUpdate(User.builder().id(4L).name("user").build());
+		userService.saveOrUpdate(User.builder().id(4).name("user").build());
 
-		User user = userService.get(4L);
+		User user = userService.get(4);
 		log.debug("【user】= {}", user);
 
 		// 查看日志，只打印保存用户的日志，查询是未触发查询日志，因此缓存生效
@@ -53,10 +53,10 @@ public class UserServiceTestCache extends DataRedisCacheApplicationTest {
 	@Test
 	public void deleteUser() {
 		// 查询一次，使 redis 中存在缓存数据
-		userService.get(1L);
+		userService.get(1);
 
 		// 删除，查看 redis 是否存在缓存数据
-		userService.delete(1L);
+		userService.delete(1);
 	}
 
 }

@@ -5,8 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * @author 愆凡
@@ -16,6 +18,8 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "user")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -23,14 +27,9 @@ public class User implements Serializable {
 	public static final Integer SEX_MAN = 1;
 	public static final Integer SEX_WOMAN = 2;
 
-	private Long id;
+	@Id
+	private Integer id;
 	private String name;
-	private Integer sex;
 	private Integer age;
-	private String phone;
-	private String salt;
-	private Boolean isActive;
-	private Date createTime;
-	private Date lastUpdateTime;
 
 }

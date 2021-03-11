@@ -11,9 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DataRedisCacheApplication {
 
 	public static void main(String[] args) {
-
-		SpringApplication.run(DataRedisCacheApplication.class);
-
+		SpringApplication.run(DataRedisCacheApplication.class, args);
 	}
 
 }
