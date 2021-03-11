@@ -5,40 +5,40 @@ spring:
   shardingsphere:
     # 配置数据源
     datasource:
-      names: db0,db1
+      names: sharding-jdbc-db0,sharding-jdbc-db1
 
       # 第一个数据库
-      db0:
+      sharding-jdbc-db0:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://linux.notuptoyou.site:13306/db0?serverTimezone=UTC&useSSL=false
+        jdbc-url: jdbc:mysql://linux.notuptoyou.site:13306/sharding-jdbc-db0?serverTimezone=UTC&useSSL=false
         username: root
         password: Snow----
 
       # 第二个数据库
-      db1:
+      sharding-jdbc-db1:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://linux.notuptoyou.site:13306/db1?serverTimezone=UTC&useSSL=false
+        jdbc-url: jdbc:mysql://linux.notuptoyou.site:13306/sharding-jdbc-db1?serverTimezone=UTC&useSSL=false
         username: root
         password: Snow----
 
     # 配置分库分表
     sharding:
       # 未配置分库分表的表将使用默认数据源
-      default-data-source-name: db0
+      default-data-source-name: sharding-jdbc-db0
       
       # 为指定的表配置分库分表
       tables:
         # user 表的分库分表策略
         user:
           # user 表的实际数据节点
-          actual-data-nodes: db$->{0..1}.user_$->{0..1}
+          actual-data-nodes: sharding-jdbc-db$->{0..1}.user_$->{0..1}
           # user 表的分库策略
           database-strategy:
             inline:
               sharding-column: id
-              algorithm-expression: db$->{id % 2}
+              algorithm-expression: sharding-jdbc-db$->{id % 2}
           # user 表的分表策略
           table-strategy:
             inline:
