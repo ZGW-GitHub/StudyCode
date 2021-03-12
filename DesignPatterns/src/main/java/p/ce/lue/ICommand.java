@@ -17,8 +17,6 @@ public interface ICommand {
 
 	/**
 	 * 获取命令执行状态
-	 *
-	 * @return state
 	 */
 	void state();
 
