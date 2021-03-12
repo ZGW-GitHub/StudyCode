@@ -9,7 +9,7 @@ import b.factory.simple.factory.parse.IConfigParse;
 public class JsonConfigParse implements IConfigParse {
 
 	@Override
-	public String doParse(String text) {
+	public String doParse(String type) {
 		return null;
 	}
 

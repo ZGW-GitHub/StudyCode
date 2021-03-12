@@ -14,12 +14,12 @@ import java.util.Map;
  */
 public class ConfigParseFactory {
 
-	private static final Map<String, IConfigParse> configParseMap = new HashMap<>();
+	private static final Map<String, IConfigParse> CONFIG_PARSE_MAP = new HashMap<>();
 
 	static {
-		configParseMap.put("json", new JsonConfigParse());
-		configParseMap.put("xml", new XmlConfigParse());
-		configParseMap.put("yml", new YmlConfigParse());
+		CONFIG_PARSE_MAP.put("json", new JsonConfigParse());
+		CONFIG_PARSE_MAP.put("xml", new XmlConfigParse());
+		CONFIG_PARSE_MAP.put("yml", new YmlConfigParse());
 	}
 
 	// 当 ConfigParse 不能复用时使用该方法获取 ConfigParse
@@ -39,7 +39,7 @@ public class ConfigParseFactory {
 
 	// 当 ConfigParse 能复用时使用该方法获取 ConfigParse
 	public static IConfigParse createParseByReuse(String type) {
-		return configParseMap.get(type);
+		return CONFIG_PARSE_MAP.get(type);
 	}
 
 }
