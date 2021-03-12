@@ -1,4 +1,4 @@
-package com.code.zookeeper.client;
+package com.code.zookeeper.test;
 
 import com.code.zookeeper.ZookeeperApplicationTest;
 import lombok.extern.slf4j.Slf4j;
