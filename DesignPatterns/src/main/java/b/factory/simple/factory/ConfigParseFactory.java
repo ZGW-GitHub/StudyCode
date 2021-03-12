@@ -22,7 +22,12 @@ public class ConfigParseFactory {
 		CONFIG_PARSE_MAP.put("yml", new YmlConfigParse());
 	}
 
-	// 当 ConfigParse 不能复用时使用该方法获取 ConfigParse
+	/**
+	 * 当 ConfigParse 不能复用时使用该方法获取 ConfigParse
+	 *
+	 * @param type 文件类型
+	 * @return 解析器
+	 */
 	public static IConfigParse createParse(String type) {
 		IConfigParse configParse = null;
 
@@ -37,7 +42,12 @@ public class ConfigParseFactory {
 		return configParse;
 	}
 
-	// 当 ConfigParse 能复用时使用该方法获取 ConfigParse
+	/**
+	 * 当 ConfigParse 能复用时使用该方法获取 ConfigParse
+	 *
+	 * @param type 文件类型
+	 * @return 解析器
+	 */
 	public static IConfigParse createParseByReuse(String type) {
 		return CONFIG_PARSE_MAP.get(type);
 	}
