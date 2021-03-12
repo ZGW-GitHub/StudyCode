@@ -1,4 +1,4 @@
-package com.code.data.redis.client.client;
+package com.code.data.redis.client.test;
 
 import com.code.data.redis.client.DataRedisClientApplicationTest;
 
