@@ -16,7 +16,7 @@ public interface ICommand {
 	void commit(String str);
 
 	/**
-	 * 获取命令执行状态
+	 * 查询命令执行状态
 	 */
 	void state();
 
