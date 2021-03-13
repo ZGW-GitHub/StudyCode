@@ -1,4 +1,4 @@
-package com.code.data.redis.client.test;
+package com.code.data.redis.client.test.jedis;
 
 import com.code.data.redis.client.DataRedisClientApplicationTest;
 
@@ -7,6 +7,5 @@ import com.code.data.redis.client.DataRedisClientApplicationTest;
  * @date 2021/3/11 16:06
  */
 public class ClientTest extends DataRedisClientApplicationTest {
-	
 
 }
