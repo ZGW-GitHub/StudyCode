@@ -1,5 +1,6 @@
 package com.code.data.redis.client.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.cache.CacheManager;
@@ -14,6 +15,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 
 import java.io.Serializable;
 
@@ -27,6 +30,35 @@ import java.io.Serializable;
 @AutoConfigureAfter(RedisAutoConfiguration.class)
 @EnableCaching
 public class RedisConfig {
+
+	@Value("${spring.redis.host}")
+	private String host;
+
+	@Value("${spring.redis.port}")
+	private Integer port;
+
+	@Value("${spring.redis.password}")
+	private String password;
+
+	@Value("${spring.redis.database}")
+	private Integer database;
+
+	@Value("${spring.redis.timeout}")
+	private Integer timeout;
+
+	@Value("${spring.redis.jedis.pool.max-active}")
+	private Integer maxActive;
+
+	@Value("${spring.redis.jedis.pool.max-wait}")
+	private Integer maxWait;
+
+	@Value("${spring.redis.jedis.pool.max-idle}")
+	private Integer maxIdle;
+
+	@Value("${spring.redis.jedis.pool.min-idle}")
+	private Integer minIdle;
+
+	/* RedisTemplate 配置开始 */
 
 	/**
 	 * 默认情况下的模板只能支持 RedisTemplate<String, String>，也就是只能存入字符串，因此支持序列化
@@ -52,5 +84,18 @@ public class RedisConfig {
 				.serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
 
 		return RedisCacheManager.builder(factory).cacheDefaults(redisCacheConfiguration).build();
+	}
+
+	/* Jedis 配置开始 */
+
+	@Bean
+	public JedisPool jedisPool() {
+		JedisPoolConfig poolConfig = new JedisPoolConfig();
+		poolConfig.setMaxTotal(maxActive);
+		poolConfig.setMaxWaitMillis(maxWait);
+		poolConfig.setMaxIdle(maxIdle);
+		poolConfig.setMinIdle(minIdle);
+
+		return new JedisPool(poolConfig, host, port, timeout, password, database);
 	}
 }
