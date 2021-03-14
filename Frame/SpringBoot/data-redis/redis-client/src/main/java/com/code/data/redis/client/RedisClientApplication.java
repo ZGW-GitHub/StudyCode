@@ -8,11 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2020/9/10 9:20 上午
  */
 @SpringBootApplication
-public class DataRedisClientApplication {
+public class RedisClientApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(DataRedisClientApplication.class, args);
+		SpringApplication.run(RedisClientApplication.class, args);
 
 	}
 
