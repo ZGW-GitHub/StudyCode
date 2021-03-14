@@ -23,6 +23,7 @@
 		<module>data-jpa</module>
 		<module>data-mybatis</module>
 		<module>data-redis</module>
+		<module>data-ehcache</module>
 		<module>data-tool</module>
 	</modules>
 
