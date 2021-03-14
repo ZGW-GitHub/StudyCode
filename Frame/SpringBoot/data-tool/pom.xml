@@ -16,6 +16,7 @@
 	<modules>
 		<module>sharding-jdbc</module>
 		<module>sharding-proxy</module>
+		<module>j2cache</module>
 	</modules>
 
 	<dependencies>
