@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2020/8/28 4:26 下午
  */
 @SpringBootApplication
-public class DataRedisCacheApplication {
+public class RedisCacheApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DataRedisCacheApplication.class, args);
+		SpringApplication.run(RedisCacheApplication.class, args);
 	}
 
 }

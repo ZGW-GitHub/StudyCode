@@ -1,6 +1,6 @@
 package com.code.data.redis.cache.service;
 
-import com.code.data.redis.cache.DataRedisCacheApplicationTest;
+import com.code.data.redis.cache.RedisCacheApplicationTest;
 import com.code.data.redis.cache.entity.User;
 import com.code.data.redis.cache.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @date 2020/9/1 11:54 上午
  */
 @Slf4j
-public class UserCacheTest extends DataRedisCacheApplicationTest {
+public class UserCacheTest extends RedisCacheApplicationTest {
 
 	@Autowired
 	private UserService userService;
