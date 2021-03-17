@@ -67,6 +67,7 @@ public class LockTest extends RedisClientApplicationTest {
 	 * @return 是否释放成功
 	 */
 	public boolean tryUnLockTest(Jedis jedis, String lockKey, String requestid) {
+		// Lua 代码的作用：首先获取锁对应的 value 值，检查是否与 requestid 相等，如果相等则删除锁（使用 Lua 来确保这些操作的原子性）
 		String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
 		Object result = jedis.eval(script, Collections.singletonList(lockKey), Collections.singletonList(requestid));
 
