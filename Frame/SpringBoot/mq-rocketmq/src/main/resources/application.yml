@@ -4,3 +4,4 @@ rocketmq:
   producer:
     group: group-test
     customized-trace-topic: topic-test
+    retry-times-when-send-failed: 3
