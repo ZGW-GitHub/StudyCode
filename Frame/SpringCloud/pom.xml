@@ -17,6 +17,8 @@
 		<module>openfeign</module>
 		<module>gateway</module>
 		<module>sleuth</module>
+		<module>stream</module>
+		<module>bus</module>
 	</modules>
 
 </project>
