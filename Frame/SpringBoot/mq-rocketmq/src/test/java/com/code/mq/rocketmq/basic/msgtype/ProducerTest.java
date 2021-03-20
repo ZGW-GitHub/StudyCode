@@ -67,7 +67,7 @@ public class ProducerTest extends RocketMqApplicationTest {
 	@Test
 	public void transactionalTest() {
 		// 组装消息
-		Message<String> message = MessageBuilder.withPayload("消息").build();
+		Message<String> message = MessageBuilder.withPayload("事务消息").build();
 		// 发送事务消息
 		TransactionSendResult sendResult = rocketMQTemplate.sendMessageInTransaction(topic, message, new JSONObject());
 

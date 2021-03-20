@@ -22,7 +22,7 @@ public class TransactionMsgListener implements RocketMQLocalTransactionListener 
 	 */
 	@Override
 	public RocketMQLocalTransactionState executeLocalTransaction(Message msg, Object arg) {
-		System.err.println("执行本地事务，接收到的消息：" + msg + " arg：" + arg + "");
+		System.err.println("执行本地事务，事务消息：" + msg + " arg：" + arg + "");
 
 		return RocketMQLocalTransactionState.UNKNOWN;
 	}

@@ -36,7 +36,7 @@ public class ConsumerTest extends RocketMqApplicationTest {
 		consumer.subscribe(topic, "*");
 
 		consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
-			System.err.println(Thread.currentThread().getName() + " consumer : " + msgs.toString() + "\n"
+			System.err.println(Thread.currentThread().getName() + " 消费了消息 : " + msgs.toString() + "\n消息内容："
 					+ msgs.stream().map(msg -> new String(msg.getBody(), Charset.defaultCharset())).collect(Collectors.joining("、")));
 
 			return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
@@ -62,7 +62,7 @@ public class ConsumerTest extends RocketMqApplicationTest {
 		consumer.subscribe(topic, "*");
 
 		consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
-			System.err.println(Thread.currentThread().getName() + " 消费了消息 : " + msgs.toString() + "\n消息内容"
+			System.err.println(Thread.currentThread().getName() + " 消费了消息 : " + msgs.toString() + "\n消息内容："
 					+ msgs.stream().map(msg -> new String(msg.getBody(), Charset.defaultCharset())).collect(Collectors.joining("、")));
 
 			return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
