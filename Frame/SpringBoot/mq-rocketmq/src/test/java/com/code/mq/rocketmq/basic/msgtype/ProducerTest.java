@@ -1,8 +1,10 @@
 package com.code.mq.rocketmq.basic.msgtype;
 
+import com.alibaba.fastjson.JSONObject;
 import com.code.mq.rocketmq.RocketMqApplicationTest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendResult;
+import org.apache.rocketmq.client.producer.TransactionSendResult;
 import org.apache.rocketmq.client.producer.selector.SelectMessageQueueByHash;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.junit.Test;
@@ -64,7 +66,12 @@ public class ProducerTest extends RocketMqApplicationTest {
 	 */
 	@Test
 	public void transactionalTest() {
+		// 组装消息
+		Message<String> message = MessageBuilder.withPayload("消息").build();
+		// 发送事务消息
+		TransactionSendResult sendResult = rocketMQTemplate.sendMessageInTransaction(topic, message, new JSONObject());
 
+		System.err.println(sendResult);
 	}
 
 }

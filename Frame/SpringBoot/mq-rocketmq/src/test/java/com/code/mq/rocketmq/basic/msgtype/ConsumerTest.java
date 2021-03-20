@@ -47,4 +47,30 @@ public class ConsumerTest extends RocketMqApplicationTest {
 		Thread.currentThread().join();
 	}
 
+	/**
+	 * 消费事务消息（和消费普通消息一样）
+	 * 
+	 * @throws MQClientException MQClientException
+	 * @throws InterruptedException InterruptedException
+	 */
+	@Test
+	public void transactionTest() throws MQClientException, InterruptedException {
+		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(group);
+
+		consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
+
+		consumer.subscribe(topic, "*");
+
+		consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
+			System.err.println(Thread.currentThread().getName() + " 消费了消息 : " + msgs.toString() + "\n消息内容"
+					+ msgs.stream().map(msg -> new String(msg.getBody(), Charset.defaultCharset())).collect(Collectors.joining("、")));
+
+			return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+		});
+
+		consumer.start();
+
+		Thread.currentThread().join();
+	}
+
 }
