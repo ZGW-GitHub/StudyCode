@@ -16,7 +16,7 @@ import java.util.concurrent.locks.LockSupport;
  * @date 2021/3/22 09:44
  */
 @Component
-public class LockUtil {
+public class LockUtil extends JedisPubSub {
 	
 	/**
 	 * 尝试获取分布式锁（不可重入）
@@ -145,8 +145,17 @@ public class LockUtil {
 
 		return Integer.parseInt(result.toString()) > 0;
 	}
-	
-	public boolean blockLock(Jedis jedis, String lockKey, String requestid, long expireTime) throws InterruptedException {
+
+	/**
+	 * 阻塞地获取分布式锁
+	 *
+	 * @param jedis Redis 客户端
+	 * @param lockKey 锁
+	 * @param requestid 请求标识 ：防止加的锁被别人解锁
+	 * @param expireTime 超期时间 ：防止死锁
+	 * @return 是否获取成功
+	 */
+	public boolean blockLock(Jedis jedis, String lockKey, String requestid, long expireTime) {
 		boolean isLock = tryLock(jedis, lockKey, requestid, expireTime);
 
 		if (isLock) {
@@ -166,7 +175,15 @@ public class LockUtil {
 		
 		return blockLock(jedis, lockKey, requestid, expireTime);
 	}
-	
+
+	/**
+	 * 释放分布式锁
+	 *
+	 * @param jedis Redis 客户端
+	 * @param lockKey 锁
+	 * @param requestid 请求标识 ：防止加的锁被别人解锁
+	 * @return 是否释放成功
+	 */
 	public boolean blockUnLock(Jedis jedis, String lockKey, String requestid) {
 		boolean tryUnLock = tryUnLock(jedis, lockKey, requestid);
 
