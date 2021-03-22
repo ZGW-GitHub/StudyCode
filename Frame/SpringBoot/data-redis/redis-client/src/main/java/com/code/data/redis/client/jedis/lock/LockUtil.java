@@ -1,17 +1,21 @@
 package com.code.data.redis.client.jedis.lock;
 
+import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPubSub;
 import redis.clients.jedis.params.SetParams;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.LockSupport;
 
 /**
  * @author 愆凡
  * @date 2021/3/22 09:44
  */
+@Component
 public class LockUtil {
 	
 	/**
@@ -23,7 +27,7 @@ public class LockUtil {
 	 * @param expireTime 超期时间 ：防止死锁
 	 * @return 是否获取成功
 	 */
-	public static boolean tryLock(Jedis jedis, String lockKey, String requestid, long expireTime) {
+	public boolean tryLock(Jedis jedis, String lockKey, String requestid, long expireTime) {
 		SetParams params = new SetParams();
 		params.px(expireTime);
 		params.nx(); // SET IF NOT EXIST
@@ -41,7 +45,7 @@ public class LockUtil {
 	 * @param requestid 请求标识 ：防止加的锁被别人解锁
 	 * @return 是否释放成功
 	 */
-	public static boolean tryUnLock(Jedis jedis, String lockKey, String requestid) {
+	public boolean tryUnLock(Jedis jedis, String lockKey, String requestid) {
 		// Lua 代码的作用：首先获取锁对应的 value 值，检查是否与 requestid 相等，如果相等则删除锁（使用 Lua 来确保这些操作的原子性）
 		String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
 		Object result = jedis.eval(script, Collections.singletonList(lockKey), Collections.singletonList(requestid));
@@ -53,7 +57,7 @@ public class LockUtil {
 	 * 用来实现可重入性<br/>
 	 * Map 中 key 存储锁的名称，value 存储锁的重入次数
 	 */
-	public static final ThreadLocal<Map<String, Integer>> LOCKS = ThreadLocal.withInitial(HashMap::new);
+	public final ThreadLocal<Map<String, Integer>> LOCKS = ThreadLocal.withInitial(HashMap::new);
 	
 	/**
 	 * 尝试获取可重入分布式锁（ 使用 ThreadLocal ）
@@ -64,7 +68,7 @@ public class LockUtil {
 	 * @param expireTime 超期时间 ：防止死锁
 	 * @return 是否获取成功
 	 */
-	public static boolean tryReentrantLockByThreadLocal(Jedis jedis, String lockKey, String requestid, long expireTime) {
+	public boolean tryReentrantLockByThreadLocal(Jedis jedis, String lockKey, String requestid, long expireTime) {
 		Map<String, Integer> counts = LOCKS.get();
 
 		if (counts.containsKey(lockKey)) {
@@ -87,7 +91,7 @@ public class LockUtil {
 	 * @param requestid 请求标识 ：防止加的锁被别人解锁
 	 * @return 是否释放成功
 	 */
-	public static boolean tryUnReentrantLockByThreadLocal(Jedis jedis, String lockKey, String requestid) {
+	public boolean tryUnReentrantLockByThreadLocal(Jedis jedis, String lockKey, String requestid) {
 		Map<String, Integer> counts = LOCKS.get();
 
 		if (counts.getOrDefault(lockKey, 0) <= 1) {
@@ -102,7 +106,6 @@ public class LockUtil {
 		}
 	}
 
-
 	/**
 	 * 尝试获取可重入分布式锁（ 使用 Redis Hash ）
 	 *
@@ -112,7 +115,7 @@ public class LockUtil {
 	 * @param expireTime 超期时间 ：防止死锁
 	 * @return 是否获取成功
 	 */
-	public static boolean tryReentrantLockByHash(Jedis jedis, String lockKey, String requestid, long expireTime) {
+	public boolean tryReentrantLockByHash(Jedis jedis, String lockKey, String requestid, long expireTime) {
 		// Lua 代码的作用：首先使用 Redis exists 命令判断当前 lock 这个锁是否存在，
 		// 如果锁不存在的话，直接使用 hincrby 创建一个键为 lock 的 Hash 表，并将 Hash 表中的键 requestid 的 value 值初始为 0 再加 1 ，最后再设置过期时间。
 		// 如果当前锁存在，则使用 hexists 判断当前 lock 对应的 Hash 表中是否存在 requestid 这个键，如果存在，再次使用 hincrby 加 1，最后再次设置过期时间。
@@ -132,7 +135,7 @@ public class LockUtil {
 	 * @param requestid 请求标识 ：防止加的锁被别人解锁
 	 * @return 是否释放成功
 	 */
-	public static boolean tryUnReentrantLockByHash(Jedis jedis, String lockKey, String requestid) {
+	public boolean tryUnReentrantLockByHash(Jedis jedis, String lockKey, String requestid) {
 		// Lua 代码的作用：
 		String script = "if (redis.call('hexists', KEYS[1], ARGV[1]) == 0) then return 0 end; "
 				+ " local count = redis.call('hincrby', KEYS[1], ARGV[1], -1); "
@@ -140,6 +143,72 @@ public class LockUtil {
 
 		Object result = jedis.eval(script, Collections.singletonList(lockKey), Collections.singletonList(requestid));
 
-		return !"0".equals(result.toString());
+		return Integer.parseInt(result.toString()) > 0;
 	}
+	
+	public boolean blockLock(Jedis jedis, String lockKey, String requestid, long expireTime) throws InterruptedException {
+		boolean isLock = tryLock(jedis, lockKey, requestid, expireTime);
+
+		if (isLock) {
+			return true;
+		}
+
+		Thread currThread = Thread.currentThread();
+		
+		jedis.subscribe(new JedisPubSub() {
+			@Override
+			public void punsubscribe() {
+				LockSupport.unpark(currThread);
+			}
+		}, "test");
+		
+		LockSupport.park();
+		
+		return blockLock(jedis, lockKey, requestid, expireTime);
+	}
+	
+	public boolean blockUnLock(Jedis jedis, String lockKey, String requestid) {
+		boolean tryUnLock = tryUnLock(jedis, lockKey, requestid);
+
+//		if (tryUnLock) {
+//			jedis.publish("test")
+//		}
+		return true;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

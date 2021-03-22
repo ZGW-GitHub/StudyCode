@@ -18,6 +18,10 @@ public class LockTest extends RedisClientApplicationTest {
 
 	@Autowired
 	private JedisPool jedisPool;
+	
+	@Autowired
+	private LockUtil lockUtil;
+	
 	private Jedis jedis;
 
 	private final String key = "keyTest";
@@ -29,28 +33,95 @@ public class LockTest extends RedisClientApplicationTest {
 		jedis = jedisPool.getResource();
 	}
 
+	/**
+	 * 获取分布式锁（不可重入）
+	 */
 	@Test
 	public void lockTest() {
-		boolean isLock = LockUtil.tryLock(jedis, key, value, expireTime);
+		boolean isLock = lockUtil.tryLock(jedis, key, value, expireTime);
 		System.err.println("尝试获取分布式锁：" + isLock);
 	}
 
+	/**
+	 * 解除分布式锁（不可重入）
+	 */
 	@Test
 	public void unlockTest() {
-		boolean isUnLock = LockUtil.tryUnLock(jedis, key, value);
+		boolean isUnLock = lockUtil.tryUnLock(jedis, key, value);
 		System.err.println("尝试释放分布式锁：" + isUnLock);
 	}
 
+	/**
+	 * 获取可重入分布式锁
+	 */
 	@Test
 	public void reentrantLockByHashTest() {
-		boolean isLock = LockUtil.tryReentrantLockByHash(jedis, key, value, expireTime);
+		boolean isLock = lockUtil.tryReentrantLockByHash(jedis, key, value, expireTime);
 		System.err.println("尝试获取可重入分布式锁：" + isLock);
 	}
 
+	/**
+	 * 解除可重入分布式锁
+	 */
 	@Test
 	public void unReentrantLockByHashTest() {
-		boolean isUnLock = LockUtil.tryUnReentrantLockByHash(jedis, key, value);
+		boolean isUnLock = lockUtil.tryUnReentrantLockByHash(jedis, key, value);
 		System.err.println("尝试释放可重入分布式锁：" + isUnLock);
 	}
+
+	/**
+	 * 阻塞获取分布式锁
+	 */
+	@Test
+	public void blockLockTest() throws InterruptedException {
+		boolean isLock = lockUtil.blockLock(jedis, key, value, expireTime);
+		System.err.println("尝试获取分布式锁：" + isLock);
+	}
+
+	/**
+	 * 解除分布式锁（不可重入）
+	 */
+	@Test
+	public void blockUnLockTest() {
+		boolean isUnLock = lockUtil.tryUnLock(jedis, key, value);
+		System.err.println("尝试释放分布式锁：" + isUnLock);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
