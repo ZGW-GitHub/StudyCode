@@ -22,6 +22,7 @@ public class LockTest extends RedisClientApplicationTest {
 
 	private final String key = "keyTest";
 	private final String value = "requstid";
+	private final long expireTime = 100000;
 	
 	@Before
 	public void before() {
@@ -30,14 +31,26 @@ public class LockTest extends RedisClientApplicationTest {
 
 	@Test
 	public void lockTest() {
-		boolean isLock = LockUtil.tryLock(jedis, key, value, 100000);
+		boolean isLock = LockUtil.tryLock(jedis, key, value, expireTime);
 		System.err.println("尝试获取分布式锁：" + isLock);
 	}
 
 	@Test
 	public void unlockTest() {
-		boolean isUnLock = LockUtil.tryUnLockTest(jedis, key, value);
+		boolean isUnLock = LockUtil.tryUnLock(jedis, key, value);
 		System.err.println("尝试释放分布式锁：" + isUnLock);
+	}
+
+	@Test
+	public void reentrantLockByHashTest() {
+		boolean isLock = LockUtil.tryReentrantLockByHash(jedis, key, value, expireTime);
+		System.err.println("尝试获取可重入分布式锁：" + isLock);
+	}
+
+	@Test
+	public void unReentrantLockByHashTest() {
+		boolean isUnLock = LockUtil.tryUnReentrantLockByHash(jedis, key, value);
+		System.err.println("尝试释放可重入分布式锁：" + isUnLock);
 	}
 
 }
