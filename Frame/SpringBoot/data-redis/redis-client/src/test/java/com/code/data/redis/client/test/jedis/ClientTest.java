@@ -25,6 +25,22 @@ public class ClientTest extends RedisClientApplicationTest {
 	}
 
 	/**
+	 * Hash 表操作
+	 */
+	@Test
+	public void hashTest() {
+		Boolean hexists = jedis.hexists("key", "field");
+
+		// 递增1
+		Long hincr = jedis.hincrBy("key", "field", 1);
+		System.err.println(hincr);
+		
+		// 设置值
+		Long hset = jedis.hset("key", "field", "test2");
+		System.err.println(hset);
+	}
+
+	/**
 	 * 订阅主题
 	 */
 	@Test
