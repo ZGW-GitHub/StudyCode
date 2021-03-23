@@ -29,8 +29,8 @@ public class LockUtil extends JedisPubSub {
 	 */
 	public boolean tryLock(Jedis jedis, String lockKey, String requestid, long expireTime) {
 		SetParams params = new SetParams();
-		params.px(expireTime);
 		params.nx(); // SET IF NOT EXIST
+		params.px(expireTime);
 
 		String result = jedis.set(lockKey, requestid, params);
 
