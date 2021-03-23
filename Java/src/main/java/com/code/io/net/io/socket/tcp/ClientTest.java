@@ -20,11 +20,11 @@ public class ClientTest {
 	@Test
 	public void test() throws IOException {
 		// 创建发送端的Socket对象
-		Socket socket = new Socket("192.168.12.92", 8888);
+		Socket socket = new Socket("127.0.0.1", 8888);
 
 		// 获取输出流，写数据
 		OutputStream os = socket.getOutputStream();
-		os.write("hello,tcp,我来了".getBytes());
+		os.write("Hello".getBytes());
 
 		// 释放资源
 		socket.close();

@@ -39,7 +39,7 @@ public class ServerTest {
 
 		String ip = socket.getInetAddress().getHostAddress();
 
-		System.out.println(ip + "---" + str);
+		System.out.println(ip + " ---> " + str);
 
 		// 释放资源
 		socket.close();
