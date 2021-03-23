@@ -8,7 +8,6 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.data.Stat;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,16 +36,11 @@ public class ClientTest extends ZookeeperApplicationTest {
 		client.start();
 	}
 
-	@After
+	@Test
 	public void destroy() throws Exception {
 		client.delete().guaranteed().deletingChildrenIfNeeded().forPath(NODE_PER_CODE);
 
 		client.close();
-	}
-
-	@Test
-	public void initTest() {
-		log.info("init success !");
 	}
 
 	/**
