@@ -1,4 +1,4 @@
-package com.code.data.redis.client.jedis.lock;
+package com.code.data.redis.client.jedis.lock.util;
 
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;

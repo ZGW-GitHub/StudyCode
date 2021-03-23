@@ -1,7 +1,7 @@
 package com.code.data.redis.client.test.jedis;
 
 import com.code.data.redis.client.RedisClientApplicationTest;
-import com.code.data.redis.client.jedis.lock.LockUtil;
+import com.code.data.redis.client.jedis.lock.util.LockUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
