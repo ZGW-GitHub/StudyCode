@@ -19,31 +19,25 @@ import java.net.InetAddress;
  *
  * @author 愆凡
  */
+@SuppressWarnings("all")
 public class SendTest {
 
 	@Test
 	public void test() throws IOException {
-
-		// 创建发送端Socket对象
+		byte[] datas = "Hello".getBytes(); // 创建数据
+		InetAddress address = InetAddress.getByName("127.0.0.1"); // IP地址对象
+		int port = 10086; // 端口
+		
+		// 1、创建发送端Socket对象
 		DatagramSocket socket = new DatagramSocket();
+		// 2、将数据打包
+		DatagramPacket packet = new DatagramPacket(datas, datas.length, address, port);
 
-		// 创建数据
-		byte[] bys = "hello,udp,我来了".getBytes();
-		// 长度
-		int length = bys.length;
-		// IP地址对象
-		InetAddress address = InetAddress.getByName("192.168.12.92");
-		// 端口
-		int port = 10086;
-		// 将数据打包
-		DatagramPacket packet = new DatagramPacket(bys, length, address, port);
-
-		// 调用Socket对象的发送方法发送数据包
+		// 3、调用Socket对象的发送方法发送数据包
 		socket.send(packet);
 
-		// 释放资源
+		// 4、释放资源
 		socket.close();
-
 	}
 
 }
