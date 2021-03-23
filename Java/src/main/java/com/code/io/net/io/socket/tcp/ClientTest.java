@@ -1,5 +1,7 @@
 package com.code.io.net.io.socket.tcp;
 
+import org.junit.Test;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -13,9 +15,10 @@ import java.net.Socket;
  * B:获取输出流，写数据
  * C:释放资源
  */
-public class ClientDemo {
-	public static void main(String[] args) throws IOException {
-
+public class ClientTest {
+	
+	@Test
+	public void test() throws IOException {
 		// 创建发送端的Socket对象
 		Socket socket = new Socket("192.168.12.92", 8888);
 
@@ -25,6 +28,5 @@ public class ClientDemo {
 
 		// 释放资源
 		socket.close();
-
 	}
 }
