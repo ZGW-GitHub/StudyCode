@@ -1,5 +1,7 @@
 package com.code.io.net.io.socket.udp;
 
+import org.junit.Test;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -18,8 +20,10 @@ import java.net.InetAddress;
  *
  * @author 愆凡
  */
-public class ReceiveDemo {
-	public static void main(String[] args) throws IOException {
+public class ReceiveTest {
+
+	@Test
+	public void test() throws IOException {
 
 		// 创建接收端Socket对象
 		DatagramSocket socket = new DatagramSocket(10086);
@@ -46,4 +50,5 @@ public class ReceiveDemo {
 //		socket.close();
 
 	}
+
 }
