@@ -15,6 +15,7 @@ import java.util.concurrent.locks.LockSupport;
  * @date 2020/5/11 9:14 上午
  */
 @Slf4j
+@SuppressWarnings("all")
 public class LockSupportTest {
 
 	@Test

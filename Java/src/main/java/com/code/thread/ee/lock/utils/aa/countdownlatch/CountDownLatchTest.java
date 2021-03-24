@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2021/1/5 16:15
  */
 @Slf4j
+@SuppressWarnings("all")
 public class CountDownLatchTest {
 
 	/**

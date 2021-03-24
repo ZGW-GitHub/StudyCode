@@ -9,6 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author 愆凡
  * @date 2020/5/7 3:24 下午
  */
+@SuppressWarnings("all")
 public class ReentrantLockTest {
 
 	private final Lock lock = new ReentrantLock();

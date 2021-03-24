@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @author 愆凡
  */
 @Slf4j
+@SuppressWarnings("all")
 public class SemaphoreTest {
 
 	private final Semaphore semaphore = new Semaphore(2);

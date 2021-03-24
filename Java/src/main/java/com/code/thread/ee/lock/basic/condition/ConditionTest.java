@@ -16,6 +16,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @date 2020/5/7 2:06 下午
  */
 @Slf4j
+@SuppressWarnings("all")
 public class ConditionTest {
 
 	// 初始化一个非公平的可重入锁

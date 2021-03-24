@@ -10,6 +10,7 @@ import java.util.concurrent.locks.StampedLock;
  * @author 愆凡
  * @date 2020/5/19 4:47 下午
  */
+@SuppressWarnings("all")
 public class StampedLockTest {
 
 	private final StampedLock stampedLock = new StampedLock();

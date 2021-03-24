@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author 愆凡
  */
+@SuppressWarnings("all")
 public class ExchangeTest {
 
 	private final Exchanger<String> exchanger = new Exchanger<>();

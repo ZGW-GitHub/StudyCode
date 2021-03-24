@@ -11,6 +11,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author 愆凡
  * @date 2020/5/7 3:37 下午
  */
+@SuppressWarnings("all")
 public class ReentrantReadWriteLockTest {
 
 	private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
