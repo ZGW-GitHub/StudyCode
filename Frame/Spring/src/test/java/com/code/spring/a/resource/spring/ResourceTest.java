@@ -3,6 +3,7 @@ package com.code.spring.a.resource.spring;
 import cn.hutool.core.io.IoUtil;
 import com.code.spring.MySpringApplicationTest;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.EncodedResource;
@@ -32,6 +33,18 @@ public class ResourceTest extends MySpringApplicationTest {
 
 		FileSystemResource resource = new FileSystemResource(filePath);
 		EncodedResource encodedResource = new EncodedResource(resource, "UTF-8");
+
+		try(Reader reader = encodedResource.getReader()) {
+			System.err.println(IoUtil.read(reader));
+		}
+	}
+	
+	@Value("classpath:/META-INF/a/resource/spring/default.properties")
+	private Resource defaultPropertiesResource;
+	
+	@Test
+	public void twoTest() throws IOException {
+		EncodedResource encodedResource = new EncodedResource(defaultPropertiesResource, "UTF-8");
 
 		try(Reader reader = encodedResource.getReader()) {
 			System.err.println(IoUtil.read(reader));

@@ -2,7 +2,11 @@ package com.code.spring.a.resource.spring;
 
 import cn.hutool.core.io.IoUtil;
 import com.code.spring.MySpringApplicationTest;
+import lombok.Setter;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ResourceLoaderAware;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.core.io.FileSystemResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -20,7 +24,8 @@ import java.util.stream.Stream;
  * @author 愆凡
  * @date 2021/3/25 11:14
  */
-public class ResourceLoaderTest extends MySpringApplicationTest {
+@Setter
+public class ResourceLoaderTest extends MySpringApplicationTest implements ResourceLoaderAware {
 
 	/**
 	 * FileSystemResourceLoader 示例
@@ -73,5 +78,24 @@ public class ResourceLoaderTest extends MySpringApplicationTest {
 
 		return null;
 	}
+	
+	// 依赖注入 ResourceLoader ，方式一
+	private ResourceLoader resourceLoader;
+
+	// 依赖注入 ResourceLoader ，方式二
+	@Autowired
+	private ResourceLoader autowiredResouceLoader;
+
+	// 依赖注入 ResourceLoader ，方式三
+	@Autowired
+	private AbstractApplicationContext applicationContext;
+	
+	@Test
+	public void injectionTest() {
+		System.err.println("resourceLoader == autowiredResouceLoader ：" + (resourceLoader == autowiredResouceLoader));
+		System.err.println("resourceLoader == applicationContext ：" + (resourceLoader == applicationContext));
+	}
+	
+	
 
 }
