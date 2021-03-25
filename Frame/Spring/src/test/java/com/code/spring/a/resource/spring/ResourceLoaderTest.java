@@ -12,6 +12,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.EncodedResource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.util.PathMatcher;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -51,7 +52,7 @@ public class ResourceLoaderTest extends MySpringApplicationTest implements Resou
 
 	/**
 	 * 通配路径资源加载器示例
-	 * 
+	 *
 	 * @see PathMatchingResourcePatternResolver
 	 * @throws IOException IOException
 	 */
@@ -78,7 +79,28 @@ public class ResourceLoaderTest extends MySpringApplicationTest implements Resou
 
 		return null;
 	}
-	
+
+	/**
+	 * 自定义路径匹配器示例
+	 * 
+	 * @see PathMatcher
+	 * @see JavaPathMatcher
+	 * @throws IOException IOException
+	 */
+	@Test
+	public void threeTest() throws IOException {
+		String fileDir = "/" + System.getProperty("user.dir") + "/src/test/java/com/code/spring/a/resource/spring/";
+		String filePath = fileDir + "*.java";
+
+		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(new FileSystemResourceLoader());
+
+		resolver.setPathMatcher(new JavaPathMatcher());
+
+		Resource[] resources = resolver.getResources(filePath);
+
+		Stream.of(resources).map(this::getContent).forEach(System.err::println);
+	}
+
 	// 依赖注入 ResourceLoader ，方式一
 	private ResourceLoader resourceLoader;
 
@@ -98,7 +120,6 @@ public class ResourceLoaderTest extends MySpringApplicationTest implements Resou
 		System.err.println("resourceLoader == autowiredResouceLoader ：" + (resourceLoader == autowiredResouceLoader));
 		System.err.println("resourceLoader == applicationContext ：" + (resourceLoader == applicationContext));
 	}
-	
-	
+
 
 }
