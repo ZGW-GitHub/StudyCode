@@ -1,4 +1,4 @@
-package com.code.spring.a.resource.spring;
+package com.code.spring.aa.resource.spring;
 
 import org.springframework.util.PathMatcher;
 

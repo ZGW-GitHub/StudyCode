@@ -1,4 +1,4 @@
-package com.code.spring.a.resource.spring;
+package com.code.spring.aa.resource.spring;
 
 import cn.hutool.core.io.IoUtil;
 import com.code.spring.MySpringApplicationTest;
@@ -38,7 +38,7 @@ public class ResourceLoaderTest extends MySpringApplicationTest implements Resou
 	 */
 	@Test
 	public void oneTest() throws IOException {
-		String filePath = "/" + System.getProperty("user.dir") + "/src/test/java/com/code/spring/a/resource/spring/ResourceLoaderTest.java";
+		String filePath = "/" + System.getProperty("user.dir") + "/src/test/java/com/code/spring/aa/resource/spring/ResourceLoaderTest.java";
 
 		FileSystemResourceLoader resourceLoader = new FileSystemResourceLoader();
 
@@ -58,7 +58,7 @@ public class ResourceLoaderTest extends MySpringApplicationTest implements Resou
 	 */
 	@Test
 	public void twoTest() throws IOException {
-		String fileDir = "/" + System.getProperty("user.dir") + "/src/test/java/com/code/spring/a/resource/spring/";
+		String fileDir = "/" + System.getProperty("user.dir") + "/src/test/java/com/code/spring/aa/resource/spring/";
 		String filePath = fileDir + "*.java";
 
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(new FileSystemResourceLoader());
@@ -89,7 +89,7 @@ public class ResourceLoaderTest extends MySpringApplicationTest implements Resou
 	 */
 	@Test
 	public void threeTest() throws IOException {
-		String fileDir = "/" + System.getProperty("user.dir") + "/src/test/java/com/code/spring/a/resource/spring/";
+		String fileDir = "/" + System.getProperty("user.dir") + "/src/test/java/com/code/spring/aa/resource/spring/";
 		String filePath = fileDir + "*.java";
 
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(new FileSystemResourceLoader());

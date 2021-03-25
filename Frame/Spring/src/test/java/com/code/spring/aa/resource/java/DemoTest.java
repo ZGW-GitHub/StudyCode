@@ -1,4 +1,4 @@
-package com.code.spring.a.resource.java;
+package com.code.spring.aa.resource.java;
 
 import com.code.spring.MySpringApplicationTest;
 

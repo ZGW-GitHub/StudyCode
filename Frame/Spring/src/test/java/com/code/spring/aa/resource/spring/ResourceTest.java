@@ -1,4 +1,4 @@
-package com.code.spring.a.resource.spring;
+package com.code.spring.aa.resource.spring;
 
 import cn.hutool.core.io.IoUtil;
 import com.code.spring.MySpringApplicationTest;
@@ -29,7 +29,7 @@ public class ResourceTest extends MySpringApplicationTest {
 	 */
 	@Test
 	public void oneTest() throws IOException {
-		String filePath = System.getProperty("user.dir") + "/src/test/java/com/code/spring/a/resource/spring/ResourceTest.java";
+		String filePath = System.getProperty("user.dir") + "/src/test/java/com/code/spring/aa/resource/spring/ResourceTest.java";
 
 		FileSystemResource resource = new FileSystemResource(filePath);
 		EncodedResource encodedResource = new EncodedResource(resource, "UTF-8");
