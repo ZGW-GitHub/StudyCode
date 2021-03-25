@@ -89,7 +89,10 @@ public class ResourceLoaderTest extends MySpringApplicationTest implements Resou
 	// 依赖注入 ResourceLoader ，方式三
 	@Autowired
 	private AbstractApplicationContext applicationContext;
-	
+
+	/**
+	 * 依赖注入 ResourceLoader 示例
+	 */
 	@Test
 	public void injectionTest() {
 		System.err.println("resourceLoader == autowiredResouceLoader ：" + (resourceLoader == autowiredResouceLoader));
