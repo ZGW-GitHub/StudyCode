@@ -39,7 +39,7 @@ public class ResourceTest extends MySpringApplicationTest {
 		}
 	}
 	
-	@Value("classpath:/META-INF/a/resource/spring/default.properties")
+	@Value("classpath:/META-INF/aa/resource/spring/default.properties")
 	private Resource defaultPropertiesResource;
 	
 	@Test
