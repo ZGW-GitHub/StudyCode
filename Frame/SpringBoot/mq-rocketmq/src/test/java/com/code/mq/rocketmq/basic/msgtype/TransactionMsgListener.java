@@ -40,7 +40,7 @@ public class TransactionMsgListener implements RocketMQLocalTransactionListener 
 	public RocketMQLocalTransactionState checkLocalTransaction(Message msg) {
 		System.err.println("回查消息：" + msg);
 
-		// 
+		// 查询本地事务的执行结果
 		return RocketMQLocalTransactionState.COMMIT;
 	}
 }
