@@ -3,10 +3,7 @@ package code;
 /**
  * @author 愆凡
  */
-public class MySortHelper {
-
-    private MySortHelper() {
-    }
+public class SortHelperUtil {
 
     /**
      * 生成有 n 个元素的随机数组,每个元素的随机范围为 ：[rangeL, rangeR]
@@ -15,23 +12,18 @@ public class MySortHelper {
      * @param rangeR 随机数的右边界
      */
     public static int[] generateRandomArray(int n, int rangeL, int rangeR) {
-
         System.out.println("Test : arr_size = " + n + " , random : [ " + rangeL +" , "+ rangeR + " ]\n" );
 
         if (rangeL > rangeR) {
-            return null;
+            throw new RuntimeException("rangeL > rangeR");
         }
 
         int[] arr = new int[n];
-
         for (int i = 0; i < n; i++) {
-
             arr[i] = (int) (Math.random() * (rangeR - rangeL + 1) + rangeL);
-
         }
 
         return arr;
-
     }
 
     /**
@@ -42,7 +34,6 @@ public class MySortHelper {
      * swapTimes 越大, 数组越趋向于无序
      */
     public static int[] generateNearlyOrderedArray(int n, int swapTimes){
-
         int[] arr = new int[n];
         for( int i = 0 ; i < n ; i ++ ) {
             arr[i] = i;
@@ -64,7 +55,6 @@ public class MySortHelper {
      * 打印数组的所有元素
      */
     public static void printArray(int[] arr) {
-
         int num = 0;
 
         for (int value : arr) {
@@ -76,22 +66,21 @@ public class MySortHelper {
         }
 
         System.out.println("\n小于 100 的数有 ：" + num + "个。\n");
-
     }
 
     /**
      * 判断数组是否有序
      */
     public static void isSort(int[] arr) {
-
         System.out.print("是否有序 : ");
+        
         for (int i = 0; i < arr.length - 1; i++) {
             if (arr[i] > arr[i + 1]) {
                 System.out.println(false);
             }
         }
+        
         System.out.println(true);
-
     }
 
     /**

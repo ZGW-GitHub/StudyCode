@@ -1,7 +1,7 @@
 package code.sort.quick;
 
-import code.MySortHelper;
-import code.sort.insert.InsertionSortPlus;
+import code.SortHelperUtil;
+import code.sort.insert.InsertionSortUtil;
 
 /**
  * 三路快排
@@ -31,7 +31,7 @@ public class QuickSortThreeWays {
     private static void _quickSort3Ways(int[] arr, int l, int r) {
 
         if (r - l < 10) {
-            InsertionSortPlus.sortExtent(arr, l, r);
+            InsertionSortUtil.sortExtent(arr, l, r);
             return;
         }
 
@@ -39,7 +39,7 @@ public class QuickSortThreeWays {
         // partition :
 
         // 随机选择 value
-        MySortHelper.swap(arr, l, (int) (Math.random() * (r - l + 1)) + l);
+        SortHelperUtil.swap(arr, l, (int) (Math.random() * (r - l + 1)) + l);
 
         int value = arr[l];
         int indexl = l; // arr[l+1, indexl] < v
@@ -48,10 +48,10 @@ public class QuickSortThreeWays {
 
         while (index < indexr) {
             if (arr[index] > value) {
-                MySortHelper.swap(arr, index, indexr - 1);
+                SortHelperUtil.swap(arr, index, indexr - 1);
                 indexr--;
             } else if (arr[index] < value) {
-                MySortHelper.swap(arr, index, indexl + 1);
+                SortHelperUtil.swap(arr, index, indexl + 1);
                 index++;
                 indexl++;
             } else { // arr[index] == value
@@ -60,7 +60,7 @@ public class QuickSortThreeWays {
 
         }
 
-        MySortHelper.swap(arr, l, indexl);
+        SortHelperUtil.swap(arr, l, indexl);
 
         _quickSort3Ways(arr, l, indexl - 1);
         _quickSort3Ways(arr, indexr, r);

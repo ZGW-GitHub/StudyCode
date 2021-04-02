@@ -1,7 +1,7 @@
 package code.sort.quick;
 
-import code.MySortHelper;
-import code.sort.insert.InsertionSortPlus;
+import code.SortHelperUtil;
+import code.sort.insert.InsertionSortUtil;
 
 /**
  * 快排优化：
@@ -36,7 +36,7 @@ public class QuickSortPlus {
 //            return;
         if (r - l <= 10) {
             // 使用 插入排序 优化
-            InsertionSortPlus.sortExtent(arr, l, r);
+            InsertionSortUtil.sortExtent(arr, l, r);
             return;
         }
 
@@ -53,7 +53,7 @@ public class QuickSortPlus {
     private static int _partition(int[] arr, int l, int r) {
 
         // 随机选择 value
-        MySortHelper.swap(arr, l, (int)(Math.random()*(r-l+1))+l);
+        SortHelperUtil.swap(arr, l, (int)(Math.random()*(r-l+1))+l);
 
         int value = arr[l];
         int j = l;
@@ -62,13 +62,13 @@ public class QuickSortPlus {
         for (int index = l + 1; index <= r; index++) {
 
             if (arr[index] < value) {
-                MySortHelper.swap(arr, j + 1, index);
+                SortHelperUtil.swap(arr, j + 1, index);
                 j++;
             }
 
         }
 
-        MySortHelper.swap(arr, l, j);
+        SortHelperUtil.swap(arr, l, j);
 
         return j;
 
