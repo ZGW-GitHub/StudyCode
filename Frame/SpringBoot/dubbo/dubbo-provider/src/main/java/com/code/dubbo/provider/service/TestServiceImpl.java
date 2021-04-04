@@ -1,4 +1,4 @@
-package come.code.dubbo.provider.service;
+package com.code.dubbo.provider.service;
 
 import com.code.dubbo.api.service.TestService;
 import org.apache.dubbo.config.annotation.Service;
