@@ -12,6 +12,11 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class SynchronizedTest {
 
+	/**
+	 * 锁对象
+	 */
+	public final Object MONITOR = SynchronizedTest.class;
+
 	@Test
 	public void demoTest() throws InterruptedException {
 		new Thread(this::work, "T1").start();
@@ -21,7 +26,7 @@ public class SynchronizedTest {
 	}
 
 	private void work() {
-		synchronized (this) {
+		synchronized (MONITOR) {
 			System.out.println(Thread.currentThread().getName() + " 抢到了锁！");
 			try {
 				Thread.sleep(3_000);
@@ -54,11 +59,11 @@ public class SynchronizedTest {
 	}
 
 	private void provider() {
-		synchronized (this) {
+		synchronized (MONITOR) {
 			while (true) {
 				try {
 					if (isHave) {
-						this.wait();
+						MONITOR.wait();
 					}
 
 					TimeUnit.SECONDS.sleep(1);
@@ -68,18 +73,18 @@ public class SynchronizedTest {
 				} catch (InterruptedException e) {
 					log.error("生产者发生异常 : ", e);
 				} finally {
-					this.notify();
+					MONITOR.notify();
 				}
 			}
 		}
 	}
 
 	private void consumer() {
-		synchronized (this) {
+		synchronized (MONITOR) {
 			while (true) {
 				try {
 					if (!isHave) {
-						this.wait();
+						MONITOR.wait();
 					}
 
 					TimeUnit.SECONDS.sleep(1);
@@ -89,7 +94,7 @@ public class SynchronizedTest {
 				} catch (InterruptedException e) {
 					log.error("消费者发生异常 : ", e);
 				} finally {
-					this.notify();
+					MONITOR.notify();
 				}
 			}
 		}
