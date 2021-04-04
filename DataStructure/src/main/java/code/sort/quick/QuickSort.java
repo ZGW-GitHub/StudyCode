@@ -1,6 +1,6 @@
 package code.sort.quick;
 
-import code.MySortHelper;
+import code.SortHelperUtil;
 
 /**
  * 快排
@@ -47,12 +47,12 @@ public class QuickSort {
         // arr[l+1, j] < value      arr[j+1, i) > v
         for (int index = l+1; index <= r; index++) {
             if (arr[index] < value) {
-                MySortHelper.swap(arr, j+1, index);
+                SortHelperUtil.swap(arr, j+1, index);
                 j++;
             }
         }
 
-        MySortHelper.swap(arr, l, j);
+        SortHelperUtil.swap(arr, l, j);
 
         return j;
 

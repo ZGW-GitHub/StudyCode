@@ -1,6 +1,6 @@
 package code.sort.select;
 
-import code.MySortHelper;
+import code.SortHelperUtil;
 
 /**
  * 选择排序
@@ -21,7 +21,7 @@ public class SelectionSort {
                     minIndex = j;
                 }
             }
-            MySortHelper.swap(arr, i, minIndex);
+            SortHelperUtil.swap(arr, i, minIndex);
         }
     }
 
