@@ -33,8 +33,14 @@ public class SynchronizedTest {
 	}
 
 
-	private int num = 0; // 用来存储生产的数据
-	private volatile boolean isHave = false; // 标识是否有已生产的数据
+	/**
+	 * 用来存储生产的数据
+	 */
+	private int num = 0;
+	/**
+	 * 标识是否有已生产的数据
+	 */
+	private volatile boolean isHave = false;
 
 	/**
 	 * 一个生产者、消费者示例
