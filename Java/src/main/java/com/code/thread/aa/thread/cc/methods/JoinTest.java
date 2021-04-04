@@ -1,14 +1,17 @@
 package com.code.thread.aa.thread.cc.methods;
 
+import org.junit.Test;
+
 /**
  * @author 愆凡
  *
  * t1 执行了 t2.join() 则 t1 会等待 t2 执行结束后再继续执行，在 t2 执行时可以通过 t3 对 t1 执行 t1.interrupt() 来使得 t1 不再等待 t2
  */
 @SuppressWarnings("all")
-public class Join {
-	public static void main(String[] args) {
+public class JoinTest {
 
+	@Test
+	public void test() {
 		Thread main = Thread.currentThread();
 
 		Thread t1 = new Thread(() -> {
@@ -41,4 +44,5 @@ public class Join {
 
 		System.out.println("main 执行完了！ ");
 	}
+
 }

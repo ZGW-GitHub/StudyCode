@@ -1,20 +1,20 @@
 package com.code.thread.aa.thread.cc.methods;
 
+import org.junit.Test;
+
 /**
  * Thread 类的实例方法：interrupt()		设置中断标记
  * <p>
- * Thread 类的实例方法：isInterrupted()	不清除中断标记
+ * Thread 类的实例方法：isInterrupted()	不清除中断标记<br/>
  * Thread 类的静态方法：interrupted()		清除中断标记
  *
  * @author 愆凡
  */
-@SuppressWarnings("All")
-public class Interrupted {
+@SuppressWarnings("all")
+public class InterruptedTest {
 
-	private static final Object MONITOR = new Object();
-
-	public static void main(String[] args) throws InterruptedException {
-
+	@Test
+	public void test() throws InterruptedException {
 		Thread t = new Thread(() -> {
 			try {
 				Thread.sleep(3000);
@@ -45,8 +45,6 @@ public class Interrupted {
 		// 第一个应返回 true，第二个应返回 false ，同样因为 InterruptedException 异常被捕获，所以这里都返回 false
 		System.out.println("中断后，Thread.interrupted() ：" + Thread.interrupted());
 		System.out.println("中断后，Thread.interrupted() ：" + Thread.interrupted());
-
-
 	}
 
 }
