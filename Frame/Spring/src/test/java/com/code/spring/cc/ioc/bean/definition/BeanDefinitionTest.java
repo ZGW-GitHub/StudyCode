@@ -31,7 +31,7 @@ public class BeanDefinitionTest extends MySpringApplicationTest {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String filePath = "/META-INF/cc/ioc/bean/definition/bean-definition.xml";
+		String filePath = "/TEST-FILE/cc/ioc/bean/definition/bean-definition.xml";
 
 		// 注册 BeanDefinition 到 Ioc 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
@@ -51,7 +51,7 @@ public class BeanDefinitionTest extends MySpringApplicationTest {
 		PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
 
 		// Properties 资源的位置
-		String file = "/META-INF/cc/ioc/bean/definition/bean-definition.properties";
+		String file = "/TEST-FILE/cc/ioc/bean/definition/bean-definition.properties";
 
 		// 解决乱码 ( Properties 资源加载默认是通过 ISO-8859-1 编码的 )
 		Resource resource = new ClassPathResource(file);

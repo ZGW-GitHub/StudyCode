@@ -21,7 +21,7 @@ public class BeanValidationTest extends MySpringApplicationTest {
 
 	@Test
 	public void test() {
-		ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/zs/validator/bean-validation-context.xml");
+		ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/TEST-FILE/zs/validator/bean-validation-context.xml");
 
 		applicationContext.refresh();
 
