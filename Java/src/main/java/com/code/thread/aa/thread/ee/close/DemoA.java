@@ -5,7 +5,20 @@ package com.code.thread.aa.thread.ee.close;
  *
  * @author 愆凡
  */
+@SuppressWarnings("all")
 public class DemoA {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		Worker worker = new Worker();
+
+		worker.start();
+
+		Thread.sleep(3000);
+
+		worker.shutdown();
+
+	}
 
 	private static class Worker extends Thread {
 
@@ -22,20 +35,6 @@ public class DemoA {
 		public void shutdown() {
 			this.flag = false;
 		}
-
-	}
-
-	;
-
-	public static void main(String[] args) throws InterruptedException {
-
-		Worker worker = new Worker();
-
-		worker.start();
-
-		Thread.sleep(3000);
-
-		worker.shutdown();
 
 	}
 

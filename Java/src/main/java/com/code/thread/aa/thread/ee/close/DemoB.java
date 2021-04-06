@@ -7,26 +7,7 @@ package com.code.thread.aa.thread.ee.close;
  */
 public class DemoB {
 
-	private static class Worker extends Thread {
-
-		@Override
-		public void run() {
-			while (true) {
-				// BUG : 如果线程在这里 阻塞 了，此时不能通过 Boolean 或 中断 标识位来结束线程了，怎么办？看后续的代码
-				if (Thread.interrupted()) {
-					break;
-				}
-				// 干活
-			}
-			// 善后：当被中断可以跳出循环，就能执行“善后”工作了 。
-		}
-
-	}
-
-	;
-
 	public static void main(String[] args) {
-
 		Worker worker = new Worker();
 		worker.start();
 
@@ -37,6 +18,20 @@ public class DemoB {
 		}
 
 		worker.interrupt();
+	}
+
+	private static class Worker extends Thread {
+
+		@Override
+		public void run() {
+			while (true) {
+				if (Thread.interrupted()) {
+					break;
+				}
+				// 干活
+			}
+			// 善后：当被中断可以跳出循环，就能执行“善后”工作了 。
+		}
 
 	}
 

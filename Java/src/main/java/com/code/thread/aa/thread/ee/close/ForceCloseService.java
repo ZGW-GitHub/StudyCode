@@ -3,6 +3,7 @@ package com.code.thread.aa.thread.ee.close;
 /**
  * @author 愆凡
  */
+@SuppressWarnings("all")
 public class ForceCloseService {
 
 	/**
