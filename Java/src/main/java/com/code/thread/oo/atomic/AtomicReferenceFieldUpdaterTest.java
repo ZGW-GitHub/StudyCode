@@ -1,5 +1,7 @@
 package com.code.thread.oo.atomic;
 
+import org.junit.Test;
+
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 /**
@@ -7,7 +9,8 @@ import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
  */
 public class AtomicReferenceFieldUpdaterTest {
 
-	public static void main(String[] args) {
+	@Test
+	public void test() {
 
 		AtomicReferenceFieldUpdater<User, Integer> atomicReferenceFieldUpdater = AtomicReferenceFieldUpdater.newUpdater(User.class, Integer.class, "i");
 

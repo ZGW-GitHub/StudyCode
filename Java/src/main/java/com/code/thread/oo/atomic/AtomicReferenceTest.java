@@ -1,5 +1,7 @@
 package com.code.thread.oo.atomic;
 
+import org.junit.Test;
+
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -7,7 +9,8 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class AtomicReferenceTest {
 
-	public static void main(String[] args) {
+	@Test
+	public void test() {
 
 		Stu s1 = new Stu("Aa", 1);
 		Stu s2 = new Stu("Aa", 2);

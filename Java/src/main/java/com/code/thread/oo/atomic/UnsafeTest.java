@@ -1,5 +1,7 @@
 package com.code.thread.oo.atomic;
 
+import org.junit.Test;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -10,7 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * @author 愆凡
  */
-public class Unsafe {
+public class UnsafeTest {
 
 
 	/**
@@ -32,7 +34,8 @@ public class Unsafe {
 	 */
 
 
-	public static void main(String[] args) throws InterruptedException {
+	@Test
+	public void test() throws InterruptedException {
 
 		ExecutorService service = Executors.newFixedThreadPool(1000);
 		Counter counter = new VolatileCounter();
