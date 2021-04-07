@@ -15,10 +15,10 @@
 	
 	<modules>
 		<module>component-eureka</module>
+		<module>component-gateway</module>
 		<module>service-common</module>
 		<module>service-user</module>
 		<module>service-web</module>
-		<module>gateway</module>
 	</modules>
 
 </project>
