@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/web/login")
 public class LoginController {
-	
-	@Autowired(required = false)
+
+	@Autowired
 	private UserClient userClient;
 
 	@RequestMapping("/{id}")
