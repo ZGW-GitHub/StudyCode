@@ -16,6 +16,7 @@
 	<modules>
 		<module>openfeign</module>
 		<module>gateway</module>
+		<module>component-eureka</module>
 	</modules>
 
 </project>
