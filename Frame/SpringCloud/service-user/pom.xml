@@ -10,5 +10,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>service-user</artifactId>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+	</dependencies>
 
 </project>
