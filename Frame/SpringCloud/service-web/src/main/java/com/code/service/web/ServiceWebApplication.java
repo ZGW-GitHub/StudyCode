@@ -2,13 +2,13 @@ package com.code.service.web;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author 愆凡
  * @date 2021/4/7 15:06
  */
-@EnableEurekaClient
+@EnableDiscoveryClient
 @SpringBootApplication
 public class ServiceWebApplication {
 
