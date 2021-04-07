@@ -55,7 +55,7 @@
 		<!-- 工具 -->
 		<hutool.version>5.3.9</hutool.version>
 		<lombok.version>1.18.10</lombok.version>
-		<guava.version>27.0.1-jre</guava.version>
+		<guava.version>30.0-jre</guava.version>
 		<fastjson.version>1.2.73</fastjson.version>
 	</properties>
 
