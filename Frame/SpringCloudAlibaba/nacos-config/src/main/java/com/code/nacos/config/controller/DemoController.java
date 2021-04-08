@@ -20,7 +20,7 @@ public class DemoController {
 	@Autowired
 	private EnvironmentManager environmentManager;
 
-	@Value("${server.port}")
+	@Value("${test.age}")
 	private Integer serverPort;
 
 	@RequestMapping("/get")
@@ -28,5 +28,5 @@ public class DemoController {
 		System.err.println(ToStringBuilder.reflectionToString(environmentManager));
 		return serverPort;
 	}
-	
+
 }

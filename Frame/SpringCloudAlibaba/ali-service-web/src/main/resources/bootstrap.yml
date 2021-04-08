@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: dev
+
+  application:
+    name: WebService
+
+  cloud:
+    nacos:
+      config:
+        server-addr: linux.notuptoyou.site:8848
+        namespace: dev
+        group: SERVICE_GROUP
+        name: a48019fc-2491-4448-9714-b95e26d9c31f
+        prefix: ${spring.application.name}
+        file-extension: yaml
