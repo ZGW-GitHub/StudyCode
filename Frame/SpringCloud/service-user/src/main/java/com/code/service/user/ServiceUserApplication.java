@@ -2,13 +2,13 @@ package com.code.service.user;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * @author 愆凡
  * @date 2021/4/7 15:01
  */
-@EnableDiscoveryClient
+@EnableEurekaClient
 @SpringBootApplication
 public class ServiceUserApplication {
 
