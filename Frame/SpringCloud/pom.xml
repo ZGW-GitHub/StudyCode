@@ -16,6 +16,7 @@
 	<modules>
 		<module>component-eureka</module>
 		<module>component-gateway</module>
+		<module>component-config</module>
 		<module>service-common</module>
 		<module>service-user</module>
 		<module>service-web</module>
