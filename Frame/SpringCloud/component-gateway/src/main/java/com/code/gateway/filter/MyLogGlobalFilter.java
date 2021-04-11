@@ -1,5 +1,6 @@
 package com.code.gateway.filter;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -20,8 +21,8 @@ public class MyLogGlobalFilter implements GlobalFilter, Ordered {
 
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-		System.err.println("ServerWebExchange : " + exchange.toString());
-		System.err.println("GatewayFilterChain : " + chain.toString());
+		System.err.println("ServerWebExchange : " + ToStringBuilder.reflectionToString(exchange));
+		System.err.println("GatewayFilterChain : " + ToStringBuilder.reflectionToString(chain));
 
 		if (new Random().nextBoolean()) {
 			System.err.println("程序错误");
