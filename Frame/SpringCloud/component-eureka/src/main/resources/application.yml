@@ -6,8 +6,10 @@ spring:
     name: eureka-server
 
 eureka:
+  instance:
+    hostname: localhost
   client:
     register-with-eureka: false # 是否注册自己的信息到 EurekaServer ，默认为 true
     fetch-registry: false # 是否拉取其它服务的信息，默认为 true
     service-url: # EurekaServer 的地址，现在是自己的地址，如果是集群，需要加上其它 Server 的地址
-      defaultZone: http://localhost:${server.port}/eureka
+      defaultZone: https://${eureka.instance.hostname}:${server.port}/eureka
