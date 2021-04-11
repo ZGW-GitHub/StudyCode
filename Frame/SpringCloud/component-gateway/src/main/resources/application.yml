@@ -16,8 +16,10 @@ spring:
         - id: login # 路由 ID，保持唯一
           # uri: http://localhost:8090 # 目标服务地址
           uri: lb://service-web
-          predicates: # 断言，路径匹配的进行路由
+          predicates: # 断言，结果为true的进行路由
             - Path=/login/**
+            - After=2021-04-11T21:00:18.497693+08:00[Asia/Shanghai]
+          # filters: # 配置过滤器
 
 eureka:
   client:
