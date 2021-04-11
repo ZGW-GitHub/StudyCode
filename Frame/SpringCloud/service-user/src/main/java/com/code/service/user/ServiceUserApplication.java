@@ -9,7 +9,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @date 2021/4/7 15:01
  */
 @EnableDiscoveryClient
-//@EnableEurekaClient
 @SpringBootApplication
 public class ServiceUserApplication {
 
