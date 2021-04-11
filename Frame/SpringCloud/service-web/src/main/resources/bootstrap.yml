@@ -5,3 +5,10 @@ spring:
       name: config
       profile: dev
       uri: http://localhost:8081
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
