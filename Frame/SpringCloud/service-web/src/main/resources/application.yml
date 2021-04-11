@@ -8,7 +8,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: https://localhost:8080/eureka
+      defaultZone: http://localhost:8080/eureka
   instance:
     prefer-ip-address: true # 当调用 getHostname 获取实例的 hostname 时，返回 IP 而不是 host 名称
     ip-address: 127.0.0.1 # 指定自己的 IP ，不指定的话会自己寻找
