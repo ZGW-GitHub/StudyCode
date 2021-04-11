@@ -10,7 +10,7 @@ spring:
         git:
           uri: https://github.com/ZGW-GitHub/StudyCode.git
           search-paths:
-            - StudyCode/Frame/SpringCloud/component-config/src/main/resources
+            - Frame/SpringCloud/component-config/src/main/resources/test
       label: master
 
 eureka:
