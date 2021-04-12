@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: component-config
+
+  # 配置中心
   cloud:
     config:
       server:
@@ -12,6 +14,17 @@ spring:
           search-paths:
             - Frame/SpringCloud/component-config/src/main/resources/config
       label: master
+
+# 消息总线
+rocketmq:
+  name-server: linux.notuptoyou.site:9876
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
 
 eureka:
   client:

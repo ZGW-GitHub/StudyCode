@@ -5,6 +5,25 @@ spring:
   application:
     name: service-web
 
+  # 配置中心
+  cloud:
+    config:
+      label: master
+      name: config
+      profile: dev
+      uri: http://localhost:8081
+
+# 消息总线
+rocketmq:
+  name-server: linux.notuptoyou.site:9876
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
 eureka:
   client:
     service-url:
