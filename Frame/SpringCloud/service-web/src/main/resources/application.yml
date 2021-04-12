@@ -5,6 +5,13 @@ spring:
   application:
     name: service-web
 
+  # 链路追踪配置
+  zipkin:
+    base-url: http://localhost:9411 # zipkin 的访问地址
+  sleuth:
+    sampler:
+      probability: 1 # 采样率（介于 0~1 之间，1 表示全部采集）
+
   cloud:
     # 配置中心
     config:
