@@ -20,6 +20,7 @@ spring:
           destination: StudyExchange # 表示要使用的 Exchange 的名称定义
           content-type: application/json # 设置消息类型
           binder: defaultRabbit # 设置要绑定的消息服务的具体位置
+          group: Group-A
 
 eureka:
   client:
