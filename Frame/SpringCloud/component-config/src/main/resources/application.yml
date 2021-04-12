@@ -5,8 +5,8 @@ spring:
   application:
     name: component-config
 
-  # 配置中心
   cloud:
+    # 配置中心
     config:
       server:
         git:

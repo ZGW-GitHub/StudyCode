@@ -5,8 +5,8 @@ spring:
   application:
     name: service-web
 
-  # 配置中心
   cloud:
+    # 配置中心
     config:
       label: master
       name: config
