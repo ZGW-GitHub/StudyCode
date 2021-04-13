@@ -16,3 +16,14 @@ spring:
         file-extension: yml
       discovery:
         server-addr: linux.notuptoyou.site:8848
+
+    sentinel:
+      transport:
+        dashboard: linux.notuptoyou.site:8080 # Sentinel 的地址
+        port: 8719 # 默认 8719，假如被占用会累加，直到找到未占用的端口
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
