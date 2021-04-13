@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -34,7 +32,6 @@ public abstract class AbstractEntity implements Serializable {
 	 */
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "create_time", nullable = false, updatable = false)
-	@CreatedDate
 	private Date createTime;
 
 	/**
@@ -42,6 +39,5 @@ public abstract class AbstractEntity implements Serializable {
 	 */
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "last_update_time", nullable = false)
-	@LastModifiedDate
 	private Date lastUpdateTime;
 }
