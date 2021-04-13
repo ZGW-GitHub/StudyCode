@@ -14,11 +14,10 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>nacos-config</module>
-		<module>nacos-discovery</module>
 		<module>ali-service-api</module>
 		<module>ali-service-user</module>
 		<module>ali-service-web</module>
+		<module>nacos-discovery</module>
 	</modules>
 
 </project>

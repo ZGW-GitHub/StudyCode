@@ -1,4 +1,4 @@
-package com.code.nacos.config;
+package com.code.docker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2020/12/9 1:37 下午
  */
 @SpringBootApplication
-public class NacosConfigApplication {
+public class DockerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NacosConfigApplication.class, args);
+		SpringApplication.run(DockerApplication.class, args);
 	}
 	
 }

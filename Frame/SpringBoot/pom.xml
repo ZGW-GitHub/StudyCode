@@ -24,6 +24,7 @@
 		<module>data-mybatis</module>
 		<module>data-redis</module>
 		<module>data-tool</module>
+		<module>docker</module>
 	</modules>
 
 </project>
