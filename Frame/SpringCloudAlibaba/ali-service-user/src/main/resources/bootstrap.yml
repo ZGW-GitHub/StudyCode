@@ -14,3 +14,5 @@ spring:
         name: dev
         prefix: ${spring.application.name}
         file-extension: yml
+      discovery:
+        server-addr: linux.notuptoyou.site:8848
