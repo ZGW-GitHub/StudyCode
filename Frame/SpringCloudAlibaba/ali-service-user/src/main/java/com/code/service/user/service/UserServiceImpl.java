@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserService {
 	private NacosConfiguration nacosConfiguration;
 	
 	@Override
-	@RefreshScope
 	public User findById(Long id) {
 		return User.builder().id(nacosConfiguration.getId()).name(nacosConfiguration.getName()).build();
 	}
