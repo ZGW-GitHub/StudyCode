@@ -15,6 +15,7 @@ spring:
         prefix: ${spring.application.name}
         file-extension: yml
       discovery:
+        namespace: 9b76e4b9-93ad-4ec3-b690-7ae5c49f9b2a
         server-addr: linux.notuptoyou.site:8848
 
 #    sentinel:
