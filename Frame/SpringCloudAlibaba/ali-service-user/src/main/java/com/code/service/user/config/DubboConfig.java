@@ -57,7 +57,7 @@ public class DubboConfig {
 		ProtocolConfig protocolConfig = new ProtocolConfig();
 		// 使用dubbo协议，在20880端口监听服务
 		protocolConfig.setName("dubbo");
-		protocolConfig.setPort(20880);
+		protocolConfig.setPort(30880);
 		return protocolConfig;
 	}
 	

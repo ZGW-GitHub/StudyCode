@@ -9,7 +9,7 @@ spring:
     nacos:
       config:
         server-addr: linux.notuptoyou.site:8848
-        namespace: a48019fc-2491-4448-9714-b95e26d9c31f
+        namespace: 9b76e4b9-93ad-4ec3-b690-7ae5c49f9b2a
         group: SERVICE_GROUP
         name: dev
         prefix: ${spring.application.name}
@@ -17,10 +17,10 @@ spring:
       discovery:
         server-addr: linux.notuptoyou.site:8848
 
-    sentinel:
-      transport:
-        dashboard: linux.notuptoyou.site:8080 # Sentinel 的地址
-        port: 8719 # 默认 8719，假如被占用会累加，直到找到未占用的端口
+#    sentinel:
+#      transport:
+#        dashboard: linux.notuptoyou.site:8080 # Sentinel 的地址
+#        port: 8719 # 默认 8719，假如被占用会累加，直到找到未占用的端口
 
 management:
   endpoints:
