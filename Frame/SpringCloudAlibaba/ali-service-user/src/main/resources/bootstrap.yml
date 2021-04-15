@@ -18,10 +18,14 @@ spring:
         namespace: 9b76e4b9-93ad-4ec3-b690-7ae5c49f9b2a
         server-addr: linux.notuptoyou.site:8848
 
-#    sentinel:
-#      transport:
-#        dashboard: linux.notuptoyou.site:8080 # Sentinel 的地址
-#        port: 8719 # 默认 8719，假如被占用会累加，直到找到未占用的端口
+    #    sentinel:
+    #      transport:
+    #        dashboard: linux.notuptoyou.site:8080 # Sentinel 的地址
+    #        port: 8719 # 默认 8719，假如被占用会累加，直到找到未占用的端口
+
+    alibaba:
+      seata:
+        tx-service-group: test_one # 自定义事务组名称需要与 seata-server 中的对应
 
 management:
   endpoints:
