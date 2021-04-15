@@ -15,7 +15,7 @@ import io.netty.util.concurrent.Future;
 public class NettyServer {
 	public static void main(String[] args) {
 
-		final EventLoopGroup bossGroup = new NioEventLoopGroup();
+		final EventLoopGroup bossGroup = new NioEventLoopGroup(1);
 		final EventLoopGroup workerGroup = new NioEventLoopGroup();
 
 		try {
