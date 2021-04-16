@@ -16,6 +16,7 @@
 
 	<modules>
 		<module>Dubbo</module>
+		<module>Netty</module>
 		<module>Spring</module>
 		<module>SpringBoot</module>
 		<module>SpringCloud</module>
