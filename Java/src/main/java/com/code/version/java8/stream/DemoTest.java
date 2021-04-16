@@ -1,6 +1,6 @@
 package com.code.version.java8.stream;
 
-import com.code.entity.User;
+import com.code.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
