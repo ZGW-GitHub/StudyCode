@@ -5,27 +5,12 @@ import org.junit.Test;
 import java.nio.ByteBuffer;
 
 /**
- * Buffer 类维护了 4 个核心变量属性来提供关于缓冲区包含的数据的信息 :<br/><br/>
- *
- * - 容量	Capacity<br/>
- * - 缓冲区能够容纳的数据量 , 在缓冲区创建时被设定 , 并不可变 ( 因为底层是数组 )<br/><br/>
- *
- * - 上界	Limit<br/>
- * - 写缓冲区时 : Limit = Capacity<br/>
- * - 读缓冲区时 : Limit = 缓冲区中的数据量大小<br/><br/>
- *
- * - 位置	Position<br/>
- * - 要操作的位置<br/><br/>
- *
- * - 标记	Mark<br/>
- * - 一个备忘位置 , 记录当前 Position 的位置 , 可通过 reset() 恢复到 mark 的位置<br/><br/>
- *
  * @author 愆凡
  * @date 2020/8/11 9:48 上午
  */
 @SuppressWarnings("all")
-public class FileTest {
-	
+public class BufferTest {
+
 	@Test
 	public void oneTest() {
 		// 1、创建一个缓冲区
