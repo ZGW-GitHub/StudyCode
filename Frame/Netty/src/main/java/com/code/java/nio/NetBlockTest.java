@@ -1,4 +1,4 @@
-package com.code.nio;
+package com.code.java.nio;
 
 import org.junit.Test;
 

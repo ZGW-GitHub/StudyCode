@@ -1,4 +1,4 @@
-package com.code.bio;
+package com.code.java.bio;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.junit.Test;
