@@ -3,8 +3,7 @@ package com.code.thread.aa.thread.cc.methods;
 import org.junit.Test;
 
 /**
- * Thread 类的实例方法：interrupt()		设置中断标记
- * <p>
+ * Thread 类的实例方法：interrupt()		设置中断标记<br/>
  * Thread 类的实例方法：isInterrupted()	不清除中断标记<br/>
  * Thread 类的静态方法：interrupted()		清除中断标记
  *
