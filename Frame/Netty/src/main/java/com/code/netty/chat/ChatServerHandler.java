@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
  */
 public class ChatServerHandler extends SimpleChannelInboundHandler<String> {
 	// 定义一个 channle 组，管理所有的 channel 。GlobalEventExecutor.INSTANCE 是全局的事件执行器，是一个单例
+	// 必须为 static 的，因为 Server 那里：pipeline.addLast(new ChatServerHandler());
 	private static final ChannelGroup CHANNEL_GROUP = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -32,12 +33,14 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<String> {
 		CHANNEL_GROUP.add(channel);
 	}
 
+	/**
+	 * 表示 channel 断开连接了，提示 xx 离开了
+	 */
 	@Override
 	public void handlerRemoved(ChannelHandlerContext ctx) {
 		Channel channel = ctx.channel();
-		CHANNEL_GROUP.writeAndFlush("[客户端]" + channel.remoteAddress() + " 离开了\n");
 		CHANNEL_GROUP.writeAndFlush(sdf.format(new java.util.Date()) + " [ 客户端 - " + channel.remoteAddress() + " ]：离开了 \n");
-		System.out.println("channelGroup size" + CHANNEL_GROUP.size());
+		System.err.println("ChannelGroup.size() = " + CHANNEL_GROUP.size());
 
 	}
 
@@ -46,37 +49,39 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<String> {
 	 */
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) {
-
-		System.out.println(ctx.channel().remoteAddress() + " 上线了~");
+		System.err.println(ctx.channel().remoteAddress() + " 上线了~");
 	}
 
-	//表示channel 处于不活动状态, 提示 xx离线了
+	/**
+	 * 表示 channel 处于不活动状态, 提示 xx 离线了
+	 */
 	@Override
 	public void channelInactive(ChannelHandlerContext ctx) {
-
-		System.out.println(ctx.channel().remoteAddress() + " 离线了~");
+		System.err.println(ctx.channel().remoteAddress() + " 离线了~");
 	}
 
-	//读取数据
+	/**
+	 * 读取数据
+	 */
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, String msg) {
-
-		//获取到当前channel
 		Channel channel = ctx.channel();
-		//这时我们遍历channelGroup, 根据不同的情况，回送不同的消息
 
+		// 遍历 ChannelGroup, 根据不同的情况，回送不同的消息
 		CHANNEL_GROUP.forEach(ch -> {
-			if (channel != ch) { //不是当前的channel,转发消息
-				ch.writeAndFlush("[客户]" + channel.remoteAddress() + " 发送了消息" + msg + "\n");
-			} else {//回显自己发送的消息给自己
-				ch.writeAndFlush("[自己]发送了消息" + msg + "\n");
+			if (channel != ch) {
+				// 不是当前的 channel ，转发消息
+				ch.writeAndFlush("[ " + channel.remoteAddress() + " ] 发送了消息：" + msg + "\n");
+			} else {
+				// 回显自己发送的消息给自己
+				ch.writeAndFlush("[ 自己 ] 发送了消息：" + msg + "\n");
 			}
 		});
 	}
 
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-		//关闭通道
 		ctx.close();
 	}
+
 }

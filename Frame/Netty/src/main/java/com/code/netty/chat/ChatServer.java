@@ -7,25 +7,25 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import lombok.Setter;
 import org.junit.Test;
 
 /**
  * @author 愆凡
  * @date 2021/4/19 17:19
  */
+@Setter
 @SuppressWarnings("all")
 public class ChatServer {
 
 	@Test
 	public void test() throws Exception {
-		new ChatServer(7000).run();
+		ChatServer server = new ChatServer();
+		server.setPort(7000);
+		server.run();
 	}
 
-	private final int port; // 监听端口
-
-	public ChatServer(int port) {
-		this.port = port;
-	}
+	private int port; // 监听端口
 
 	/**
 	 * 编写 run 方法，处理客户端的请求
@@ -37,9 +37,8 @@ public class ChatServer {
 		EventLoopGroup workerGroup = new NioEventLoopGroup(); // cpu核心数*2
 
 		try {
-			ServerBootstrap bootstrap = new ServerBootstrap();
-
-			bootstrap.group(bossGroup, workerGroup)
+			ServerBootstrap bootstrap = new ServerBootstrap()
+					.group(bossGroup, workerGroup)
 					.channel(NioServerSocketChannel.class)
 					.option(ChannelOption.SO_BACKLOG, 128)
 					.childOption(ChannelOption.SO_KEEPALIVE, true)

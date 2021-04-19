@@ -7,6 +7,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import lombok.Setter;
 import org.junit.Test;
 
 import java.util.Scanner;
@@ -15,59 +16,66 @@ import java.util.Scanner;
  * @author 愆凡
  * @date 2021/4/19 17:24
  */
+@Setter
+@SuppressWarnings("all")
 public class ChatClient {
-	
+
 	@Test
-	public void test() throws Exception {
-		new ChatClient("127.0.0.1", 7000).run();
+	public void clientOne() throws Exception {
+		ChatClient client = new ChatClient();
+		client.setServerHost("127.0.0.1");
+		client.setServerPort(7000);
+		client.run();
 	}
 
-	//属性
-	private final String host;
-	private final int port;
-
-	public ChatClient(String host, int port) {
-		this.host = host;
-		this.port = port;
+	@Test
+	public void clientTwo() throws Exception {
+		ChatClient client = new ChatClient();
+		client.setServerHost("127.0.0.1");
+		client.setServerPort(7000);
+		client.run();
 	}
+
+	private String serverHost;
+	private int serverPort;
 
 	public void run() throws Exception {
 		EventLoopGroup group = new NioEventLoopGroup();
 
 		try {
-
 			Bootstrap bootstrap = new Bootstrap()
 					.group(group)
 					.channel(NioSocketChannel.class)
 					.handler(new ChannelInitializer<SocketChannel>() {
-
 						@Override
 						protected void initChannel(SocketChannel ch) throws Exception {
-
-							//得到pipeline
 							ChannelPipeline pipeline = ch.pipeline();
-							//加入相关handler
 							pipeline.addLast("decoder", new StringDecoder());
 							pipeline.addLast("encoder", new StringEncoder());
-							//加入自定义的handler
+							// 添加业务处理 handler
 							pipeline.addLast(new ChatClientHandler());
 						}
 					});
 
-			ChannelFuture channelFuture = bootstrap.connect(host, port).sync();
-			//得到channel
+			ChannelFuture channelFuture = bootstrap.connect(serverHost, serverPort).sync();
+
 			Channel channel = channelFuture.channel();
-			System.out.println("-------" + channel.localAddress() + "--------");
-			//客户端需要输入信息，创建一个扫描器
+			System.out.println("Netty Chat Client 启动：" + channel.localAddress());
+
+			// 客户端需要输入信息，创建一个扫描器
 			Scanner scanner = new Scanner(System.in);
 			while (scanner.hasNextLine()) {
 				String msg = scanner.nextLine();
-				//通过channel 发送到服务器端
-				channel.writeAndFlush(msg + "\r\n");
+				if (!msg.equals("exit")) {
+					// 通过 channel 发送到服务器端
+					channel.writeAndFlush(msg + "\r\n");
+					continue;
+				}
+				break;
 			}
 		} finally {
 			group.shutdownGracefully();
 		}
 	}
-	
+
 }

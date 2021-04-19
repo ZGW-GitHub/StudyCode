@@ -11,6 +11,7 @@ public class ChatClientHandler extends SimpleChannelInboundHandler<String> {
 
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, String msg) {
-		System.out.println(msg.trim());
+		System.err.println(msg.trim());
 	}
+
 }
