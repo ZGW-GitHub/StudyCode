@@ -24,11 +24,12 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 	 */
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) {
-		System.err.println("服务器读取线程：" + Thread.currentThread().getName() + "；channle = " + ctx.channel());
-		System.err.println("ChannelHandlerContext = " + ctx);
+		System.err.println("服务器读取线程：" + Thread.currentThread().getName());
+		System.err.println("Channle：" + ctx.channel());
+		System.err.println("ChannelHandlerContext：" + ctx);
 
-		System.err.println("客户端地址:" + ctx.channel().remoteAddress());
-		System.err.println("客户端发送消息是:" + ((ByteBuf) msg).toString(CharsetUtil.UTF_8));
+		System.err.println("客户端地址：" + ctx.channel().remoteAddress());
+		System.err.println("客户端发送消息是：" + ((ByteBuf) msg).toString(CharsetUtil.UTF_8));
 	}
 
 	/**

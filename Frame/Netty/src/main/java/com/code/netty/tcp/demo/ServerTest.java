@@ -32,8 +32,8 @@ public class ServerTest {
 						// 给 pipeline 设置处理器
 						@Override
 						protected void initChannel(SocketChannel ch) {
-							// 可以使用一个集合管理 SocketChannel，再推送消息时，可以将业务加入到各个 Channel 对应的 NioEventLoop 的 taskQueue 或者 scheduleTaskQueue
-							System.out.println("客户 SocketChannel hashcode = " + ch.hashCode());
+							// 可以使用一个集合管理 SocketChannel，在推送消息时，可以将业务加入到各个 Channel 对应的 NioEventLoop 的 taskQueue 或者 scheduleTaskQueue
+							System.out.println("客户端 SocketChannel hashcode = " + ch.hashCode());
 
 							// 给我们的 WorkerGroup 的 EventLoop 对应的管道设置处理器
 							ch.pipeline().addLast(new NettyServerHandler());
