@@ -19,7 +19,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 	 */
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) {
-		System.err.println("Client ctx = " + ctx);
+		System.err.println("ChannelHandlerContext = " + ctx);
 		ctx.writeAndFlush(Unpooled.copiedBuffer("Hello, Server !!!", CharsetUtil.UTF_8));
 	}
 
@@ -27,18 +27,16 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 	 * 当通道有读取事件时，会触发
 	 *
 	 * @param ctx 上下文对象
-	 * @param msg 服务器发送的数据，默认为：Object
+	 * @param msg 接收的数据
 	 */
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) {
-		ByteBuf buf = (ByteBuf) msg;
-		System.err.println("服务器回复的消息：" + buf.toString(CharsetUtil.UTF_8));
 		System.err.println("服务器的地址：" + ctx.channel().remoteAddress());
+		System.err.println("服务器回复的消息：" + ((ByteBuf) msg).toString(CharsetUtil.UTF_8));
 	}
 
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-		cause.printStackTrace();
 		ctx.close();
 	}
 

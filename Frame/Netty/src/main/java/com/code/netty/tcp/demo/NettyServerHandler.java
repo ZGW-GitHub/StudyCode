@@ -20,22 +20,15 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 	 * 读取客户端发送的数据
 	 *
 	 * @param ctx 上下文对象：{@link ChannelHandlerContext} ；含有：管道(pipeline)、通道(channel)、地址
-	 * @param msg 客户端发送的数据，默认为：Object
+	 * @param msg 接收的数据
 	 */
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) {
 		System.err.println("服务器读取线程：" + Thread.currentThread().getName() + "；channle = " + ctx.channel());
-		System.err.println("Server ctx = " + ctx);
+		System.err.println("ChannelHandlerContext = " + ctx);
 
-		System.err.println("看看channel 和 pipeline的关系：");
-		Channel channel = ctx.channel();
-		ChannelPipeline pipeline = ctx.pipeline(); // 本质是一个双向链接, 出站入站
-
-		// 将 msg 转成一个 ByteBuf（ ByteBuf 是 Netty 提供的，不是 NIO 的 ByteBuffer ）
-		ByteBuf buf = (ByteBuf) msg;
-
-		System.err.println("客户端发送消息是:" + buf.toString(CharsetUtil.UTF_8));
-		System.err.println("客户端地址:" + channel.remoteAddress());
+		System.err.println("客户端地址:" + ctx.channel().remoteAddress());
+		System.err.println("客户端发送消息是:" + ((ByteBuf) msg).toString(CharsetUtil.UTF_8));
 	}
 
 	/**
@@ -46,7 +39,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 	@Override
 	public void channelReadComplete(ChannelHandlerContext ctx) {
 		// writeAndFlush 是 write + flush ，作用：将数据写入到缓存，并刷新
-		ctx.writeAndFlush(Unpooled.copiedBuffer("hello, 客户端", CharsetUtil.UTF_8));
+		ctx.writeAndFlush(Unpooled.copiedBuffer("Hello, Client !!!", CharsetUtil.UTF_8));
 	}
 
 	/**
