@@ -43,17 +43,26 @@ public class SelectorTest {
 			Iterator<SelectionKey> keyIterator = selectedKeys.iterator();
 			while (keyIterator.hasNext()) {
 				SelectionKey key = keyIterator.next();
+				// 移除（TODO 若没有删除，那么下一次调用 select 时, 这个 SelectionKey 还在 selectedKeys 中）
+				keyIterator.remove();
+
+				// 忽略无效的 SelectionKey
+				if (!key.isValid()) {
+					continue;
+				}
+
 				if (key.isAcceptable()) {
 					// a connection was accepted by a ServerSocketChannel.
-				} else if (key.isConnectable()) {
+				}
+				if (key.isConnectable()) {
 					// a connection was established with a remote server.
-				} else if (key.isReadable()) {
+				}
+				if (key.isReadable()) {
 					// a channel is ready for reading
-				} else if (key.isWritable()) {
+				}
+				if (key.isWritable()) {
 					// a channel is ready for writing
 				}
-				// 移除（TODO 没有删除，那么下一次调用 select 时, 这个 SelectionKey 还在 selectedKeys 中）
-				keyIterator.remove();
 			}
 		}
 	}

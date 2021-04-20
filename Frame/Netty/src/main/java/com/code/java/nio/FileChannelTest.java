@@ -14,7 +14,7 @@ import java.nio.file.StandardOpenOption;
  * @author 愆凡
  * @date 2021/04/16 4:54 下午
  */
-public class NetBlockTest {
+public class FileChannelTest {
 
 	@Test
 	public void clientTest() throws IOException {

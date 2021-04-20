@@ -16,7 +16,7 @@ import java.util.Set;
  * @author 愆凡
  * @date 2021/04/16 5:02 下午
  */
-public class NetNotBlockTest {
+public class SocketChannelTest {
 
 	@Test
 	public void serverTest() {
@@ -79,13 +79,19 @@ public class NetNotBlockTest {
 					}
 
 					// 获取所有已就绪 Channel 对应的 SelectionKey
-					Iterator<SelectionKey> keys = selector.selectedKeys().iterator();
-					while (keys.hasNext()) {
-						SelectionKey key = keys.next();
+					Iterator<SelectionKey> keyIterator = selector.selectedKeys().iterator();
+					while (keyIterator.hasNext()) {
+						SelectionKey key = keyIterator.next();
+						keyIterator.remove();
+
+						// 忽略无效的 SelectionKey
+						if (!key.isValid()) {
+							continue;
+						}
 
 						// 处理新连接就绪事件
 						if (key.isAcceptable()) {
-							// a、创建一个 SocketChannel 用来与客户端的 Channel 进行通信 
+							// a、接受客户端的连接，获取连接的客户端的 SocketChannel
 							SocketChannel socketChannel = serverSocketChannel.accept();
 							socketChannel.configureBlocking(false);
 							// b、将新建的 SocketChannel 注册到 Selector，并监听读事件
@@ -107,8 +113,6 @@ public class NetNotBlockTest {
 								setAnyBody(msg, socketChannel);
 							}
 						}
-
-						keys.remove();
 					}
 				}
 			} catch (IOException e) {
