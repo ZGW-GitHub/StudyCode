@@ -1,4 +1,4 @@
-package com.code.netty.tcp.demo;
+package com.code.netty.demo.tcp;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;

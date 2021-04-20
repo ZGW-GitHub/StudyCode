@@ -1,4 +1,4 @@
-package com.code.netty.tcp.demo;
+package com.code.netty.demo.tcp;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
