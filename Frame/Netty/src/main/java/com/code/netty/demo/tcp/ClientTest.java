@@ -33,9 +33,10 @@ public class ClientTest {
 						}
 					});
 
-			System.out.println("Client ok");
 			// 启动客户端去连接服务器端
-			ChannelFuture channelFuture = bootstrap.connect("127.0.0.1", 6668).sync();
+			ChannelFuture channelFuture = bootstrap.connect(ServerTest.serverHost, ServerTest.serverPort).sync();
+
+			System.out.println("Client ok");
 
 			// 对关闭通道进行监听
 			channelFuture.channel().closeFuture().sync();

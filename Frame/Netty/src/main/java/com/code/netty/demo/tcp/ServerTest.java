@@ -13,6 +13,9 @@ import org.junit.Test;
  */
 public class ServerTest {
 
+	public static final String serverHost = "127.0.0.1";
+	public static final Integer serverPort = 7000;
+
 	@Test
 	public void test() throws InterruptedException {
 		// 创建两个事件循环组：BossGroup 和 WorkerGroup ，它们含有的子线程(NioEventLoop)的个数默认为：cpu核数 * 2
@@ -43,7 +46,7 @@ public class ServerTest {
 			System.out.println("Server is ready");
 
 			// 启动服务器(并绑定端口), 生成了一个 ChannelFuture 对象
-			ChannelFuture cf = bootstrap.bind(6668).sync();
+			ChannelFuture cf = bootstrap.bind(serverPort).sync();
 
 			// 给 ChannelFuture 注册监听器，监控我们关心的事件
 			cf.addListener((ChannelFutureListener) future -> {

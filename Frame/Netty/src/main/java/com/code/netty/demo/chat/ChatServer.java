@@ -11,6 +11,8 @@ import lombok.Setter;
 import org.junit.Test;
 
 /**
+ * Netty 群聊系统案例
+ * 
  * @author 愆凡
  * @date 2021/4/19 17:19
  */
@@ -21,9 +23,12 @@ public class ChatServer {
 	@Test
 	public void test() throws Exception {
 		ChatServer server = new ChatServer();
-		server.setPort(7000);
+		server.setPort(serverPort);
 		server.run();
 	}
+
+	public static final String serverHost = "127.0.0.1";
+	public static final Integer serverPort = 7000;
 
 	private int port; // 监听端口
 
