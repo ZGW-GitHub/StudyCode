@@ -61,7 +61,7 @@ public class ChatServer {
 			System.out.println("Netty Chat Server 启动");
 			ChannelFuture channelFuture = bootstrap.bind(port).sync();
 
-			// 监听关闭
+			// 对关闭通道进行监听
 			channelFuture.channel().closeFuture().sync();
 		} finally {
 			bossGroup.shutdownGracefully();

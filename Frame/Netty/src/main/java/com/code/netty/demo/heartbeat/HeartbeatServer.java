@@ -56,6 +56,7 @@ public class HeartbeatServer {
 			// 启动服务器
 			ChannelFuture channelFuture = serverBootstrap.bind(serverPort).sync();
 
+			// 对关闭通道进行监听
 			channelFuture.channel().closeFuture().sync();
 		} finally {
 			bossGroup.shutdownGracefully();
