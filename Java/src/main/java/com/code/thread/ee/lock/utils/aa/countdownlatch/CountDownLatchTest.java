@@ -19,19 +19,21 @@ import java.util.concurrent.TimeUnit;
 public class CountDownLatchTest {
 
 	/**
-	 * 通过 CountDownLatch 实现阶段任务
+	 * 实现阶段任务
 	 */
 	@Test
 	public void baseTest() throws InterruptedException {
 		final CountDownLatch latch = new CountDownLatch(2);
 
 		startNewThread(latch, 1, "T1");
-		startNewThread(latch, 2, "T2");
+		startNewThread(latch, 3, "T2");
 		startNewThread(latch, 6, "T3");
 		startNewThread(latch, 6, "T4");
 
 		System.err.println(" 等待阶段完成... ");
+		System.err.println("Befor await() : count = " + latch.getCount());
 		latch.await();
+		System.err.println("After await() : count = " + latch.getCount());
 		System.err.println(" 阶段完成 ");
 
 		// latch 是一次性的，所以下面的 await 是无效的。
@@ -48,7 +50,10 @@ public class CountDownLatchTest {
 				log.error("Error : ", e);
 			} finally {
 				System.err.println(Thread.currentThread().getName() + " 阶段 over ");
+
+				System.err.println("Befor countDown() : count = " + latch.getCount());
 				latch.countDown();
+				System.err.println("After countDown() : count = " + latch.getCount());
 			}
 		}, threadName).start();
 	}

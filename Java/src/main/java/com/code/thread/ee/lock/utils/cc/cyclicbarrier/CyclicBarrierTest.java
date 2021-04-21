@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class CyclicBarrierTest {
 
 	/**
-	 * 通过 CyclicBarrier 实现阶段任务
+	 * 实现阶段任务
 	 */
 	@Test
 	public void baseTest() throws BrokenBarrierException, InterruptedException {
@@ -45,7 +45,7 @@ public class CyclicBarrierTest {
 	}
 
 	/**
-	 * 通过 CyclicBarrier 实现多阶段任务
+	 * 实现多阶段任务
 	 */
 	@Test
 	public void baseTest2() throws BrokenBarrierException, InterruptedException {
