@@ -1,4 +1,4 @@
-package com.code.collection.list.arraylist;
+package com.code.collection.basic.list;
 
 import org.junit.After;
 import org.junit.Before;
@@ -16,7 +16,7 @@ import java.util.function.Predicate;
  * @date 2020/7/17 4:21 下午
  */
 @SuppressWarnings("all")
-public class RemoveDemo {
+public class ArrayListRemoveTest {
 
 	private final List<String> STRING_LIST = new ArrayList<>();
 

@@ -1,4 +1,4 @@
-package com.code.collection.map;
+package com.code.collection.basic.map;
 
 /**
  * @author 愆凡

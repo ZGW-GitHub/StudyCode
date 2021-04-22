@@ -1,4 +1,4 @@
-package com.code.collection.concurrent.copy.on.write;
+package com.code.collection.concurrent.list;
 
 /**
  * @author 愆凡

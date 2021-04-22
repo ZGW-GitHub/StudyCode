@@ -1,4 +1,4 @@
-package com.code.collection.set;
+package com.code.collection.basic.set;
 
 /**
  * @author 愆凡

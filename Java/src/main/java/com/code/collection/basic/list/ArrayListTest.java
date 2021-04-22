@@ -1,4 +1,4 @@
-package com.code.collection.list.arraylist;
+package com.code.collection.basic.list;
 
 import org.junit.Test;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * @author 愆凡
  * @date 2020/9/3 11:41 上午
  */
-public class DemoTest {
+public class ArrayListTest {
 
 	@Test
 	public void retainAllTest() {

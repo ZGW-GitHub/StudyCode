@@ -1,4 +1,4 @@
-package com.code.collection.concurrent.blockingdeque;
+package com.code.collection.concurrent.queue.blockingdeque;
 
 import org.junit.Test;
 
