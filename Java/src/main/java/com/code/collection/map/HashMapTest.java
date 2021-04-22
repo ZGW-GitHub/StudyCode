@@ -1,4 +1,4 @@
-package com.code.collection.map.hashmap;
+package com.code.collection.map;
 
 import org.junit.Test;
 
@@ -9,7 +9,7 @@ import java.util.Map;
  * @author 愆凡
  * @date 2020/8/14 11:29 上午
  */
-public class DemoTest {
+public class HashMapTest {
 
 	@Test
 	public void test() {
