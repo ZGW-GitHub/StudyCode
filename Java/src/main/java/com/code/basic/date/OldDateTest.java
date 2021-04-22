@@ -1,4 +1,4 @@
-package com.code.base.date;
+package com.code.basic.date;
 
 import org.junit.Test;
 
