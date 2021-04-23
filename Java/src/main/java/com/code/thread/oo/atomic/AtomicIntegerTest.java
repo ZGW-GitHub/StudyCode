@@ -1,5 +1,7 @@
 package com.code.thread.oo.atomic;
 
+import org.junit.Test;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,9 +18,9 @@ public class AtomicIntegerTest {
 	private static final Set<Integer> SET = Collections.synchronizedSet(new HashSet<>());
 	private static final Set<Integer> SET2 = Collections.synchronizedSet(new HashSet<>());
 
-	public static void main(String[] args) throws InterruptedException {
-
-		@SuppressWarnings("all")
+	@Test
+	@SuppressWarnings("all")
+	public void test() throws InterruptedException {
 		Thread t1 = new Thread(() -> {
 			for (int i = 0; i < 1_000; i++) {
 				SET.add(value);
@@ -28,7 +30,6 @@ public class AtomicIntegerTest {
 			}
 		});
 
-		@SuppressWarnings("all")
 		Thread t2 = new Thread(() -> {
 			for (int i = 0; i < 1_000; i++) {
 				SET.add(value);
@@ -38,7 +39,6 @@ public class AtomicIntegerTest {
 			}
 		});
 
-		@SuppressWarnings("all")
 		Thread t3 = new Thread(() -> {
 			for (int i = 0; i < 1_000; i++) {
 				SET.add(value);
@@ -55,10 +55,8 @@ public class AtomicIntegerTest {
 		t2.join();
 		t3.join();
 
-
 		System.out.println(SET.size());
 		System.out.println(SET2.size());
-
 	}
 
 }

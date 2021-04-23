@@ -5,9 +5,4 @@ package com.code.collection.concurrent.queue;
  */
 public class ConcurrentLinkedDequeTest {
 
-	public static void main(String[] args) {
-
-
-	}
-
 }

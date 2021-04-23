@@ -1,17 +1,22 @@
 package com.code.collection.concurrent.map;
 
+import org.junit.Test;
+
 import java.util.concurrent.ConcurrentSkipListMap;
 
 /**
- * round : 四舍五入
- * ceiling : 向上取
- * floor : 向下取
+ * round : 四舍五入<br/>
+ * ceiling : 向上取<br/>
+ * floor : 向下取<br/>
+ *
+ * TreeMap 的高并发实现
+ *
+ * @author 愆凡
  */
-// TreeMap 的高并发实现
 public class ConcurrentSkipListMapTest {
 
-	public static void main(String[] args) {
-
+	@Test
+	public void test() {
 		ConcurrentSkipListMap<Integer, String> map = new ConcurrentSkipListMap<>();
 
 		map.put(1, "java");
@@ -38,7 +43,6 @@ public class ConcurrentSkipListMapTest {
 		});
 		System.out.println(compute); // hello
 		System.out.println(map.get(5)); // hello
-
 	}
 
 }
