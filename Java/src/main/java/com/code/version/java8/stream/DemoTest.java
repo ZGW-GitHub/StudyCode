@@ -6,7 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author 愆凡
@@ -92,6 +94,13 @@ public class DemoTest {
 		USER_LIST.stream().skip(2).forEach(u -> System.out.println(u.getAge()));
 		System.out.println("---");
 		USER_LIST.stream().limit(2).forEach(u -> System.out.println(u.getAge()));
+	}
+	
+	@Test
+	public void numberStreamTest() throws InterruptedException {
+		IntStream.rangeClosed(1, 0).forEach(System.err::println);
+		
+		TimeUnit.SECONDS.sleep(2);
 	}
 
 }
