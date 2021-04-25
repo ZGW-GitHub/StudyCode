@@ -11,6 +11,8 @@
 
 	<artifactId>docker</artifactId>
 
+	<packaging>jar</packaging>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
@@ -39,24 +41,24 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.6.0</version>
-				<executions>
-					<execution>
-						<id>docker-build</id>
-						<phase>install</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<executable>bash</executable>
-					<commandlineArgs>./docker.sh ${project.artifactId} ${project.version}</commandlineArgs>
-				</configuration>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.codehaus.mojo</groupId>-->
+<!--				<artifactId>exec-maven-plugin</artifactId>-->
+<!--				<version>1.6.0</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>docker-build</id>-->
+<!--						<phase>install</phase>-->
+<!--						<goals>-->
+<!--							<goal>exec</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--				<configuration>-->
+<!--					<executable>bash</executable>-->
+<!--					<commandlineArgs>./docker.sh ${project.artifactId} ${project.version}</commandlineArgs>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
