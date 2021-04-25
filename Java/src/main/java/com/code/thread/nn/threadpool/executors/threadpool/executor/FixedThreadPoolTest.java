@@ -1,5 +1,7 @@
 package com.code.thread.nn.threadpool.executors.threadpool.executor;
 
+import org.junit.Test;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -9,10 +11,10 @@ import java.util.stream.IntStream;
 /**
  * @author 愆凡
  */
-public class FixedThreadPoolDemoA {
+public class FixedThreadPoolTest {
 
-	public static void main(String[] args) throws InterruptedException {
-
+	@Test
+	public void test() throws InterruptedException {
 		ExecutorService executorService = Executors.newFixedThreadPool(10);
 
 		// 0

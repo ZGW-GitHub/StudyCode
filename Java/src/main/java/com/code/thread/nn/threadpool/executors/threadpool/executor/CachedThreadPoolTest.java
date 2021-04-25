@@ -1,5 +1,7 @@
 package com.code.thread.nn.threadpool.executors.threadpool.executor;
 
+import org.junit.Test;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -9,14 +11,13 @@ import java.util.stream.IntStream;
 /**
  * @author 愆凡
  */
-public class CachedThreadPoolDemoA {
+public class CachedThreadPoolTest {
 
-	public static void main(String[] args) throws InterruptedException {
-
+	@Test
+	public void test() throws InterruptedException {
 		ExecutorService executorService = Executors.newCachedThreadPool();
 
-		// 0
-		System.out.println(((ThreadPoolExecutor) executorService).getActiveCount());
+		System.out.println(((ThreadPoolExecutor) executorService).getActiveCount()); // 0
 
 		IntStream.range(0, 100).boxed().forEach(i -> executorService.execute(() -> {
 			try {
@@ -28,9 +29,7 @@ public class CachedThreadPoolDemoA {
 		}));
 		TimeUnit.SECONDS.sleep(1);
 
-		// 100
-		System.out.println(((ThreadPoolExecutor) executorService).getActiveCount());
-
+		System.out.println(((ThreadPoolExecutor) executorService).getActiveCount()); // 100
 	}
 
 }
