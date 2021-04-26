@@ -42,6 +42,37 @@ public class CountDownLatchTest {
 		System.err.println(" 阶段完成 ");
 	}
 
+
+	/**
+	 * 多线程 await
+	 */
+	@Test
+	public void otherAwaitTest() throws InterruptedException {
+		final CountDownLatch latch = new CountDownLatch(2);
+
+		startNewThread(latch, 1, "T1");
+		startNewThread(latch, 3, "T2");
+
+		Thread t = new Thread(() -> {
+			try {
+				System.out.println(" t 等待中... ");
+				System.out.println("Befor await() : count = " + latch.getCount());
+				latch.await();
+				System.out.println("After await() : count = " + latch.getCount());
+				System.out.println(" t 等到了 ");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		});
+		t.start();
+
+		System.out.println(" main 等待中... ");
+		latch.await();
+		System.out.println(" main 等到了 ");
+
+		t.join();
+	}
+
 	private void startNewThread(CountDownLatch latch, int sleepSeconds, String threadName) {
 		new Thread(() -> {
 			try {
