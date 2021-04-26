@@ -27,19 +27,17 @@ public class CountDownLatchTest {
 
 		startNewThread(latch, 1, "T1");
 		startNewThread(latch, 3, "T2");
-		startNewThread(latch, 6, "T3");
-		startNewThread(latch, 6, "T4");
 
-		System.err.println(" 等待阶段完成... ");
-		System.err.println("Befor await() : count = " + latch.getCount());
+		System.out.println(" 等待阶段完成... ");
+		System.out.println("Befor await() : count = " + latch.getCount());
 		latch.await();
-		System.err.println("After await() : count = " + latch.getCount());
-		System.err.println(" 阶段完成 ");
+		System.out.println("After await() : count = " + latch.getCount());
+		System.out.println(" 阶段完成 ");
 
-		// latch 是一次性的，所以下面的 await 是无效的。
-		System.err.println(" 等待阶段完成... ");
+		// latch 的 await 对于一个线程来说是一次性的，所以下面的 await 是无效的。（ 可以看下面的多线程 await ）
+		System.out.println(" again 等待阶段完成... ");
 		latch.await();
-		System.err.println(" 阶段完成 ");
+		System.out.println(" again 阶段完成 ");
 	}
 
 
