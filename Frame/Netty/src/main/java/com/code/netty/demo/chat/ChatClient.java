@@ -25,16 +25,16 @@ public class ChatClient {
 	@Test
 	public void clientOne() throws Exception {
 		ChatClient client = new ChatClient();
-		client.setServerHost(ChatServer.serverHost);
-		client.setServerPort(ChatServer.serverPort);
+		client.setServerHost(ChatServer.SERVER_HOST);
+		client.setServerPort(ChatServer.SERVER_PORT);
 		client.run();
 	}
 
 	@Test
 	public void clientTwo() throws Exception {
 		ChatClient client = new ChatClient();
-		client.setServerHost(ChatServer.serverHost);
-		client.setServerPort(ChatServer.serverPort);
+		client.setServerHost(ChatServer.SERVER_HOST);
+		client.setServerPort(ChatServer.SERVER_PORT);
 		client.run();
 	}
 

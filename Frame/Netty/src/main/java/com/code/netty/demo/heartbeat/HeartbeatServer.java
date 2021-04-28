@@ -29,8 +29,8 @@ import java.util.concurrent.TimeUnit;
 @SuppressWarnings("all")
 public class HeartbeatServer {
 	
-	public static final String serverHost = "127.0.0.1";
-	public static final Integer serverPort = 7000;
+	public static final String SERVER_HOST = "127.0.0.1";
+	public static final Integer SERVER_PORT = 7000;
 
 	@Test
 	public void test() throws Exception {
@@ -54,7 +54,7 @@ public class HeartbeatServer {
 					});
 
 			// 启动服务器
-			ChannelFuture channelFuture = serverBootstrap.bind(serverPort).sync();
+			ChannelFuture channelFuture = serverBootstrap.bind(SERVER_PORT).sync();
 
 			// 对关闭通道进行监听
 			channelFuture.channel().closeFuture().sync();

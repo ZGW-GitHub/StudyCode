@@ -34,7 +34,7 @@ public class ClientTest {
 					});
 
 			// 启动客户端去连接服务器端
-			ChannelFuture channelFuture = bootstrap.connect(ServerTest.serverHost, ServerTest.serverPort).sync();
+			ChannelFuture channelFuture = bootstrap.connect(ServerTest.SERVER_HOST, ServerTest.SERVER_PORT).sync();
 
 			System.out.println("Client ok");
 

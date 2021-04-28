@@ -1,6 +1,5 @@
 package com.code.netty.demo.heartbeat;
 
-import com.code.netty.demo.chat.ChatClientHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -10,8 +9,6 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import lombok.Setter;
 import org.junit.Test;
-
-import java.util.Scanner;
 
 /**
  * Netty 群聊系统案例
@@ -40,7 +37,7 @@ public class HeartbeatClient {
 						}
 					});
 
-			ChannelFuture channelFuture = bootstrap.connect(HeartbeatServer.serverHost, HeartbeatServer.serverPort).sync();
+			ChannelFuture channelFuture = bootstrap.connect(HeartbeatServer.SERVER_HOST, HeartbeatServer.SERVER_PORT).sync();
 
 			Channel channel = channelFuture.channel();
 			System.out.println("Netty Chat Client 启动：" + channel.localAddress());

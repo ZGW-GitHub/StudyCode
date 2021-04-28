@@ -23,12 +23,12 @@ public class ChatServer {
 	@Test
 	public void test() throws Exception {
 		ChatServer server = new ChatServer();
-		server.setPort(serverPort);
+		server.setPort(SERVER_PORT);
 		server.run();
 	}
 
-	public static final String serverHost = "127.0.0.1";
-	public static final Integer serverPort = 7000;
+	public static final String SERVER_HOST = "127.0.0.1";
+	public static final Integer SERVER_PORT = 7000;
 
 	private int port; // 监听端口
 

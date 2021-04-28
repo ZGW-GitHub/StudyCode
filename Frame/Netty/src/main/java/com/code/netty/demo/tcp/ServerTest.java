@@ -13,8 +13,8 @@ import org.junit.Test;
  */
 public class ServerTest {
 
-	public static final String serverHost = "127.0.0.1";
-	public static final Integer serverPort = 7000;
+	public static final String SERVER_HOST = "127.0.0.1";
+	public static final Integer SERVER_PORT = 7000;
 
 	@Test
 	public void test() throws InterruptedException {
@@ -46,7 +46,7 @@ public class ServerTest {
 			System.out.println("Server is ready");
 
 			// 启动服务器(并绑定端口), 生成了一个 ChannelFuture 对象
-			ChannelFuture cf = bootstrap.bind(serverPort).sync();
+			ChannelFuture cf = bootstrap.bind(SERVER_PORT).sync();
 
 			// 给 ChannelFuture 注册监听器，监控我们关心的事件
 			cf.addListener((ChannelFutureListener) future -> {
