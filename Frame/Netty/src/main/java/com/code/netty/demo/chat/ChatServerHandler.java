@@ -41,7 +41,6 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<String> {
 		Channel channel = ctx.channel();
 		CHANNEL_GROUP.writeAndFlush(sdf.format(new java.util.Date()) + " [ 客户端 - " + channel.remoteAddress() + " ]：离开了 \n");
 		System.err.println("ChannelGroup.size() = " + CHANNEL_GROUP.size());
-
 	}
 
 	/**
