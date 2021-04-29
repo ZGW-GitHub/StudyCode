@@ -15,13 +15,13 @@ import java.util.concurrent.RecursiveTask;
  */
 public class SumTest {
 
-	private static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool();
+	private final ForkJoinPool forkJoinPool = new ForkJoinPool();
 
 	@Test
 	public void test() throws InterruptedException, ExecutionException {
 		ForkJoinTask<Integer> task = new SumTask(1, 10000);
 
-		FORK_JOIN_POOL.submit(task);
+		forkJoinPool.submit(task);
 
 		System.out.println(task.get());
 	}
