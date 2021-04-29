@@ -1,5 +1,7 @@
 package com.code.thread.ee.lock.utils.ss.forkjoin;
 
+import org.junit.Test;
+
 /**
  * API：
  *
@@ -19,5 +21,10 @@ public class ForkJoinTest {
 	 *
 	 *--------------------------------------------------------------------------------------------------
 	 */
+	
+	@Test
+	public void test() {
+		
+	}
 
 }
