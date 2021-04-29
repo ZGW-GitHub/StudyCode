@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.util.concurrent.*;
 
 /**
+ * {@link FutureTask} 实现了 {@link Future} 和 {@link Runnable} 接口，它既可以当做 Runnable 提交到线程池，又能当做 Future 获取任务的执行情况
+ * 
  * @author 愆凡
  * @date 2020-03-24 14:04
  */
