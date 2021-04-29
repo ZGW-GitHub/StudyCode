@@ -1,5 +1,9 @@
 package com.code.thread.nn.threadpool.executor.threadpoll.executor;
 
+import org.junit.Assert;
+import org.junit.Test;
+import org.springframework.lang.NonNull;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
@@ -12,18 +16,17 @@ import java.util.stream.IntStream;
  *
  * @author 愆凡
  */
-public class D_Executor_Error {
+public class ThreadPoolExecutorTest {
 
-	public static void main(String[] args) throws InterruptedException {
+	private final ExecutorService executorService = Executors.newFixedThreadPool(10, new MyThreadFactory());
 
-		runnableError();
-
-	}
-
-	private static void runnableError() throws InterruptedException {
-
-		ExecutorService executorService = Executors.newFixedThreadPool(10, new MyThreadFactory());
-
+	/**
+	 * 拦截并处理任务执行过程中的异常
+	 *
+	 * @throws InterruptedException 中断异常
+	 */
+	@Test
+	public void exceptionHandlerTest() throws InterruptedException {
 		executorService.execute(() -> {
 			try {
 				TimeUnit.SECONDS.sleep(2);
@@ -35,26 +38,26 @@ public class D_Executor_Error {
 		IntStream.range(0, 10).boxed().forEach(integer -> executorService.execute(() -> System.out.println(1 / 0)));
 
 		executorService.shutdown();
-		executorService.awaitTermination(10, TimeUnit.SECONDS);
-		System.out.println("结束。。。");
+		Assert.assertTrue(executorService.awaitTermination(10, TimeUnit.SECONDS));
 
+		TimeUnit.SECONDS.sleep(5);
 	}
 
 	private static class MyThreadFactory implements ThreadFactory {
-
-		private static final AtomicInteger SEQ = new AtomicInteger();
+		private final AtomicInteger SEQ = new AtomicInteger();
 
 		@Override
-		public Thread newThread(Runnable r) {
-			Thread thread = new Thread(r);
-			thread.setName("MyThread- " + SEQ.getAndIncrement());
+		public Thread newThread(@NonNull Runnable runnable) {
+			Thread thread = new Thread(runnable);
+			thread.setName("MyThread-" + SEQ.getAndIncrement());
+
 			// 设置异常处理程序
 			thread.setUncaughtExceptionHandler((athread, cause) -> {
 				System.out.println("The Thread : " + athread.getName() + " 执行失败！");
 				// 输出堆栈信息
-				cause.printStackTrace();
-				System.out.println("------------------------------------------");
+//				cause.printStackTrace();
 			});
+
 			return thread;
 		}
 	}
