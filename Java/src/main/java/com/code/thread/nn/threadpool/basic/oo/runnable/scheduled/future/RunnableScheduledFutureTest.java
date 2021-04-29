@@ -1,6 +1,6 @@
 package com.code.thread.nn.threadpool.basic.oo.runnable.scheduled.future;
 
-import com.code.thread.nn.threadpool.executor.scheduled.threadpoll.executor.ScheduledThreadPoolExecutorTest;
+import com.code.thread.nn.threadpool.executor.scheduled.threadpool.executor.ScheduledThreadPoolExecutorTest;
 
 import java.util.concurrent.*;
 

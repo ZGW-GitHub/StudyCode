@@ -1,4 +1,4 @@
-package com.code.thread.nn.threadpool.executor.scheduled.threadpoll.executor;
+package com.code.thread.nn.threadpool.executor.scheduled.threadpool.executor;
 
 import org.junit.Test;
 

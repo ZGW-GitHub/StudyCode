@@ -12,11 +12,10 @@ import java.util.stream.IntStream;
  */
 public class SingleThreadPoolTest {
 
+	private final ExecutorService executorService = Executors.newSingleThreadExecutor();
+	
 	@Test
 	public void test() throws InterruptedException {
-
-		ExecutorService executorService = Executors.newSingleThreadExecutor();
-
 		// 不能输出了，因为获取 SingleThreadExecutor 时被包装了，不能强转为 ThreadPoolExecutor
 //        System.out.println(((ThreadPoolExecutor)executorService).getActiveCount()); // 0
 

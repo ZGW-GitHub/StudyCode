@@ -13,10 +13,10 @@ import java.util.stream.IntStream;
  */
 public class CachedThreadPoolTest {
 
+	private final ExecutorService executorService = Executors.newCachedThreadPool();
+
 	@Test
 	public void test() throws InterruptedException {
-		ExecutorService executorService = Executors.newCachedThreadPool();
-
 		System.out.println(((ThreadPoolExecutor) executorService).getActiveCount()); // 0
 
 		IntStream.range(0, 100).boxed().forEach(i -> executorService.execute(() -> {

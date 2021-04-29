@@ -28,10 +28,10 @@ public class FibonacciTest {
 		System.out.println("Fork/join sum: " + result + " in " + (endTime - startTime) + " ms.");
 	}
 
-	static class Fibonacci extends RecursiveTask<Integer> {
+	public static class Fibonacci extends RecursiveTask<Integer> {
 		final int n;
 
-		Fibonacci(int n) {
+		public Fibonacci(int n) {
 			this.n = n;
 		}
 

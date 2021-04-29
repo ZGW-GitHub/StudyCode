@@ -1,4 +1,4 @@
-package com.code.thread.nn.threadpool.executor.threadpoll.executor;
+package com.code.thread.nn.threadpool.executor.threadpool.executor;
 
 import org.junit.Assert;
 import org.junit.Test;
