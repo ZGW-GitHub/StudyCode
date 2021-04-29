@@ -1,5 +1,7 @@
 package com.code.thread.nn.threadpool.executor.forkjoinpool;
 
+import org.junit.Test;
+
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
@@ -9,16 +11,17 @@ import java.util.concurrent.RecursiveTask;
  * @author 愆凡
  * @date 2020/5/21 3:18 下午
  */
-public class DemoB {
+public class FibonacciTest {
 
-	public static void main(String[] args) {
-		ForkJoinPool forkJoinPool = new ForkJoinPool(4); // 最大并发数4
-
+	private static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool(4); // 最大并发数4
+	
+	@Test
+	public void test() {
 		Fibonacci fibonacci = new Fibonacci(20);
 
 		long startTime = System.currentTimeMillis();
 
-		Integer result = forkJoinPool.invoke(fibonacci);
+		Integer result = FORK_JOIN_POOL.invoke(fibonacci);
 
 		long endTime = System.currentTimeMillis();
 
