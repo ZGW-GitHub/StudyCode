@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 /**
  * Netty 群聊系统案例
- * 
+ *
  * @author 愆凡
  * @date 2021/4/19 17:24
  */
@@ -44,39 +44,38 @@ public class ChatClient {
 	public void run() throws Exception {
 		EventLoopGroup group = new NioEventLoopGroup();
 
-		try {
-			Bootstrap bootstrap = new Bootstrap()
-					.group(group)
-					.channel(NioSocketChannel.class)
-					.handler(new ChannelInitializer<SocketChannel>() {
-						@Override
-						protected void initChannel(SocketChannel ch) throws Exception {
-							ChannelPipeline pipeline = ch.pipeline();
-							pipeline.addLast("decoder", new StringDecoder());
-							pipeline.addLast("encoder", new StringEncoder());
-							// 添加业务处理 handler
-							pipeline.addLast(new ChatClientHandler());
-						}
-					});
+		Bootstrap bootstrap = new Bootstrap()
+				.group(group)
+				.channel(NioSocketChannel.class)
+				.handler(new ChannelInitializer<SocketChannel>() {
+					@Override
+					protected void initChannel(SocketChannel ch) throws Exception {
+						ChannelPipeline pipeline = ch.pipeline();
+						pipeline.addLast("decoder", new StringDecoder());
+						pipeline.addLast("encoder", new StringEncoder());
+						// 添加业务处理 handler
+						pipeline.addLast(new ChatClientHandler());
+					}
+				});
 
-			ChannelFuture channelFuture = bootstrap.connect(serverHost, serverPort).sync();
+		ChannelFuture channelFuture = bootstrap.connect(serverHost, serverPort).sync();
 
-			Channel channel = channelFuture.channel();
-			System.out.println("Netty Chat Client 启动：" + channel.localAddress());
+		Channel channel = channelFuture.channel();
+		System.out.println("Netty Chat Client 启动：" + channel.localAddress());
 
-			// 客户端需要输入信息，创建一个扫描器
-			Scanner scanner = new Scanner(System.in);
-			while (scanner.hasNextLine()) {
-				String msg = scanner.nextLine();
-				if (msg.equals("exit")) {
-					break;
-				}
-				// 通过 channel 发送到服务器端
-				channel.writeAndFlush(msg + "\r\n");
+		// 客户端需要输入信息，创建一个扫描器
+		Scanner scanner = new Scanner(System.in);
+		while (scanner.hasNextLine()) {
+			String msg = scanner.nextLine();
+			if (msg.equals("exit")) {
+				group.shutdownGracefully();
+				break;
 			}
-		} finally {
-			group.shutdownGracefully();
+			// 通过 channel 发送到服务器端
+			channel.writeAndFlush(msg + "\r\n");
 		}
+
+		Thread.currentThread().join();
 	}
 
 }

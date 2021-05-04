@@ -1,10 +1,7 @@
 package com.code.netty.demo.heartbeat;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -17,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Netty 心跳检测机制案例<br/><br/>
- * 
+ *
  * Netty 提供的处理空闲状态的处理器：{@link IdleStateHandler}<br/>
  * 1. long readerIdleTime : 表示多长时间没有读，就会发送一个心跳检测包检测是否连接<br/>
  * 2. long writerIdleTime : 表示多长时间没有写，就会发送一个心跳检测包检测是否连接<br/>
@@ -28,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  */
 @SuppressWarnings("all")
 public class HeartbeatServer {
-	
+
 	public static final String SERVER_HOST = "127.0.0.1";
 	public static final Integer SERVER_PORT = 7000;
 
@@ -37,31 +34,31 @@ public class HeartbeatServer {
 		EventLoopGroup bossGroup = new NioEventLoopGroup(1);
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
 
-		try {
-			ServerBootstrap serverBootstrap = new ServerBootstrap()
-					.group(bossGroup, workerGroup)
-					.channel(NioServerSocketChannel.class)
-					.handler(new LoggingHandler(LogLevel.INFO))
-					.childHandler(new ChannelInitializer<SocketChannel>() {
-						@Override
-						protected void initChannel(SocketChannel ch) {
-							ChannelPipeline pipeline = ch.pipeline();
-							// 加入一个 Netty 提供 IdleStateHandler
-							pipeline.addLast(new IdleStateHandler(7000, 7000, 5, TimeUnit.SECONDS));
-							// 加入一个对空闲检测进一步处理的 handler
-							pipeline.addLast(new HeartbeatServerHandler());
-						}
-					});
+		ServerBootstrap serverBootstrap = new ServerBootstrap()
+				.group(bossGroup, workerGroup)
+				.channel(NioServerSocketChannel.class)
+				.handler(new LoggingHandler(LogLevel.INFO))
+				.childHandler(new ChannelInitializer<SocketChannel>() {
+					@Override
+					protected void initChannel(SocketChannel ch) {
+						ChannelPipeline pipeline = ch.pipeline();
+						// 加入一个 Netty 提供 IdleStateHandler
+						pipeline.addLast(new IdleStateHandler(7000, 7000, 5, TimeUnit.SECONDS));
+						// 加入一个对空闲检测进一步处理的 handler
+						pipeline.addLast(new HeartbeatServerHandler());
+					}
+				});
 
-			// 启动服务器
-			ChannelFuture channelFuture = serverBootstrap.bind(SERVER_PORT).sync();
+		// 启动服务器
+		ChannelFuture channelFuture = serverBootstrap.bind(SERVER_PORT).sync();
 
-			// 对关闭通道进行监听
-			channelFuture.channel().closeFuture().sync();
-		} finally {
+		// 对关闭通道进行监听
+		channelFuture.channel().closeFuture().addListener((ChannelFutureListener) cf -> {
 			bossGroup.shutdownGracefully();
 			workerGroup.shutdownGracefully();
-		}
+		});
+
+		Thread.currentThread().join();
 	}
 
 }

@@ -2,6 +2,7 @@ package com.code.netty.demo.tcp;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -20,29 +21,27 @@ public class ClientTest {
 		// 客户端需要一个事件循环组
 		EventLoopGroup group = new NioEventLoopGroup();
 
-		try {
-			// 创建客户端的引导对象
-			Bootstrap bootstrap = new Bootstrap();
-			// 设置相关参数
-			bootstrap.group(group) // 设置线程组
-					.channel(NioSocketChannel.class) // 使用 NioSocketChannel 作为客户端的通道实现
-					.handler(new ChannelInitializer<SocketChannel>() {
-						@Override
-						protected void initChannel(SocketChannel ch) {
-							ch.pipeline().addLast(new NettyClientHandler()); // 为管道设置处理器
-						}
-					});
+		// 创建客户端的引导对象
+		Bootstrap bootstrap = new Bootstrap();
+		// 设置相关参数
+		bootstrap.group(group) // 设置线程组
+				.channel(NioSocketChannel.class) // 使用 NioSocketChannel 作为客户端的通道实现
+				.handler(new ChannelInitializer<SocketChannel>() {
+					@Override
+					protected void initChannel(SocketChannel ch) {
+						ch.pipeline().addLast(new NettyClientHandler()); // 为管道设置处理器
+					}
+				});
 
-			// 启动客户端去连接服务器端
-			ChannelFuture channelFuture = bootstrap.connect(ServerTest.SERVER_HOST, ServerTest.SERVER_PORT).sync();
+		// 启动客户端去连接服务器端
+		ChannelFuture channelFuture = bootstrap.connect(ServerTest.SERVER_HOST, ServerTest.SERVER_PORT).sync();
 
-			System.out.println("Client ok");
+		System.out.println("Client ok");
 
-			// 对关闭通道进行监听
-			channelFuture.channel().closeFuture().sync();
-		} finally {
-			group.shutdownGracefully();
-		}
+		// 对关闭通道进行监听
+		channelFuture.channel().closeFuture().addListener((ChannelFutureListener) cf -> group.shutdownGracefully());
+
+		Thread.currentThread().join();
 	}
 
 }

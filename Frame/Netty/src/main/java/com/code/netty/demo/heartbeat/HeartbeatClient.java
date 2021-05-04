@@ -12,7 +12,7 @@ import org.junit.Test;
 
 /**
  * Netty 群聊系统案例
- * 
+ *
  * @author 愆凡
  * @date 2021/4/19 17:24
  */
@@ -24,29 +24,27 @@ public class HeartbeatClient {
 	public void test() throws Exception {
 		EventLoopGroup group = new NioEventLoopGroup();
 
-		try {
-			Bootstrap bootstrap = new Bootstrap()
-					.group(group)
-					.channel(NioSocketChannel.class)
-					.handler(new ChannelInitializer<SocketChannel>() {
-						@Override
-						protected void initChannel(SocketChannel ch) throws Exception {
-							ChannelPipeline pipeline = ch.pipeline();
-							pipeline.addLast("decoder", new StringDecoder());
-							pipeline.addLast("encoder", new StringEncoder());
-						}
-					});
+		Bootstrap bootstrap = new Bootstrap()
+				.group(group)
+				.channel(NioSocketChannel.class)
+				.handler(new ChannelInitializer<SocketChannel>() {
+					@Override
+					protected void initChannel(SocketChannel ch) throws Exception {
+						ChannelPipeline pipeline = ch.pipeline();
+						pipeline.addLast("decoder", new StringDecoder());
+						pipeline.addLast("encoder", new StringEncoder());
+					}
+				});
 
-			ChannelFuture channelFuture = bootstrap.connect(HeartbeatServer.SERVER_HOST, HeartbeatServer.SERVER_PORT).sync();
+		ChannelFuture channelFuture = bootstrap.connect(HeartbeatServer.SERVER_HOST, HeartbeatServer.SERVER_PORT).sync();
 
-			Channel channel = channelFuture.channel();
-			System.out.println("Netty Chat Client 启动：" + channel.localAddress());
+		Channel channel = channelFuture.channel();
+		System.out.println("Netty Chat Client 启动：" + channel.localAddress());
 
-			// 对关闭通道进行监听
-			channelFuture.channel().closeFuture().sync();
-		} finally {
-			group.shutdownGracefully();
-		}
+		// 对关闭通道进行监听
+		channelFuture.channel().closeFuture().addListener((ChannelFutureListener) cf -> group.shutdownGracefully());
+
+		Thread.currentThread().join();
 	}
 
 }

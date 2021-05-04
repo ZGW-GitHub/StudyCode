@@ -12,7 +12,7 @@ import org.junit.Test;
 
 /**
  * Netty 群聊系统案例
- * 
+ *
  * @author 愆凡
  * @date 2021/4/19 17:19
  */
@@ -41,32 +41,32 @@ public class ChatServer {
 		EventLoopGroup bossGroup = new NioEventLoopGroup(1);
 		EventLoopGroup workerGroup = new NioEventLoopGroup(); // cpu核心数*2
 
-		try {
-			ServerBootstrap bootstrap = new ServerBootstrap()
-					.group(bossGroup, workerGroup)
-					.channel(NioServerSocketChannel.class)
-					.option(ChannelOption.SO_BACKLOG, 128)
-					.childOption(ChannelOption.SO_KEEPALIVE, true)
-					.childHandler(new ChannelInitializer<SocketChannel>() {
-						@Override
-						protected void initChannel(SocketChannel ch) {
-							ChannelPipeline pipeline = ch.pipeline();
-							pipeline.addLast("decoder", new StringDecoder());
-							pipeline.addLast("encoder", new StringEncoder());
-							// 添加业务处理 handler
-							pipeline.addLast(new ChatServerHandler());
-						}
-					});
+		ServerBootstrap bootstrap = new ServerBootstrap()
+				.group(bossGroup, workerGroup)
+				.channel(NioServerSocketChannel.class)
+				.option(ChannelOption.SO_BACKLOG, 128)
+				.childOption(ChannelOption.SO_KEEPALIVE, true)
+				.childHandler(new ChannelInitializer<SocketChannel>() {
+					@Override
+					protected void initChannel(SocketChannel ch) {
+						ChannelPipeline pipeline = ch.pipeline();
+						pipeline.addLast("decoder", new StringDecoder());
+						pipeline.addLast("encoder", new StringEncoder());
+						// 添加业务处理 handler
+						pipeline.addLast(new ChatServerHandler());
+					}
+				});
 
-			System.out.println("Netty Chat Server 启动");
-			ChannelFuture channelFuture = bootstrap.bind(port).sync();
+		System.out.println("Netty Chat Server 启动");
+		ChannelFuture channelFuture = bootstrap.bind(port).sync();
 
-			// 对关闭通道进行监听
-			channelFuture.channel().closeFuture().sync();
-		} finally {
+		// 对关闭通道进行监听
+		channelFuture.channel().closeFuture().addListener((ChannelFutureListener) cf -> {
 			bossGroup.shutdownGracefully();
 			workerGroup.shutdownGracefully();
-		}
+		});
+
+		Thread.currentThread().join();
 	}
 
 }
