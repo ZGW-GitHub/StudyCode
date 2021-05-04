@@ -68,12 +68,11 @@ public class ChatClient {
 			Scanner scanner = new Scanner(System.in);
 			while (scanner.hasNextLine()) {
 				String msg = scanner.nextLine();
-				if (!msg.equals("exit")) {
-					// 通过 channel 发送到服务器端
-					channel.writeAndFlush(msg + "\r\n");
-					continue;
+				if (msg.equals("exit")) {
+					break;
 				}
-				break;
+				// 通过 channel 发送到服务器端
+				channel.writeAndFlush(msg + "\r\n");
 			}
 		} finally {
 			group.shutdownGracefully();
