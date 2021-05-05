@@ -20,14 +20,15 @@ public class SelectorTest {
 	@Test
 	@SuppressWarnings("all")
 	public void test() throws IOException {
-		// 创建 Selector
-		Selector selector = Selector.open();
 
 		// 获取 Channel
 		SocketChannel channel = SocketChannel.open();
+		channel.configureBlocking(false);
+
+		// 创建 Selector
+		Selector selector = Selector.open();
 
 		// 注册 Channel 到 Selector 中
-		channel.configureBlocking(false);
 		SelectionKey selectionKey = channel.register(selector, SelectionKey.OP_READ);
 
 		while (true) {

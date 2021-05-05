@@ -145,7 +145,6 @@ public class SocketChannelTest {
 
 	}
 
-
 	static class Client {
 		private final String USER_NAME;
 		private final SocketChannel channel;
