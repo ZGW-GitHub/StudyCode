@@ -22,14 +22,11 @@ public class ServerTest {
 		EventLoopGroup bossGroup = new NioEventLoopGroup(1);
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
 
-		// 创建服务器端的引导对象
 		ServerBootstrap bootstrap = new ServerBootstrap();
-		// 使用链式编程来配置服务端
-		bootstrap.group(bossGroup, workerGroup) // 设置两个线程组
+		bootstrap.group(bossGroup, workerGroup)
 				.channel(NioServerSocketChannel.class) // 使用 NioSocketChannel 作为服务器的通道实现
 				.option(ChannelOption.SO_BACKLOG, 128) // 设置线程队列的连接个数
 				.childOption(ChannelOption.SO_KEEPALIVE, true) // 设置保持活动连接状态
-				// handler 对应 bossGroup , childHandler 对应 workerGroup
 				.childHandler(new ChannelInitializer<SocketChannel>() { // 创建一个通道初始化对象(匿名对象)
 					// 给 pipeline 设置处理器
 					@Override
@@ -45,14 +42,11 @@ public class ServerTest {
 		System.out.println("Server is ready");
 
 		// 启动服务器(并绑定端口), 生成了一个 ChannelFuture 对象
-		ChannelFuture channelFuture = bootstrap.bind(SERVER_PORT).sync();
-
-		// 给 ChannelFuture 注册监听器，监控我们关心的事件
-		channelFuture.addListener((ChannelFutureListener) future -> {
-			if (channelFuture.isSuccess()) {
-				System.out.println("监听端口 6668 成功");
+		ChannelFuture channelFuture = bootstrap.bind(SERVER_PORT).addListener((ChannelFutureListener) future -> {
+			if (future.isSuccess()) {
+				System.out.println("监听端口 " + SERVER_PORT + " 成功");
 			} else {
-				System.out.println("监听端口 6668 失败");
+				System.out.println("监听端口 " + SERVER_PORT + " 失败");
 			}
 		});
 

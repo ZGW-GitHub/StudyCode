@@ -1,16 +1,16 @@
-package com.code.netty.study.chat;
+package com.code.netty.im;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import lombok.Setter;
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Netty 群聊系统案例
@@ -21,6 +21,8 @@ import java.util.Scanner;
 @Setter
 @SuppressWarnings("all")
 public class ChatClient {
+
+	private static final int MAX_RETRY = 5;
 
 	@Test
 	public void clientOne() throws Exception {
@@ -51,14 +53,12 @@ public class ChatClient {
 					@Override
 					protected void initChannel(SocketChannel ch) throws Exception {
 						ChannelPipeline pipeline = ch.pipeline();
-						pipeline.addLast("decoder", new StringDecoder());
-						pipeline.addLast("encoder", new StringEncoder());
 						// 添加业务处理 handler
 						pipeline.addLast(new ChatClientHandler());
 					}
 				});
 
-		ChannelFuture channelFuture = bootstrap.connect(serverHost, serverPort).sync();
+		ChannelFuture channelFuture = connect(bootstrap, serverHost, serverPort, MAX_RETRY);
 
 		Channel channel = channelFuture.channel();
 		System.out.println("Netty Chat Client 启动：" + channel.localAddress());
@@ -76,6 +76,25 @@ public class ChatClient {
 		}
 
 		Thread.currentThread().join();
+	}
+
+	private ChannelFuture connect(Bootstrap bootstrap, String host, int port, int retry) {
+		return bootstrap.connect(host, port).addListener(future -> {
+			if (future.isSuccess()) {
+				System.out.println("连接成功!");
+			} else if (retry == 0) {
+				System.err.println("重试次数已用完，放弃连接！");
+			} else {
+				// 第几次重连
+				int order = (MAX_RETRY - retry) + 1;
+				// 本次重连的间隔
+				int delay = 1 << order;
+
+				System.err.println(new Date() + ": 连接失败，第" + order + "次重连...");
+
+				bootstrap.config().group().schedule(() -> connect(bootstrap, host, port, retry - 1), delay, TimeUnit.SECONDS);
+			}
+		});
 	}
 
 }
