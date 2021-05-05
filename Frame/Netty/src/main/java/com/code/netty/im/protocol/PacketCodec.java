@@ -4,6 +4,7 @@ import com.code.netty.im.serializer.Serializer;
 import com.code.netty.im.serializer.SerializerAlgorithmEnum;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
+import org.assertj.core.annotations.NonNull;
 
 /**
  * @author 愆凡
@@ -11,13 +12,16 @@ import io.netty.buffer.ByteBufAllocator;
  */
 public class PacketCodec {
 
-	public ByteBuf encode(Packet packet) {
-		return this.encode(packet, null);
+	/**
+	 * 编码
+	 * @param packet 数据包
+	 * @return 编码后的 ByteBuf
+	 */
+	public static ByteBuf encode(Packet packet) {
+		return encode(packet, Serializer.DEFAULT);
 	}
 
-	public ByteBuf encode(Packet packet, Serializer s) {
-		Serializer serializer = getSerializer(s);
-
+	public static ByteBuf encode(Packet packet, @NonNull Serializer serializer) {
 		// 1. 创建 ByteBuf 对象
 		ByteBuf byteBuf = ByteBufAllocator.DEFAULT.ioBuffer();
 
@@ -35,14 +39,14 @@ public class PacketCodec {
 		return byteBuf;
 	}
 
-	private Serializer getSerializer(Serializer serializer) {
-		if (serializer == null) {
-			return Serializer.DEFAULT;
-		}
-		return serializer;
-	}
-
-	public Packet decode(ByteBuf byteBuf) throws RuntimeException {
+	/**
+	 * 解码
+	 *
+	 * @param byteBuf ByteBuf
+	 * @return 数据包
+	 * @throws RuntimeException e
+	 */
+	public static Packet decode(ByteBuf byteBuf) throws RuntimeException {
 		// 跳过 magic number
 		byteBuf.skipBytes(4);
 		// 跳过版本号

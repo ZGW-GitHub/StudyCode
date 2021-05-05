@@ -3,8 +3,6 @@ package com.code.netty.im.protocol;
 import lombok.Data;
 
 /**
- * 协议抽象类
- *
  * @author 愆凡
  * @date 2021/5/5 22:05
  */
