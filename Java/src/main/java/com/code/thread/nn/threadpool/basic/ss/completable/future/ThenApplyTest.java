@@ -11,34 +11,31 @@ import java.util.concurrent.ExecutionException;
  */
 public class ThenApplyTest {
 
-	private CompletableFuture<Integer> completableFuture;
+	public final CompletableFuture<Integer> futureData = CompletableFuture.supplyAsync(RunTest::getData);
+	public final CompletableFuture<Integer> futureException = CompletableFuture.supplyAsync(RunTest::throwException);
 
 	@Test
 	public void unexceptionTest() throws ExecutionException, InterruptedException {
-		completableFuture = CompletableFuture.supplyAsync(RunTest::getData);
-
-		CompletableFuture<Integer> completableFuture1 = completableFuture.thenApply((result) -> {
+		CompletableFuture<Integer> future = futureData.thenApply((result) -> {
 			System.out.println("Result : " + result);
 
 			return result + 100;
 		});
 
-		System.out.println("计算结果：" + completableFuture1.get()); // 200
-		System.out.println("计算结果：" + completableFuture.get()); // 100
+		System.out.println("计算结果：" + future.get()); // 200
+		System.out.println("计算结果：" + futureData.get()); // 100
 	}
 
 	@Test
 	public void exceptionTest() throws ExecutionException, InterruptedException {
-		completableFuture = CompletableFuture.supplyAsync(RunTest::throwException);
-
-		CompletableFuture<Integer> completableFuture1 = completableFuture.thenApply((result) -> {
+		CompletableFuture<Integer> future = futureException.thenApply((result) -> {
 			System.out.println("Result : " + result);
 
 			return result + 100;
 		});
 
-		System.out.println("计算结果：" + completableFuture1.get()); // 异常
-		System.out.println("计算结果：" + completableFuture.get()); // 异常
+		System.out.println("计算结果：" + future.get()); // 异常
+		System.out.println("计算结果：" + futureException.get()); // 异常
 	}
 
 }

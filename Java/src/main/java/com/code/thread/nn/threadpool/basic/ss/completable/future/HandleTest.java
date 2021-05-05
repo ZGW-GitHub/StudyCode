@@ -11,35 +11,32 @@ import java.util.concurrent.ExecutionException;
  */
 public class HandleTest {
 
-	private CompletableFuture<Integer> completableFuture;
+	public final CompletableFuture<Integer> futureData = CompletableFuture.supplyAsync(RunTest::getData);
+	public final CompletableFuture<Integer> futureException = CompletableFuture.supplyAsync(RunTest::throwException);
 
 	@Test
 	public void unexceptionTest() throws ExecutionException, InterruptedException {
-		completableFuture = CompletableFuture.supplyAsync(RunTest::getData);
-
-		CompletableFuture<Integer> completableFuture1 = completableFuture.handle((result, exception) -> {
+		CompletableFuture<Integer> future = futureData.handle((result, exception) -> {
 			System.out.println("Result : " + result);
 			System.out.println("Exception : " + (exception == null ? "无异常" : exception.getClass()));
 			return result + 100;
 		});
 
-		System.out.println("计算结果：" + completableFuture1.get()); // 200
-		System.out.println("计算结果：" + this.completableFuture.get()); // 100
+		System.out.println("计算结果：" + future.get()); // 200
+		System.out.println("计算结果：" + futureData.get()); // 100
 	}
 
 	@Test
 	public void exceptionTest() throws ExecutionException, InterruptedException {
-		completableFuture = CompletableFuture.supplyAsync(RunTest::throwException);
-
-		CompletableFuture<Integer> completableFuture1 = completableFuture.handle((result, exception) -> {
+		CompletableFuture<Integer> future = futureException.handle((result, exception) -> {
 			System.out.println("Result : " + result);
 			System.out.println("Exception : " + (exception == null ? "无异常" : exception.getClass()));
 
 			return result + 100;
 		});
 
-		System.out.println("计算结果：" + completableFuture1.get()); // 异常
-		System.out.println("计算结果：" + completableFuture.get()); // 异常
+		System.out.println("计算结果：" + future.get()); // 异常
+		System.out.println("计算结果：" + futureException.get()); // 异常
 	}
 
 }

@@ -11,35 +11,28 @@ import java.util.concurrent.ExecutionException;
  */
 public class ThenAcceptBothTest {
 
-	private CompletableFuture<Integer> completableFuture1;
-	private CompletableFuture<String> completableFuture2;
+	public final CompletableFuture<Integer> futureData = CompletableFuture.supplyAsync(RunTest::getData);
+	public final CompletableFuture<String> futureStringData = CompletableFuture.supplyAsync(RunTest::getStringData);
+	public final CompletableFuture<Integer> futureException = CompletableFuture.supplyAsync(RunTest::throwException);
 
 	@Test
 	public void unexceptionTest() throws ExecutionException, InterruptedException {
-		completableFuture1 = CompletableFuture.supplyAsync(RunTest::getData);
-		completableFuture2 = CompletableFuture.supplyAsync(RunTest::getStringData);
+		CompletableFuture<Void> completableFuture3 = futureData
+				.thenAcceptBoth(futureStringData, (result1, result2) -> System.out.println("Result : " + result1 + result2));
 
-		CompletableFuture<Void> completableFuture3 = completableFuture1
-				.thenAcceptBoth(completableFuture2,
-						(result1, result2) -> System.out.println("Result : " + result1 + result2));
-
-		System.out.println("计算结果：" + completableFuture1.get()); // 100
-		System.out.println("计算结果：" + completableFuture2.get()); // 100
+		System.out.println("计算结果：" + futureData.get()); // 100
+		System.out.println("计算结果：" + futureStringData.get()); // 100
 		System.out.println("计算结果：" + completableFuture3.get()); // null
 	}
 
 	@Test
 	public void exceptionTest() throws ExecutionException, InterruptedException {
-		completableFuture1 = CompletableFuture.supplyAsync(RunTest::throwException);
-		completableFuture2 = CompletableFuture.supplyAsync(RunTest::getStringData);
-
-		CompletableFuture<Void> completableFuture3 = completableFuture1
-				.thenAcceptBoth(completableFuture2,
-						(result1, result2) -> System.out.println("Result : " + result1 + result2));
+		CompletableFuture<Void> completableFuture3 = futureException
+				.thenAcceptBoth(futureStringData, (result1, result2) -> System.out.println("Result : " + result1 + result2));
 
 		System.out.println("计算结果：" + completableFuture3.get()); // 异常
-		System.out.println("计算结果：" + completableFuture2.get()); // 异常
-		System.out.println("计算结果：" + completableFuture1.get()); // 异常
+		System.out.println("计算结果：" + futureStringData.get()); // 异常
+		System.out.println("计算结果：" + futureException.get()); // 异常
 	}
 
 }
