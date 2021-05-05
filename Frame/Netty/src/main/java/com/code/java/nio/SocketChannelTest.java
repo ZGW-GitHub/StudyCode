@@ -56,13 +56,13 @@ public class SocketChannelTest {
 			try {
 				// 1、创建 ServerSocketChannel
 				serverSocketChannel = ServerSocketChannel.open();
+				serverSocketChannel.bind(new InetSocketAddress(PORT)); // 绑定端口
+				serverSocketChannel.configureBlocking(false); // 设置为非阻塞（因为一个 Channel 要注册到 Selector 中，Channel 必须是非阻塞的）
+
 				// 2、创建 Selector
 				selector = Selector.open();
-				// 3、绑定端口
-				serverSocketChannel.bind(new InetSocketAddress(PORT));
-				// 4、设置为非阻塞（因为一个 Channel 要注册到 Selector 中，Channel 必须是非阻塞的）
-				serverSocketChannel.configureBlocking(false);
-				// 5、将 ServerSocketChannel 注册到 Selector ，并监听新连接事件（ServerSocketChannel 只需要监听新连接事件即可）
+
+				// 3、将 ServerSocketChannel 注册到 Selector ，并监听新连接事件（ServerSocketChannel 只需要监听新连接事件即可）
 				serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -146,16 +146,16 @@ public class SocketChannelTest {
 	}
 
 	static class Client {
-		private final String USER_NAME;
+		private final String userName;
 		private final SocketChannel channel;
 
 		public Client(String name) throws IOException, InterruptedException {
-			USER_NAME = name;
-			InetSocketAddress address = new InetSocketAddress(HOST, PORT);
+			userName = name;
 			// 创建 SocketChannel 用来和服务端通信
 			channel = SocketChannel.open();
 			channel.configureBlocking(false);
 
+			InetSocketAddress address = new InetSocketAddress(HOST, PORT);
 			if (!channel.connect(address)) {
 				while (!channel.finishConnect()) {
 					// 没连接上，可以做些其他事
@@ -173,7 +173,7 @@ public class SocketChannelTest {
 				return;
 			}
 
-			msg = USER_NAME + " 说：" + msg;
+			msg = userName + " 说：" + msg;
 			ByteBuffer buffer = ByteBuffer.wrap(msg.getBytes(StandardCharsets.UTF_8));
 			channel.write(buffer);
 		}
