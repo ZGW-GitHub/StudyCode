@@ -1,10 +1,8 @@
-package com.code.netty.demo.heartbeat;
+package com.code.netty.study.heartbeat;
 
-import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.timeout.IdleStateEvent;
-import io.netty.util.concurrent.EventExecutorGroup;
 
 /**
  * TODO

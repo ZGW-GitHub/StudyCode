@@ -1,4 +1,4 @@
-package com.code.netty.demo.chat;
+package com.code.netty.study.heartbeat;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
@@ -10,8 +10,6 @@ import io.netty.handler.codec.string.StringEncoder;
 import lombok.Setter;
 import org.junit.Test;
 
-import java.util.Scanner;
-
 /**
  * Netty 群聊系统案例
  *
@@ -20,28 +18,10 @@ import java.util.Scanner;
  */
 @Setter
 @SuppressWarnings("all")
-public class ChatClient {
+public class HeartbeatClient {
 
 	@Test
-	public void clientOne() throws Exception {
-		ChatClient client = new ChatClient();
-		client.setServerHost(ChatServer.SERVER_HOST);
-		client.setServerPort(ChatServer.SERVER_PORT);
-		client.run();
-	}
-
-	@Test
-	public void clientTwo() throws Exception {
-		ChatClient client = new ChatClient();
-		client.setServerHost(ChatServer.SERVER_HOST);
-		client.setServerPort(ChatServer.SERVER_PORT);
-		client.run();
-	}
-
-	private String serverHost;
-	private int serverPort;
-
-	public void run() throws Exception {
+	public void test() throws Exception {
 		EventLoopGroup group = new NioEventLoopGroup();
 
 		Bootstrap bootstrap = new Bootstrap()
@@ -53,27 +33,16 @@ public class ChatClient {
 						ChannelPipeline pipeline = ch.pipeline();
 						pipeline.addLast("decoder", new StringDecoder());
 						pipeline.addLast("encoder", new StringEncoder());
-						// 添加业务处理 handler
-						pipeline.addLast(new ChatClientHandler());
 					}
 				});
 
-		ChannelFuture channelFuture = bootstrap.connect(serverHost, serverPort).sync();
+		ChannelFuture channelFuture = bootstrap.connect(HeartbeatServer.SERVER_HOST, HeartbeatServer.SERVER_PORT).sync();
 
 		Channel channel = channelFuture.channel();
 		System.out.println("Netty Chat Client 启动：" + channel.localAddress());
 
-		// 客户端需要输入信息，创建一个扫描器
-		Scanner scanner = new Scanner(System.in);
-		while (scanner.hasNextLine()) {
-			String msg = scanner.nextLine();
-			if (msg.equals("exit")) {
-				group.shutdownGracefully();
-				break;
-			}
-			// 通过 channel 发送到服务器端
-			channel.writeAndFlush(msg + "\r\n");
-		}
+		// 对关闭通道进行监听
+		channelFuture.channel().closeFuture().addListener((ChannelFutureListener) cf -> group.shutdownGracefully());
 
 		Thread.currentThread().join();
 	}
