@@ -18,6 +18,7 @@ public class DemoTest {
 		new Thread(() -> {
 			try {
 				threadLocal.set("one");
+				threadLocal.set("one2");
 				
 				TimeUnit.SECONDS.sleep(5);
 
@@ -41,4 +42,5 @@ public class DemoTest {
 
 		Thread.currentThread().join();
 	}
+
 }
