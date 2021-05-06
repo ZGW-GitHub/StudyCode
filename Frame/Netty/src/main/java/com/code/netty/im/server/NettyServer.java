@@ -1,5 +1,9 @@
 package com.code.netty.im.server;
 
+import com.code.netty.im.codec.PacketDecoder;
+import com.code.netty.im.codec.PacketEncode;
+import com.code.netty.im.server.handler.LoginRequestHandler;
+import com.code.netty.im.server.handler.MessageRequestHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -49,7 +53,10 @@ public class NettyServer {
 					protected void initChannel(SocketChannel ch) {
 						ChannelPipeline pipeline = ch.pipeline();
 						// 添加业务处理 handler
-						pipeline.addLast(new ServerHandler());
+						pipeline.addLast(new PacketDecoder());
+						pipeline.addLast(new LoginRequestHandler());
+						pipeline.addLast(new MessageRequestHandler());
+						pipeline.addLast(new PacketEncode());
 					}
 				});
 

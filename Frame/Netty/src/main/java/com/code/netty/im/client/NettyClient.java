@@ -1,11 +1,13 @@
 package com.code.netty.im.client;
 
-import com.code.netty.im.protocol.PacketCodec;
+import com.code.netty.im.client.handler.LoginResponseHandler;
+import com.code.netty.im.client.handler.MessageResponseHandler;
+import com.code.netty.im.codec.PacketDecoder;
+import com.code.netty.im.codec.PacketEncode;
 import com.code.netty.im.protocol.request.MessageRequestPacket;
 import com.code.netty.im.server.NettyServer;
 import com.code.netty.im.utils.LoginUtil;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
@@ -56,7 +58,10 @@ public class NettyClient {
 					protected void initChannel(SocketChannel ch) throws Exception {
 						ChannelPipeline pipeline = ch.pipeline();
 						// 添加业务处理 handler
-						pipeline.addLast(new ClientHandler());
+						pipeline.addLast(new PacketDecoder());
+						pipeline.addLast(new LoginResponseHandler());
+						pipeline.addLast(new MessageResponseHandler());
+						pipeline.addLast(new PacketEncode());
 					}
 				});
 	}
@@ -97,10 +102,9 @@ public class NettyClient {
 					break;
 				}
 
-				MessageRequestPacket packet = new MessageRequestPacket();
-				packet.setMessage(msg);
-				ByteBuf encode = PacketCodec.encode(channel.alloc(), packet);
-				channel.writeAndFlush(encode);
+				MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
+				messageRequestPacket.setMessage(msg);
+				channel.writeAndFlush(messageRequestPacket);
 			}
 		}
 	}

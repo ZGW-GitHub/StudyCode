@@ -2,7 +2,9 @@ package com.code.netty.im.protocol.command;
 
 import com.code.netty.im.protocol.Packet;
 import com.code.netty.im.protocol.request.LoginRequestPacket;
+import com.code.netty.im.protocol.request.MessageRequestPacket;
 import com.code.netty.im.protocol.response.LoginResponsePacket;
+import com.code.netty.im.protocol.response.MessageResponsePacket;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -25,11 +27,11 @@ public enum CommandEnum {
 	/**
 	 * 消息请求包
 	 */
-	MESSAGE_REQUEST((byte) 3, LoginRequestPacket.class),
+	MESSAGE_REQUEST((byte) 3, MessageRequestPacket.class),
 	/**
 	 * 登录响应包
 	 */
-	MESSAGE_RESPONSE((byte) 4, LoginResponsePacket.class);
+	MESSAGE_RESPONSE((byte) 4, MessageResponsePacket.class);
 
 	private final Byte type;
 	private final Class<? extends Packet> packet;

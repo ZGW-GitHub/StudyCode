@@ -4,7 +4,6 @@ import com.code.netty.im.protocol.command.CommandEnum;
 import com.code.netty.im.serializer.Serializer;
 import com.code.netty.im.serializer.SerializerAlgorithmEnum;
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
 import org.assertj.core.annotations.NonNull;
 
 /**
@@ -18,18 +17,15 @@ public class PacketCodec {
 	 * @param packet 数据包
 	 * @return 编码后的 ByteBuf
 	 */
-	public static ByteBuf encode(ByteBufAllocator byteBufAllocator, Packet packet) {
-		return encode(byteBufAllocator, packet, Serializer.DEFAULT);
+	public static ByteBuf encode(ByteBuf byteBuf, Packet packet) {
+		return encode(byteBuf, packet, Serializer.DEFAULT);
 	}
 
-	public static ByteBuf encode(ByteBufAllocator byteBufAllocator, Packet packet, @NonNull Serializer serializer) {
-		// 1. 创建 ByteBuf 对象
-		ByteBuf byteBuf = byteBufAllocator.ioBuffer();
-
-		// 2. 序列化 Java 对象
+	public static ByteBuf encode(ByteBuf byteBuf, Packet packet, @NonNull Serializer serializer) {
+		// 1. 序列化 Java 对象
 		byte[] bytes = serializer.serialize(packet);
 
-		// 3. 实际编码过程
+		// 2. 实际编码过程
 		byteBuf.writeInt(Packet.MAGIC_NUMBER);
 		byteBuf.writeByte(packet.getVersion());
 		byteBuf.writeByte(serializer.getSerializerAlgorithm());
