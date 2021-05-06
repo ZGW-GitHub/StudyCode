@@ -1,12 +1,10 @@
-package com.code.netty.im;
+package com.code.netty.im.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import lombok.Setter;
 import org.junit.Test;
 
@@ -18,11 +16,11 @@ import org.junit.Test;
  */
 @Setter
 @SuppressWarnings("all")
-public class ChatServer {
+public class NettyServer {
 
 	@Test
 	public void test() throws Exception {
-		ChatServer server = new ChatServer();
+		NettyServer server = new NettyServer();
 		server.setPort(SERVER_PORT);
 		server.run();
 	}
@@ -50,10 +48,8 @@ public class ChatServer {
 					@Override
 					protected void initChannel(SocketChannel ch) {
 						ChannelPipeline pipeline = ch.pipeline();
-						pipeline.addLast("decoder", new StringDecoder());
-						pipeline.addLast("encoder", new StringEncoder());
 						// 添加业务处理 handler
-						pipeline.addLast(new ChatServerHandler());
+						pipeline.addLast(new ServerHandler());
 					}
 				});
 

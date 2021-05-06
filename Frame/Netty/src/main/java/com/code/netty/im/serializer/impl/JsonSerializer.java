@@ -1,6 +1,8 @@
-package com.code.netty.im.serializer;
+package com.code.netty.im.serializer.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.code.netty.im.serializer.Serializer;
+import com.code.netty.im.serializer.SerializerAlgorithmEnum;
 
 /**
  * @author 愆凡

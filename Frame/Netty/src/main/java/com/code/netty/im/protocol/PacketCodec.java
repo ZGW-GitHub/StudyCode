@@ -1,5 +1,6 @@
 package com.code.netty.im.protocol;
 
+import com.code.netty.im.protocol.command.CommandEnum;
 import com.code.netty.im.serializer.Serializer;
 import com.code.netty.im.serializer.SerializerAlgorithmEnum;
 import io.netty.buffer.ByteBuf;
@@ -17,13 +18,13 @@ public class PacketCodec {
 	 * @param packet 数据包
 	 * @return 编码后的 ByteBuf
 	 */
-	public static ByteBuf encode(Packet packet) {
-		return encode(packet, Serializer.DEFAULT);
+	public static ByteBuf encode(ByteBufAllocator byteBufAllocator, Packet packet) {
+		return encode(byteBufAllocator, packet, Serializer.DEFAULT);
 	}
 
-	public static ByteBuf encode(Packet packet, @NonNull Serializer serializer) {
+	public static ByteBuf encode(ByteBufAllocator byteBufAllocator, Packet packet, @NonNull Serializer serializer) {
 		// 1. 创建 ByteBuf 对象
-		ByteBuf byteBuf = ByteBufAllocator.DEFAULT.ioBuffer();
+		ByteBuf byteBuf = byteBufAllocator.ioBuffer();
 
 		// 2. 序列化 Java 对象
 		byte[] bytes = serializer.serialize(packet);

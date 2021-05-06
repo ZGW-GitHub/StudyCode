@@ -1,5 +1,7 @@
-package com.code.netty.im.protocol;
+package com.code.netty.im.protocol.request;
 
+import com.code.netty.im.protocol.Packet;
+import com.code.netty.im.protocol.command.CommandEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,7 +13,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class LoginRequestPacket extends Packet {
 
-	private Integer userId;
+	private String userId;
 
 	private String username;
 

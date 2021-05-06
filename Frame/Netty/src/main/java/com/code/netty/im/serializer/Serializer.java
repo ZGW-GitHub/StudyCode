@@ -1,5 +1,7 @@
 package com.code.netty.im.serializer;
 
+import com.code.netty.im.serializer.impl.JsonSerializer;
+
 /**
  * @author 愆凡
  * @date 2021/5/5 22:09
