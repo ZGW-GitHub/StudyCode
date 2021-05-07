@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutionException;
  * @author 愆凡
  * @date 2020/5/23 10:21 上午
  */
-public class ApiThenComposeTest {
+public class CompletableFutureTest {
 
 	public final CompletableFuture<Integer> futureData = CompletableFuture.supplyAsync(RunTest::getData);
 	public final CompletableFuture<String> futureStringData = CompletableFuture.supplyAsync(RunTest::getStringData);
