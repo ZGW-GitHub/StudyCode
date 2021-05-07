@@ -3,6 +3,7 @@ package com.code.netty.im.server;
 import com.code.netty.im.codec.PacketDecoder;
 import com.code.netty.im.codec.PacketEncode;
 import com.code.netty.im.codec.Spliter;
+import com.code.netty.im.server.handler.AuthHandler;
 import com.code.netty.im.server.handler.LoginRequestHandler;
 import com.code.netty.im.server.handler.MessageRequestHandler;
 import io.netty.bootstrap.ServerBootstrap;
@@ -11,6 +12,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 /**
@@ -19,6 +21,7 @@ import org.junit.Test;
  * @author 愆凡
  * @date 2021/4/19 17:19
  */
+@Slf4j
 @Setter
 @SuppressWarnings("all")
 public class NettyServer {
@@ -56,17 +59,20 @@ public class NettyServer {
 						// 添加业务处理 handler
 						pipeline.addLast(new Spliter());
 						pipeline.addLast(new PacketDecoder());
+						pipeline.addLast(new AuthHandler());
 						pipeline.addLast(new LoginRequestHandler());
 						pipeline.addLast(new MessageRequestHandler());
 						pipeline.addLast(new PacketEncode());
 					}
 				});
 
-		System.out.println("Netty Chat Server 启动");
+		log.info("Netty Server 启动");
 		ChannelFuture channelFuture = bootstrap.bind(port).sync();
 
 		// 对关闭通道进行监听
 		channelFuture.channel().closeFuture().addListener((ChannelFutureListener) cf -> {
+			log.info("Netty Server 关闭");
+
 			bossGroup.shutdownGracefully();
 			workerGroup.shutdownGracefully();
 		});

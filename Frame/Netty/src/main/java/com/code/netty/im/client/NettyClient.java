@@ -7,13 +7,12 @@ import com.code.netty.im.codec.PacketEncode;
 import com.code.netty.im.codec.Spliter;
 import com.code.netty.im.protocol.request.MessageRequestPacket;
 import com.code.netty.im.server.NettyServer;
-import com.code.netty.im.utils.LoginUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.util.Date;
@@ -26,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  * @author 愆凡
  * @date 2021/4/19 17:24
  */
-@Setter
+@Slf4j
 @SuppressWarnings("all")
 public class NettyClient {
 
@@ -73,19 +72,25 @@ public class NettyClient {
 	private void connect(EventLoopGroup group, Bootstrap bootstrap, String host, int port, int retry) {
 		bootstrap.connect(host, port).addListener(future -> {
 			if (future.isSuccess()) {
-				System.err.println("Netty Chat Client 启动成功");
+				log.info("Netty Client 启动成功");
 
 				Channel channel = ((ChannelFuture) future).channel();
 				new Thread(() -> clientSendMsgThread(group, channel)).start();
+
+				channel.closeFuture().addListener((ChannelFutureListener) cf -> {
+					log.info("Netty Client 关闭");
+
+					group.shutdownGracefully();
+				});
 			} else if (retry == 0) {
-				System.err.println("重试次数已用完，放弃连接！");
+				log.error("重试次数已用完，放弃连接！");
 			} else {
 				// 第几次重连
 				int order = (MAX_RETRY - retry) + 1;
 				// 本次重连的间隔
 				int delay = 1 << order;
 
-				System.err.println(new Date() + ": 连接失败，第" + order + "次重连...");
+				log.warn(new Date() + ": 连接失败，第" + order + "次重连...");
 
 				bootstrap.config().group().schedule(() -> connect(group, bootstrap, host, port, retry - 1), delay, TimeUnit.SECONDS);
 			}
@@ -96,20 +101,18 @@ public class NettyClient {
 		// 客户端需要输入信息，创建一个扫描器
 		Scanner scanner = new Scanner(System.in);
 		while (scanner.hasNextLine()) {
-			if (LoginUtil.hasLogin(channel)) {
-				System.out.println("输入消息发送至服务端: ");
+			System.out.println("输入消息发送至服务端: ");
 
-				String msg = scanner.nextLine();
+			String msg = scanner.nextLine();
 
-				if (msg.equals("exit")) {
-					group.shutdownGracefully();
-					break;
-				}
-
-				MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
-				messageRequestPacket.setMessage(msg);
-				channel.writeAndFlush(messageRequestPacket);
+			if (msg.equals("exit")) {
+				group.shutdownGracefully();
+				break;
 			}
+
+			MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
+			messageRequestPacket.setMessage(msg);
+			channel.writeAndFlush(messageRequestPacket);
 		}
 	}
 

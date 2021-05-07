@@ -13,8 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Spliter extends LengthFieldBasedFrameDecoder {
 
-	private static final int LENGTH_FIELD_OFFSET = 7;
-	private static final int LENGTH_FIELD_LENGTH = 4;
+	public static final int LENGTH_FIELD_OFFSET = 7;
+	public static final int LENGTH_FIELD_LENGTH = 4;
 
 	public Spliter() {
 		super(Integer.MAX_VALUE, LENGTH_FIELD_OFFSET, LENGTH_FIELD_LENGTH);
@@ -24,7 +24,7 @@ public class Spliter extends LengthFieldBasedFrameDecoder {
 	protected Object decode(ChannelHandlerContext ctx, ByteBuf in) throws Exception {
 		// 屏蔽非本协议的客户端
 		if (in.getInt(in.readerIndex()) != Packet.MAGIC_NUMBER) {
-			log.warn("非本协议的数据包，关闭 channel");
+			log.error("非本协议的数据包，关闭 channel");
 
 			ctx.channel().close();
 			return null;
