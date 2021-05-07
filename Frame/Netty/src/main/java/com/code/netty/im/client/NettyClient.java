@@ -4,6 +4,7 @@ import com.code.netty.im.client.handler.LoginResponseHandler;
 import com.code.netty.im.client.handler.MessageResponseHandler;
 import com.code.netty.im.codec.PacketDecoder;
 import com.code.netty.im.codec.PacketEncode;
+import com.code.netty.im.codec.Spliter;
 import com.code.netty.im.protocol.request.MessageRequestPacket;
 import com.code.netty.im.server.NettyServer;
 import com.code.netty.im.utils.LoginUtil;
@@ -36,12 +37,14 @@ public class NettyClient {
 	@Test
 	public void clientOne() throws Exception {
 		connect(group, bootstrap, NettyServer.SERVER_HOST, NettyServer.SERVER_PORT, MAX_RETRY);
+
 		Thread.currentThread().join();
 	}
 
 	@Test
 	public void clientTwo() throws Exception {
 		connect(group, bootstrap, NettyServer.SERVER_HOST, NettyServer.SERVER_PORT, MAX_RETRY);
+
 		Thread.currentThread().join();
 	}
 
@@ -58,6 +61,7 @@ public class NettyClient {
 					protected void initChannel(SocketChannel ch) throws Exception {
 						ChannelPipeline pipeline = ch.pipeline();
 						// 添加业务处理 handler
+						pipeline.addLast(new Spliter());
 						pipeline.addLast(new PacketDecoder());
 						pipeline.addLast(new LoginResponseHandler());
 						pipeline.addLast(new MessageResponseHandler());

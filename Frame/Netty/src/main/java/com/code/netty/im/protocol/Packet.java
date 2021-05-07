@@ -12,7 +12,7 @@ public abstract class Packet {
 	/**
 	 * 协议魔数
 	 */
-	protected static final int MAGIC_NUMBER = 0x12345678;
+	public static final int MAGIC_NUMBER = 0x12345678;
 
 	/**
 	 * 协议版本

@@ -17,11 +17,11 @@ public class PacketCodec {
 	 * @param packet 数据包
 	 * @return 编码后的 ByteBuf
 	 */
-	public static ByteBuf encode(ByteBuf byteBuf, Packet packet) {
-		return encode(byteBuf, packet, Serializer.DEFAULT);
+	public static void encode(ByteBuf byteBuf, Packet packet) {
+		encode(byteBuf, packet, Serializer.DEFAULT);
 	}
 
-	public static ByteBuf encode(ByteBuf byteBuf, Packet packet, @NonNull Serializer serializer) {
+	public static void encode(ByteBuf byteBuf, Packet packet, @NonNull Serializer serializer) {
 		// 1. 序列化 Java 对象
 		byte[] bytes = serializer.serialize(packet);
 
@@ -32,8 +32,6 @@ public class PacketCodec {
 		byteBuf.writeByte(packet.getCommand());
 		byteBuf.writeInt(bytes.length);
 		byteBuf.writeBytes(bytes);
-
-		return byteBuf;
 	}
 
 	/**
