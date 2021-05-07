@@ -15,6 +15,50 @@ public class ApiThenComposeTest {
 	public final CompletableFuture<String> futureStringData = CompletableFuture.supplyAsync(RunTest::getStringData);
 	public final CompletableFuture<Integer> futureException = CompletableFuture.supplyAsync(RunTest::throwException);
 
+	/**
+	 * {@link CompletableFuture#whenComplete} 对 CompletableFuture 的结果进行消费
+	 */
+	@Test
+	public void whenCompleteTestOne() throws ExecutionException, InterruptedException {
+//		CompletableFuture<Integer> future = futureException.whenComplete((result, exception) -> {
+		CompletableFuture<Integer> future = futureData.whenComplete((result, exception) -> {
+			System.out.println("Result : " + result);
+			System.out.println("Exception : " + (exception == null ? "无异常" : exception.getClass()));
+		}).exceptionally(exception -> {
+			System.out.println("进行异常的处理...");
+			return 6;
+		});
+
+		System.out.println(futureData.get()); // 100
+		System.out.println(future.get()); // 100 、6
+	}
+
+	@Test
+	public void whenCompleteTestTwo() throws ExecutionException, InterruptedException {
+		CompletableFuture<Integer> future1 = futureException.whenComplete((result, exception) -> {
+			System.out.println("Result : " + result);
+			System.out.println("Exception : " + (exception == null ? "无异常" : exception.getClass()));
+		});
+
+		CompletableFuture<Integer> future2 = future1.exceptionally(exception -> {
+			System.out.println("进行异常的处理...");
+			return 6;
+		});
+
+		System.out.println(future2.get()); // 6
+	}
+
+	@Test
+	public void thenApplyTest() throws ExecutionException, InterruptedException {
+		CompletableFuture<Integer> future = futureData.thenApply((result) -> {
+			System.out.println("执行到 handle 了，result : " + result);
+			return result + 100;
+		});
+
+		System.out.println("计算结果：" + future.get()); // 200
+		System.out.println("计算结果：" + futureData.get()); // 100
+	}
+
 	@Test
 	public void handleTest() throws ExecutionException, InterruptedException {
 		CompletableFuture<Integer> future = futureData.handle((result, exception) -> {
@@ -26,18 +70,7 @@ public class ApiThenComposeTest {
 		System.out.println("计算结果：" + future.get()); // 200
 		System.out.println("计算结果：" + futureData.get()); // 100
 	}
-	
-	@Test
-	public void thenApplyTest() throws ExecutionException, InterruptedException {
-		CompletableFuture<Integer> future = futureData.thenApply((result) -> {
-			System.out.println("执行到 handle 了，result : " + result);
-			return result + 100;
-		});
 
-		System.out.println("计算结果：" + future.get()); // 200
-		System.out.println("计算结果：" + futureData.get()); // 100
-	}
-	
 	@Test
 	public void thenComposeTest() throws ExecutionException, InterruptedException {
 		CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> 100);
@@ -77,34 +110,4 @@ public class ApiThenComposeTest {
 		System.out.println("计算结果：" + completableFuture3.get()); // null
 	}
 
-	@Test
-	public void whenCompleteTestOne() throws ExecutionException, InterruptedException {
-//		CompletableFuture<Integer> future = futureException.whenComplete((result, exception) -> {
-		CompletableFuture<Integer> future = futureData.whenComplete((result, exception) -> {
-			System.out.println("Result : " + result);
-			System.out.println("Exception : " + (exception == null ? "无异常" : exception.getClass()));
-		}).exceptionally(exception -> {
-			System.out.println("进行异常的处理...");
-			return 6;
-		});
-
-		System.out.println(futureData.get()); // 100
-		System.out.println(future.get()); // 100 、6
-	}
-
-	@Test
-	public void whenCompleteTestTwo() throws ExecutionException, InterruptedException {
-		CompletableFuture<Integer> future1 = futureException.whenComplete((result, exception) -> {
-			System.out.println("Result : " + result);
-			System.out.println("Exception : " + (exception == null ? "无异常" : exception.getClass()));
-		});
-
-		CompletableFuture<Integer> future2 = future1.exceptionally(exception -> {
-			System.out.println("进行异常的处理...");
-			return 6;
-		});
-
-		System.out.println(future2.get()); // 6
-	}
-	
 }
