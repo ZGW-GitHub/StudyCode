@@ -13,9 +13,9 @@ import lombok.Getter;
 public enum AttributeEnum {
 
 	/**
-	 * 登录状态标识
+	 * 用户登录信息
 	 */
-	LOGIN_FLAG(AttributeKey.newInstance("login"));
+	SESSION(AttributeKey.newInstance("session"));
 
 	private final AttributeKey<Object> attributeKey;
 

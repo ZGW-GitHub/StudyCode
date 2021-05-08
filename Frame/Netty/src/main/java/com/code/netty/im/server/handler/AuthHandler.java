@@ -1,7 +1,7 @@
 package com.code.netty.im.server.handler;
 
 import com.code.netty.im.protocol.request.LoginRequestPacket;
-import com.code.netty.im.utils.LoginUtil;
+import com.code.netty.im.server.session.SessionUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ public class AuthHandler extends SimpleChannelInboundHandler<Object> {
 		if (msg instanceof LoginRequestPacket) {
 			ctx.fireChannelRead(msg);
 		} else {
-			if (!LoginUtil.hasLogin(ctx.channel())) {
+			if (!SessionUtil.hasLogin(ctx.channel())) {
 				log.debug("用户没有登录，直接关闭连接!");
 
 				ctx.channel().close();

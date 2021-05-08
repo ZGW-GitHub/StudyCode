@@ -37,7 +37,7 @@ public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRespo
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, LoginResponsePacket loginResponsePacket) {
 		if (loginResponsePacket.isSuccess()) {
-			log.info(new Date() + ": 客户端登录成功");
+			log.info(new Date() + ": 客户端登录成功，分配的 userId ：" + loginResponsePacket.getUserId());
 		} else {
 			log.warn(new Date() + ": 客户端登录失败，原因：" + loginResponsePacket.getReason());
 		}
