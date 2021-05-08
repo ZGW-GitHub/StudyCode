@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Session {
 
-	private String userId;
+	private String userid;
 	private String userName;
 	
 }

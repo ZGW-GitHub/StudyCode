@@ -5,8 +5,10 @@ import com.code.netty.im.client.handler.MessageResponseHandler;
 import com.code.netty.im.codec.PacketDecoder;
 import com.code.netty.im.codec.PacketEncode;
 import com.code.netty.im.codec.Spliter;
+import com.code.netty.im.protocol.request.LoginRequestPacket;
 import com.code.netty.im.protocol.request.MessageRequestPacket;
 import com.code.netty.im.server.NettyServer;
+import com.code.netty.im.server.session.SessionUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -98,21 +100,36 @@ public class NettyClient {
 	}
 
 	private void clientSendMsgThread(EventLoopGroup group, Channel channel) {
-		// 客户端需要输入信息，创建一个扫描器
 		Scanner scanner = new Scanner(System.in);
-		while (scanner.hasNextLine()) {
-			System.out.println("输入消息发送至服务端: ");
+		LoginRequestPacket loginRequestPacket = new LoginRequestPacket();
+		while (!Thread.interrupted()) {
+			if (!SessionUtil.hasLogin(channel)) {
+				System.out.print("输入用户名登录: ");
+				String username = scanner.nextLine();
 
-			String msg = scanner.nextLine();
+				loginRequestPacket.setUsername(username);
+				loginRequestPacket.setPassword("pass");
 
-			if (msg.equals("exit")) {
-				group.shutdownGracefully();
-				break;
+				channel.writeAndFlush(loginRequestPacket);
+				waitForLoginResponse();
+			} else {
+				String msg = scanner.nextLine();
+				if (!msg.contains(":")) {
+					System.err.println("消息格式不正确");
+					continue;
+				}
+				String[] msgs = msg.split(":");
+
+				channel.writeAndFlush(new MessageRequestPacket(msgs[0], msgs[1]));
 			}
+		}
+	}
 
-			MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
-			messageRequestPacket.setMessage(msg);
-			channel.writeAndFlush(messageRequestPacket);
+	private void waitForLoginResponse() {
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 
