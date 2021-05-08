@@ -20,14 +20,19 @@ public class MessageRequestHandler extends SimpleChannelInboundHandler<MessageRe
 	protected void channelRead0(ChannelHandlerContext ctx, MessageRequestPacket messageRequestPacket) {
 		// 获取消息发送方的会话信息
 		Session session = SessionUtil.getSession(ctx.channel());
+		if (session.getUserid().equals(messageRequestPacket.getToUserid())) {
+			log.warn("不允许发送消息给自己！");
+			return;
+		}
+
 		System.err.println("收到[" + session.getUserid() + "]发给[" + messageRequestPacket.getToUserid() + "]的消息: " + messageRequestPacket.getMessage());
-		
+
 		// 组装 Response
 		MessageResponsePacket messageResponsePacket = new MessageResponsePacket();
 		messageResponsePacket.setFromUserid(session.getUserid());
 		messageResponsePacket.setFromUserName(session.getUserName());
 		messageResponsePacket.setMessage(messageRequestPacket.getMessage());
-		
+
 		// 获取消息接收方的 Channel
 		Channel toUserChannel = SessionUtil.getChannelByUserid(messageRequestPacket.getToUserid());
 
@@ -35,7 +40,7 @@ public class MessageRequestHandler extends SimpleChannelInboundHandler<MessageRe
 		if (toUserChannel != null && SessionUtil.hasLogin(toUserChannel)) {
 			toUserChannel.writeAndFlush(messageResponsePacket);
 		} else {
-			System.err.println("[" + messageRequestPacket.getToUserid() + "] 不在线，发送失败!");
+			System.err.println("[" + messageRequestPacket.getToUserid() + "] 不在线，发送失败！");
 		} 
 	}
 

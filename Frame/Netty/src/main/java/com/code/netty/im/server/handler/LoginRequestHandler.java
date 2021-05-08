@@ -25,7 +25,7 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
 
 		// 登录校验
 		if (validPassword(loginRequestPacket)) {
-			log.info("[" + loginRequestPacket.getUsername() + "]登录成功!");
+			log.info("[" + loginRequestPacket.getUsername() + "]登录成功！");
 
 			// 为用户创建会话信息
 			Session session = new Session(genderUserid(), loginRequestPacket.getUsername());
@@ -36,7 +36,7 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
 			loginResponsePacket.setSuccess(true);
 			loginResponsePacket.setUserid(session.getUserid());
 		} else {
-			log.info(new Date() + ": 登录失败!");
+			log.info(new Date() + ": 登录失败！");
 
 			loginResponsePacket.setSuccess(false);
 			loginResponsePacket.setReason("账号密码校验失败");

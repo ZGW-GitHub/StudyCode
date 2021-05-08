@@ -17,17 +17,18 @@ public class AuthHandler extends SimpleChannelInboundHandler<Object> {
 	protected void channelRead0(ChannelHandlerContext ctx, Object msg) {
 		if (msg instanceof LoginRequestPacket) {
 			ctx.fireChannelRead(msg);
+			return;
+		}
+
+		if (!SessionUtil.hasLogin(ctx.channel())) {
+			log.debug("用户没有登录，直接关闭连接！");
+
+			ctx.channel().close();
 		} else {
-			if (!SessionUtil.hasLogin(ctx.channel())) {
-				log.debug("用户没有登录，直接关闭连接!");
+			log.debug("用户已登录，将 AuthHandler 从 Handler 链中移除！");
 
-				ctx.channel().close();
-			} else {
-				log.debug("用户已登录，将 AuthHandler 从 Handler 链中移除!");
-
-				ctx.pipeline().remove(this);
-				ctx.fireChannelRead(msg);
-			}
+			ctx.pipeline().remove(this);
+			ctx.fireChannelRead(msg);
 		}
 	}
 

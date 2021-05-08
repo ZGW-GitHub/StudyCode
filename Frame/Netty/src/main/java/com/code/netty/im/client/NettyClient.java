@@ -114,11 +114,11 @@ public class NettyClient {
 				waitForLoginResponse();
 			} else {
 				String msg = scanner.nextLine();
-				if (!msg.contains(":")) {
+				if (!msg.contains("：")) {
 					System.err.println("消息格式不正确");
 					continue;
 				}
-				String[] msgs = msg.split(":");
+				String[] msgs = msg.split("：");
 
 				channel.writeAndFlush(new MessageRequestPacket(msgs[0], msgs[1]));
 			}
