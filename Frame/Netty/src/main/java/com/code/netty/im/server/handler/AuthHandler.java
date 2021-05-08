@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2021/5/7 21:48
  */
 @Slf4j
-public class AuthHandler extends SimpleChannelInboundHandler {
+public class AuthHandler extends SimpleChannelInboundHandler<Object> {
 
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, Object msg) {
