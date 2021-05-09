@@ -15,6 +15,8 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.net.InetSocketAddress;
+
 /**
  * Netty 群聊系统案例
  *
@@ -28,15 +30,11 @@ public class NettyServer {
 
 	@Test
 	public void test() throws Exception {
-		NettyServer server = new NettyServer();
-		server.setPort(SERVER_PORT);
-		server.run();
+		new NettyServer().run();
 	}
 
 	public static final String SERVER_HOST = "127.0.0.1";
 	public static final Integer SERVER_PORT = 7000;
-
-	private int port; // 监听端口
 
 	/**
 	 * 编写 run 方法，处理客户端的请求
@@ -49,6 +47,7 @@ public class NettyServer {
 
 		ServerBootstrap bootstrap = new ServerBootstrap()
 				.group(bossGroup, workerGroup)
+				.localAddress(new InetSocketAddress(SERVER_PORT))
 				.channel(NioServerSocketChannel.class)
 				.option(ChannelOption.SO_BACKLOG, 128)
 				.childOption(ChannelOption.SO_KEEPALIVE, true)
@@ -66,8 +65,7 @@ public class NettyServer {
 					}
 				});
 
-		log.info("Netty Server 启动");
-		ChannelFuture channelFuture = bootstrap.bind(port).sync();
+		ChannelFuture channelFuture = bootstrap.bind().sync();
 
 		// 对关闭通道进行监听
 		channelFuture.channel().closeFuture().addListener((ChannelFutureListener) cf -> {
@@ -77,6 +75,7 @@ public class NettyServer {
 			workerGroup.shutdownGracefully();
 		});
 
+		log.info("Netty Server 启动");
 		Thread.currentThread().join();
 	}
 

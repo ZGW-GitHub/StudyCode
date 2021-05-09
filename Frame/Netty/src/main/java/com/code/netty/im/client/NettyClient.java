@@ -17,6 +17,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.net.InetSocketAddress;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -37,14 +38,14 @@ public class NettyClient {
 
 	@Test
 	public void clientOne() throws Exception {
-		connect(group, bootstrap, NettyServer.SERVER_HOST, NettyServer.SERVER_PORT, MAX_RETRY);
+		connect(group, bootstrap, MAX_RETRY);
 
 		Thread.currentThread().join();
 	}
 
 	@Test
 	public void clientTwo() throws Exception {
-		connect(group, bootstrap, NettyServer.SERVER_HOST, NettyServer.SERVER_PORT, MAX_RETRY);
+		connect(group, bootstrap, MAX_RETRY);
 
 		Thread.currentThread().join();
 	}
@@ -56,6 +57,7 @@ public class NettyClient {
 		group = new NioEventLoopGroup();
 		bootstrap = new Bootstrap()
 				.group(group)
+				.remoteAddress(new InetSocketAddress(NettyServer.SERVER_HOST, NettyServer.SERVER_PORT))
 				.channel(NioSocketChannel.class)
 				.handler(new ChannelInitializer<SocketChannel>() {
 					@Override
@@ -71,8 +73,8 @@ public class NettyClient {
 				});
 	}
 
-	private void connect(EventLoopGroup group, Bootstrap bootstrap, String host, int port, int retry) {
-		bootstrap.connect(host, port).addListener(future -> {
+	private void connect(EventLoopGroup group, Bootstrap bootstrap, int retry) {
+		bootstrap.connect().addListener(future -> {
 			if (future.isSuccess()) {
 				log.info("Netty Client 启动成功");
 
@@ -94,7 +96,7 @@ public class NettyClient {
 
 				log.warn(new Date() + ": 连接失败，第" + order + "次重连...");
 
-				bootstrap.config().group().schedule(() -> connect(group, bootstrap, host, port, retry - 1), delay, TimeUnit.SECONDS);
+				bootstrap.config().group().schedule(() -> connect(group, bootstrap, retry - 1), delay, TimeUnit.SECONDS);
 			}
 		});
 	}
