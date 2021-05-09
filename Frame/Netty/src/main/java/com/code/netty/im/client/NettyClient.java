@@ -32,23 +32,21 @@ import java.util.concurrent.TimeUnit;
 @SuppressWarnings("all")
 public class NettyClient {
 
-	private static final NettyClient client = new NettyClient();
-
-	private static final int MAX_RETRY = 5;
-
 	@Test
 	public void clientOne() throws Exception {
-		connect(group, bootstrap, MAX_RETRY);
+		connect(group, bootstrap);
 
 		Thread.currentThread().join();
 	}
 
 	@Test
 	public void clientTwo() throws Exception {
-		connect(group, bootstrap, MAX_RETRY);
+		connect(group, bootstrap);
 
 		Thread.currentThread().join();
 	}
+
+	private static final NettyClient client = new NettyClient();
 
 	private final EventLoopGroup group;
 	private final Bootstrap bootstrap;
@@ -73,7 +71,13 @@ public class NettyClient {
 				});
 	}
 
-	private void connect(EventLoopGroup group, Bootstrap bootstrap, int retry) {
+	private final int maxRetry = 5;
+
+	private void connect(EventLoopGroup group, Bootstrap bootstrap) {
+		connect(group, bootstrap, 1);
+	}
+
+	private void connect(EventLoopGroup group, Bootstrap bootstrap, Integer retry) {
 		bootstrap.connect().addListener(future -> {
 			if (future.isSuccess()) {
 				log.info("Netty Client 启动成功");
@@ -86,17 +90,15 @@ public class NettyClient {
 
 					group.shutdownGracefully();
 				});
-			} else if (retry == 0) {
+			} else if (retry == maxRetry) {
 				log.error("重试次数已用完，放弃连接！");
 			} else {
-				// 第几次重连
-				int order = (MAX_RETRY - retry) + 1;
 				// 本次重连的间隔
-				int delay = 1 << order;
+				int delay = 1 << retry;
 
-				log.warn(new Date() + ": 连接失败，第" + order + "次重连...");
+				log.warn(new Date() + ": 连接失败，第" + retry + "次重连...");
 
-				bootstrap.config().group().schedule(() -> connect(group, bootstrap, retry - 1), delay, TimeUnit.SECONDS);
+				bootstrap.config().group().schedule(() -> connect(group, bootstrap, retry + 1), delay, TimeUnit.SECONDS);
 			}
 		});
 	}
