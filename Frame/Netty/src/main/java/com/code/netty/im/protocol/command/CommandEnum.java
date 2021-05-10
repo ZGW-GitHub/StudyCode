@@ -1,6 +1,7 @@
 package com.code.netty.im.protocol.command;
 
 import com.code.netty.im.protocol.Packet;
+import com.code.netty.im.protocol.request.CreateGroupRequestPacket;
 import com.code.netty.im.protocol.request.LoginRequestPacket;
 import com.code.netty.im.protocol.request.MessageRequestPacket;
 import com.code.netty.im.protocol.response.LoginResponsePacket;
@@ -31,7 +32,15 @@ public enum CommandEnum {
 	/**
 	 * 登录响应包
 	 */
-	MESSAGE_RESPONSE((byte) 4, MessageResponsePacket.class);
+	MESSAGE_RESPONSE((byte) 4, MessageResponsePacket.class),
+	/**
+	 * 创建群聊请求包
+	 */
+	CREATE_GROUP_REQUEST((byte) 5, CreateGroupRequestPacket.class),
+	/**
+	 * 创建群聊响应包
+	 */
+	CREATE_GROUP_RESPONSE((byte) 6, MessageResponsePacket.class);
 
 	private final Byte type;
 	private final Class<? extends Packet> packet;

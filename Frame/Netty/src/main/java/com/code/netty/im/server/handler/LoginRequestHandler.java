@@ -9,8 +9,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Date;
-
 /**
  * @author 愆凡
  * @date 2021/5/6 22:46
@@ -36,7 +34,7 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
 			loginResponsePacket.setSuccess(true);
 			loginResponsePacket.setUserid(session.getUserid());
 		} else {
-			log.info(new Date() + ": 登录失败！");
+			log.info("登录失败！");
 
 			loginResponsePacket.setSuccess(false);
 			loginResponsePacket.setReason("账号密码校验失败");
