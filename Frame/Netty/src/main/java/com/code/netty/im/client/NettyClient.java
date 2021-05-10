@@ -1,10 +1,12 @@
 package com.code.netty.im.client;
 
+import com.code.netty.im.client.handler.CreateGroupResponseHandler;
 import com.code.netty.im.client.handler.LoginResponseHandler;
 import com.code.netty.im.client.handler.MessageResponseHandler;
 import com.code.netty.im.codec.PacketDecoder;
 import com.code.netty.im.codec.PacketEncode;
 import com.code.netty.im.codec.Spliter;
+import com.code.netty.im.protocol.request.CreateGroupRequestPacket;
 import com.code.netty.im.protocol.request.LoginRequestPacket;
 import com.code.netty.im.protocol.request.MessageRequestPacket;
 import com.code.netty.im.server.NettyServer;
@@ -21,6 +23,8 @@ import java.net.InetSocketAddress;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Netty 群聊系统案例
@@ -66,6 +70,7 @@ public class NettyClient {
 						pipeline.addLast(new PacketDecoder());
 						pipeline.addLast(new LoginResponseHandler());
 						pipeline.addLast(new MessageResponseHandler());
+						pipeline.addLast(new CreateGroupResponseHandler());
 						pipeline.addLast(new PacketEncode());
 					}
 				});
@@ -122,9 +127,19 @@ public class NettyClient {
 					System.err.println("消息格式不正确");
 					continue;
 				}
-				String[] msgs = msg.split("：");
 
-				channel.writeAndFlush(new MessageRequestPacket(msgs[0], msgs[1]));
+				String[] msgs = msg.split("：");
+				if (!msg.contains("createGroup")) {
+					channel.writeAndFlush(new MessageRequestPacket(msgs[0], msgs[1]));
+				} else {
+					String[] userids = msgs[1].split("、");
+					if (userids.length == 0) {
+						System.err.println("用户列表为空");
+						continue;
+					}
+					
+					channel.writeAndFlush(new CreateGroupRequestPacket(Stream.of(userids).collect(Collectors.toList())));
+				}
 			}
 		}
 	}

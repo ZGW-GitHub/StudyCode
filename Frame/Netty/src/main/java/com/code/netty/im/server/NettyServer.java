@@ -4,6 +4,7 @@ import com.code.netty.im.codec.PacketDecoder;
 import com.code.netty.im.codec.PacketEncode;
 import com.code.netty.im.codec.Spliter;
 import com.code.netty.im.server.handler.AuthHandler;
+import com.code.netty.im.server.handler.CreateGroupRequestHandler;
 import com.code.netty.im.server.handler.LoginRequestHandler;
 import com.code.netty.im.server.handler.MessageRequestHandler;
 import io.netty.bootstrap.ServerBootstrap;
@@ -61,6 +62,7 @@ public class NettyServer {
 						pipeline.addLast(new AuthHandler());
 						pipeline.addLast(new LoginRequestHandler());
 						pipeline.addLast(new MessageRequestHandler());
+						pipeline.addLast(new CreateGroupRequestHandler());
 						pipeline.addLast(new PacketEncode());
 					}
 				});

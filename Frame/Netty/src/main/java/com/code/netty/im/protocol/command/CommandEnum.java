@@ -4,6 +4,7 @@ import com.code.netty.im.protocol.Packet;
 import com.code.netty.im.protocol.request.CreateGroupRequestPacket;
 import com.code.netty.im.protocol.request.LoginRequestPacket;
 import com.code.netty.im.protocol.request.MessageRequestPacket;
+import com.code.netty.im.protocol.response.CreateGroupResponsePacket;
 import com.code.netty.im.protocol.response.LoginResponsePacket;
 import com.code.netty.im.protocol.response.MessageResponsePacket;
 import lombok.AllArgsConstructor;
@@ -40,7 +41,7 @@ public enum CommandEnum {
 	/**
 	 * 创建群聊响应包
 	 */
-	CREATE_GROUP_RESPONSE((byte) 6, MessageResponsePacket.class);
+	CREATE_GROUP_RESPONSE((byte) 6, CreateGroupResponsePacket.class);
 
 	private final Byte type;
 	private final Class<? extends Packet> packet;
