@@ -26,6 +26,6 @@ public abstract class Packet {
 	 *
 	 * @return byte
 	 */
-	public abstract Byte getCommand();
+	public abstract Byte getType();
 
 }

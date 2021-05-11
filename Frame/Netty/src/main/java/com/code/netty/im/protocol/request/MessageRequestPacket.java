@@ -1,7 +1,7 @@
 package com.code.netty.im.protocol.request;
 
 import com.code.netty.im.protocol.Packet;
-import com.code.netty.im.protocol.command.CommandEnum;
+import com.code.netty.im.protocol.PacketEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,8 +21,8 @@ public class MessageRequestPacket extends Packet {
 	private String message;
 
 	@Override
-	public Byte getCommand() {
-		return CommandEnum.MESSAGE_REQUEST.getType();
+	public Byte getType() {
+		return PacketEnum.MESSAGE_REQUEST.getType();
 	}
 
 }

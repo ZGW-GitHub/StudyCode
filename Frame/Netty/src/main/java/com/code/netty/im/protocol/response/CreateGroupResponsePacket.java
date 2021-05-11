@@ -1,7 +1,7 @@
 package com.code.netty.im.protocol.response;
 
 import com.code.netty.im.protocol.Packet;
-import com.code.netty.im.protocol.command.CommandEnum;
+import com.code.netty.im.protocol.PacketEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,8 +28,8 @@ public class CreateGroupResponsePacket extends Packet {
 	private String reason;
 
 	@Override
-	public Byte getCommand() {
-		return CommandEnum.CREATE_GROUP_RESPONSE.getType();
+	public Byte getType() {
+		return PacketEnum.CREATE_GROUP_RESPONSE.getType();
 	}
 
 }

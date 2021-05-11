@@ -1,7 +1,7 @@
 package com.code.netty.im.protocol.request;
 
 import com.code.netty.im.protocol.Packet;
-import com.code.netty.im.protocol.command.CommandEnum;
+import com.code.netty.im.protocol.PacketEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -20,8 +20,8 @@ public class LoginRequestPacket extends Packet {
 	private String password;
 
 	@Override
-	public Byte getCommand() {
-		return CommandEnum.LOGIN_REQUEST.getType();
+	public Byte getType() {
+		return PacketEnum.LOGIN_REQUEST.getType();
 	}
 
 }

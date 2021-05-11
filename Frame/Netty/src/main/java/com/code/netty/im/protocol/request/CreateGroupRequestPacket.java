@@ -1,7 +1,7 @@
 package com.code.netty.im.protocol.request;
 
 import com.code.netty.im.protocol.Packet;
-import com.code.netty.im.protocol.command.CommandEnum;
+import com.code.netty.im.protocol.PacketEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,8 +22,8 @@ public class CreateGroupRequestPacket extends Packet {
 	private List<String> useridList;
 
 	@Override
-	public Byte getCommand() {
-		return CommandEnum.CREATE_GROUP_REQUEST.getType();
+	public Byte getType() {
+		return PacketEnum.CREATE_GROUP_REQUEST.getType();
 	}
 	
 }

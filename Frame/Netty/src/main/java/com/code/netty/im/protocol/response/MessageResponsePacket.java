@@ -1,7 +1,7 @@
 package com.code.netty.im.protocol.response;
 
 import com.code.netty.im.protocol.Packet;
-import com.code.netty.im.protocol.command.CommandEnum;
+import com.code.netty.im.protocol.PacketEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -20,8 +20,8 @@ public class MessageResponsePacket extends Packet {
 	private String message;
 
 	@Override
-	public Byte getCommand() {
-		return CommandEnum.MESSAGE_RESPONSE.getType();
+	public Byte getType() {
+		return PacketEnum.MESSAGE_RESPONSE.getType();
 	}
 
 }

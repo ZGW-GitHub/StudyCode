@@ -1,4 +1,4 @@
-package com.code.netty.im.protocol.response;
+package com.code.netty.im.protocol.request;
 
 import com.code.netty.im.protocol.Packet;
 import com.code.netty.im.protocol.PacketEnum;
@@ -7,21 +7,20 @@ import lombok.EqualsAndHashCode;
 
 /**
  * @author 愆凡
- * @date 2021/5/6 20:40
+ * @date 2021/5/11 09:41
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class LoginResponsePacket extends Packet {
+public class JoinGroupRequestPacket extends Packet {
 
-	private String userid;
-	
-	private boolean success;
-
-	private String reason;
+	/**
+	 * 要加入的群聊的id
+	 */
+	private String joinGroupid;
 
 	@Override
 	public Byte getType() {
-		return PacketEnum.LOGIN_RESPONSE.getType();
+		return PacketEnum.JOIN_GROUP_RESPONSE.getType();
 	}
 
 }

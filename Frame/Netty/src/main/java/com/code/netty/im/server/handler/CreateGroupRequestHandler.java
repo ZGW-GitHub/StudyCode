@@ -29,6 +29,7 @@ public class CreateGroupRequestHandler extends SimpleChannelInboundHandler<Creat
 		// 1、创建用于保存新群聊相关的 channel 的 group
 		final ChannelGroup channelGroup = new DefaultChannelGroup(ctx.executor());
 		final String groupid = StrUtil.uuid().substring(32);
+		SessionUtil.bindChannelGroup(groupid, channelGroup);
 
 		// 2、将群聊相关用户的 channel 添加到 group 中
 		List<String> userNameList = new ArrayList<>(useridList.size());

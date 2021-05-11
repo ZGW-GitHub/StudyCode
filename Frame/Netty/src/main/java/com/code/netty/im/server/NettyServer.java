@@ -3,10 +3,7 @@ package com.code.netty.im.server;
 import com.code.netty.im.codec.PacketDecoder;
 import com.code.netty.im.codec.PacketEncode;
 import com.code.netty.im.codec.Spliter;
-import com.code.netty.im.server.handler.AuthHandler;
-import com.code.netty.im.server.handler.CreateGroupRequestHandler;
-import com.code.netty.im.server.handler.LoginRequestHandler;
-import com.code.netty.im.server.handler.MessageRequestHandler;
+import com.code.netty.im.server.handler.*;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -63,6 +60,7 @@ public class NettyServer {
 						pipeline.addLast(new LoginRequestHandler());
 						pipeline.addLast(new MessageRequestHandler());
 						pipeline.addLast(new CreateGroupRequestHandler());
+						pipeline.addLast(new JoinGroupRequestHandler());
 						pipeline.addLast(new PacketEncode());
 					}
 				});

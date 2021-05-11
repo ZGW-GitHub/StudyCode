@@ -1,6 +1,7 @@
 package com.code.netty.im.client;
 
 import com.code.netty.im.client.handler.CreateGroupResponseHandler;
+import com.code.netty.im.client.handler.JoinGroupResponseHandler;
 import com.code.netty.im.client.handler.LoginResponseHandler;
 import com.code.netty.im.client.handler.MessageResponseHandler;
 import com.code.netty.im.codec.PacketDecoder;
@@ -71,6 +72,7 @@ public class NettyClient {
 						pipeline.addLast(new LoginResponseHandler());
 						pipeline.addLast(new MessageResponseHandler());
 						pipeline.addLast(new CreateGroupResponseHandler());
+						pipeline.addLast(new JoinGroupResponseHandler());
 						pipeline.addLast(new PacketEncode());
 					}
 				});

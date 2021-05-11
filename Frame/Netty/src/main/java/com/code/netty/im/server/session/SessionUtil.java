@@ -3,6 +3,7 @@ package com.code.netty.im.server.session;
 import com.code.netty.im.protocol.attribute.AttributeEnum;
 import com.code.netty.im.protocol.response.LoginResponsePacket;
 import io.netty.channel.Channel;
+import io.netty.channel.group.ChannelGroup;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,7 +15,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SessionUtil {
 
 	// key：userid 、value：channel
-	public static final Map<String, Channel> USER_ID_CHANNEL_MAP = new ConcurrentHashMap<>();
+	public static final Map<String, Channel> CHANNEL_MAP = new ConcurrentHashMap<>();
+	// key: groupid 、value：channelGroup
+	public static final Map<String, ChannelGroup> CHANNEL_GROUP_MAP = new ConcurrentHashMap<>();
 
 	/**
 	 * 将 Session 与 Channel 关联起来，并将 Session 设置为 Channel 的 session 属性
@@ -23,7 +26,7 @@ public class SessionUtil {
 	 * @param channel c
 	 */
 	public static void bindSession(Session session, Channel channel) {
-		USER_ID_CHANNEL_MAP.put(session.getUserid(), channel);
+		CHANNEL_MAP.put(session.getUserid(), channel);
 
 		channel.attr(AttributeEnum.SESSION.getAttributeKey()).set(session);
 	}
@@ -35,7 +38,7 @@ public class SessionUtil {
 	 */
 	public static void unBindSession(Channel channel) {
 		if (hasLogin(channel)) {
-			USER_ID_CHANNEL_MAP.remove(getSession(channel).getUserid());
+			CHANNEL_MAP.remove(getSession(channel).getUserid());
 
 			channel.attr(AttributeEnum.SESSION.getAttributeKey()).set(null);
 		}
@@ -54,7 +57,15 @@ public class SessionUtil {
 	}
 
 	public static Channel getChannelByUserid(String userid) {
-		return USER_ID_CHANNEL_MAP.get(userid);
+		return CHANNEL_MAP.get(userid);
+	}
+
+	public static ChannelGroup getChannelGroupByid(String groupid) {
+		return CHANNEL_GROUP_MAP.get(groupid);
+	}
+	
+	public static void bindChannelGroup(String groupid, ChannelGroup channelGroup) {
+		CHANNEL_GROUP_MAP.put(groupid, channelGroup);
 	}
 
 }

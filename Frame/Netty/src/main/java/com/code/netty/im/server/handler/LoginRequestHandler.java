@@ -49,7 +49,7 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
 
 	private String genderUserid() {
 		String userid = StrUtil.uuid().substring(32);
-		if (SessionUtil.USER_ID_CHANNEL_MAP.containsKey(userid)) {
+		if (SessionUtil.CHANNEL_MAP.containsKey(userid)) {
 			return genderUserid();
 		}
 		return userid;

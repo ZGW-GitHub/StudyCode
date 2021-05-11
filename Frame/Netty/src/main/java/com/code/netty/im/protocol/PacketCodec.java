@@ -1,6 +1,5 @@
 package com.code.netty.im.protocol;
 
-import com.code.netty.im.protocol.command.CommandEnum;
 import com.code.netty.im.serializer.Serializer;
 import com.code.netty.im.serializer.SerializerAlgorithmEnum;
 import io.netty.buffer.ByteBuf;
@@ -29,7 +28,7 @@ public class PacketCodec {
 		byteBuf.writeInt(Packet.MAGIC_NUMBER);
 		byteBuf.writeByte(packet.getVersion());
 		byteBuf.writeByte(serializer.getSerializerAlgorithm());
-		byteBuf.writeByte(packet.getCommand());
+		byteBuf.writeByte(packet.getType());
 		byteBuf.writeInt(bytes.length);
 		byteBuf.writeBytes(bytes);
 	}
@@ -49,8 +48,8 @@ public class PacketCodec {
 
 		// 序列化算法标识
 		byte serializeAlgorithm = byteBuf.readByte();
-		// 指令
-		byte command = byteBuf.readByte();
+		// 数据包类型
+		byte packetType = byteBuf.readByte();
 
 		// 数据包长度
 		int length = byteBuf.readInt();
@@ -59,7 +58,7 @@ public class PacketCodec {
 		byteBuf.readBytes(bytes);
 
 		// 根据指令获取对应的协议
-		Class<? extends Packet> requestPacket = CommandEnum.getPacket(command);
+		Class<? extends Packet> requestPacket = PacketEnum.getPacket(packetType);
 		// 根据序列化算法标识获取对应的序列化算法
 		Serializer serializer = SerializerAlgorithmEnum.getSerializer(serializeAlgorithm);
 
