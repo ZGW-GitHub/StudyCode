@@ -42,7 +42,10 @@ public class HeartbeatServer {
 					@Override
 					protected void initChannel(SocketChannel ch) {
 						ChannelPipeline pipeline = ch.pipeline();
-						// 加入一个 Netty 提供 IdleStateHandler
+						// 加入一个 Netty 提供 IdleStateHandler ，有 4 个参数：
+						// 第一个表示读空闲时间，指的是在这段时间内如果没有数据读到，就表示连接假死；
+						// 第二个是写空闲时间，指的是在这段时间如果没有写数据，就表示连接假死；
+						// 第三个参数是读写空闲时间，表示在这段时间内如果没有产生数据读或者写，就表示连接假死。
 						pipeline.addLast(new IdleStateHandler(7000, 7000, 5, TimeUnit.SECONDS));
 						// 加入一个对空闲检测进一步处理的 handler
 						pipeline.addLast(new HeartbeatServerHandler());
