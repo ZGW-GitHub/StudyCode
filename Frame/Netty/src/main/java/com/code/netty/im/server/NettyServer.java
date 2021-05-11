@@ -1,7 +1,6 @@
 package com.code.netty.im.server;
 
-import com.code.netty.im.codec.PacketDecoder;
-import com.code.netty.im.codec.PacketEncode;
+import com.code.netty.im.codec.PacketCodecHandler;
 import com.code.netty.im.codec.Spliter;
 import com.code.netty.im.server.handler.*;
 import io.netty.bootstrap.ServerBootstrap;
@@ -54,14 +53,11 @@ public class NettyServer {
 					protected void initChannel(SocketChannel ch) {
 						ChannelPipeline pipeline = ch.pipeline();
 						// 添加业务处理 handler
-						pipeline.addLast(new Spliter());
-						pipeline.addLast(new PacketDecoder());
-						pipeline.addLast(new AuthHandler());
-						pipeline.addLast(new LoginRequestHandler());
-						pipeline.addLast(new MessageRequestHandler());
-						pipeline.addLast(new CreateGroupRequestHandler());
-						pipeline.addLast(new JoinGroupRequestHandler());
-						pipeline.addLast(new PacketEncode());
+						pipeline.addLast(new Spliter()); // 不能共享，因为它内部实现是与每个 channel 有关，每个 Spliter 需要维持每个 channel 当前读到的数据，也就是说它是有状态的。
+						pipeline.addLast(PacketCodecHandler.INSTANCE);
+						pipeline.addLast(LoginRequestHandler.INSTANCE);
+						pipeline.addLast(AuthHandler.INSTANCE);
+						pipeline.addLast(MessageSpliterHandler.INSTANCE);
 					}
 				});
 

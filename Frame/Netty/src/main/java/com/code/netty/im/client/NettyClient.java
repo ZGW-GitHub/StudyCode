@@ -4,8 +4,7 @@ import com.code.netty.im.client.handler.CreateGroupResponseHandler;
 import com.code.netty.im.client.handler.JoinGroupResponseHandler;
 import com.code.netty.im.client.handler.LoginResponseHandler;
 import com.code.netty.im.client.handler.MessageResponseHandler;
-import com.code.netty.im.codec.PacketDecoder;
-import com.code.netty.im.codec.PacketEncode;
+import com.code.netty.im.codec.PacketCodecHandler;
 import com.code.netty.im.codec.Spliter;
 import com.code.netty.im.protocol.request.CreateGroupRequestPacket;
 import com.code.netty.im.protocol.request.LoginRequestPacket;
@@ -68,12 +67,11 @@ public class NettyClient {
 						ChannelPipeline pipeline = ch.pipeline();
 						// 添加业务处理 handler
 						pipeline.addLast(new Spliter());
-						pipeline.addLast(new PacketDecoder());
+						pipeline.addLast(new PacketCodecHandler());
 						pipeline.addLast(new LoginResponseHandler());
 						pipeline.addLast(new MessageResponseHandler());
 						pipeline.addLast(new CreateGroupResponseHandler());
 						pipeline.addLast(new JoinGroupResponseHandler());
-						pipeline.addLast(new PacketEncode());
 					}
 				});
 	}

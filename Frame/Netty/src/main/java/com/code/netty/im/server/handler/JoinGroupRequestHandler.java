@@ -4,6 +4,7 @@ import com.code.netty.im.protocol.request.JoinGroupRequestPacket;
 import com.code.netty.im.protocol.response.JoinGroupResponsePacket;
 import com.code.netty.im.server.session.Session;
 import com.code.netty.im.server.session.SessionUtil;
+import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
@@ -17,8 +18,11 @@ import java.util.stream.Collectors;
  * @date 2021/5/11 09:40
  */
 @Slf4j
+@Sharable
 public class JoinGroupRequestHandler extends SimpleChannelInboundHandler<JoinGroupRequestPacket> {
 
+	public static final JoinGroupRequestHandler INSTANCE = new JoinGroupRequestHandler();
+	
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, JoinGroupRequestPacket msg) {
 		JoinGroupResponsePacket response = new JoinGroupResponsePacket();

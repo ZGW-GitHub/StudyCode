@@ -5,6 +5,7 @@ import com.code.netty.im.protocol.request.LoginRequestPacket;
 import com.code.netty.im.protocol.response.LoginResponsePacket;
 import com.code.netty.im.server.session.Session;
 import com.code.netty.im.server.session.SessionUtil;
+import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -14,8 +15,11 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2021/5/6 22:46
  */
 @Slf4j
+@Sharable
 public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginRequestPacket> {
 
+	public static final LoginRequestHandler INSTANCE = new LoginRequestHandler();
+	
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, LoginRequestPacket loginRequestPacket) {
 		log.debug("新用户登录：" + loginRequestPacket);
