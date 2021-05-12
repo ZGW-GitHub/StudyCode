@@ -8,11 +8,13 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.timeout.IdleStateHandler;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.net.InetSocketAddress;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Netty 群聊系统案例
@@ -52,12 +54,17 @@ public class NettyServer {
 					@Override
 					protected void initChannel(SocketChannel ch) {
 						ChannelPipeline pipeline = ch.pipeline();
-						// 添加业务处理 handler
+						// 加入一个 Netty 提供 IdleStateHandler ，有 4 个参数（参数值为 0 表示不检测）：
+						// 第一个表示读空闲时间，指的是在这段时间内如果没有数据读到，就表示连接假死；
+						// 第二个是写空闲时间，指的是在这段时间如果没有写数据，就表示连接假死；
+						// 第三个参数是读写空闲时间，表示在这段时间内如果没有产生数据读或者写，就表示连接假死。
+						pipeline.addLast(new IdleStateHandler(10, 10, 10, TimeUnit.SECONDS)); // 不能共享，因为每个 Channel 维护的有自己上次的读写时间
 						pipeline.addLast(new Spliter()); // 不能共享，因为它内部实现是与每个 channel 有关，每个 Spliter 需要维持每个 channel 当前读到的数据，也就是说它是有状态的。
 						pipeline.addLast(PacketCodecHandler.INSTANCE);
 						pipeline.addLast(LoginRequestHandler.INSTANCE);
+						pipeline.addLast(HeartBeatRequestHandler.INSTANCE);
 						pipeline.addLast(AuthHandler.INSTANCE);
-						pipeline.addLast(MessageSpliterHandler.INSTANCE);
+						pipeline.addLast(RequestSpliterHandler.INSTANCE);
 					}
 				});
 

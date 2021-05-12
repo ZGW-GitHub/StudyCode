@@ -1,13 +1,7 @@
 package com.code.netty.im.protocol;
 
-import com.code.netty.im.protocol.request.CreateGroupRequestPacket;
-import com.code.netty.im.protocol.request.JoinGroupRequestPacket;
-import com.code.netty.im.protocol.request.LoginRequestPacket;
-import com.code.netty.im.protocol.request.MessageRequestPacket;
-import com.code.netty.im.protocol.response.CreateGroupResponsePacket;
-import com.code.netty.im.protocol.response.JoinGroupResponsePacket;
-import com.code.netty.im.protocol.response.LoginResponsePacket;
-import com.code.netty.im.protocol.response.MessageResponsePacket;
+import com.code.netty.im.protocol.request.*;
+import com.code.netty.im.protocol.response.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -50,7 +44,15 @@ public enum PacketEnum {
 	/**
 	 * 加入群聊响应包
 	 */
-	JOIN_GROUP_RESPONSE((byte) 8, JoinGroupResponsePacket.class);
+	JOIN_GROUP_RESPONSE((byte) 8, JoinGroupResponsePacket.class),
+	/**
+	 * 心跳请求包
+	 */
+	HEART_BEAT_REQUEST((byte) 9, HeartBeatRequestPacket.class),
+	/**
+	 * 心跳响应包
+	 */
+	HEART_BEAT_RESPONSE((byte) 10, HeartBeatResponsePacket.class);
 
 	private final Byte type;
 	private final Class<? extends Packet> packet;

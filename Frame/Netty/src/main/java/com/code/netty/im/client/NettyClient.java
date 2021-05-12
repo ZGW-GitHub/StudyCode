@@ -1,9 +1,6 @@
 package com.code.netty.im.client;
 
-import com.code.netty.im.client.handler.CreateGroupResponseHandler;
-import com.code.netty.im.client.handler.JoinGroupResponseHandler;
-import com.code.netty.im.client.handler.LoginResponseHandler;
-import com.code.netty.im.client.handler.MessageResponseHandler;
+import com.code.netty.im.client.handler.*;
 import com.code.netty.im.codec.PacketCodecHandler;
 import com.code.netty.im.codec.Spliter;
 import com.code.netty.im.protocol.request.CreateGroupRequestPacket;
@@ -16,6 +13,7 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.timeout.IdleStateHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -66,6 +64,8 @@ public class NettyClient {
 					protected void initChannel(SocketChannel ch) throws Exception {
 						ChannelPipeline pipeline = ch.pipeline();
 						// 添加业务处理 handler
+						pipeline.addLast(new IdleStateHandler(10, 10, 10, TimeUnit.SECONDS));
+						pipeline.addLast(new HeartBeatTimerHandler());
 						pipeline.addLast(new Spliter());
 						pipeline.addLast(new PacketCodecHandler());
 						pipeline.addLast(new LoginResponseHandler());

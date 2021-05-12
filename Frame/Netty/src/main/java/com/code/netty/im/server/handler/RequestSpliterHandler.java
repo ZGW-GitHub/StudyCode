@@ -17,15 +17,14 @@ import java.util.Map;
  * @date 2021/5/11 11:53
  */
 @Sharable
-public class MessageSpliterHandler extends SimpleChannelInboundHandler<Packet> {
+public class RequestSpliterHandler extends SimpleChannelInboundHandler<Packet> {
 
-	public static final MessageSpliterHandler INSTANCE = new MessageSpliterHandler();
+	public static final RequestSpliterHandler INSTANCE = new RequestSpliterHandler();
 
-	private final Map<Byte, SimpleChannelInboundHandler<? extends Packet>> handlerMap;
+	private final Map<Byte, SimpleChannelInboundHandler<? extends Packet>> handlerMap = new HashMap<>();
 
-	private MessageSpliterHandler() {
-		handlerMap = new HashMap<>();
-
+	private RequestSpliterHandler() {
+//		handlerMap.put(PacketEnum.HEART_BEAT_REQUEST.getType(), HeartBeatRequestHandler.INSTANCE);
 		handlerMap.put(PacketEnum.MESSAGE_REQUEST.getType(), MessageRequestHandler.INSTANCE);
 		handlerMap.put(PacketEnum.CREATE_GROUP_REQUEST.getType(), CreateGroupRequestHandler.INSTANCE);
 		handlerMap.put(PacketEnum.JOIN_GROUP_REQUEST.getType(), JoinGroupRequestHandler.INSTANCE);
