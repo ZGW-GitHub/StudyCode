@@ -14,7 +14,7 @@ public class EurekaApplication {
 
 	public static void main(String[] args) {
 
-		new SpringApplicationBuilder().sources(EurekaApplication.class).run(args);
+		new SpringApplicationBuilder(EurekaApplication.class).run(args);
 
 	}
 

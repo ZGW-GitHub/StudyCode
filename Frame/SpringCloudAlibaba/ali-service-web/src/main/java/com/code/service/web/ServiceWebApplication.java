@@ -16,7 +16,7 @@ public class ServiceWebApplication {
 
 	public static void main(String[] args) {
 		
-		new SpringApplicationBuilder().sources(ServiceWebApplication.class).run(args);
+		new SpringApplicationBuilder(ServiceWebApplication.class).run(args);
 		
 	}
 	

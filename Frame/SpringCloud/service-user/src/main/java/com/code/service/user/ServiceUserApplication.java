@@ -14,7 +14,7 @@ public class ServiceUserApplication {
 
 	public static void main(String[] args) {
 		
-		new SpringApplicationBuilder().sources(ServiceUserApplication.class).run(args);
+		new SpringApplicationBuilder(ServiceUserApplication.class).run(args);
 		
 	}
 	

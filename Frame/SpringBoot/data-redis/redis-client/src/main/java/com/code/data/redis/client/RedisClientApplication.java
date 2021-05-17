@@ -1,7 +1,7 @@
 package com.code.data.redis.client;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
  * @author 愆凡
@@ -11,9 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RedisClientApplication {
 
 	public static void main(String[] args) {
-
-		SpringApplication.run(RedisClientApplication.class, args);
-
+		new SpringApplicationBuilder(RedisClientApplication.class).run(args);
 	}
 
 }

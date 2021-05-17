@@ -12,7 +12,7 @@ public class NettyApplication {
 
 	public static void main(String[] args) {
 		
-		new SpringApplicationBuilder().main(NettyApplication.class).run(args);
+		new SpringApplicationBuilder(NettyApplication.class).run(args);
 		
 	}
 	

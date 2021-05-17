@@ -17,7 +17,7 @@ import java.util.concurrent.locks.LockSupport;
  */
 @Component
 public class LockUtil extends JedisPubSub {
-	
+
 	/**
 	 * 尝试获取分布式锁（不可重入）
 	 *
@@ -58,7 +58,7 @@ public class LockUtil extends JedisPubSub {
 	 * Map 中 key 存储锁的名称，value 存储锁的重入次数
 	 */
 	public final ThreadLocal<Map<String, Integer>> LOCKS = ThreadLocal.withInitial(HashMap::new);
-	
+
 	/**
 	 * 尝试获取可重入分布式锁（ 使用 ThreadLocal ）
 	 *
@@ -121,7 +121,7 @@ public class LockUtil extends JedisPubSub {
 		// 如果当前锁存在，则使用 hexists 判断当前 lock 对应的 Hash 表中是否存在 requestid 这个键，如果存在，再次使用 hincrby 加 1，最后再次设置过期时间。
 		String script = "if (redis.call('exists', KEYS[1]) == 0) then redis.call('hincrby', KEYS[1], ARGV[1], 1); redis.call('pexpire', KEYS[1], ARGV[2]); return 1; end ; " +
 				" if (redis.call('hexists', KEYS[1], ARGV[1]) == 1) then redis.call('hincrby', KEYS[1], ARGV[1], 1); redis.call('pexpire', KEYS[1], ARGV[2]); return 1; end ; return 0;";
-		
+
 		Object result = jedis.eval(script, Collections.singletonList(lockKey), List.of(requestid, expireTime + ""));
 
 		return "1".equals(result.toString());
@@ -163,16 +163,16 @@ public class LockUtil extends JedisPubSub {
 		}
 
 		Thread currThread = Thread.currentThread();
-		
+
 		jedis.subscribe(new JedisPubSub() {
 			@Override
 			public void punsubscribe() {
 				LockSupport.unpark(currThread);
 			}
 		}, "test");
-		
+
 		LockSupport.park();
-		
+
 		return blockLock(jedis, lockKey, requestid, expireTime);
 	}
 

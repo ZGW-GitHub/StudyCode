@@ -14,7 +14,7 @@ public class GatewayApplication {
 
 	public static void main(String[] args) {
 		
-		new SpringApplicationBuilder().sources(GatewayApplication.class).run(args);
+		new SpringApplicationBuilder(GatewayApplication.class).run(args);
 		
 	}
 	
