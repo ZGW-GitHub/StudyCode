@@ -1,4 +1,4 @@
-package com.code.mq.kafka.basic.producer;
+package com.code.mq.kafka.basic.sendway;
 
 import com.code.mq.kafka.KafkaApplicationTest;
 import lombok.extern.slf4j.Slf4j;
@@ -32,11 +32,17 @@ public class ProducerTest extends KafkaApplicationTest {
 	 * 同步发送
 	 */
 	@Test
-	public void syncSendTest() throws ExecutionException, InterruptedException {
-		// 异步发送消息，通过 get() 阻塞获取发送结果，从而实现同步的效果
-		SendResult<String, String> sendResult = kafkaTemplate.send(topic, "Async 消息").get();
+	public void syncSendTest() {
+		try {
+			// 异步发送消息，通过 get() 阻塞获取发送结果，从而实现同步的效果
+			SendResult<String, String> sendResult = kafkaTemplate.send(topic, "Async 消息").get();
 
-		System.err.println(sendResult.toString());
+			System.err.println(sendResult.toString());
+		} catch (ExecutionException | InterruptedException e) {
+			log.error("发送失败，e ：", e);
+
+			// TODO 发送消息出现异常，重新发送
+		}
 	}
 
 	/**
@@ -50,13 +56,15 @@ public class ProducerTest extends KafkaApplicationTest {
 		// 获取发送结果
 		future.addCallback(new ListenableFutureCallback<>() {
 			@Override
-			public void onFailure(@Nonnull Throwable e) {
-				log.error("发送失败，e ：", e);
+			public void onSuccess(SendResult<String, String> result) {
+				System.err.println(result.toString());
 			}
 
 			@Override
-			public void onSuccess(SendResult<String, String> result) {
-				System.err.println(result.toString());
+			public void onFailure(@Nonnull Throwable e) {
+				log.error("发送失败，e ：", e);
+
+				// TODO 发送消息出现异常，重新发送
 			}
 		});
 	}

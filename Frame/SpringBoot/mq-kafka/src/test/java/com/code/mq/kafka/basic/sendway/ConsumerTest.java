@@ -1,4 +1,4 @@
-package com.code.mq.kafka.basic.consumer;
+package com.code.mq.kafka.basic.sendway;
 
 import com.code.mq.kafka.KafkaApplicationTest;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
