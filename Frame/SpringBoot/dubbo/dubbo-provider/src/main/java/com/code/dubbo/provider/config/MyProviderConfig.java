@@ -21,7 +21,7 @@ public class MyProviderConfig {
 	@Bean
 	public ApplicationConfig applicationConfig() {
 		ApplicationConfig applicationConfig = new ApplicationConfig();
-		applicationConfig.setName("echo-provider");
+		applicationConfig.setName("dubbo-provider");
 		return applicationConfig;
 	}
 
@@ -35,7 +35,7 @@ public class MyProviderConfig {
 		RegistryConfig registryConfig = new RegistryConfig();
 		// 使用Zookeeper作为注册中心，并设定IP地址和端口号
 		registryConfig.setProtocol("zookeeper");
-		registryConfig.setAddress("linux.notuptoyou.site:12181");
+		registryConfig.setAddress("101.37.65.146:12181");
 		return registryConfig;
 	}
 
