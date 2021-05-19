@@ -1,4 +1,4 @@
-package com.code.mq.rocketmq.basic.producer;
+package com.code.mq.rocketmq.basic.sendway.producer;
 
 import com.code.mq.rocketmq.RocketMqApplicationTest;
 import org.apache.rocketmq.client.producer.SendCallback;
@@ -27,9 +27,12 @@ public class ProducerTest extends RocketMqApplicationTest {
 	 */
 	@Test
 	public void syncSendTest() {
-		SendResult sendResult = rocketMQTemplate.syncSend(topic, "Sync 消息");
-
-		System.err.println("sendResult : " + sendResult);
+		try {
+			SendResult sendResult = rocketMQTemplate.syncSend(topic, "Sync 消息");
+			System.err.println("sendResult : " + sendResult);
+		} catch (Exception e) {
+			// TODO 发送消息出现异常，重新发送
+		}
 	}
 
 	/**
@@ -46,6 +49,8 @@ public class ProducerTest extends RocketMqApplicationTest {
 			@Override
 			public void onException(Throwable throwable) {
 				System.err.println("Error : " + throwable.getMessage());
+				
+				// TODO 发送消息出现异常，重新发送
 			}
 		}, 3_000);
 	}
