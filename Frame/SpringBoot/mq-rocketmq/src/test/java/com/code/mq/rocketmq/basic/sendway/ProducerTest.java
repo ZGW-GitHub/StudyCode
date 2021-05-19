@@ -1,4 +1,4 @@
-package com.code.mq.rocketmq.basic.sendway.producer;
+package com.code.mq.rocketmq.basic.sendway;
 
 import com.code.mq.rocketmq.RocketMqApplicationTest;
 import org.apache.rocketmq.client.producer.SendCallback;
