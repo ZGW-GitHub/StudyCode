@@ -28,7 +28,7 @@ public class MyConsumerConfig {
 	public RegistryConfig registryConfig() {
 		RegistryConfig registryConfig = new RegistryConfig();
 		registryConfig.setProtocol("zookeeper");
-		registryConfig.setAddress("101.37.65.146:12181");
+		registryConfig.setAddress("linux.notuptoyou.site:12181");
 		return registryConfig;
 	}
 
