@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author 愆凡
  */
 @SpringBootApplication
-@EnableDubbo(scanBasePackages = {"come.code.dubbo.provider.service"})
+@EnableDubbo(scanBasePackages = {"com.code.dubbo.provider.service"})
 public class DubboProviderApplication {
 	public static void main(String[] args) throws InterruptedException {
 
