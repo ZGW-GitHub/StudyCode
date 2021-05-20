@@ -1,17 +1,23 @@
 package com.code.dubbo.provider.config;
 
+import lombok.Data;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ProtocolConfig;
 import org.apache.dubbo.config.ProviderConfig;
 import org.apache.dubbo.config.RegistryConfig;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
  * @author 愆凡
  */
+@Data
 @Configuration
 public class MyProviderConfig {
+
+	@Value("${spring.application.name}")
+	private String applicationName;
 
 	/**
 	 * 应用配置
@@ -21,7 +27,7 @@ public class MyProviderConfig {
 	@Bean
 	public ApplicationConfig applicationConfig() {
 		ApplicationConfig applicationConfig = new ApplicationConfig();
-		applicationConfig.setName("dubbo-provider");
+		applicationConfig.setName(applicationName);
 		return applicationConfig;
 	}
 
@@ -35,7 +41,8 @@ public class MyProviderConfig {
 		RegistryConfig registryConfig = new RegistryConfig();
 		// 使用Zookeeper作为注册中心，并设定IP地址和端口号
 		registryConfig.setProtocol("zookeeper");
-		registryConfig.setAddress("linux.notuptoyou.site:12181");
+//		registryConfig.setAddress("linux.notuptoyou.site:12181");
+		registryConfig.setAddress("101.37.65.146:12181");
 		return registryConfig;
 	}
 
