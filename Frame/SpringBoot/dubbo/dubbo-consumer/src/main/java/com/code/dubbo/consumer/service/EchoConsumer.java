@@ -13,7 +13,7 @@ public class EchoConsumer {
 	/**
 	 * 调用服务
 	 */
-	@DubboReference(group = "dubbo-demo", filter = "demoFilter")
+	@DubboReference(group = "dubbo-demo", filter = "demoFilter", listener = "demoInvokerListener")
 	private EchoService echoService;
 
 	public String echo(String msg) {

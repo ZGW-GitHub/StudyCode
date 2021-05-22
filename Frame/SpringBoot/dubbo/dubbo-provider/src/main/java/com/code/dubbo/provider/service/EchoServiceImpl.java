@@ -12,16 +12,16 @@ import java.util.Date;
  *
  * @author 愆凡
  */
-@DubboService(group = "dubbo-demo", filter = "demoFilter")
+@DubboService(group = "dubbo-demo", filter = "demoFilter", listener = "demoExporterListener")
 public class EchoServiceImpl implements EchoService {
 
 	@Override
 	public String echo(String msg) {
-
 		String time = new SimpleDateFormat("HH:mm:ss").format(new Date());
-		System.out.println("[" + time + "] Get : " + msg + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
-		return msg;
 
+		System.out.println("[" + time + "] Get : " + msg + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
+
+		return msg;
 	}
 
 }

@@ -13,7 +13,7 @@ public class TestConsumer {
 	/**
 	 * 调用服务
 	 */
-	@DubboReference(group = "dubbo-demo", filter = "demoFilter")
+	@DubboReference(group = "dubbo-demo", filter = "demoFilter", listener = "demoInvokerListener")
 	private TestService testService;
 
 	public String test(String msg) {
