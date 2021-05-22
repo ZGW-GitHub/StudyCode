@@ -41,7 +41,10 @@ public class MyConsumerConfig {
 
 	@Bean
 	public ConsumerConfig consumerConfig() {
-		return new ConsumerConfig();
+		ConsumerConfig consumerConfig = new ConsumerConfig();
+		consumerConfig.setGroup("dubbo-demo");
+		consumerConfig.setFilter("demoFilter");
+		return consumerConfig;
 	}
 
 }

@@ -62,7 +62,10 @@ public class MyProviderConfig {
 
 	@Bean
 	public ProviderConfig providerConfig() {
-		return new ProviderConfig();
+		ProviderConfig providerConfig = new ProviderConfig();
+		providerConfig.setGroup("dubbo-demo");
+		providerConfig.setFilter("demoFilter");
+		return providerConfig;
 	}
 
 }
