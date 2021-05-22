@@ -43,7 +43,7 @@ public class MyConsumerConfig {
 	public ConsumerConfig consumerConfig() {
 		ConsumerConfig consumerConfig = new ConsumerConfig();
 		consumerConfig.setGroup("dubbo-demo");
-		consumerConfig.setFilter("demoFilter");
+//		consumerConfig.setFilter("demoFilter");
 		return consumerConfig;
 	}
 

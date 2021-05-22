@@ -1,7 +1,7 @@
 package com.code.dubbo.consumer.service;
 
 import com.code.dubbo.api.service.EchoService;
-import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,7 +13,7 @@ public class EchoConsumer {
 	/**
 	 * 调用服务
 	 */
-	@Reference
+	@DubboReference(group = "dubbo-demo", filter = "demoFilter")
 	private EchoService echoService;
 
 	public String echo(String msg) {

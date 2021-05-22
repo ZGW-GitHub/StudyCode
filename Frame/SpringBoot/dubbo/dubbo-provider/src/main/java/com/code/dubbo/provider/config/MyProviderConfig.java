@@ -64,7 +64,7 @@ public class MyProviderConfig {
 	public ProviderConfig providerConfig() {
 		ProviderConfig providerConfig = new ProviderConfig();
 		providerConfig.setGroup("dubbo-demo");
-		providerConfig.setFilter("demoFilter");
+//		providerConfig.setFilter("demoFilter");
 		return providerConfig;
 	}
 

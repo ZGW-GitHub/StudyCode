@@ -1,7 +1,7 @@
 package com.code.dubbo.provider.service;
 
 import com.code.dubbo.api.service.TestService;
-import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
 
 import java.text.SimpleDateFormat;
@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author 愆凡
  */
-@Service
+@DubboService(group = "dubbo-demo", filter = "demoFilter")
 public class TestServiceImpl implements TestService {
 
 	@Override
