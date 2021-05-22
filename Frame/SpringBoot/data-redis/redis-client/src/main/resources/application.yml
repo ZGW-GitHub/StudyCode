@@ -1,6 +1,6 @@
 spring:
   redis:
-    host: linux.notuptoyou.site
+    host: linux.juststudy.site
     port: 16379
     password: Snow----
     # 连接超时时间（记得添加单位，Duration）

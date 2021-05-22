@@ -28,7 +28,7 @@ spring:
           environment:
             spring:
               rocketmq:
-                name-server: linux.notuptoyou.site:9876
+                name-server: linux.juststudy.site:9876
       bindings: # 服务的整合处理
         output: # 这个名字是一个通道的名称
           destination: StudyExchange # 表示要使用的 Exchange 的名称定义
@@ -37,7 +37,7 @@ spring:
 
 # 消息总线
 rocketmq:
-  name-server: linux.notuptoyou.site:9876
+  name-server: linux.juststudy.site:9876
 
 # 暴露监控端点
 management:

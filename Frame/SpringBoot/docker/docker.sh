@@ -1,11 +1,11 @@
 #!/bin/zsh
 
 echo "------>   拷贝jar包到远程服务器"
-scp target/"$1"-"$2".jar root@linux.notuptoyou.site:/mnt/study/docker-jar/"$1".jar
-scp Dockerfile root@linux.notuptoyou.site:/mnt/study/docker-jar/"$1"-Dockerfile
+scp target/"$1"-"$2".jar root@linux.juststudy.site:/mnt/study/docker-jar/"$1".jar
+scp Dockerfile root@linux.juststudy.site:/mnt/study/docker-jar/"$1"-Dockerfile
 
 echo "------>   连接远程服务器并执行命令"
-ssh -tt root@linux.notuptoyou.site <<eeooff
+ssh -tt root@linux.juststudy.site <<eeooff
     echo "------>   进入工作目录"
     cd /mnt/study/docker-jar/
     echo "------>   停止旧容器"

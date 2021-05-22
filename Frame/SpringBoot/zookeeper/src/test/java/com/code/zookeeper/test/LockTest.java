@@ -15,7 +15,7 @@ import org.junit.Before;
 @Slf4j
 public class LockTest extends ZookeeperApplicationTest {
 
-	public static final String ZOOKEEPER_ADDERS = "linux.notuptoyou.site:12181";
+	public static final String ZOOKEEPER_ADDERS = "linux.juststudy.site:12181";
 	public static final String NAME_SPACE = "zkLockTest";
 	public static final String NODE_PER_CODE = "/";
 	public static CuratorFramework client = null;

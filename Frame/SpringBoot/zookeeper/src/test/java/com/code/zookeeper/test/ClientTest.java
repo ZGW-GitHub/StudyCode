@@ -18,7 +18,7 @@ import org.junit.Test;
 @Slf4j
 public class ClientTest extends ZookeeperApplicationTest {
 
-	public static final String ZOOKEEPER_ADDERS = "linux.notuptoyou.site:12181";
+	public static final String ZOOKEEPER_ADDERS = "linux.juststudy.site:12181";
 	public static final String NAME_SPACE = "zkCliTest";
 	public static final String NODE_PER_CODE = "/";
 	public static CuratorFramework client = null;

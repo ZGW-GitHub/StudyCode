@@ -11,7 +11,7 @@ spring:
       sharding-jdbc-db0:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://linux.notuptoyou.site:13306/sharding-jdbc-db0?serverTimezone=UTC&useSSL=false
+        jdbc-url: jdbc:mysql://linux.juststudy.site:13306/sharding-jdbc-db0?serverTimezone=UTC&useSSL=false
         username: root
         password: Snow----
 
@@ -19,7 +19,7 @@ spring:
       sharding-jdbc-db1:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://linux.notuptoyou.site:13306/sharding-jdbc-db1?serverTimezone=UTC&useSSL=false
+        jdbc-url: jdbc:mysql://linux.juststudy.site:13306/sharding-jdbc-db1?serverTimezone=UTC&useSSL=false
         username: root
         password: Snow----
 

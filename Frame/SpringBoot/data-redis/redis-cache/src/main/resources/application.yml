@@ -1,6 +1,6 @@
 spring:
   redis:
-    host: linux.notuptoyou.site
+    host: linux.juststudy.site
     port: 16379
     password: Snow----
     # 连接超时时间（记得添加单位，Duration）
@@ -22,7 +22,7 @@ spring:
     type: redis
 
   datasource:
-    url: jdbc:mysql://linux.notuptoyou.site:13306/redis_cache?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://linux.juststudy.site:13306/redis_cache?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
     username: root
     password: Snow----
     driver-class-name: com.mysql.cj.jdbc.Driver
