@@ -15,6 +15,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>RPC</module>
 		<module>Dubbo</module>
 		<module>Netty</module>
 		<module>Spring</module>
