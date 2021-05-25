@@ -15,8 +15,7 @@ public class SpiTest {
 	 */
 	@Test
 	public void javaServiceLoaderTest() {
-		ServiceLoader<ServiceDemo> serviceLoader =
-				ServiceLoader.load(ServiceDemo.class, Thread.currentThread().getContextClassLoader());
+		ServiceLoader<ServiceDemo> serviceLoader = ServiceLoader.load(ServiceDemo.class, Thread.currentThread().getContextClassLoader());
 
 		serviceLoader.forEach(System.err::println);
 	}
