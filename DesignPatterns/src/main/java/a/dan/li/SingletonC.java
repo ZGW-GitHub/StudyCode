@@ -8,10 +8,10 @@ package a.dan.li;
  */
 public class SingletonC {
 
+	private static SingletonC singleton = null;
+
 	private SingletonC() {
 	}
-
-	private static SingletonC singleton = null;
 
 	// 添加了 synchronized 关键字，并进行双重检查
 	public static SingletonC getInstance() {

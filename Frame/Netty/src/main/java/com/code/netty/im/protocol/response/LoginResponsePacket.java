@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
 public class LoginResponsePacket extends Packet {
 
 	private String userid;
-	
+
 	private boolean success;
 
 	private String reason;

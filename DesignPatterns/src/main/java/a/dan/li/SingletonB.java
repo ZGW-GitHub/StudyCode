@@ -8,10 +8,10 @@ package a.dan.li;
  */
 public class SingletonB {
 
+	private static SingletonB singleton = null;
+
 	private SingletonB() {
 	}
-
-	private static SingletonB singleton = null;
 
 	// 添加了 synchronized 关键字，进行同步
 	public static synchronized SingletonB getInstance() {

@@ -20,14 +20,14 @@ import java.util.List;
 public class JoinGroupResponsePacket extends Packet {
 
 	private List<String> userNameList;
-	
+
 	private boolean success;
 
 	private String reason;
-	
+
 	@Override
 	public Byte getType() {
 		return PacketEnum.JOIN_GROUP_RESPONSE.getType();
 	}
-	
+
 }

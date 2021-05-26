@@ -149,5 +149,5 @@ public class BufferTest {
 		System.out.println("恢复到标记位置 --> limit ---> " + byteBuffer.limit()); // 6
 		System.out.println("恢复到标记位置 --> position ---> " + byteBuffer.position()); // 4
 	}
-	
+
 }

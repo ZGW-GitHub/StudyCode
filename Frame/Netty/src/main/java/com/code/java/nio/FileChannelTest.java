@@ -29,10 +29,10 @@ public class FileChannelTest {
 			buffer.clear();
 		}
 	}
-	
+
 	@Test
 	public void serverTest() {
-		
+
 	}
 
 }

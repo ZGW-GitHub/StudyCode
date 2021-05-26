@@ -33,16 +33,16 @@ public class ArrayListTest {
 		System.out.println(Arrays.toString(str1.toArray()));
 		System.out.println(Arrays.toString(str2.toArray()));
 	}
-	
+
 	@Test
 	public void reverseTest() {
 		List<String> strs = new ArrayList<>();
 		strs.add("a");
 		strs.add("b");
 		strs.add("c");
-		
+
 		strs.forEach(System.err::println);
-		
+
 		Collections.reverse(strs);
 
 		strs.forEach(System.err::println);

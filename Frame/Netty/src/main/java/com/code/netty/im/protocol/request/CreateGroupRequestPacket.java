@@ -18,12 +18,12 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class CreateGroupRequestPacket extends Packet {
-	
+
 	private List<String> useridList;
 
 	@Override
 	public Byte getType() {
 		return PacketEnum.CREATE_GROUP_REQUEST.getType();
 	}
-	
+
 }

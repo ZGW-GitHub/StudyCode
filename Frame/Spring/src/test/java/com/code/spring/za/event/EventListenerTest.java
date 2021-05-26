@@ -65,13 +65,6 @@ public class EventListenerTest extends MySpringApplicationTest {
 		context.refresh();
 	}
 
-	class MyApplicationListener implements ApplicationListener<ApplicationEvent> {
-		@Override
-		public void onApplicationEvent(ApplicationEvent event) {
-			System.err.println(event.toString());
-		}
-	}
-
 	/**
 	 * 基于注解的事件监听示例
 	 */
@@ -88,6 +81,13 @@ public class EventListenerTest extends MySpringApplicationTest {
 	@EventListener
 	public void onApplicationEvent(ApplicationEvent event) {
 		System.err.println(event.toString());
+	}
+
+	class MyApplicationListener implements ApplicationListener<ApplicationEvent> {
+		@Override
+		public void onApplicationEvent(ApplicationEvent event) {
+			System.err.println(event.toString());
+		}
 	}
 
 }

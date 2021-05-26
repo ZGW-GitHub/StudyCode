@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class JoinGroupResponseHandler extends SimpleChannelInboundHandler<JoinGroupResponsePacket> {
-	
+
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, JoinGroupResponsePacket msg) throws Exception {
 		if (msg.isSuccess()) {
@@ -20,5 +20,5 @@ public class JoinGroupResponseHandler extends SimpleChannelInboundHandler<JoinGr
 			log.warn("加入群聊失败，原因：" + msg.getReason());
 		}
 	}
-	
+
 }

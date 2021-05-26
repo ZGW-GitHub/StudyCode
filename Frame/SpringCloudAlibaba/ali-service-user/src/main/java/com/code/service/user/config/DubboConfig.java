@@ -60,5 +60,5 @@ public class DubboConfig {
 		protocolConfig.setPort(30880);
 		return protocolConfig;
 	}
-	
+
 }

@@ -9,18 +9,6 @@ package p.ce.lue;
 public interface ICommand {
 
 	/**
-	 * 提交命令
-	 *
-	 * @param str str
-	 */
-	void commit(String str);
-
-	/**
-	 * 查询命令执行状态
-	 */
-	void state();
-
-	/**
 	 * 获取具体策略
 	 *
 	 * @param str str
@@ -37,5 +25,17 @@ public interface ICommand {
 
 		throw new RuntimeException("该命令没有对应的策略来处理");
 	}
+
+	/**
+	 * 提交命令
+	 *
+	 * @param str str
+	 */
+	void commit(String str);
+
+	/**
+	 * 查询命令执行状态
+	 */
+	void state();
 
 }

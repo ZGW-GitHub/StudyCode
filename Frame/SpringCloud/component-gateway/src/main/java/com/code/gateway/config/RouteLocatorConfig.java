@@ -18,5 +18,5 @@ public class RouteLocatorConfig {
 				.route("userInfo", r -> r.path("/user/**").uri("http://localhost:8091"))
 				.build();
 	}
-	
+
 }

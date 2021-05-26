@@ -49,7 +49,7 @@ public class ConsumerTest extends RocketMqApplicationTest {
 
 	/**
 	 * 消费事务消息（和消费普通消息一样）
-	 * 
+	 *
 	 * @throws MQClientException MQClientException
 	 * @throws InterruptedException InterruptedException
 	 */

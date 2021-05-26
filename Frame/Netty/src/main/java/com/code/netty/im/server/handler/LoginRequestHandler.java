@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginRequestPacket> {
 
 	public static final LoginRequestHandler INSTANCE = new LoginRequestHandler();
-	
+
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, LoginRequestPacket loginRequestPacket) {
 		log.debug("新用户登录：" + loginRequestPacket);
@@ -61,7 +61,7 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
 
 	/**
 	 * 用户断线，取消 Session 与 Channel 的绑定
-	 * 
+	 *
 	 * @param ctx ctx
 	 */
 	@Override

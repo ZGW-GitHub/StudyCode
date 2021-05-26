@@ -24,7 +24,7 @@ import java.util.List;
 public class CreateGroupRequestHandler extends SimpleChannelInboundHandler<CreateGroupRequestPacket> {
 
 	public static final CreateGroupRequestHandler INSTANCE = new CreateGroupRequestHandler();
-	
+
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, CreateGroupRequestPacket msg) {
 		List<String> useridList = msg.getUseridList();
@@ -44,14 +44,14 @@ public class CreateGroupRequestHandler extends SimpleChannelInboundHandler<Creat
 				userNameList.add(SessionUtil.getSession(channel).getUserName());
 			}
 		});
-		
+
 		// 3、创建 response
 		CreateGroupResponsePacket responsePacket = new CreateGroupResponsePacket(groupid, userNameList, true, null);
-		
+
 		// 4、给每个群成员发送 response
 		channelGroup.writeAndFlush(responsePacket);
-		
+
 		log.debug("群聊【 " + groupid + " 】创建成功，成员：" + String.join("、", userNameList));
 	}
-	
+
 }

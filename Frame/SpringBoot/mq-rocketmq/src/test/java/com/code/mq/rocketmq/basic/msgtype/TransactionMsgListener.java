@@ -7,7 +7,7 @@ import org.springframework.messaging.Message;
 
 /**
  * 监听事务消息，执行本地事务
- * 
+ *
  * @author 愆凡
  * @date 2021/3/20 14:04
  */

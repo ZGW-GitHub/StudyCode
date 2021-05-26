@@ -17,72 +17,72 @@ import code.sort.insert.InsertionSortUtil;
  */
 public class QuickSortPlusTwo {
 
-    public static void quickSort(int[] arr) {
+	public static void quickSort(int[] arr) {
 
-        System.out.println("快速排序 (优化：插入排序,随机比较,重复元素分散) ：");
-        double time;
-        long millis = System.currentTimeMillis();
-
-
-        quickSort(arr, 0, arr.length - 1);
+		System.out.println("快速排序 (优化：插入排序,随机比较,重复元素分散) ：");
+		double time;
+		long millis = System.currentTimeMillis();
 
 
-        time = (System.currentTimeMillis() - millis) / 1000f;
-        System.out.println(time);
+		quickSort(arr, 0, arr.length - 1);
 
-    }
 
-    /**
-     * 对 arr[l,r] 进行快速排序
-     */
-    private static void quickSort(int[] arr, int l, int r) {
+		time = (System.currentTimeMillis() - millis) / 1000f;
+		System.out.println(time);
+
+	}
+
+	/**
+	 * 对 arr[l,r] 进行快速排序
+	 */
+	private static void quickSort(int[] arr, int l, int r) {
 
 //        if (l >= r)
 //            return;
-        if (r - l <= 10) {
-            // 使用 插入排序 优化
-            InsertionSortUtil.sortExtent(arr, l, r);
-            return;
-        }
+		if (r - l <= 10) {
+			// 使用 插入排序 优化
+			InsertionSortUtil.sortExtent(arr, l, r);
+			return;
+		}
 
 
-        int p = partition(arr, l, r);
+		int p = partition(arr, l, r);
 
-        quickSort(arr, l, p - 1);
-        quickSort(arr, p + 1, r);
+		quickSort(arr, l, p - 1);
+		quickSort(arr, p + 1, r);
 
-    }
+	}
 
-    /**
-     * 对 arr[l,r] 部分进行 partition 操作
-     * 返回p，使得 arr[l, p-1] < arr[p] ；arr[p+1, r] > arr[p]
-     */
-    private static int partition(int[] arr, int l, int r) {
+	/**
+	 * 对 arr[l,r] 部分进行 partition 操作
+	 * 返回p，使得 arr[l, p-1] < arr[p] ；arr[p+1, r] > arr[p]
+	 */
+	private static int partition(int[] arr, int l, int r) {
 
-        // 随机选择 value
-        SortHelperUtil.swap(arr, l, (int) (Math.random() * (r - l + 1)) + l);
+		// 随机选择 value
+		SortHelperUtil.swap(arr, l, (int) (Math.random() * (r - l + 1)) + l);
 
-        int value = arr[l];
-        // arr[l+1, indexl) <= value ; arr(indexr, r] >= value
-        int indexl = l + 1;
-        int indexr = r;
-        while (true) {
-            while (arr[indexl] < value && indexl <= r) {
-                indexl++;
-            }
-            while (arr[indexr] > value && indexr >= l + 1) {
-                indexr--;
-            }
-            if (indexl > indexr) {
-                break;
-            }
-            SortHelperUtil.swap(arr, indexl, indexr);
-            indexl++;
-            indexr--;
-        }
-        SortHelperUtil.swap(arr, l, indexr);
+		int value = arr[l];
+		// arr[l+1, indexl) <= value ; arr(indexr, r] >= value
+		int indexl = l + 1;
+		int indexr = r;
+		while (true) {
+			while (arr[indexl] < value && indexl <= r) {
+				indexl++;
+			}
+			while (arr[indexr] > value && indexr >= l + 1) {
+				indexr--;
+			}
+			if (indexl > indexr) {
+				break;
+			}
+			SortHelperUtil.swap(arr, indexl, indexr);
+			indexl++;
+			indexr--;
+		}
+		SortHelperUtil.swap(arr, l, indexr);
 
-        return indexr;
-    }
+		return indexr;
+	}
 
 }

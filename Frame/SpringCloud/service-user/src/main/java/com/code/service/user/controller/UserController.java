@@ -21,7 +21,7 @@ public class UserController {
 
 	/**
 	 * 查询用户信息
-	 * 
+	 *
 	 * @param userid userid
 	 * @return {@link User}
 	 */
@@ -30,7 +30,7 @@ public class UserController {
 		User user = userService.findById(userid);
 
 		System.err.println("查询到的用户信息：" + ToStringBuilder.reflectionToString(user));
-		
+
 		return user;
 	}
 

@@ -15,9 +15,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class ServiceWebApplication {
 
 	public static void main(String[] args) {
-		
+
 		new SpringApplicationBuilder(ServiceWebApplication.class).run(args);
-		
+
 	}
-	
+
 }

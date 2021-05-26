@@ -10,21 +10,21 @@ import code.SortHelperUtil;
  */
 public class InsertionSortUtil {
 
-    public static void sort(int[] arr) {
+	public static void sort(int[] arr) {
 
-        int len = arr.length;
+		int len = arr.length;
 
-        for (int i = 1; i < len; i++) {
-            for (int j = i; j > 0; j--) {
-                if (arr[j] < arr[j - 1]) {
-                    SortHelperUtil.swap(arr, j, j - 1);
-                } else {
-                    break;
-                }
-            }
-        }
+		for (int i = 1; i < len; i++) {
+			for (int j = i; j > 0; j--) {
+				if (arr[j] < arr[j - 1]) {
+					SortHelperUtil.swap(arr, j, j - 1);
+				} else {
+					break;
+				}
+			}
+		}
 
-    }
+	}
 
 	public static void sortPlus(int[] arr) {
 		int len = arr.length;

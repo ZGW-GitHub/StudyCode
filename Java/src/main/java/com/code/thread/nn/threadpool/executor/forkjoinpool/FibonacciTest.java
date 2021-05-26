@@ -14,7 +14,7 @@ import java.util.concurrent.RecursiveTask;
 public class FibonacciTest {
 
 	private final ForkJoinPool forkJoinPool = new ForkJoinPool(4); // 最大并发数4
-	
+
 	@Test
 	public void test() {
 		Fibonacci fibonacci = new Fibonacci(20);

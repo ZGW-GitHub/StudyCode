@@ -9,53 +9,53 @@ import code.SortHelperUtil;
  */
 public class QuickSort {
 
-    public static void quickSort(int[] arr) {
+	public static void quickSort(int[] arr) {
 
-        System.out.println("快速排序：");
-        double time;
-        long millis = System.currentTimeMillis();
-
-
-        _quickSort(arr, 0, arr.length - 1);
+		System.out.println("快速排序：");
+		double time;
+		long millis = System.currentTimeMillis();
 
 
-        time = (System.currentTimeMillis() - millis) / 1000f;
-        System.out.println(time);
+		_quickSort(arr, 0, arr.length - 1);
 
-    }
 
-    // 对 arr[l,r] 进行快速排序
-    private static void _quickSort(int[] arr, int l, int r) {
+		time = (System.currentTimeMillis() - millis) / 1000f;
+		System.out.println(time);
 
-        if (l >= r)
-            return;
+	}
 
-        int p = _partition(arr, l, r);
+	// 对 arr[l,r] 进行快速排序
+	private static void _quickSort(int[] arr, int l, int r) {
 
-        _quickSort(arr, l, p - 1);
-        _quickSort(arr, p + 1, r);
+		if (l >= r)
+			return;
 
-    }
+		int p = _partition(arr, l, r);
 
-    // 对 arr[l,r] 部分进行 partition 操作
-    // 返回p，使得 arr[l, p-1] < arr[p] ；arr[p+1, r] > arr[p]
-    private static int _partition(int[] arr, int l, int r) {
+		_quickSort(arr, l, p - 1);
+		_quickSort(arr, p + 1, r);
 
-        int value = arr[l];
-        int j = l;
+	}
 
-        // arr[l+1, j] < value      arr[j+1, i) > v
-        for (int index = l+1; index <= r; index++) {
-            if (arr[index] < value) {
-                SortHelperUtil.swap(arr, j+1, index);
-                j++;
-            }
-        }
+	// 对 arr[l,r] 部分进行 partition 操作
+	// 返回p，使得 arr[l, p-1] < arr[p] ；arr[p+1, r] > arr[p]
+	private static int _partition(int[] arr, int l, int r) {
 
-        SortHelperUtil.swap(arr, l, j);
+		int value = arr[l];
+		int j = l;
 
-        return j;
+		// arr[l+1, j] < value      arr[j+1, i) > v
+		for (int index = l + 1; index <= r; index++) {
+			if (arr[index] < value) {
+				SortHelperUtil.swap(arr, j + 1, index);
+				j++;
+			}
+		}
 
-    }
+		SortHelperUtil.swap(arr, l, j);
+
+		return j;
+
+	}
 
 }

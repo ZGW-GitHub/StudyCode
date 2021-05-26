@@ -22,7 +22,7 @@ public class ResourceTest extends MySpringApplicationTest {
 
 	/**
 	 * 带字符编码的 FileSystemResource 示例
-	 * 
+	 *
 	 * @see FileSystemResource
 	 * @see EncodedResource
 	 * @throws IOException IOException
@@ -34,7 +34,7 @@ public class ResourceTest extends MySpringApplicationTest {
 		FileSystemResource resource = new FileSystemResource(filePath);
 		EncodedResource encodedResource = new EncodedResource(resource, "UTF-8");
 
-		try(Reader reader = encodedResource.getReader()) {
+		try (Reader reader = encodedResource.getReader()) {
 			System.err.println(IoUtil.read(reader));
 		}
 	}
@@ -46,7 +46,7 @@ public class ResourceTest extends MySpringApplicationTest {
 	public void twoTest() throws IOException {
 		EncodedResource encodedResource = new EncodedResource(defaultPropertiesResource, "UTF-8");
 
-		try(Reader reader = encodedResource.getReader()) {
+		try (Reader reader = encodedResource.getReader()) {
 			System.err.println(IoUtil.read(reader));
 		}
 	}

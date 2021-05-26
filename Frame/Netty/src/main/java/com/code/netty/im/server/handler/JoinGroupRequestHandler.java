@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class JoinGroupRequestHandler extends SimpleChannelInboundHandler<JoinGroupRequestPacket> {
 
 	public static final JoinGroupRequestHandler INSTANCE = new JoinGroupRequestHandler();
-	
+
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, JoinGroupRequestPacket msg) {
 		JoinGroupResponsePacket response = new JoinGroupResponsePacket();
@@ -36,7 +36,7 @@ public class JoinGroupRequestHandler extends SimpleChannelInboundHandler<JoinGro
 			response.setReason("群聊不存在");
 		} else {
 			channelGroup.add(ctx.channel());
-			
+
 			response.setSuccess(true);
 			List<String> userNameList = channelGroup.stream().map(SessionUtil::getSession).map(Session::getUserName).collect(Collectors.toList());
 			response.setUserNameList(userNameList);

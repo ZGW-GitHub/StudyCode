@@ -34,7 +34,7 @@ public class ClientTest extends RedisClientApplicationTest {
 		// 递增1
 		Long hincr = jedis.hincrBy("key", "field", 1);
 		System.err.println(hincr);
-		
+
 		// 设置值
 		Long hset = jedis.hset("key", "field", "test2");
 		System.err.println(hset);

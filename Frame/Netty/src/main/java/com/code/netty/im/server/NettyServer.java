@@ -2,7 +2,10 @@ package com.code.netty.im.server;
 
 import com.code.netty.im.codec.PacketCodecHandler;
 import com.code.netty.im.codec.Spliter;
-import com.code.netty.im.server.handler.*;
+import com.code.netty.im.server.handler.AuthHandler;
+import com.code.netty.im.server.handler.HeartBeatRequestHandler;
+import com.code.netty.im.server.handler.LoginRequestHandler;
+import com.code.netty.im.server.handler.RequestSpliterHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;

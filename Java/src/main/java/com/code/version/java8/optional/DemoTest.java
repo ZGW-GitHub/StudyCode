@@ -21,7 +21,7 @@ public class DemoTest {
 			// 抛异常
 			Optional<Object> o2 = Optional.of(null);
 		}
-		
+
 		{
 			// 返回一个：包含 test 字符串的 Optional
 			Optional<String> o3 = Optional.ofNullable("test");
@@ -42,7 +42,7 @@ public class DemoTest {
 			// Optional 不为空则返回，为空则抛异常
 			String str1 = Optional.of("test").get();
 		}
-		
+
 		{
 			// Optional 不为空则返回test，为空则返回test2
 			String str2 = Optional.of("test").orElse("test2");
@@ -58,7 +58,7 @@ public class DemoTest {
 			String str4 = Optional.of("test").orElseThrow(() -> new RuntimeException());
 		}
 	}
-	
+
 	@Test
 	public void consumerTest() {
 		{
@@ -78,7 +78,7 @@ public class DemoTest {
 			Optional<String> test2 = Optional.of("test").flatMap(str -> Optional.of(str.toUpperCase()));
 		}
 	}
-	
+
 	@Test
 	public void filteTest() {
 		// 如果 Optional 有值并且满足条件则返回包含该值的 Optional ，否则返回空 Optional

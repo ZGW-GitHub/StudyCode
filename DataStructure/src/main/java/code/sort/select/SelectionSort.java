@@ -10,19 +10,19 @@ import code.SortHelperUtil;
  */
 public class SelectionSort {
 
-    public static void sort(int[] arr) {
+	public static void sort(int[] arr) {
 
-        int len = arr.length;
+		int len = arr.length;
 
-        for (int i = 0; i < len; i++) {
-            int minIndex = i;
-            for (int j = i + 1; j < len; j++) {
-                if (arr[minIndex] > arr[j]) {
-                    minIndex = j;
-                }
-            }
-            SortHelperUtil.swap(arr, i, minIndex);
-        }
-    }
+		for (int i = 0; i < len; i++) {
+			int minIndex = i;
+			for (int j = i + 1; j < len; j++) {
+				if (arr[minIndex] > arr[j]) {
+					minIndex = j;
+				}
+			}
+			SortHelperUtil.swap(arr, i, minIndex);
+		}
+	}
 
 }

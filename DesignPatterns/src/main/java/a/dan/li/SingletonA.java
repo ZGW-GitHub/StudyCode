@@ -8,11 +8,11 @@ package a.dan.li;
  */
 public class SingletonA {
 
-	private SingletonA() {
-	}
-
 	// 用于保存单例对象
 	private static SingletonA singleton = null;
+
+	private SingletonA() {
+	}
 
 	public static SingletonA getInstance() {
 		if (singleton == null) {

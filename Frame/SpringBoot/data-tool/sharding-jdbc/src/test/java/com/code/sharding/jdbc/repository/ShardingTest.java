@@ -16,7 +16,7 @@ import java.util.stream.IntStream;
  * @date 2021/3/9 16:33
  */
 public class ShardingTest extends ShardingJdbcApplicationTest {
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
@@ -25,15 +25,15 @@ public class ShardingTest extends ShardingJdbcApplicationTest {
 		List<User> userList = new ArrayList<>();
 
 		IntStream.range(6, 16).forEach(i -> userList.add(User.builder().name("test").age(i).build()));
-		
+
 		userRepository.saveAll(userList);
 	}
-	
+
 	@Test
 	public void selectTest() {
 		List<User> userList = userRepository.findAll();
 
 		userList.forEach(System.err::println);
 	}
-	
+
 }

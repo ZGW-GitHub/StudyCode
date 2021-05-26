@@ -60,7 +60,7 @@ public class UserRepositoryTest extends DataJpaBasicApplicationTest {
 	public void initTest() {
 		log.info("init success !");
 	}
-	
+
 	@Test
 	@Transactional
 	@Rollback(value = false)

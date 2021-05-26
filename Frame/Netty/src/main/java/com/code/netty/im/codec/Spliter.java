@@ -8,9 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 拆包器，用于解决粘包
- * 
+ *
  * @see LengthFieldBasedFrameDecoder 基于长度域的拆包器：LengthFieldBasedFrameDecoder
- * 
+ *
  * @author 愆凡
  * @date 2021/5/7 20:38
  */

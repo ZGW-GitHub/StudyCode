@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MessageRequestHandler extends SimpleChannelInboundHandler<MessageRequestPacket> {
 
 	public static final MessageRequestHandler INSTANCE = new MessageRequestHandler();
-	
+
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, MessageRequestPacket messageRequestPacket) {
 		// 获取消息发送方的会话信息
@@ -45,7 +45,7 @@ public class MessageRequestHandler extends SimpleChannelInboundHandler<MessageRe
 			toUserChannel.writeAndFlush(messageResponsePacket);
 		} else {
 			System.err.println("[" + messageRequestPacket.getToUserid() + "] 不在线，发送失败！");
-		} 
+		}
 	}
 
 }

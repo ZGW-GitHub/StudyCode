@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/login")
 public class LoginController {
-	
+
 	@Reference
 	private UserService userService;
 
@@ -31,5 +31,5 @@ public class LoginController {
 		}
 		return "登录失败！";
 	}
-	
+
 }

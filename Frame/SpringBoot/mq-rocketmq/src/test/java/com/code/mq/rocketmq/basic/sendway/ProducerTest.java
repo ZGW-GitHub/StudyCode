@@ -49,7 +49,7 @@ public class ProducerTest extends RocketMqApplicationTest {
 			@Override
 			public void onException(Throwable throwable) {
 				System.err.println("Error : " + throwable.getMessage());
-				
+
 				// TODO 发送消息出现异常，重新发送
 			}
 		}, 3_000);

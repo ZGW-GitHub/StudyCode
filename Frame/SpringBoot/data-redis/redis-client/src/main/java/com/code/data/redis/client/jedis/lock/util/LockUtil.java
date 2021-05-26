@@ -19,6 +19,12 @@ import java.util.concurrent.locks.LockSupport;
 public class LockUtil extends JedisPubSub {
 
 	/**
+	 * 用来实现可重入性<br/>
+	 * Map 中 key 存储锁的名称，value 存储锁的重入次数
+	 */
+	public final ThreadLocal<Map<String, Integer>> LOCKS = ThreadLocal.withInitial(HashMap::new);
+
+	/**
 	 * 尝试获取分布式锁（不可重入）
 	 *
 	 * @param jedis Redis 客户端
@@ -52,12 +58,6 @@ public class LockUtil extends JedisPubSub {
 
 		return "1".equals(result.toString());
 	}
-
-	/**
-	 * 用来实现可重入性<br/>
-	 * Map 中 key 存储锁的名称，value 存储锁的重入次数
-	 */
-	public final ThreadLocal<Map<String, Integer>> LOCKS = ThreadLocal.withInitial(HashMap::new);
 
 	/**
 	 * 尝试获取可重入分布式锁（ 使用 ThreadLocal ）

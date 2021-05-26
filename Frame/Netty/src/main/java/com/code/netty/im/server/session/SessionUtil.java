@@ -63,7 +63,7 @@ public class SessionUtil {
 	public static ChannelGroup getChannelGroupByid(String groupid) {
 		return CHANNEL_GROUP_MAP.get(groupid);
 	}
-	
+
 	public static void bindChannelGroup(String groupid, ChannelGroup channelGroup) {
 		CHANNEL_GROUP_MAP.put(groupid, channelGroup);
 	}

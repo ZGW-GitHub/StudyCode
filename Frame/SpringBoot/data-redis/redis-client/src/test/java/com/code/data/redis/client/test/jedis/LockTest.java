@@ -86,42 +86,5 @@ public class LockTest extends RedisClientApplicationTest {
 		boolean isUnLock = lockUtil.tryUnLock(jedis, key, value);
 		System.err.println("尝试释放分布式锁：" + isUnLock);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

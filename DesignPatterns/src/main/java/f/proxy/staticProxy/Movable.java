@@ -5,6 +5,6 @@ package f.proxy.staticProxy;
  */
 public interface Movable {
 
-    void run();
+	void run();
 
 }

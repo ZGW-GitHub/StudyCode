@@ -31,5 +31,5 @@ public class LoginController {
 		}
 		return "登录失败！";
 	}
-	
+
 }

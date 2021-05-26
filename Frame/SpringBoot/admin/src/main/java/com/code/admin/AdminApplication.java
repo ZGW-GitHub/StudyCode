@@ -14,8 +14,8 @@ public class AdminApplication {
 
 	public static void main(String[] args) throws InterruptedException {
 		new SpringApplicationBuilder(AdminApplication.class).run(args);
-		
+
 		Thread.currentThread().join();
 	}
-	
+
 }

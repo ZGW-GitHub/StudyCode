@@ -20,11 +20,11 @@ import java.util.List;
 public class CreateGroupResponsePacket extends Packet {
 
 	private String groupid;
-	
+
 	private List<String> userNameList;
 
 	private boolean success;
-	
+
 	private String reason;
 
 	@Override

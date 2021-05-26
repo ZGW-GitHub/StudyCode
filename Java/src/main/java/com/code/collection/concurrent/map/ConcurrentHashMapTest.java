@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 public class ConcurrentHashMapTest {
 
 	private final ConcurrentHashMap<Integer, Integer> hashMap = new ConcurrentHashMap<>(0);
-	
+
 	@Test
 	public void test() {
 		IntStream.range(1, 64).forEach(i -> {
@@ -20,7 +20,7 @@ public class ConcurrentHashMapTest {
 			System.err.println("put i : " + i);
 		});
 	}
-	
+
 	@After
 	public void after() {
 		hashMap.forEach((k, v) -> System.err.println(k + " --- " + v));

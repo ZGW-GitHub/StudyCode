@@ -82,7 +82,7 @@ public class ResourceLoaderTest extends MySpringApplicationTest implements Resou
 
 	/**
 	 * 自定义路径匹配器示例
-	 * 
+	 *
 	 * @see PathMatcher
 	 * @see JavaPathMatcher
 	 * @throws IOException IOException

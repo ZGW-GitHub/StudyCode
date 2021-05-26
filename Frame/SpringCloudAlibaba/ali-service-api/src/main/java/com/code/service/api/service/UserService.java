@@ -14,5 +14,5 @@ public interface UserService {
 	 * @return {@link User}
 	 */
 	User findById(Long id);
-	
+
 }

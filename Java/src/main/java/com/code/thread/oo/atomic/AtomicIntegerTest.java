@@ -12,11 +12,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class AtomicIntegerTest {
 
-	private volatile static int value = 0;
 	private static final AtomicInteger VALUE2 = new AtomicInteger();
-
 	private static final Set<Integer> SET = Collections.synchronizedSet(new HashSet<>());
 	private static final Set<Integer> SET2 = Collections.synchronizedSet(new HashSet<>());
+	private volatile static int value = 0;
 
 	@Test
 	@SuppressWarnings("all")

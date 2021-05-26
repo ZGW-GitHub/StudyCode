@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
 public class FixedThreadPoolTest {
 
 	private final ExecutorService executorService = Executors.newFixedThreadPool(10);
-	
+
 	@Test
 	public void test() throws InterruptedException {
 		// 0

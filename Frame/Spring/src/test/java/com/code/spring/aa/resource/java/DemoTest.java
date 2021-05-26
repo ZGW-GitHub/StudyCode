@@ -7,7 +7,6 @@ import com.code.spring.MySpringApplicationTest;
  * @date 2021/3/25 11:12
  */
 public class DemoTest extends MySpringApplicationTest {
-	
-	
-	
+
+
 }

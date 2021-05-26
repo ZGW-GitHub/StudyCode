@@ -137,7 +137,7 @@ public class NettyClient {
 						System.err.println("用户列表为空");
 						continue;
 					}
-					
+
 					channel.writeAndFlush(new CreateGroupRequestPacket(Stream.of(userids).collect(Collectors.toList())));
 				}
 			}

@@ -95,11 +95,11 @@ public class DemoTest {
 		System.out.println("---");
 		USER_LIST.stream().limit(2).forEach(u -> System.out.println(u.getAge()));
 	}
-	
+
 	@Test
 	public void numberStreamTest() throws InterruptedException {
 		IntStream.rangeClosed(1, 0).forEach(System.err::println);
-		
+
 		TimeUnit.SECONDS.sleep(2);
 	}
 

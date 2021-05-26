@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AuthHandler extends SimpleChannelInboundHandler<Object> {
 
 	public static final AuthHandler INSTANCE = new AuthHandler();
-	
+
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, Object msg) {
 		if (!SessionUtil.hasLogin(ctx.channel())) {

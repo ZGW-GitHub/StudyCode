@@ -83,7 +83,7 @@ public class ReferenceTest {
 
 		// 永远返回 null
 		Object result = pf.get();
-		
+
 		boolean enqueued = pf.isEnqueued();
 
 		System.err.println(result);

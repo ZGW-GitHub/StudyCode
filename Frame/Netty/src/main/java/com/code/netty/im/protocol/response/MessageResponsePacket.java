@@ -14,9 +14,9 @@ import lombok.EqualsAndHashCode;
 public class MessageResponsePacket extends Packet {
 
 	private String fromUserid;
-	
+
 	private String fromUserName;
-	
+
 	private String message;
 
 	@Override

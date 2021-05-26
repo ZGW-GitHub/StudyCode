@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * 注解 {@link EnableFeignClients} 作用：将加了 {@link FeignClient} 注解的类注册为 Spring Bean
- * 
+ *
  * @author 愆凡
  * @date 2021/4/7 15:06
  */
@@ -18,9 +18,9 @@ import org.springframework.cloud.openfeign.FeignClient;
 public class ServiceWebApplication {
 
 	public static void main(String[] args) {
-		
+
 		new SpringApplicationBuilder(ServiceWebApplication.class).run(args);
-		
+
 	}
-	
+
 }
