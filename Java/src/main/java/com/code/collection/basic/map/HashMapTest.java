@@ -17,7 +17,7 @@ public class HashMapTest {
 	public void test() {
 		final Map<Integer, Integer> map = new HashMap<>(0);
 
-		IntStream.range(1, 6).forEach(i -> {
+		IntStream.range(1, 64).forEach(i -> {
 			map.put(i, i);
 			System.err.println("put i : " + i);
 		});
