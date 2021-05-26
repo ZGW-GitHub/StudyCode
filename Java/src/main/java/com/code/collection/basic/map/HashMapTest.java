@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 /**
  * @author 愆凡
@@ -12,9 +13,14 @@ import java.util.Map;
 public class HashMapTest {
 
 	@Test
+	@SuppressWarnings("all")
 	public void test() {
-		Map<Integer, Integer> map = new HashMap<>(16);
+		final Map<Integer, Integer> map = new HashMap<>(0);
 
+		IntStream.range(1, 6).forEach(i -> {
+			map.put(i, i);
+			System.err.println("put i : " + i);
+		});
 	}
 
 }
