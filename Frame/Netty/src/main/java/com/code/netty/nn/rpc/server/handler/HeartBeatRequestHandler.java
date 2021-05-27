@@ -7,8 +7,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 
-;
-
 /**
  * @author 愆凡
  * @date 2021/5/12 11:14

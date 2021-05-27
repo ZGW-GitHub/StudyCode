@@ -1,13 +1,10 @@
 package com.code.netty.nn.rpc.client;
 
-import com.code.netty.nn.rpc.client.handler.*;
+import com.code.netty.nn.rpc.client.handler.HeartBeatTimerHandler;
+import com.code.netty.nn.rpc.client.handler.MessageResponseHandler;
 import com.code.netty.nn.rpc.codec.PacketCodecHandler;
 import com.code.netty.nn.rpc.codec.Spliter;
-import com.code.netty.nn.rpc.protocol.request.CreateGroupRequestPacket;
-import com.code.netty.nn.rpc.protocol.request.LoginRequestPacket;
-import com.code.netty.nn.rpc.protocol.request.MessageRequestPacket;
 import com.code.netty.nn.rpc.server.NettyServer;
-import com.code.netty.nn.rpc.server.session.SessionUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -19,10 +16,7 @@ import org.junit.Test;
 
 import java.net.InetSocketAddress;
 import java.util.Date;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Netty 群聊系统案例
@@ -63,15 +57,11 @@ public class NettyClient {
 					@Override
 					protected void initChannel(SocketChannel ch) throws Exception {
 						ChannelPipeline pipeline = ch.pipeline();
-						// 添加业务处理 handler
 						pipeline.addLast(new IdleStateHandler(10, 10, 10, TimeUnit.SECONDS));
 						pipeline.addLast(new HeartBeatTimerHandler());
 						pipeline.addLast(new Spliter());
 						pipeline.addLast(new PacketCodecHandler());
-						pipeline.addLast(new LoginResponseHandler());
 						pipeline.addLast(new MessageResponseHandler());
-						pipeline.addLast(new CreateGroupResponseHandler());
-						pipeline.addLast(new JoinGroupResponseHandler());
 					}
 				});
 	}
@@ -109,47 +99,7 @@ public class NettyClient {
 	}
 
 	private void clientSendMsgThread(EventLoopGroup group, Channel channel) {
-		Scanner scanner = new Scanner(System.in);
-		LoginRequestPacket loginRequestPacket = new LoginRequestPacket();
-		while (!Thread.interrupted()) {
-			if (!SessionUtil.hasLogin(channel)) {
-				System.out.print("输入用户名登录: ");
-				String username = scanner.nextLine();
 
-				loginRequestPacket.setUsername(username);
-				loginRequestPacket.setPassword("pass");
-
-				channel.writeAndFlush(loginRequestPacket);
-				waitForLoginResponse();
-			} else {
-				String msg = scanner.nextLine();
-				if (!msg.contains("：")) {
-					System.err.println("消息格式不正确");
-					continue;
-				}
-
-				String[] msgs = msg.split("：");
-				if (!msg.contains("createGroup")) {
-					channel.writeAndFlush(new MessageRequestPacket(msgs[0], msgs[1]));
-				} else {
-					String[] userids = msgs[1].split("、");
-					if (userids.length == 0) {
-						System.err.println("用户列表为空");
-						continue;
-					}
-
-					channel.writeAndFlush(new CreateGroupRequestPacket(Stream.of(userids).collect(Collectors.toList())));
-				}
-			}
-		}
-	}
-
-	private void waitForLoginResponse() {
-		try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 
 }
