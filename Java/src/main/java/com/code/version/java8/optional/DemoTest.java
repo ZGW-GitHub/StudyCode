@@ -40,17 +40,17 @@ public class DemoTest {
 	public void getTest() {
 		{
 			// Optional 不为空则返回，为空则抛异常
-			String str1 = Optional.of("test").get();
+			String str1 = Optional.ofNullable("test").get();
 		}
 
 		{
 			// Optional 不为空则返回test，为空则返回test2
-			String str2 = Optional.of("test").orElse("test2");
+			String str2 = Optional.ofNullable("test").orElse("test2");
 		}
 
 		{
 			// Optional 不为空则返回test，为空则返回Supplier函数返回的值
-			String str3 = Optional.of("test").orElseGet(() -> "test3");
+			String str3 = Optional.ofNullable("test").orElseGet(() -> "test3");
 		}
 
 		{
