@@ -12,5 +12,5 @@ import java.util.Hashtable;
 public class HashTableTest {
 
 	private final Hashtable<Integer, Integer> hashtable = new Hashtable<>();
-	
+
 }
