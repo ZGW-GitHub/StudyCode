@@ -26,11 +26,11 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Setter
 @SuppressWarnings("all")
-public class NettyServer {
+public class RemotingServer {
 
 	@Test
 	public void test() throws Exception {
-		new NettyServer().run();
+		new RemotingServer().run();
 	}
 
 	public static final String SERVER_HOST = "127.0.0.1";

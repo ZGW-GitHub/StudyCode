@@ -4,7 +4,7 @@ import com.code.netty.nn.rpc.remoting.client.handler.HeartBeatTimerHandler;
 import com.code.netty.nn.rpc.remoting.client.handler.MessageResponseHandler;
 import com.code.netty.nn.rpc.remoting.codec.PacketCodecHandler;
 import com.code.netty.nn.rpc.remoting.codec.Spliter;
-import com.code.netty.nn.rpc.remoting.server.NettyServer;
+import com.code.netty.nn.rpc.remoting.server.RemotingServer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @SuppressWarnings("all")
-public class NettyClient {
+public class RemotingClient {
 
 	@Test
 	public void clientOne() throws Exception {
@@ -35,16 +35,16 @@ public class NettyClient {
 		Thread.currentThread().join();
 	}
 
-	private static final NettyClient client = new NettyClient();
+	private static final RemotingClient client = new RemotingClient();
 
 	private final EventLoopGroup group;
 	private final Bootstrap bootstrap;
 
-	public NettyClient() {
+	public RemotingClient() {
 		group = new NioEventLoopGroup();
 		bootstrap = new Bootstrap()
 				.group(group)
-				.remoteAddress(new InetSocketAddress(NettyServer.SERVER_HOST, NettyServer.SERVER_PORT))
+				.remoteAddress(new InetSocketAddress(RemotingServer.SERVER_HOST, RemotingServer.SERVER_PORT))
 				.channel(NioSocketChannel.class)
 				.handler(new ChannelInitializer<SocketChannel>() {
 					@Override
