@@ -1,4 +1,4 @@
-package com.code.netty.nn.rpc.protocol;
+package com.code.netty.nn.rpc.remoting.protocol;
 
 import lombok.Data;
 

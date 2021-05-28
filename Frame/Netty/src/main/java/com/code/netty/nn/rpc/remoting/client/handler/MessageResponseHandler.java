@@ -1,6 +1,6 @@
-package com.code.netty.nn.rpc.client.handler;
+package com.code.netty.nn.rpc.remoting.client.handler;
 
-import com.code.netty.nn.rpc.protocol.response.MessageResponsePacket;
+import com.code.netty.nn.rpc.remoting.protocol.response.MessageResponsePacket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
@@ -12,10 +12,7 @@ public class MessageResponseHandler extends SimpleChannelInboundHandler<MessageR
 
 	@Override
 	protected void channelRead0(ChannelHandlerContext channelHandlerContext, MessageResponsePacket messageResponsePacket) {
-		String fromUserid = messageResponsePacket.getFromUserid();
-		String fromUserName = messageResponsePacket.getFromUserName();
 
-		System.err.println("收到[" + fromUserid + "_" + fromUserName + "]发来的消息: " + messageResponsePacket.getMessage());
 	}
 
 }

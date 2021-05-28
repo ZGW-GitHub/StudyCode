@@ -1,10 +1,10 @@
-package com.code.netty.nn.rpc.client;
+package com.code.netty.nn.rpc.remoting.client;
 
-import com.code.netty.nn.rpc.client.handler.HeartBeatTimerHandler;
-import com.code.netty.nn.rpc.client.handler.MessageResponseHandler;
-import com.code.netty.nn.rpc.codec.PacketCodecHandler;
-import com.code.netty.nn.rpc.codec.Spliter;
-import com.code.netty.nn.rpc.server.NettyServer;
+import com.code.netty.nn.rpc.remoting.client.handler.HeartBeatTimerHandler;
+import com.code.netty.nn.rpc.remoting.client.handler.MessageResponseHandler;
+import com.code.netty.nn.rpc.remoting.codec.PacketCodecHandler;
+import com.code.netty.nn.rpc.remoting.codec.Spliter;
+import com.code.netty.nn.rpc.remoting.server.NettyServer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -30,13 +30,6 @@ public class NettyClient {
 
 	@Test
 	public void clientOne() throws Exception {
-		connect(group, bootstrap);
-
-		Thread.currentThread().join();
-	}
-
-	@Test
-	public void clientTwo() throws Exception {
 		connect(group, bootstrap);
 
 		Thread.currentThread().join();

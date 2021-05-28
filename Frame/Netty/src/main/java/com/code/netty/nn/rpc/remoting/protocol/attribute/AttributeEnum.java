@@ -1,4 +1,4 @@
-package com.code.netty.nn.rpc.protocol.attribute;
+package com.code.netty.nn.rpc.remoting.protocol.attribute;
 
 import io.netty.util.AttributeKey;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,7 @@
-package com.code.netty.nn.rpc.server.handler;
+package com.code.netty.nn.rpc.remoting.server.handler;
 
-import com.code.netty.nn.rpc.protocol.request.HeartBeatRequestPacket;
-import com.code.netty.nn.rpc.protocol.response.HeartBeatResponsePacket;
+import com.code.netty.nn.rpc.remoting.protocol.request.HeartBeatRequestPacket;
+import com.code.netty.nn.rpc.remoting.protocol.response.HeartBeatResponsePacket;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -19,7 +19,7 @@ public class HeartBeatRequestHandler extends SimpleChannelInboundHandler<HeartBe
 
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, HeartBeatRequestPacket requestPacket) {
-		log.debug(ctx.channel().toString() + "：收到心跳请求包，回复心跳响应包");
+		log.info(ctx.channel().toString() + "：收到心跳请求包，回复心跳响应包");
 
 		ctx.writeAndFlush(new HeartBeatResponsePacket());
 	}

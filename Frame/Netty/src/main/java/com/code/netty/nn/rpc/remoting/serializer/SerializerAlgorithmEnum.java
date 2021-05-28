@@ -1,4 +1,4 @@
-package com.code.netty.nn.rpc.serializer;
+package com.code.netty.nn.rpc.remoting.serializer;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

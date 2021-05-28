@@ -1,7 +1,7 @@
-package com.code.netty.nn.rpc.codec;
+package com.code.netty.nn.rpc.remoting.codec;
 
-import com.code.netty.nn.rpc.protocol.Packet;
-import com.code.netty.nn.rpc.protocol.PacketCodec;
+import com.code.netty.nn.rpc.remoting.protocol.Packet;
+import com.code.netty.nn.rpc.remoting.protocol.PacketCodec;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;

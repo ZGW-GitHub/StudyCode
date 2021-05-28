@@ -1,7 +1,7 @@
-package com.code.netty.nn.rpc.protocol;
+package com.code.netty.nn.rpc.remoting.protocol;
 
-import com.code.netty.nn.rpc.serializer.Serializer;
-import com.code.netty.nn.rpc.serializer.SerializerAlgorithmEnum;
+import com.code.netty.nn.rpc.remoting.serializer.Serializer;
+import com.code.netty.nn.rpc.remoting.serializer.SerializerAlgorithmEnum;
 import io.netty.buffer.ByteBuf;
 import org.assertj.core.annotations.NonNull;
 

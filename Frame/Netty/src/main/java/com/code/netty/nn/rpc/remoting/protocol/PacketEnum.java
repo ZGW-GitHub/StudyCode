@@ -1,9 +1,9 @@
-package com.code.netty.nn.rpc.protocol;
+package com.code.netty.nn.rpc.remoting.protocol;
 
-import com.code.netty.nn.rpc.protocol.request.HeartBeatRequestPacket;
-import com.code.netty.nn.rpc.protocol.request.MessageRequestPacket;
-import com.code.netty.nn.rpc.protocol.response.HeartBeatResponsePacket;
-import com.code.netty.nn.rpc.protocol.response.MessageResponsePacket;
+import com.code.netty.nn.rpc.remoting.protocol.request.HeartBeatRequestPacket;
+import com.code.netty.nn.rpc.remoting.protocol.request.MessageRequestPacket;
+import com.code.netty.nn.rpc.remoting.protocol.response.HeartBeatResponsePacket;
+import com.code.netty.nn.rpc.remoting.protocol.response.MessageResponsePacket;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -20,7 +20,7 @@ public enum PacketEnum {
 	 */
 	MESSAGE_REQUEST((byte) 3, MessageRequestPacket.class),
 	/**
-	 * 登录响应包
+	 * 消息响应包
 	 */
 	MESSAGE_RESPONSE((byte) 4, MessageResponsePacket.class),
 	/**

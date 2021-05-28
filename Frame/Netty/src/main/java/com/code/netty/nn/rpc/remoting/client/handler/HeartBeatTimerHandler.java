@@ -1,6 +1,6 @@
-package com.code.netty.nn.rpc.client.handler;
+package com.code.netty.nn.rpc.remoting.client.handler;
 
-import com.code.netty.nn.rpc.protocol.request.HeartBeatRequestPacket;
+import com.code.netty.nn.rpc.remoting.protocol.request.HeartBeatRequestPacket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;

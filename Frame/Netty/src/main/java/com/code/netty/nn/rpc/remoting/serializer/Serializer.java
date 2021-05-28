@@ -1,6 +1,6 @@
-package com.code.netty.nn.rpc.serializer;
+package com.code.netty.nn.rpc.remoting.serializer;
 
-import com.code.netty.nn.rpc.serializer.impl.JsonSerializer;
+import com.code.netty.nn.rpc.remoting.serializer.impl.JsonSerializer;
 
 /**
  * @author 愆凡

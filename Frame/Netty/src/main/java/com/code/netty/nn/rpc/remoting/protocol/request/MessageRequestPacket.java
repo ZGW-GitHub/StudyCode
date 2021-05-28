@@ -1,7 +1,7 @@
-package com.code.netty.nn.rpc.protocol.request;
+package com.code.netty.nn.rpc.remoting.protocol.request;
 
-import com.code.netty.nn.rpc.protocol.Packet;
-import com.code.netty.nn.rpc.protocol.PacketEnum;
+import com.code.netty.nn.rpc.remoting.protocol.Packet;
+import com.code.netty.nn.rpc.remoting.protocol.PacketEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

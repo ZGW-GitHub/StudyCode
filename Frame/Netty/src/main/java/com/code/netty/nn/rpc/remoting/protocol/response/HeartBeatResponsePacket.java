@@ -1,7 +1,7 @@
-package com.code.netty.nn.rpc.protocol.response;
+package com.code.netty.nn.rpc.remoting.protocol.response;
 
-import com.code.netty.nn.rpc.protocol.Packet;
-import com.code.netty.nn.rpc.protocol.PacketEnum;
+import com.code.netty.nn.rpc.remoting.protocol.Packet;
+import com.code.netty.nn.rpc.remoting.protocol.PacketEnum;
 
 /**
  * @author 愆凡

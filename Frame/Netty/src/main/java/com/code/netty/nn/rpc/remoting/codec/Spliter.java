@@ -1,6 +1,6 @@
-package com.code.netty.nn.rpc.codec;
+package com.code.netty.nn.rpc.remoting.codec;
 
-import com.code.netty.nn.rpc.protocol.Packet;
+import com.code.netty.nn.rpc.remoting.protocol.Packet;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;

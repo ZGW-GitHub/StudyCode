@@ -1,8 +1,8 @@
-package com.code.netty.nn.rpc.serializer.impl;
+package com.code.netty.nn.rpc.remoting.serializer.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.code.netty.nn.rpc.serializer.Serializer;
-import com.code.netty.nn.rpc.serializer.SerializerAlgorithmEnum;
+import com.code.netty.nn.rpc.remoting.serializer.Serializer;
+import com.code.netty.nn.rpc.remoting.serializer.SerializerAlgorithmEnum;
 
 /**
  * @author 愆凡

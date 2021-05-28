@@ -1,6 +1,6 @@
-package com.code.netty.nn.rpc.server.handler;
+package com.code.netty.nn.rpc.remoting.server.handler;
 
-import com.code.netty.nn.rpc.protocol.request.MessageRequestPacket;
+import com.code.netty.nn.rpc.remoting.protocol.request.MessageRequestPacket;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

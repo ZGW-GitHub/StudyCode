@@ -1,9 +1,9 @@
-package com.code.netty.nn.rpc.server;
+package com.code.netty.nn.rpc.remoting.server;
 
-import com.code.netty.nn.rpc.codec.PacketCodecHandler;
-import com.code.netty.nn.rpc.codec.Spliter;
-import com.code.netty.nn.rpc.server.handler.HeartBeatRequestHandler;
-import com.code.netty.nn.rpc.server.handler.RequestSpliterHandler;
+import com.code.netty.nn.rpc.remoting.codec.PacketCodecHandler;
+import com.code.netty.nn.rpc.remoting.codec.Spliter;
+import com.code.netty.nn.rpc.remoting.server.handler.HeartBeatRequestHandler;
+import com.code.netty.nn.rpc.remoting.server.handler.MessageRequestHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -59,7 +59,7 @@ public class NettyServer {
 						pipeline.addLast(new Spliter()); // 不能共享，因为它内部实现是与每个 channel 有关，每个 Spliter 需要维持每个 channel 当前读到的数据，也就是说它是有状态的。
 						pipeline.addLast(PacketCodecHandler.INSTANCE);
 						pipeline.addLast(HeartBeatRequestHandler.INSTANCE);
-						pipeline.addLast(RequestSpliterHandler.INSTANCE);
+						pipeline.addLast(MessageRequestHandler.INSTANCE);
 					}
 				});
 
