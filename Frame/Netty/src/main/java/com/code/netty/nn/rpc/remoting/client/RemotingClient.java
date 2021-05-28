@@ -51,10 +51,10 @@ public class RemotingClient {
 					protected void initChannel(SocketChannel ch) throws Exception {
 						ChannelPipeline pipeline = ch.pipeline();
 						pipeline.addLast(new IdleStateHandler(10, 10, 10, TimeUnit.SECONDS));
-						pipeline.addLast(new HeartBeatTimerHandler());
 						pipeline.addLast(new Spliter());
 						pipeline.addLast(new PacketCodecHandler());
 						pipeline.addLast(new MessageResponseHandler());
+						pipeline.addLast(new HeartBeatTimerHandler());
 					}
 				});
 	}

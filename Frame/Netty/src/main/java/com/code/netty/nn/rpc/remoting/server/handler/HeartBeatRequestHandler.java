@@ -19,7 +19,7 @@ public class HeartBeatRequestHandler extends SimpleChannelInboundHandler<HeartBe
 
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, HeartBeatRequestPacket requestPacket) {
-		log.info(ctx.channel().toString() + "：收到心跳请求包，回复心跳响应包");
+//		log.info(ctx.channel().toString() + "：收到心跳请求包，回复心跳响应包");
 
 		ctx.writeAndFlush(new HeartBeatResponsePacket());
 	}
