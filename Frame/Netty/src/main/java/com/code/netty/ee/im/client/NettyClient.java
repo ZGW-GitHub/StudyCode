@@ -65,13 +65,13 @@ public class NettyClient {
 						ChannelPipeline pipeline = ch.pipeline();
 						// 添加业务处理 handler
 						pipeline.addLast(new IdleStateHandler(10, 10, 10, TimeUnit.SECONDS));
-						pipeline.addLast(new HeartBeatTimerHandler());
 						pipeline.addLast(new Spliter());
 						pipeline.addLast(new PacketCodecHandler());
 						pipeline.addLast(new LoginResponseHandler());
 						pipeline.addLast(new MessageResponseHandler());
 						pipeline.addLast(new CreateGroupResponseHandler());
 						pipeline.addLast(new JoinGroupResponseHandler());
+						pipeline.addLast(new HeartBeatTimerHandler());
 					}
 				});
 	}
