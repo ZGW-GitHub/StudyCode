@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
  * @author 愆凡
  * @date 2020/7/15 4:05 下午
  */
-public class DemoTest {
+public class SimpleTest {
 
 	private static final List<User> USER_LIST = new ArrayList<>();
 
