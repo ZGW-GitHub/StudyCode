@@ -73,7 +73,7 @@ public class LockTest extends RedisClientApplicationTest {
 	 * 阻塞获取分布式锁
 	 */
 	@Test
-	public void blockLockTest() throws InterruptedException {
+	public void blockLockTest() {
 		boolean isLock = lockUtil.blockLock(jedis, key, value, expireTime);
 		System.err.println("尝试获取分布式锁：" + isLock);
 	}
