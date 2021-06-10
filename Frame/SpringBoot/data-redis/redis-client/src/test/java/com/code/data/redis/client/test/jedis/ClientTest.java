@@ -8,6 +8,8 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPubSub;
 
+import java.util.stream.IntStream;
+
 /**
  * @author 愆凡
  * @date 2021/3/11 16:06
@@ -38,6 +40,16 @@ public class ClientTest extends RedisClientApplicationTest {
 		// 设置值
 		Long hset = jedis.hset("key", "field", "test2");
 		System.err.println(hset);
+	}
+
+	/**
+	 * HyperLogLog 操作
+	 */
+	@Test
+	public void HyperLogLogTest() {
+		IntStream.range(0, 10).forEach(i -> jedis.pfadd("test", i + ""));
+
+		System.err.println(jedis.pfcount("test"));
 	}
 
 	/**
