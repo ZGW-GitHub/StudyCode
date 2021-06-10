@@ -48,6 +48,8 @@ public class ClientTest extends RedisClientApplicationTest {
 	@Test
 	public void HyperLogLogTest() {
 		IntStream.range(0, 10).forEach(i -> jedis.pfadd("test", i + ""));
+		IntStream.range(0, 10).forEach(i -> jedis.pfadd("test", i + ""));
+		IntStream.range(0, 10).forEach(i -> jedis.pfadd("test", i + ""));
 
 		System.err.println(jedis.pfcount("test"));
 	}
