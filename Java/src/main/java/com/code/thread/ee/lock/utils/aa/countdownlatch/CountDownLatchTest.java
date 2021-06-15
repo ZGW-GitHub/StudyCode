@@ -33,11 +33,6 @@ public class CountDownLatchTest {
 		latch.await();
 		System.out.println("After await() : count = " + latch.getCount());
 		System.out.println(" 阶段完成 ");
-
-		// latch 的 await 对于一个线程来说是一次性的，所以下面的 await 是无效的。（ 可以看下面的多线程 await ）
-		System.out.println(" again 等待阶段完成... ");
-		latch.await();
-		System.out.println(" again 阶段完成 ");
 	}
 
 
