@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * API：
@@ -68,8 +69,29 @@ public class CyclicBarrierTest {
 	}
 
 	@Test
-	public void resetTest() {
+	public void resetTest() throws BrokenBarrierException, InterruptedException {
+		final CyclicBarrier barrier = new CyclicBarrier(3, () -> System.err.println(Thread.currentThread().getName() + " 执行回调函数！"));
 
+		startNewThread(barrier, 1, "T1");
+		startNewThread(barrier, 6, "T2");
+		startNewThread(barrier, 8, "T3");
+
+		TimeUnit.SECONDS.sleep(3);
+
+		System.err.println("main-1 开始 await ");
+		try {
+			barrier.await(2, TimeUnit.SECONDS);
+		} catch (TimeoutException e) {
+			System.err.println("main-1 await 超时");
+			barrier.reset();
+		}
+		System.err.println("main-1 结束 await ");
+
+		System.err.println("main-2 开始 await ");
+		barrier.await();
+		System.err.println("main-2 结束 await ");
+
+		Thread.currentThread().join();
 	}
 
 	private void startNewThread(CyclicBarrier barrier, int sleepSeconds, String threadName) {
@@ -77,11 +99,16 @@ public class CyclicBarrierTest {
 			try {
 				TimeUnit.SECONDS.sleep(sleepSeconds);
 
-				System.err.println(Thread.currentThread().getName() + " 阶段 over ");
+				System.err.println(Thread.currentThread().getName() + " 开始 await ");
 
 				barrier.await(); // 等待
+
+				System.err.println(Thread.currentThread().getName() + " 结束 await ");
 			} catch (InterruptedException | BrokenBarrierException e) {
-				log.error("Error : ", e);
+//				log.error("Error : ", e);
+				if (e instanceof BrokenBarrierException) {
+					log.error("屏障坏了");
+				}
 			}
 		}, threadName).start();
 	}
