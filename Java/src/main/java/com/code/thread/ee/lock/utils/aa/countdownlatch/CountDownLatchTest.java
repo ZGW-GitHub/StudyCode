@@ -28,11 +28,12 @@ public class CountDownLatchTest {
 		startNewThread(latch, 1, "T1");
 		startNewThread(latch, 3, "T2");
 
-		System.out.println(" 等待阶段完成... ");
-		System.out.println("Befor await() : count = " + latch.getCount());
+		System.out.println("main await");
 		latch.await();
-		System.out.println("After await() : count = " + latch.getCount());
-		System.out.println(" 阶段完成 ");
+
+		System.out.println("over ");
+		
+		Thread.currentThread().join();
 	}
 
 	/**
