@@ -78,18 +78,18 @@ public class CyclicBarrierTest {
 
 		TimeUnit.SECONDS.sleep(3);
 
-		System.err.println("main-1 开始 await ");
+		System.out.println("main-1 开始 await ");
 		try {
 			barrier.await(2, TimeUnit.SECONDS);
 		} catch (TimeoutException e) {
 			System.err.println("main-1 await 超时");
 			barrier.reset();
 		}
-		System.err.println("main-1 结束 await ");
+		System.out.println("main-1 结束 await ");
 
-		System.err.println("main-2 开始 await ");
+		System.out.println("main-2 开始 await ");
 		barrier.await();
-		System.err.println("main-2 结束 await ");
+		System.out.println("main-2 结束 await ");
 
 		Thread.currentThread().join();
 	}
