@@ -35,7 +35,6 @@ public class CountDownLatchTest {
 		System.out.println(" 阶段完成 ");
 	}
 
-
 	/**
 	 * 多线程 await
 	 */
