@@ -1,7 +1,7 @@
 package com.code.spring.cc.ioc.bean.definition;
 
 import com.code.spring.MySpringApplicationTest;
-import com.code.spring.entity.User;
+import com.code.spring.aa.basic.entity.User;
 import org.junit.Test;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.config.BeanDefinition;

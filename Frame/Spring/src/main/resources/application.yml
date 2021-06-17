@@ -54,6 +54,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MYSQL5Dialect
+    database-platform: org.hibernate.dialect.MYSQL5Dialect
     open-in-view: true
 
 ---

@@ -1,6 +1,6 @@
 package com.code.spring.cc.ioc.bean.instantiation.other.autowire.capable.bean.factory;
 
-import com.code.spring.entity.User;
+import com.code.spring.aa.basic.entity.User;
 
 /**
  * @author 愆凡

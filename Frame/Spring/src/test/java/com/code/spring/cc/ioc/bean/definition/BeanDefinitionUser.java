@@ -1,6 +1,6 @@
 package com.code.spring.cc.ioc.bean.definition;
 
-import com.code.spring.entity.User;
+import com.code.spring.aa.basic.entity.User;
 
 /**
  * @author 愆凡

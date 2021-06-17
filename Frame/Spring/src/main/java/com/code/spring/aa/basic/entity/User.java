@@ -1,4 +1,4 @@
-package com.code.spring.entity;
+package com.code.spring.aa.basic.entity;
 
 import lombok.*;
 

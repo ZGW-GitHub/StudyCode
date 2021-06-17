@@ -1,4 +1,4 @@
-package com.code.spring;
+package com.code.spring.aa.basic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,7 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @author 愆凡
  * @date 2020/7/15 3:38 下午
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.code.spring.aa.basic")
 public class MySpringApplication {
 
 	public static void main(String[] args) {

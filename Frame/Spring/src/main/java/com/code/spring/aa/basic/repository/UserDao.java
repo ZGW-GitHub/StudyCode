@@ -1,6 +1,6 @@
-package com.code.spring.repository;
+package com.code.spring.aa.basic.repository;
 
-import com.code.spring.entity.User;
+import com.code.spring.aa.basic.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
