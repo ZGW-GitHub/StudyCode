@@ -9,8 +9,8 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author 愆凡
  * @date 2020/8/29 周六 23:23
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest
+@RunWith(SpringRunner.class)
 public class ZookeeperApplicationTest {
 
 	@Test

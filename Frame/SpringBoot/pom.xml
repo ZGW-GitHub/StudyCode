@@ -25,6 +25,7 @@
 		<module>data-redis</module>
 		<module>data-tool</module>
 		<module>docker</module>
+		<module>mq-pulsar</module>
 	</modules>
 
 </project>
