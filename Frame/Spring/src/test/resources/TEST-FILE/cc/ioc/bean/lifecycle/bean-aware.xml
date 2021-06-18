@@ -4,6 +4,6 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 	    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="awareEntity" class="com.code.spring.cc.ioc.bean.lifecycle.BeanAwareTest.AwareEntity"/>
+	<bean id="awareEntity" class="com.code.spring.c.ioc.bean.lifecycle.BeanAwareTest.AwareEntity"/>
 
 </beans>

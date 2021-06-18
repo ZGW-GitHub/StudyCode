@@ -1,6 +1,6 @@
 package com.code.spring.zs.validator;
 
-import com.code.spring.aa.basic.entity.User;
+import com.code.spring.a.basic.entity.User;
 
 /**
  * @author 愆凡

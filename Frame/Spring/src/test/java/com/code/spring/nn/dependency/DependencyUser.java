@@ -1,6 +1,6 @@
 package com.code.spring.nn.dependency;
 
-import com.code.spring.aa.basic.entity.User;
+import com.code.spring.a.basic.entity.User;
 import org.springframework.stereotype.Component;
 
 /**

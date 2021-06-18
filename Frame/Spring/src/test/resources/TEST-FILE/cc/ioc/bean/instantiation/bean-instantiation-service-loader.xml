@@ -7,19 +7,19 @@
 	<bean id="serviceLoaderFactoryBean"
 		  class="org.springframework.beans.factory.serviceloader.ServiceLoaderFactoryBean">
 		<property name="serviceType"
-				  value="com.code.spring.cc.ioc.bean.instantiation.other.service.loader.factory.TestUserFactory"/>
+				  value="com.code.spring.c.ioc.bean.instantiation.other.service.loader.factory.TestUserFactory"/>
 	</bean>
 
 	<bean id="serviceFactoryBean"
 		  class="org.springframework.beans.factory.serviceloader.ServiceFactoryBean">
 		<property name="serviceType"
-				  value="com.code.spring.cc.ioc.bean.instantiation.other.service.loader.factory.TestUserFactory"/>
+				  value="com.code.spring.c.ioc.bean.instantiation.other.service.loader.factory.TestUserFactory"/>
 	</bean>
 
 	<bean id="serviceListFactoryBean"
 		  class="org.springframework.beans.factory.serviceloader.ServiceListFactoryBean">
 		<property name="serviceType"
-				  value="com.code.spring.cc.ioc.bean.instantiation.other.service.loader.factory.TestUserFactory"/>
+				  value="com.code.spring.c.ioc.bean.instantiation.other.service.loader.factory.TestUserFactory"/>
 	</bean>
 
 </beans>

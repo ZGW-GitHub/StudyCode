@@ -1,7 +1,7 @@
 package com.code.spring.zs.validator;
 
 import com.code.spring.MySpringApplicationTest;
-import com.code.spring.aa.basic.entity.User;
+import com.code.spring.a.basic.entity.User;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.springframework.context.MessageSource;
