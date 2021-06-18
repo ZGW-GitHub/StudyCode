@@ -14,7 +14,6 @@ public class SpringLifecycleApplication {
 	public static void main(String[] args) {
 
 //		test(args);
-
 		initPropertySourcesTest(args);
 
 	}
