@@ -48,7 +48,7 @@ public class SpringBeanDefinitionApplication {
 	/**
 	 * 面向资源 ：XML 资源
 	 */
-	public static void byXmlTest() {
+	private static void byXmlTest() {
 		// 启动 Spring
 		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
 
@@ -71,7 +71,7 @@ public class SpringBeanDefinitionApplication {
 	/**
 	 * 面向资源 ：Properties 资源
 	 */
-	public static void byPropertieTest() {
+	private static void byPropertieTest() {
 		// 启动 Spring
 		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
 
@@ -98,7 +98,7 @@ public class SpringBeanDefinitionApplication {
 	/**
 	 * 面向注解
 	 */
-	public static void byAnnotatedTest() {
+	private static void byAnnotatedTest() {
 		// 启动 Spring
 		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
 
@@ -120,7 +120,7 @@ public class SpringBeanDefinitionApplication {
 	/**
 	 * 面向 Api
 	 */
-	public static void byApiTest1() {
+	private static void byApiTest1() {
 		// 启动 Spring
 		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
 
@@ -147,7 +147,7 @@ public class SpringBeanDefinitionApplication {
 	/**
 	 * 面向 Api
 	 */
-	public static void byApiTest2() {
+	private static void byApiTest2() {
 		// 启动 Spring
 		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
 
