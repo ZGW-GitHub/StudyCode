@@ -4,13 +4,8 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 	    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="userOne" class="com.code.spring.cc.ioc.bean.instantiation.basic.constructor.TestUser">
-		<constructor-arg name="id" value="1"/>
-		<constructor-arg name="name" value="愆凡"/>
-	</bean>
-
-	<bean id="userTwo" class="com.code.spring.cc.ioc.bean.instantiation.basic.constructor.TestUser">
-
+	<bean id="user" class="com.code.spring.c.ioc.aa.bean.instantiation.TestUser"
+		  factory-method="getUser">
 	</bean>
 
 </beans>
