@@ -1,7 +1,6 @@
 package com.code.spring.c.ioc.aa.bean.definition;
 
 import com.code.spring.a.basic.entity.User;
-import com.code.spring.c.ioc.aa.bean.definition.entity.BeanDefinitionUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -109,11 +108,11 @@ public class SpringBeanDefinitionApplication {
 		AnnotatedBeanDefinitionReader beanDefinitionReader = new AnnotatedBeanDefinitionReader(beanFactory);
 
 		// 注册（不要求类必须有 @Component 注解）
-		beanDefinitionReader.register(BeanDefinitionUser.class);
+		beanDefinitionReader.register(TestUser.class);
 
 		// 普通的 Class 注册到 Spring IoC 容器后，通常 Bean 名称为 Class 的名称且首字母小写
 		// Bean 名称的生成来自于 BeanNameGenerator ，注解 Bean 名称的生成来自于 AnnotatedBeanNameGenerator
-		User user = beanFactory.getBean("beanDefinitionUser", BeanDefinitionUser.class);
+		User user = beanFactory.getBean("beanDefinitionUser", TestUser.class);
 		System.err.println(user);
 	}
 
@@ -128,7 +127,7 @@ public class SpringBeanDefinitionApplication {
 		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
 
 		// 创建 BeanDefinitionBuilder 用于构建 BeanDefinition
-		BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(BeanDefinitionUser.class);
+		BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(TestUser.class);
 
 		beanDefinitionBuilder
 				.addPropertyValue("id", 1)
@@ -156,7 +155,7 @@ public class SpringBeanDefinitionApplication {
 
 		// 创建 BeanDefinition
 		GenericBeanDefinition genericBeanDefinition = new GenericBeanDefinition();
-		genericBeanDefinition.setBeanClass(BeanDefinitionUser.class);
+		genericBeanDefinition.setBeanClass(TestUser.class);
 		// 创建 MutablePropertyValues
 		MutablePropertyValues propertyValues = new MutablePropertyValues();
 		propertyValues
