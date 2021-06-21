@@ -61,7 +61,7 @@ public class SpringBeanDefinitionApplication {
 		// xml 资源的位置
 		String filePath = "/files/c/ioc/aa/bean/definition/bean-definition.xml";
 
-		// 注册 BeanDefinition 到 Ioc 容器
+		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
 
 		User user = applicationContext.getBean("user", User.class);
@@ -88,7 +88,7 @@ public class SpringBeanDefinitionApplication {
 		Resource resource = new ClassPathResource(file);
 		EncodedResource encodedResource = new EncodedResource(resource, "UTF-8"); // 转换成带有字符编码的 EncodedResource 对象
 
-		// 注册 BeanDefinition 到 Ioc 容器
+		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(encodedResource);
 
 		User user = beanFactory.getBean("user", User.class);

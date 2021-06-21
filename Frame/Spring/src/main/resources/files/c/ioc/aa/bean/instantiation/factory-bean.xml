@@ -4,8 +4,7 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 	    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="userFactory" class="com.code.spring.c.ioc.aa.bean.instantiation.basic.bean.factory.TestUserFactory"/>
-
-	<bean id="user" factory-bean="userFactory" factory-method="getUser"/>
+	<bean id="userFactoryBean"
+		  class="com.code.spring.c.ioc.aa.bean.instantiation.factory.bean.UserFactoryBean"/>
 
 </beans>

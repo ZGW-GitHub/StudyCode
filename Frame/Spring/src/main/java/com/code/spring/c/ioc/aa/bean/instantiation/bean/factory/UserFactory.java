@@ -1,4 +1,4 @@
-package com.code.spring.c.ioc.aa.bean.instantiation.basic.bean.factory;
+package com.code.spring.c.ioc.aa.bean.instantiation.bean.factory;
 
 import com.code.spring.c.ioc.aa.bean.instantiation.TestUser;
 
@@ -6,7 +6,7 @@ import com.code.spring.c.ioc.aa.bean.instantiation.TestUser;
  * @author 愆凡
  * @date 2021/6/21 22:48
  */
-public class TestUserFactory {
+public class UserFactory {
 
 	public TestUser getUser() {
 		TestUser user = new TestUser();
