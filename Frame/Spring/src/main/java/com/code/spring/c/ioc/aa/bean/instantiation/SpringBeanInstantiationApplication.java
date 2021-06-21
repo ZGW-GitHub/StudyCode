@@ -13,7 +13,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class SpringBeanInstantiationApplication {
 	public static void main(String[] args) {
 
-		new SpringApplicationBuilder(SpringBeanInstantiationApplication.class).run(args);
+		test(args);
 
 	}
+
+	private static void test(String[] args) {
+		new SpringApplicationBuilder(SpringBeanInstantiationApplication.class).run(args);
+	}
+
 }
