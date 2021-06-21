@@ -29,7 +29,7 @@ public class SpringLifecycleApplication {
 	 */
 	private static void initPropertySourcesTest(String[] args) {
 		new SpringApplicationBuilder(SpringLifecycleApplication.class)
-				.main(MyAnnotationConfigApplicationContext.class)
+				.contextClass(MyAnnotationConfigApplicationContext.class)
 				.run(args);
 	}
 
