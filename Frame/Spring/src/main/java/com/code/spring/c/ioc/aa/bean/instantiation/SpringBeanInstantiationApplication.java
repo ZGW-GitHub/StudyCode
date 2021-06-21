@@ -1,6 +1,7 @@
 package com.code.spring.c.ioc.aa.bean.instantiation;
 
 import com.code.spring.c.ioc.aa.bean.definition.SpringBeanDefinitionApplication;
+import com.code.spring.c.ioc.aa.bean.instantiation.other.service.loader.UserFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -8,6 +9,9 @@ import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
+
+import java.util.List;
+import java.util.ServiceLoader;
 
 /**
  * @author 愆凡
@@ -29,8 +33,13 @@ public class SpringBeanInstantiationApplication {
 //		factoryMethod();
 
 		// other : 通过 AutowireCapableBeanFactory 实例化
-		autowireCapableBeanFactory();
+//		autowireCapableBeanFactory();
 
+		// other : 通过 Service Loader 实例化
+//		javaServiceLoader(); // Java ServiceLoader 示例
+//		serviceLoaderFactoryBean(); // ServiceLoaderFactoryBean 示例
+//		serviceFactoryBean(); // ServiceFactoryBean 示例
+//		serviceListFactoryBean(); // ServiceListFactoryBean 示例
 
 	}
 
@@ -49,9 +58,9 @@ public class SpringBeanInstantiationApplication {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String filePath = "/files/c/ioc/aa/bean/instantiation/bean-instantiation-bean-factory.xml";
+		String filePath = "/files/c/ioc/aa/bean/instantiation/bean-factory.xml";
 
-		// 注册 BeanDefinition 到 Ioc 容器
+		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
 
 		TestUser user = applicationContext.getBean("user", TestUser.class);
@@ -69,9 +78,9 @@ public class SpringBeanInstantiationApplication {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String filePath = "/files/c/ioc/aa/bean/instantiation/bean-instantiation-constructor.xml";
+		String filePath = "/files/c/ioc/aa/bean/instantiation/constructor.xml";
 
-		// 注册 BeanDefinition 到 Ioc 容器
+		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
 
 		TestUser userOne = applicationContext.getBean("userOne", TestUser.class);
@@ -92,9 +101,9 @@ public class SpringBeanInstantiationApplication {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String filePath = "/files/c/ioc/aa/bean/instantiation/bean-instantiation-factory-bean.xml";
+		String filePath = "/files/c/ioc/aa/bean/instantiation/factory-bean.xml";
 
-		// 注册 BeanDefinition 到 Ioc 容器
+		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
 
 		TestUser user = applicationContext.getBean("userFactoryBean", TestUser.class);
@@ -112,16 +121,16 @@ public class SpringBeanInstantiationApplication {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String filePath = "/files/c/ioc/aa/bean/instantiation/bean-instantiation-factory-method.xml";
+		String filePath = "/files/c/ioc/aa/bean/instantiation/factory-method.xml";
 
-		// 注册 BeanDefinition 到 Ioc 容器
+		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
 
 		TestUser user = applicationContext.getBean("user", TestUser.class);
 		System.err.println(user);
 	}
 
-	private static void autowireCapableBeanFactory() {
+	private void autowireCapableBeanFactory() {
 		// 启动 Spring
 		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
 
@@ -132,6 +141,87 @@ public class SpringBeanInstantiationApplication {
 		TestUser user = beanFactory.createBean(TestUser.class);
 
 		System.err.println(user);
+	}
+
+	/**
+	 * Java ServiceLoader 示例
+	 */
+	private static void javaServiceLoader() {
+		ServiceLoader<UserFactory> serviceLoader = ServiceLoader.load(UserFactory.class, Thread.currentThread().getContextClassLoader());
+
+		serviceLoader.forEach(testUserFactory -> System.err.println(testUserFactory.getUser()));
+	}
+
+	/**
+	 * ServiceLoaderFactoryBean 示例
+	 */
+	private static void serviceLoaderFactoryBean() {
+		// 启动 Spring
+		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
+
+		// 通过 SpringApplication 获取它的 DefaultListableBeanFactory
+		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
+
+		// 实例化基于 xml 资源的 BeanDefinitionReader
+		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
+
+		// xml 资源的位置
+		String filePath = "/files/c/ioc/aa/bean/instantiation/service-loader.xml";
+
+		// 注册 BeanDefinition 到 IoC 容器
+		beanDefinitionReader.loadBeanDefinitions(filePath);
+
+		ServiceLoader<UserFactory> serviceLoader = applicationContext.getBean("serviceLoaderFactoryBean", ServiceLoader.class);
+
+		serviceLoader.forEach(testUserFactory -> System.err.println(testUserFactory.getUser()));
+	}
+
+	/**
+	 * ServiceFactoryBean 示例
+	 */
+	private static void serviceFactoryBean() {
+		// 启动 Spring
+		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
+
+		// 通过 SpringApplication 获取它的 DefaultListableBeanFactory
+		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
+
+		// 实例化基于 xml 资源的 BeanDefinitionReader
+		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
+
+		// xml 资源的位置
+		String filePath = "/files/c/ioc/aa/bean/instantiation/service-loader.xml";
+
+		// 注册 BeanDefinition 到 IoC 容器
+		beanDefinitionReader.loadBeanDefinitions(filePath);
+
+		UserFactory testUserFactory = beanFactory.getBean("serviceFactoryBean", UserFactory.class);
+
+		System.err.println(testUserFactory.getUser());
+	}
+
+	/**
+	 * ServiceListFactoryBean 示例
+	 */
+	private static void serviceListFactoryBean() {
+		// 启动 Spring
+		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
+
+		// 通过 SpringApplication 获取它的 DefaultListableBeanFactory
+		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
+
+		// 实例化基于 xml 资源的 BeanDefinitionReader
+		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
+
+		// xml 资源的位置
+		String filePath = "/files/c/ioc/aa/bean/instantiation/service-loader.xml";
+
+		// 注册 BeanDefinition 到 IoC 容器
+		beanDefinitionReader.loadBeanDefinitions(filePath);
+
+		List<UserFactory> testUserFactorys = beanFactory.getBean("serviceListFactoryBean", List.class);
+
+		testUserFactorys.forEach(testUserFactory -> System.err.println(testUserFactory.getUser()));
 	}
 
 }
