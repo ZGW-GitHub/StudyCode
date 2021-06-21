@@ -4,6 +4,6 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 	    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="userFactoryBean" class="com.code.spring.c.ioc.bean.instantiation.basic.factory.bean.TestUserFactoryBean"/>
+	<bean id="userFactoryBean" class="com.code.spring.cc.ioc.bean.instantiation.basic.factory.bean.TestUserFactoryBean"/>
 
 </beans>
