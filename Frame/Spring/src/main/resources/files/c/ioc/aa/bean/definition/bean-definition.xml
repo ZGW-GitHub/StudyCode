@@ -4,7 +4,7 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 	    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="user" class="com.code.spring.cc.ioc.bean.definition.BeanDefinitionUser">
+	<bean id="user" class="com.code.spring.c.ioc.aa.bean.definition.entity.BeanDefinitionUser">
 		<property name="id" value="1"/>
 		<property name="name" value="愆凡"/>
 	</bean>
