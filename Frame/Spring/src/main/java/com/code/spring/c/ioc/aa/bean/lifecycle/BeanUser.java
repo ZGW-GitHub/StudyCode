@@ -1,4 +1,4 @@
-package com.code.spring.cc.ioc.bean.lifecycle;
+package com.code.spring.c.ioc.aa.bean.lifecycle;
 
 import com.code.spring.a.basic.entity.User;
 import org.springframework.beans.factory.DisposableBean;
@@ -9,7 +9,7 @@ import javax.annotation.PreDestroy;
 
 /**
  * @author 愆凡
- * @date 2020/12/30 20:47
+ * @date 2021/6/22 22:56
  */
 public class BeanUser extends User implements InitializingBean, DisposableBean {
 
@@ -23,7 +23,7 @@ public class BeanUser extends User implements InitializingBean, DisposableBean {
 	}
 
 	@Override
-	public void afterPropertiesSet() throws Exception {
+	public void afterPropertiesSet() {
 
 	}
 
@@ -41,7 +41,7 @@ public class BeanUser extends User implements InitializingBean, DisposableBean {
 	}
 
 	@Override
-	public void destroy() throws Exception {
+	public void destroy() {
 
 	}
 
