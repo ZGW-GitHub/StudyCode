@@ -1,17 +1,14 @@
-package com.code.spring.zc.schema;
+package com.code.spring.n.schema;
 
-import com.code.spring.MySpringApplicationTest;
-import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @author 愆凡
  * @date 2021/2/3 10:46
  */
-public class SchemaTest extends MySpringApplicationTest {
+public class SchemaTest {
 
-	@Test
-	public void test() {
+	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:/META-INF/test.xml");
 
 		MyApplicationConfig config = context.getBean(MyApplicationConfig.class);

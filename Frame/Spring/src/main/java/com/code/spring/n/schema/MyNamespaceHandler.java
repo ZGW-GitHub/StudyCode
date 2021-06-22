@@ -1,4 +1,4 @@
-package com.code.spring.zc.schema;
+package com.code.spring.n.schema;
 
 import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 

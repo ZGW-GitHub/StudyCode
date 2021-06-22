@@ -1,4 +1,4 @@
-package com.code.spring.zc.schema;
+package com.code.spring.n.schema;
 
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -41,7 +41,6 @@ public class MyBeanDefinitionParser implements BeanDefinitionParser {
 	}
 
 	@Override
-	@SuppressWarnings("All")
 	public BeanDefinition parse(Element element, ParserContext parserContext) {
 		return parse(element, parserContext, beanClass);
 	}

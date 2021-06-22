@@ -1,4 +1,4 @@
-package com.code.spring.zc.schema;
+package com.code.spring.n.schema;
 
 import lombok.Data;
 import lombok.ToString;
