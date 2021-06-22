@@ -1,6 +1,5 @@
 package com.code.spring.c.ioc.aa.bean.instantiation;
 
-import com.code.spring.c.ioc.aa.bean.definition.SpringBeanDefinitionApplication;
 import com.code.spring.c.ioc.aa.bean.instantiation.other.service.loader.UserFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
@@ -49,7 +48,7 @@ public class SpringBeanInstantiationApplication {
 
 	private static void userFactory() {
 		// 启动 Spring
-		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
+		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanInstantiationApplication.class).run();
 
 		// 通过 SpringApplication 获取它的 DefaultListableBeanFactory
 		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
@@ -69,7 +68,7 @@ public class SpringBeanInstantiationApplication {
 
 	private static void constructor() {
 		// 启动 Spring
-		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
+		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanInstantiationApplication.class).run();
 
 		// 通过 SpringApplication 获取它的 DefaultListableBeanFactory
 		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
@@ -92,7 +91,7 @@ public class SpringBeanInstantiationApplication {
 
 	private static void factoryBean() {
 		// 启动 Spring
-		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
+		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanInstantiationApplication.class).run();
 
 		// 通过 SpringApplication 获取它的 DefaultListableBeanFactory
 		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
@@ -112,7 +111,7 @@ public class SpringBeanInstantiationApplication {
 
 	private static void factoryMethod() {
 		// 启动 Spring
-		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
+		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanInstantiationApplication.class).run();
 
 		// 通过 SpringApplication 获取它的 DefaultListableBeanFactory
 		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
@@ -132,7 +131,7 @@ public class SpringBeanInstantiationApplication {
 
 	private void autowireCapableBeanFactory() {
 		// 启动 Spring
-		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
+		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanInstantiationApplication.class).run();
 
 		// 获取 AutowireCapableBeanFactory
 		AutowireCapableBeanFactory beanFactory = applicationContext.getAutowireCapableBeanFactory();
@@ -157,7 +156,7 @@ public class SpringBeanInstantiationApplication {
 	 */
 	private static void serviceLoaderFactoryBean() {
 		// 启动 Spring
-		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
+		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanInstantiationApplication.class).run();
 
 		// 通过 SpringApplication 获取它的 DefaultListableBeanFactory
 		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
@@ -181,7 +180,7 @@ public class SpringBeanInstantiationApplication {
 	 */
 	private static void serviceFactoryBean() {
 		// 启动 Spring
-		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
+		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanInstantiationApplication.class).run();
 
 		// 通过 SpringApplication 获取它的 DefaultListableBeanFactory
 		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
@@ -205,7 +204,7 @@ public class SpringBeanInstantiationApplication {
 	 */
 	private static void serviceListFactoryBean() {
 		// 启动 Spring
-		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanDefinitionApplication.class).run();
+		ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(SpringBeanInstantiationApplication.class).run();
 
 		// 通过 SpringApplication 获取它的 DefaultListableBeanFactory
 		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
