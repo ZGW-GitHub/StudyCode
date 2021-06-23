@@ -9,7 +9,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
  * @date 2021/6/18 15:50
  */
 @Slf4j
-@SpringBootApplication(scanBasePackages = {"com.code.spring.a.basic", "com.code.spring.c.ioc.bb.lifecycle"})
+@SpringBootApplication(scanBasePackages = {"com.code.spring.a.basic", "com.code.spring.c.ioc.lifecycle"})
 public class SpringLifecycleApplication {
 	public static void main(String[] args) {
 
