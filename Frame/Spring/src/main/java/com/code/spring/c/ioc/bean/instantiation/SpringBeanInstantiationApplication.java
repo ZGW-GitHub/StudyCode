@@ -1,6 +1,6 @@
-package com.code.spring.c.ioc.aa.bean.instantiation;
+package com.code.spring.c.ioc.bean.instantiation;
 
-import com.code.spring.c.ioc.aa.bean.instantiation.other.service.loader.UserFactory;
+import com.code.spring.c.ioc.bean.instantiation.other.service.loader.UserFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -17,7 +17,7 @@ import java.util.ServiceLoader;
  * @date 2021/6/21 17:05
  */
 @Slf4j
-@SpringBootApplication(scanBasePackages = {"com.code.spring.a.basic", "com.code.spring.c.ioc.aa.bean.instantiation"})
+@SpringBootApplication(scanBasePackages = {"com.code.spring.a.basic", "com.code.spring.c.ioc.bean.instantiation"})
 public class SpringBeanInstantiationApplication {
 	public static void main(String[] args) {
 

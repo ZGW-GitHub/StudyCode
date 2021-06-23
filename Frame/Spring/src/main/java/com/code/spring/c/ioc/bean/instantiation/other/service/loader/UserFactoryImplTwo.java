@@ -1,6 +1,6 @@
-package com.code.spring.c.ioc.aa.bean.instantiation.other.service.loader;
+package com.code.spring.c.ioc.bean.instantiation.other.service.loader;
 
-import com.code.spring.c.ioc.aa.bean.instantiation.TestUser;
+import com.code.spring.c.ioc.bean.instantiation.TestUser;
 
 /**
  * @author 愆凡

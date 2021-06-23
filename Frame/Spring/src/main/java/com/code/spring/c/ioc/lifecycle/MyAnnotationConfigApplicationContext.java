@@ -1,4 +1,4 @@
-package com.code.spring.c.ioc.bb.lifecycle;
+package com.code.spring.c.ioc.lifecycle;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext;

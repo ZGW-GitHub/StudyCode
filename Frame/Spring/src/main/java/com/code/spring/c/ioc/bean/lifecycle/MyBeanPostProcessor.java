@@ -1,4 +1,4 @@
-package com.code.spring.c.ioc.aa.bean.lifecycle;
+package com.code.spring.c.ioc.bean.lifecycle;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.MutablePropertyValues;

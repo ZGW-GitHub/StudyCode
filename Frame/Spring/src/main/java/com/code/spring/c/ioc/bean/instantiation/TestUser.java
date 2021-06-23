@@ -1,4 +1,4 @@
-package com.code.spring.c.ioc.aa.bean.instantiation;
+package com.code.spring.c.ioc.bean.instantiation;
 
 import com.code.spring.a.basic.entity.User;
 

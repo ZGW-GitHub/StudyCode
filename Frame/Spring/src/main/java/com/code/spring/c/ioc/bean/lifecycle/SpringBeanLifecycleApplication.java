@@ -1,4 +1,4 @@
-package com.code.spring.c.ioc.aa.bean.lifecycle;
+package com.code.spring.c.ioc.bean.lifecycle;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ import org.springframework.core.io.support.EncodedResource;
  */
 @Slf4j
 @Setter
-@SpringBootApplication(scanBasePackages = {"com.code.spring.a.basic", "com.code.spring.c.ioc.aa.bean.lifecycle"})
+@SpringBootApplication(scanBasePackages = {"com.code.spring.a.basic", "com.code.spring.c.ioc.bean.lifecycle"})
 public class SpringBeanLifecycleApplication implements BeanNameAware, BeanFactoryAware, BeanClassLoaderAware, EnvironmentAware {
 
 	private String beanName;

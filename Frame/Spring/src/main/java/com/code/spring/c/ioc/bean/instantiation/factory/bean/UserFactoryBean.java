@@ -1,6 +1,6 @@
-package com.code.spring.c.ioc.aa.bean.instantiation.factory.bean;
+package com.code.spring.c.ioc.bean.instantiation.factory.bean;
 
-import com.code.spring.c.ioc.aa.bean.instantiation.TestUser;
+import com.code.spring.c.ioc.bean.instantiation.TestUser;
 import org.springframework.beans.factory.FactoryBean;
 
 /**

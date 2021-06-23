@@ -4,18 +4,18 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 	    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="user" class="com.code.spring.c.ioc.aa.bean.lifecycle.BeanUser">
+	<bean id="user" class="com.code.spring.c.ioc.bean.lifecycle.BeanUser">
 		<property name="id" value="1"/>
 		<property name="name" value="愆凡"/>
 	</bean>
 
-	<bean id="userThree" class="com.code.spring.c.ioc.aa.bean.lifecycle.BeanUser" init-method="init"
+	<bean id="userThree" class="com.code.spring.c.ioc.bean.lifecycle.BeanUser" init-method="init"
 		  destroy-method="destroyDemo">
 		<property name="id" value="3"/>
 		<property name="name" value="愆凡"/>
 	</bean>
 
-	<bean id="userFour" class="com.code.spring.c.ioc.aa.bean.lifecycle.BeanUser" destroy-method="destroyDemo">
+	<bean id="userFour" class="com.code.spring.c.ioc.bean.lifecycle.BeanUser" destroy-method="destroyDemo">
 		<property name="id" value="4"/>
 		<property name="name" value="愆凡"/>
 	</bean>

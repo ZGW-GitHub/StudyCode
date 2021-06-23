@@ -1,4 +1,4 @@
-package com.code.spring.c.ioc.aa.bean.definition;
+package com.code.spring.c.ioc.bean.definition;
 
 import com.code.spring.a.basic.entity.User;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ import org.springframework.core.io.support.EncodedResource;
  * @date 2021/6/21 17:05
  */
 @Slf4j
-@SpringBootApplication(scanBasePackages = {"com.code.spring.a.basic", "com.code.spring.c.ioc.aa.bean.definition"})
+@SpringBootApplication(scanBasePackages = {"com.code.spring.a.basic", "com.code.spring.c.ioc.bean.definition"})
 public class SpringBeanDefinitionApplication {
 	public static void main(String[] args) {
 

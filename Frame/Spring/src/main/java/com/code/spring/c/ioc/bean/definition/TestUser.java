@@ -1,4 +1,4 @@
-package com.code.spring.c.ioc.aa.bean.definition;
+package com.code.spring.c.ioc.bean.definition;
 
 import com.code.spring.a.basic.entity.User;
 import lombok.extern.slf4j.Slf4j;
