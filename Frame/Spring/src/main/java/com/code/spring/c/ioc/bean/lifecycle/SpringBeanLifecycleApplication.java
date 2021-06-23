@@ -61,7 +61,7 @@ public class SpringBeanLifecycleApplication implements BeanNameAware, BeanFactor
 		PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
 
 		// Properties 资源的位置
-		String file = "/files/c/ioc/bean/lifecycle/bean-definition.properties";
+		String file = "/files/ioc/bean/lifecycle/bean-definition.properties";
 
 		// 解决乱码 ( Properties 资源加载默认是通过 ISO-8859-1 编码的 )
 		Resource resource = new ClassPathResource(file);
@@ -89,7 +89,7 @@ public class SpringBeanLifecycleApplication implements BeanNameAware, BeanFactor
 		PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
 
 		// Properties 资源的位置
-		String file = "/files/c/ioc/bean/lifecycle/bean-definition.properties";
+		String file = "/files/ioc/bean/lifecycle/bean-definition.properties";
 
 		// 解决乱码 ( Properties 资源加载默认是通过 ISO-8859-1 编码的 )
 		Resource resource = new ClassPathResource(file);
@@ -120,7 +120,7 @@ public class SpringBeanLifecycleApplication implements BeanNameAware, BeanFactor
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// XML 资源的位置
-		String file = "/files/c/ioc/bean/lifecycle/bean-definition.xml";
+		String file = "/files/ioc/bean/lifecycle/bean-definition.xml";
 
 		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(file);
@@ -147,7 +147,7 @@ public class SpringBeanLifecycleApplication implements BeanNameAware, BeanFactor
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// XML 资源的位置
-		String file = "/files/c/ioc/bean/lifecycle/bean-definition.xml";
+		String file = "/files/ioc/bean/lifecycle/bean-definition.xml";
 
 		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(file);

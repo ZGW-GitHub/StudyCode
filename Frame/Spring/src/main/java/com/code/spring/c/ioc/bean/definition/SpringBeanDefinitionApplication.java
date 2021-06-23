@@ -58,7 +58,7 @@ public class SpringBeanDefinitionApplication {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String filePath = "/files/c/ioc/bean/definition/bean-definition.xml";
+		String filePath = "/files/ioc/bean/definition/bean-definition.xml";
 
 		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
@@ -81,7 +81,7 @@ public class SpringBeanDefinitionApplication {
 		PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
 
 		// Properties 资源的位置
-		String file = "/files/c/ioc/bean/definition/bean-definition.properties";
+		String file = "/files/ioc/bean/definition/bean-definition.properties";
 
 		// 解决乱码 ( Properties 资源加载默认是通过 ISO-8859-1 编码的 )
 		Resource resource = new ClassPathResource(file);

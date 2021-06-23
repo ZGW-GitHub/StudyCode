@@ -57,7 +57,7 @@ public class SpringBeanInstantiationApplication {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String filePath = "/files/c/ioc/bean/instantiation/bean-factory.xml";
+		String filePath = "/files/ioc/bean/instantiation/bean-factory.xml";
 
 		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
@@ -77,7 +77,7 @@ public class SpringBeanInstantiationApplication {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String filePath = "/files/c/ioc/bean/instantiation/constructor.xml";
+		String filePath = "/files/ioc/bean/instantiation/constructor.xml";
 
 		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
@@ -100,7 +100,7 @@ public class SpringBeanInstantiationApplication {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String filePath = "/files/c/ioc/bean/instantiation/factory-bean.xml";
+		String filePath = "/files/ioc/bean/instantiation/factory-bean.xml";
 
 		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
@@ -120,7 +120,7 @@ public class SpringBeanInstantiationApplication {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String filePath = "/files/c/ioc/bean/instantiation/factory-method.xml";
+		String filePath = "/files/ioc/bean/instantiation/factory-method.xml";
 
 		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
@@ -165,7 +165,7 @@ public class SpringBeanInstantiationApplication {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String filePath = "/files/c/ioc/bean/instantiation/service-loader.xml";
+		String filePath = "/files/ioc/bean/instantiation/service-loader.xml";
 
 		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
@@ -189,7 +189,7 @@ public class SpringBeanInstantiationApplication {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String filePath = "/files/c/ioc/bean/instantiation/service-loader.xml";
+		String filePath = "/files/ioc/bean/instantiation/service-loader.xml";
 
 		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
@@ -213,7 +213,7 @@ public class SpringBeanInstantiationApplication {
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// xml 资源的位置
-		String filePath = "/files/c/ioc/bean/instantiation/service-loader.xml";
+		String filePath = "/files/ioc/bean/instantiation/service-loader.xml";
 
 		// 注册 BeanDefinition 到 IoC 容器
 		beanDefinitionReader.loadBeanDefinitions(filePath);
