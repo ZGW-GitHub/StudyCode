@@ -1,6 +1,5 @@
-package com.code.spring.za.event;
+package com.code.spring.o.event;
 
-import com.code.spring.MySpringApplicationTest;
 import org.junit.Test;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,7 +11,7 @@ import org.springframework.context.event.ApplicationContextEvent;
  * @author 愆凡
  * @date 2021/1/24 18:51
  */
-public class HierarchicalEventPropagateTest extends MySpringApplicationTest {
+public class HierarchicalEventPropagateTest {
 
 	@Test
 	public void test() {

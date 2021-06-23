@@ -1,4 +1,4 @@
-package com.code.spring.xx.web.servlet.WebSocket;
+package com.code.spring.s.web.servlet.WebSocket;
 
 /**
  * @author 愆凡

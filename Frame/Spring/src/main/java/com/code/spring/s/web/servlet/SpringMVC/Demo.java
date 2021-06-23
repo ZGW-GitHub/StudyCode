@@ -1,4 +1,4 @@
-package com.code.spring.xx.web.servlet.SpringMVC;
+package com.code.spring.s.web.servlet.SpringMVC;
 
 /**
  * @author 愆凡

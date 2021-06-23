@@ -1,6 +1,5 @@
-package com.code.spring.za.event;
+package com.code.spring.o.event;
 
-import com.code.spring.MySpringApplicationTest;
 import org.junit.Test;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
@@ -13,7 +12,7 @@ import org.springframework.context.support.GenericApplicationContext;
  * @date 2021/1/24 19:46
  */
 @SuppressWarnings("all")
-public class EventTest extends MySpringApplicationTest {
+public class EventTest {
 
 	@Test
 	public void test() {

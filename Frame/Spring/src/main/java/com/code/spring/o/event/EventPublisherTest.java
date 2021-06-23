@@ -1,6 +1,5 @@
-package com.code.spring.za.event;
+package com.code.spring.o.event;
 
-import com.code.spring.MySpringApplicationTest;
 import org.junit.Test;
 import org.springframework.context.*;
 import org.springframework.context.support.GenericApplicationContext;
@@ -16,7 +15,7 @@ import org.springframework.context.support.GenericApplicationContext;
  * @date 2021/1/23 22:42
  */
 @SuppressWarnings("all")
-public class EventPublisherTest extends MySpringApplicationTest implements ApplicationEventPublisherAware {
+public class EventPublisherTest implements ApplicationEventPublisherAware {
 
 	/**
 	 * Spring 事件发布器示例

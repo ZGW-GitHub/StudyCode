@@ -1,4 +1,4 @@
-package com.code.spring.xx.web.reactive.WebClient;
+package com.code.spring.s.web.reactive.WebClient;
 
 /**
  * @author 愆凡

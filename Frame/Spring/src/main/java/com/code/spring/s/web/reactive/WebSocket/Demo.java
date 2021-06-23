@@ -1,4 +1,4 @@
-package com.code.spring.xx.web.reactive.WebFlux;
+package com.code.spring.s.web.reactive.WebSocket;
 
 /**
  * @author 愆凡

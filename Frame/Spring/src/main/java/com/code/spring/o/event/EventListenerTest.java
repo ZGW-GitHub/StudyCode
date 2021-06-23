@@ -1,6 +1,5 @@
-package com.code.spring.za.event;
+package com.code.spring.o.event;
 
-import com.code.spring.MySpringApplicationTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.context.ApplicationEvent;
@@ -26,7 +25,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync // 激活异步执行
 @Slf4j
 @SuppressWarnings("all")
-public class EventListenerTest extends MySpringApplicationTest {
+public class EventListenerTest {
 
 	/**
 	 * 基于接口的事件监听示例
