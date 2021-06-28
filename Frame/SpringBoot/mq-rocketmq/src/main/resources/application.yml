@@ -1,5 +1,5 @@
 rocketmq:
-  name-server: linux.juststudy.site:9876
+  name-server: weixt.spacetech.com.cn:19876
 
   producer:
     group: group-test
