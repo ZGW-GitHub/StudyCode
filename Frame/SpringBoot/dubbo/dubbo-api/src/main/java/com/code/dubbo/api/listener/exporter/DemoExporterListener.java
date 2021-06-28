@@ -11,11 +11,11 @@ import org.apache.dubbo.rpc.RpcException;
 public class DemoExporterListener implements ExporterListener {
 	@Override
 	public void exported(Exporter<?> exporter) throws RpcException {
-		System.err.println("DemoExporterListener-referred : " + exporter);
+		System.err.println("DemoExporterListener-referred : " + exporter.getInvoker().getUrl());
 	}
 
 	@Override
 	public void unexported(Exporter<?> exporter) {
-		System.err.println("DemoExporterListener-unexported : " + exporter);
+		System.err.println("DemoExporterListener-unexported : " + exporter.getInvoker().getUrl());
 	}
 }

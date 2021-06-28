@@ -13,11 +13,11 @@ import org.apache.dubbo.rpc.RpcException;
 public class DemoInvokerListener implements InvokerListener {
 	@Override
 	public void referred(Invoker<?> invoker) throws RpcException {
-		System.err.println("DemoInvokerListener-referred : " + invoker);
+		System.err.println("DemoInvokerListener-referred : " + invoker.getUrl());
 	}
 
 	@Override
 	public void destroyed(Invoker<?> invoker) {
-		System.err.println("DemoInvokerListener-destroyed : " + invoker);
+		System.err.println("DemoInvokerListener-destroyed : " + invoker.getUrl());
 	}
 }
