@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
  * @date 2020/7/10 4:02 下午
  */
 @SuppressWarnings("all")
-public class DemoTest {
+public class ThreadLocalTest {
 
 	@Test
 	public void simpleTest() throws InterruptedException {
