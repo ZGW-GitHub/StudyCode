@@ -1,0 +1,2 @@
+impl=com.code.dubbo.spi.wrapper.SerializableImpl
+wrapper=com.code.dubbo.spi.wrapper.SerializabWrapper

@@ -1,0 +1,2 @@
+implA=com.code.dubbo.spi.simple.SerializableImplA
+implB=com.code.dubbo.spi.simple.SerializableImplB
