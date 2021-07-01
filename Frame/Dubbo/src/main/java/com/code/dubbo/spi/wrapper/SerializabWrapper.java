@@ -22,8 +22,6 @@ public class SerializabWrapper implements ISerializable {
 
 	@Override
 	public <T> T deserialize(Class<T> clazz, String str) {
-		System.out.println("通用逻辑");
-
-		return serializable.deserialize(clazz, str);
+		return null;
 	}
 }
