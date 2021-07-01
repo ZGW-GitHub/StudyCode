@@ -37,7 +37,7 @@ public class JpaConfig {
 		LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
 		entityManagerFactory.setDataSource(dataSource());
 		entityManagerFactory.setJpaVendorAdapter(japVendor);
-		entityManagerFactory.setPackagesToScan("com.code.spring.aa.basic.entity");
+		entityManagerFactory.setPackagesToScan("com.code.spring.a.basic.entity");
 		return entityManagerFactory;
 	}
 
