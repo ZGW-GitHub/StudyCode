@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaAuditing
-@EnableJpaRepositories(basePackages = "com.code.spring.aa.basic.repository", transactionManagerRef = "jpaTransactionManager")
+@EnableJpaRepositories(basePackages = "com.code.spring.a.basic.repository", transactionManagerRef = "jpaTransactionManager")
 public class JpaConfig {
 	@Bean
 	@ConfigurationProperties(prefix = "spring.datasource")
