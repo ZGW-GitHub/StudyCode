@@ -17,7 +17,7 @@ import java.util.Random;
  * @date 2021/4/11 21:12
  */
 @Component
-public class MyLogGlobalFilter implements GlobalFilter, Ordered {
+public class LogGlobalFilter implements GlobalFilter, Ordered {
 
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
