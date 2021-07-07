@@ -25,17 +25,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.alibaba.cloud</groupId>
-			<artifactId>spring-cloud-starter-bus-rocketmq</artifactId>
-		</dependency>
-
-		<!-- 链路追踪：包含了 Sleuth + Zipkin -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-zipkin</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>com.code</groupId>
 			<artifactId>service-common</artifactId>
 			<version>1.0.0-SNAPSHOT</version>

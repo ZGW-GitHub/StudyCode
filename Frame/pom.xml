@@ -21,6 +21,7 @@
 		<module>SpringBoot</module>
 		<module>SpringCloud</module>
 		<module>SpringCloudAlibaba</module>
+		<module>SpringCloudComponent</module>
 	</modules>
 
 	<dependencies>

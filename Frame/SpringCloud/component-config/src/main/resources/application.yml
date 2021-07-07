@@ -15,10 +15,6 @@ spring:
             - Frame/SpringCloud/component-config/src/main/resources/config
       label: master
 
-# 消息总线
-rocketmq:
-  name-server: 10.10.10.24:9876
-
 # 暴露监控端点
 management:
   endpoints:
