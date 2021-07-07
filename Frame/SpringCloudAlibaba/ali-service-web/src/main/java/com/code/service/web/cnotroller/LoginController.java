@@ -3,7 +3,7 @@ package com.code.service.web.cnotroller;
 import com.code.service.api.entity.User;
 import com.code.service.api.service.UserService;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/login")
 public class LoginController {
 
-	@Reference
+	@DubboReference
 	private UserService userService;
 
 	@RequestMapping("/{id}")

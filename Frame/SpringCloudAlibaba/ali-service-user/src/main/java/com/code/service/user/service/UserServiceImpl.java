@@ -3,17 +3,18 @@ package com.code.service.user.service;
 import com.code.service.api.entity.User;
 import com.code.service.api.service.UserService;
 import com.code.service.user.configuration.NacosConfiguration;
-import org.apache.dubbo.config.annotation.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.dubbo.config.annotation.DubboService;
+
+import javax.annotation.Resource;
 
 /**
  * @author 愆凡
  * @date 2021/4/7 18:48
  */
-@Service
+@DubboService
 public class UserServiceImpl implements UserService {
 
-	@Autowired
+	@Resource
 	private NacosConfiguration nacosConfiguration;
 
 	@Override
