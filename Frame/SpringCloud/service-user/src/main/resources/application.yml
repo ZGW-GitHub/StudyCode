@@ -21,7 +21,7 @@ spring:
           environment:
             spring:
               rocketmq:
-                name-server: linux.juststudy.site:9876
+                name-server: 10.10.10.24:9876
       bindings: # 服务的整合处理
         input: # 这个名字是一个通道的名称
           destination: StudyExchange # 表示要使用的 Exchange 的名称定义

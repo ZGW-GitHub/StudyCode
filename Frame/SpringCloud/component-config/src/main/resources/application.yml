@@ -17,7 +17,7 @@ spring:
 
 # 消息总线
 rocketmq:
-  name-server: linux.juststudy.site:9876
+  name-server: 10.10.10.24:9876
 
 # 暴露监控端点
 management:
