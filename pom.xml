@@ -57,6 +57,7 @@
 		<lombok.version>1.18.10</lombok.version>
 		<guava.version>30.0-jre</guava.version>
 		<fastjson.version>1.2.73</fastjson.version>
+		<jmh.version>1.22</jmh.version>
 	</properties>
 
 	<dependencyManagement>
@@ -163,6 +164,20 @@
 				<artifactId>guava</artifactId>
 				<version>${guava.version}</version>
 			</dependency>
+
+			<!-- JMH 的核心包 -->
+			<dependency>
+				<groupId>org.openjdk.jmh</groupId>
+				<artifactId>jmh-core</artifactId>
+				<version>${jmh.version}</version>
+			</dependency>
+
+			<!-- JMH 依赖注解,需要注解处理包 -->
+			<dependency>
+				<groupId>org.openjdk.jmh</groupId>
+				<artifactId>jmh-generator-annprocess</artifactId>
+				<version>${jmh.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -199,6 +214,16 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-generator-annprocess</artifactId>
 		</dependency>
 	</dependencies>
 
