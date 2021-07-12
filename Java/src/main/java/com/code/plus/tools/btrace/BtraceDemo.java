@@ -4,6 +4,8 @@ import org.openjdk.btrace.core.BTraceUtils;
 import org.openjdk.btrace.core.annotations.*;
 
 /**
+ * 运行 BTrace 脚本 : ./bin/btrace pid /xxx/BtraceDemo.java
+ * 
  * @author 愆凡
  * @date 2021/7/12 11:59
  */
