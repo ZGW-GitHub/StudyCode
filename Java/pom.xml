@@ -27,6 +27,32 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 		</dependency>
+
+		<!-- Btrace -->
+		<dependency>
+			<groupId>com.sun.tools.btrace</groupId>
+			<artifactId>btrace-agent</artifactId>
+			<version>${btrace.version}</version>
+			<type>jar</type>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/libs/btrace-agent.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.tools.btrace</groupId>
+			<artifactId>btrace-boot</artifactId>
+			<version>${btrace.version}</version>
+			<type>jar</type>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/libs/btrace-boot.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.tools.btrace</groupId>
+			<artifactId>btrace-client</artifactId>
+			<version>${btrace.version}</version>
+			<type>jar</type>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/libs/btrace-client.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 </project>
