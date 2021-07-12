@@ -1,4 +1,4 @@
-package com.code.advanced.spi;
+package com.code.plus.spi;
 
 import org.junit.Test;
 

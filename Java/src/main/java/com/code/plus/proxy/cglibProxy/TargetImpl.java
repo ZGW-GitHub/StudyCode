@@ -1,4 +1,4 @@
-package com.code.advanced.proxy.cglibProxy;
+package com.code.plus.proxy.cglibProxy;
 
 import java.util.Random;
 

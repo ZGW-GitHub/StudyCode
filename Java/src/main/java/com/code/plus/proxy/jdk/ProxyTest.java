@@ -1,4 +1,4 @@
-package com.code.advanced.proxy.jdk;
+package com.code.plus.proxy.jdk;
 
 import org.junit.Test;
 
