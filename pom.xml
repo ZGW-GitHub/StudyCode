@@ -11,6 +11,8 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<!-- 基础 -->
+		<module>Basis</module>
 		<!-- Java 技术 -->
 		<module>Java</module>
 		<!-- Go 技术 -->
@@ -19,10 +21,10 @@
 		<module>Python</module>
 		<!-- 框架 -->
 		<module>Frame</module>
-		<!-- 数据结构 -->
-		<module>DataStructure</module>
-		<!-- 设计模式 -->
-		<module>DesignPatterns</module>
+		<!--		&lt;!&ndash; 数据结构 &ndash;&gt;-->
+		<!--		<module>DataStructure</module>-->
+		<!--		&lt;!&ndash; 设计模式 &ndash;&gt;-->
+		<!--		<module>DesignPatterns</module>-->
 	</modules>
 
 	<properties>
