@@ -60,6 +60,7 @@
 		<guava.version>30.0-jre</guava.version>
 		<fastjson.version>1.2.73</fastjson.version>
 		<jmh.version>1.26</jmh.version>
+		<btrace.version>2.2.0</btrace.version>
 	</properties>
 
 	<dependencyManagement>
