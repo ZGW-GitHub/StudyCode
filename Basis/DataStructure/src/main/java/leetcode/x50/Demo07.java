@@ -26,7 +26,7 @@ public class Demo07 {
 		}
 
 		try {
-			return Integer.parseInt(new StringBuilder(String.valueOf(x)).reverse().toString()) * flag;
+			return Integer.parseInt(new StringBuilder(numStr).reverse().toString()) * flag;
 		} catch (Exception e) {
 			return 0;
 		}
