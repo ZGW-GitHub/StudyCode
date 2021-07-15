@@ -17,13 +17,69 @@ import java.util.Set;
  * @author 愆凡
  * @date 2021/4/20 21:07
  */
+@SuppressWarnings("all")
 public class SelectorTest {
 
 	public final String serverHost = "127.0.0.1";
 	public final Integer serverPort = 7000;
 
 	@Test
-	@SuppressWarnings("all")
+	public void serverTest() throws IOException {
+		// 获取 Channel
+		ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+		serverSocketChannel.configureBlocking(false);
+		serverSocketChannel.bind(new InetSocketAddress(serverPort));
+
+		// 创建 Selector
+		Selector selector = Selector.open();
+
+		SelectionKey selectionKey = serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+
+		while (true) {
+			// 通过 Selector 选择 Channel 
+			int readyChannels = selector.select();
+			if (readyChannels == 0) {
+				continue;
+			}
+
+			// 获得可操作的 Channel
+			Set<SelectionKey> selectedKeys = selector.selectedKeys();
+			// 遍历 SelectionKey 数组
+			Iterator<SelectionKey> keyIterator = selectedKeys.iterator();
+			while (keyIterator.hasNext()) {
+				SelectionKey key = keyIterator.next();
+				// 移除（TODO 若没有删除，那么下一次调用 select 时, 这个 SelectionKey 还在 selectedKeys 中）
+				keyIterator.remove();
+
+				// 忽略无效的 SelectionKey
+				if (!key.isValid()) {
+					continue;
+				}
+
+				if (key.isAcceptable()) {
+					// a connection was accepted by a ServerSocketChannel.
+					System.err.println("key.isAcceptable()");
+
+					SocketChannel socketChannel = serverSocketChannel.accept();
+					socketChannel.configureBlocking(false);
+					socketChannel.register(selector, SelectionKey.OP_READ);
+				}
+				if (key.isConnectable()) { // 仅客户端
+					// a connection was established with a remote server.
+				}
+				if (key.isReadable()) {
+					// a channel is ready for reading
+					System.err.println("key.isReadable()");
+				}
+				if (key.isWritable()) {
+					// a channel is ready for writing
+					System.err.println("key.isWritable()");
+				}
+			}
+		}
+	}
+	
+	@Test
 	public void clientTest() throws IOException {
 		// 获取 Channel
 		SocketChannel channel = SocketChannel.open();
@@ -71,63 +127,6 @@ public class SelectorTest {
 					System.err.println("key.isConnectable()");
 
 					channel.register(selector, SelectionKey.OP_READ);
-				}
-				if (key.isReadable()) {
-					// a channel is ready for reading
-					System.err.println("key.isReadable()");
-				}
-				if (key.isWritable()) {
-					// a channel is ready for writing
-					System.err.println("key.isWritable()");
-				}
-			}
-		}
-	}
-
-	@Test
-	@SuppressWarnings("all")
-	public void serverTest() throws IOException {
-		// 获取 Channel
-		ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
-		serverSocketChannel.configureBlocking(false);
-		serverSocketChannel.bind(new InetSocketAddress(serverPort));
-
-		// 创建 Selector
-		Selector selector = Selector.open();
-
-		SelectionKey selectionKey = serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
-
-		while (true) {
-			// 通过 Selector 选择 Channel 
-			int readyChannels = selector.select();
-			if (readyChannels == 0) {
-				continue;
-			}
-
-			// 获得可操作的 Channel
-			Set<SelectionKey> selectedKeys = selector.selectedKeys();
-			// 遍历 SelectionKey 数组
-			Iterator<SelectionKey> keyIterator = selectedKeys.iterator();
-			while (keyIterator.hasNext()) {
-				SelectionKey key = keyIterator.next();
-				// 移除（TODO 若没有删除，那么下一次调用 select 时, 这个 SelectionKey 还在 selectedKeys 中）
-				keyIterator.remove();
-
-				// 忽略无效的 SelectionKey
-				if (!key.isValid()) {
-					continue;
-				}
-
-				if (key.isAcceptable()) {
-					// a connection was accepted by a ServerSocketChannel.
-					System.err.println("key.isAcceptable()");
-
-					SocketChannel socketChannel = serverSocketChannel.accept();
-					socketChannel.configureBlocking(false);
-					socketChannel.register(selector, SelectionKey.OP_READ);
-				}
-				if (key.isConnectable()) { // 仅客户端
-					// a connection was established with a remote server.
 				}
 				if (key.isReadable()) {
 					// a channel is ready for reading
