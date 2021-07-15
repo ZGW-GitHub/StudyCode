@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-import java.util.Random;
-
 /**
  * 自定义全局Filter，用来记录日志
  *
@@ -24,10 +22,10 @@ public class LogGlobalFilter implements GlobalFilter, Ordered {
 		System.err.println("ServerWebExchange : " + ToStringBuilder.reflectionToString(exchange));
 		System.err.println("GatewayFilterChain : " + ToStringBuilder.reflectionToString(chain));
 
-		if (new Random().nextBoolean()) {
-			System.err.println("程序错误");
-			return exchange.getResponse().setComplete();
-		}
+//		if (new Random().nextBoolean()) {
+//			System.err.println("程序错误");
+//			return exchange.getResponse().setComplete();
+//		}
 		return chain.filter(exchange);
 	}
 
