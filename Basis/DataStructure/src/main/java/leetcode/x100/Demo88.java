@@ -1,10 +1,7 @@
 package leetcode.x100;
 
-import code.sort.quick.QuickSort;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 /**
  * 合并两个有序数组
@@ -21,14 +18,24 @@ public class Demo88 {
 	}
 
 	public void one(int[] nums1, int m, int[] nums2, int n) {
-		int[] result = new int[m + n];
+		int index1 = m - 1;
+		int index2 = n - 1;
+		int lastIndex = m + n - 1;
 
-		System.arraycopy(nums1, 0, result, 0, m);
-		System.arraycopy(nums2, 0, result, m, n);
+		while (index1 >= 0 && index2 >= 0) {
+			if (nums1[index1] > nums2[index2]) {
+				nums1[lastIndex] = nums1[index1];
+				index1--;
+			} else {
+				nums1[lastIndex] = nums2[index2];
+				index2--;
+			}
+			lastIndex--;
+		}
 
-		QuickSort.quickSort(result);
-
-		System.out.println(Arrays.toString(result));
+		if (index2 >= 0) {
+			System.arraycopy(nums2, 0, nums1, 0, index2 + 1);
+		}
 	}
 
 }
